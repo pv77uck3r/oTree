@@ -1,4 +1,4 @@
-<{% extends "global/Page.html" %}
+{% extends "global/Page.html" %}
 {% load otree static %}
 
 {% block title %}
@@ -31,15 +31,15 @@
 
 {% endblock %}
 
-{% block scripts %}
+{% block styles %}
 
-    <script>
+    <style type="text/css">
         #elementId{
             background: white;
             width: 80%;
             height: 30%;
             overflow-y: scroll;
         }
-    </script>
+    </style>
 
 {% endblock %}
