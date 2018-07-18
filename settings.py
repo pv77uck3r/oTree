@@ -13,26 +13,10 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'public_goods',
-        'display_name': "Public Goods",
-        'num_demo_participants': 3,
-        'app_sequence': ['public_goods', 'payment_info'],
-    },
-    {
-        'name': 'guess_two_thirds',
-        'display_name': "Guess 2/3 of the Average",
-        'num_demo_participants': 3,
-        'app_sequence': ['guess_two_thirds', 'payment_info'],
-    },
-    {
-        'name': 'survey',
-        'num_demo_participants': 1,
-        'app_sequence': ['survey', 'payment_info'],
-    },
-    {
-        'name': 'quiz',
-        'num_demo_participants': 1,
-        'app_sequence': ['quiz'],
+        'name': 'criminal_trust',
+        'display_name': "Trust Game for Innocence Problem Project",
+        'num_demo_participants': 2,
+        'app_sequence': ['criminal_trust'],
     },
 ]
 # see the end of this file for the inactive session configs
