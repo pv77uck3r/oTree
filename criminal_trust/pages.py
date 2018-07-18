@@ -12,7 +12,7 @@ class QuizI(Page):
     form_fields = ['investor_quiz1', 'investor_quiz2', 'investor_quiz3', 'investor_quiz4']
 
     def is_displayed(self):
-        return self.player.role == "Investor"
+        return self.player.role == 'Investor'
 
 
 class QuizT(Page):
@@ -20,7 +20,7 @@ class QuizT(Page):
     form_fields = ['trustee_quiz1', 'trustee_quiz2', 'trustee_quiz3']
 
     def is_displayed(self):
-        return self.player.role == "Trustee"
+        return self.player.role == 'Trustee'
 
 
 class DecisionsI(Page):
@@ -29,7 +29,7 @@ class DecisionsI(Page):
                    'investor_decision5']
 
     def is_displayed(self):
-        return self.player.role == "Investor"
+        return self.player.role == 'Investor'
 
 
 class DecisionsT(Page):
@@ -39,7 +39,7 @@ class DecisionsT(Page):
                    'trustee_decision9', 'trustee_decision10']
 
     def is_displayed(self):
-        return self.player.role == "Trustee"
+        return self.player.role == 'Trustee'
 
 
 page_sequence = [
