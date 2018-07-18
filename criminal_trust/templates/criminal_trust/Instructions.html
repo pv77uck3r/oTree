@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Welcome!
+{% endblock %}
+
+{% block content %}
+
+    {% if player.role == 'Investor' %}
+
+        {% include 'criminal_trust/InstructionsI.html' %}
+
+    {% else %}
+
+        {% include 'criminal_trust/InstructionsT.html' %}
+
+    {% endif %}
+
+    {% next_button %}
+
+{% endblock %}

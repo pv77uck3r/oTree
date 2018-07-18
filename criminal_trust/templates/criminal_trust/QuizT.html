@@ -1,0 +1,45 @@
+<{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Quiz
+{% endblock %}
+
+{% block content %}
+
+    <div id="elementId">
+        {% include 'criminal_trust/InstructionsT.html' %}
+    </div>
+
+    <h3>
+        Please answer the following questions:
+    </h3>
+
+    <p>
+        {% formfield player.trustee_quiz1 %}
+    </p>
+
+    <p>
+        {% formfield player.trustee_quiz2 %}
+    </p>
+
+    <p>
+        {% formfield player.trustee_quiz3 %}
+    </p>
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script>
+        #elementId{
+            background: white;
+            width: 80%;
+            height: 30%;
+            overflow-y: scroll;
+        }
+    </script>
+
+{% endblock %}

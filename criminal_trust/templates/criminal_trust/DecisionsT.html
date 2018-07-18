@@ -1,0 +1,61 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Decisions
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Since you do not know how many quarters your counterpart will decide to send to you, we will ask you to tell us
+        how many quarters you would send back for each possible number of quarters they could send.
+    </p>
+
+    <p>
+        <b>If your counterpart sends you 0 quarters you have no decision to make.</b>
+    </p>
+
+    <p>
+        {% formfield group.trustee_decision1 %}
+    </p>
+
+    <p>
+        {% formfield group.trustee_decision2 %}
+    </p>
+
+    <p>
+        {% formfield group.trustee_decision3 %}
+    </p>
+
+    <p>
+        {% formfield group.trustee_decision4 %}
+    </p>
+
+    <p>
+        {% formfield group.trustee_decision5 %}
+    </p>
+
+    <p>
+        {% formfield group.trustee_decision6 %}
+    </p>
+
+    <p>
+        {% formfield group.trustee_decision7 %}
+    </p>
+
+    <p>
+        {% formfield group.trustee_decision8 %}
+    </p>
+
+    <p>
+        {% formfield group.trustee_decision9 %}
+    </p>
+
+    <p>
+        {% formfield group.trustee_decision10 %}
+    </p>
+
+    {% next_button %}
+
+{% endblock %}
