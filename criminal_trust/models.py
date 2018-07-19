@@ -147,7 +147,7 @@ class Player(BasePlayer):
             [3, '(c) They will receive 4 quarters.'],
         ],
         widget=widgets.RadioSelect,
-        label="If you send your counterpart 4 quarters: "
+        label="If you send your counterpart 4 quarters "
     )
 
     investor_quiz3 = models.IntegerField(
@@ -157,7 +157,7 @@ class Player(BasePlayer):
             [3, '(c) Will not be multiplied before reaching you.'],
         ],
         widget=widgets.RadioSelect,
-        label="Any quarters your counterpart returns to you: "
+        label="Any quarters your counterpart returns to you "
     )
 
     investor_quiz4 = models.IntegerField(
@@ -170,7 +170,7 @@ class Player(BasePlayer):
                 'penalty from their guilty finding.'],
         ],
         widget=widgets.RadioSelect,
-        label="Which of the following is true: "
+        label="Which of the following is true "
     )
 
     trustee_quiz1 = models.IntegerField(
@@ -191,7 +191,7 @@ class Player(BasePlayer):
             [3, '(c) You will receive 4 quarters.']
         ],
         widget=widgets.RadioSelect,
-        label="If your counterpart sends you 4 quarters: "
+        label="If your counterpart sends you 4 quarters "
     )
 
     trustee_quiz3 = models.IntegerField(
@@ -201,7 +201,7 @@ class Player(BasePlayer):
             [3, '(c) Will not be multiplied before reaching them.']
         ],
         widget=widgets.RadioSelect,
-        label="Any quarters you return to your counterpart: "
+        label="Any quarters you return to your counterpart "
     )
 
     def role(self):
