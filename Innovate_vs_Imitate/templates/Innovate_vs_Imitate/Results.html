@@ -1,0 +1,45 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+    {% if player.InnovateorImitateButton >= RandProb %}
+        {% if buttontrue == True %}
+        <center>
+        <p>You chose to take a draw.</p>
+        <p>The draw was {{ Draw }}.</p>
+        <p>Your total payoff was {{ Draw }} points.</p>
+        </center>
+        {% else %}
+        <center>
+        <p>The probability you entered was {{ Prob }}% and the random number generated was {{ RandProb }}.</p>
+        <p>Therefore, you took a draw.</p>
+        <p>The draw was {{ Draw }}.</p>
+        <p>Your total payoff was {{ Draw }} points.</p>
+        </center>
+        {% endif %}
+    {% else %}
+        {% if buttonfalse == True %}
+        <center>
+        <p>You chose not to take a draw.</p>
+        <p>You received {{ Draw }} points and retained your {{ Constants.endowment }} point endowment.</p>
+        <p>Your total payoff was {{ payoff }} points.</p>
+        </center>
+        {% else %}
+        <center>
+        <p>The probability you entered was {{ Prob }}% and the random number generated was {{ RandProb }}.</p>
+        <p>Therefore, you did not take a draw.</p>
+        <p>You received {{ Draw }} points and retained your {{ Constants.endowment }} point endowment.</p>
+        <p>Your total payoff was {{ payoff }} points.</p>
+        </center>
+        {% endif %}
+    {% endif %}
+
+    {% next_button %}
+
+{% endblock %}
+
+

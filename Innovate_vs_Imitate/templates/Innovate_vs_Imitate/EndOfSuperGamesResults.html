@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Final Decision Results
+{% endblock %}
+
+{% block content %}
+    <p>The decision making part of the experiment has now ended.</p>
+    <p>The round chosen for payment was {{ randomround }}.</p>
+    <p>Your payment in round {{ randomround }} was {{ total_payoff }}.</p>
+    <p>Therefore, your earnings from the decision making task is <b>{{ total_payoff }}</b>.</p>
+
+    {% next_button %}
+
+{% endblock %}

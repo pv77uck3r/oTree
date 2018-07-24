@@ -1,0 +1,93 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Choice
+{% endblock %}
+
+{% block content %}
+    <center>
+<p>Pick from the options below. If you would like to draw with some probability, please enter a
+    number between 1 and 99 to represent the percent chance that you will take a draw.
+    When you draw from the distribution, you lose your {{ Constants.endowment }} point endowment.</p>
+
+<p>The largest draw so far is {{ ImitateValue }}. If you do not take a draw from the payoff distribution, you will receive {{ ImitateValue }} points  plus your {{ Constants.endowment }} point endowment.</p>
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border: 1px solid black;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;text-align: center;vertical-align: middle;}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-031e"><center><b>Do NOT draw</b></center></th>
+      <th class="tg-031e"><center><b>Enter a probability to draw</b></center></th>
+    <th class="tg-031e"><center><b>Draw</b></center></th>
+  </tr>
+  <tr>
+    <th class="tg-031e"><center>{% formfield player.NoInnovate with label=" " %}</center></th>
+    <th class="tg-031e"><center>{% formfield player.InnovateorImitateButton with label=None %}</center></th>
+    <th class="tg-031e"><center>{% formfield player.Innovate with label=" "%}</center></th>
+  </tr>
+</table>
+
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+</center>
+
+{% next_button %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <script>
+    Highcharts.chart('container', {
+
+    title: {
+        text: 'Distribution of Draws'
+    },
+
+    yAxis: {
+        title: {
+            text: 'Probability'
+        }
+    },
+    xAxis: {
+        title: {
+            text: 'Points'
+        },
+        plotLines: [{
+        color: '#FF0000', // Red
+        width: 2,
+        value: {{ Max }},
+        dashStyle: 'dash',
+        label: {
+            text: 'Payoff if you do not take a draw',
+            verticalAlign: 'middle',
+                textAlign: 'center'
+        }
+    }]
+    },
+
+    legend: {
+        enabled: false
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            pointStart: 0
+        }
+    },
+
+    series: [{
+        data: [[{{ Constants.trianglea }},0], [{{ trianglemode }},{{ trianglemodeheight }}], [{{ Constants.triangleb }},0]]
+    }]
+
+});
+    </script>
+{% endblock %}

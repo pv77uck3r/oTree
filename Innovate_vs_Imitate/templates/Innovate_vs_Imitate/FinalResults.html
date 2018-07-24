@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    End of Game Results
+{% endblock %}
+
+{% block content %}
+
+    <center>
+    <p>Your experimental earnings were: {{ payoff }} points</p>
+    <p>If this game is randomly chosen for payment, your payment from this part of the experiment would be ${{ possible_payoff }}.</p>
+{% comment %}    <p>Your show up payment was: ${{ Constants.endowment }}.00</p>
+    <p>Your total earnings are: ${{ total_payoff }}</p>{% endcomment %}
+    </center>
+
+    {% next_button %}
+{% endblock %}
