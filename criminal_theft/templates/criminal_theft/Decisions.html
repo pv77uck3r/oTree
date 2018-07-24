@@ -8,13 +8,15 @@
 {% block content %}
 
     <p>
-        <b>The computer randomly chose a preset division of $10. ${{ W }} for you and ${{ 10-W }} for your counterpart. </b>
+        <b>The computer randomly chose a preset division of $10. ${{ W }} for you and ${{ 10W }} for your counterpart. </b>
     </p>
 
     <p>
         You must indicate below what the division of the money is and your reported division will be implemented.
         You may choose to take some of your counterpart’s pay if you would like by falsely reporting the division below.
     </p>
+
+    {% formfield group.ThiefChoice %}
 
     {% next_button %}
 {% endblock %}

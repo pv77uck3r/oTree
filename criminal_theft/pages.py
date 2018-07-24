@@ -33,22 +33,19 @@ class Decisions(Page):
 
     def ThiefChoice_choices(self):
         choices = [
-            ['Report Truthfully'],
-            ['Take $', self.session.vars['xdraws'][self.player.id_in_subsession][self.subsession.round_number],
-             'of your counterpart\'s money.'],
-            ['Take $', self.session.vars['ydraws'][self.player.id_in_subsession][self.subsession.round_number],
-             'of your counterpart\'s money.'],
-            ['Take $', self.session.vars['zdraws'][self.player.id_in_subsession][self.subsession.round_number],
-             'of your counterpart\'s money.'],
+            [1, 'Report Truthfully'],
+            [2, 'Take ${0:.1f} of your counterpart\'s money.'.format(self.participant.vars['xdraws'][self.subsession.round_number - 1])],
+            [3, 'Take ${0:.1f} of your counterpart\'s money.'.format(self.participant.vars['ydraws'][self.subsession.round_number - 1])],
+            [4, 'Take ${0:.1f} of your counterpart\'s money.'.format(self.participant.vars['zdraws'][self.subsession.round_number - 1])],
         ]
         return choices
 
     def vars_for_template(self):
-        return {'W': self.session.vars['Wdraws'][self.player.id_in_subsession][self.subsession.round_number],
-                '10-W': 10 - self.session.vars['Wdraws'][self.player.id_in_subsession][self.subsession.round_number],
-                'x': self.session.vars['xdraws'][self.player.id_in_subsession][self.subsession.round_number],
-                'y': self.session.vars['ydraws'][self.player.id_in_subsession][self.subsession.round_number],
-                'z': self.session.vars['zdraws'][self.player.id_in_subsession][self.subsession.round_number]}
+        return {'W': round(self.participant.vars['Wdraws'][self.subsession.round_number - 1], 1),
+                '10W': round(10 - self.participant.vars['Wdraws'][self.subsession.round_number - 1], 1),
+                'x': round(self.participant.vars['xdraws'][self.subsession.round_number - 1], 1),
+                'y': round(self.participant.vars['ydraws'][self.subsession.round_number - 1], 1),
+                'z': round(self.participant.vars['zdraws'][self.subsession.round_number - 1], 1)}
 
 
 page_sequence = [

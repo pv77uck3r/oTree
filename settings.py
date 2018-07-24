@@ -18,6 +18,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 2,
         'app_sequence': ['criminal_trust'],
     },
+    {
+        'name': 'criminal_theft',
+        'display_name': "Theft Game for Innocence Problem Project",
+        'num_demo_participants': 2,
+        'app_sequence': ['criminal_theft'],
+    },
 ]
 # see the end of this file for the inactive session configs
 

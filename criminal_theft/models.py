@@ -21,29 +21,36 @@ class Subsession(BaseSubsession):
 
     def creating_session(self):
         self.group_randomly()
-        Wdraws = [None]*max(self.get_players())
-        xdraws = [None]*max(self.get_players())
-        ydraws = [None]*max(self.get_players())
-        zdraws = [None]*max(self.get_players())
+        # Wdraws = [None]*len(self.get_players())
+        # xdraws = [None]*len(self.get_players())
+        # ydraws = [None]*len(self.get_players())
+        # zdraws = [None]*len(self.get_players())
         if self.round_number == 1:
-            for i in range(1, max(self.get_players())):
-                W = np.random.choice(np.arange(3.90, 7.00, 0.10), 10, replace=False)
-                x = np.random.choice(np.arange(0.10, 1.10, 0.10), 10, replace=False)
-                y = np.random.choice(np.arange(1.00, 2.10, 0.10), 10, replace=False)
-                z = np.random.choice(np.arange(2.00, 3.10, 0.10), 10, replace=False)
-                Wdraws[[i]] = W
-                xdraws[[i]] = x
-                ydraws[[i]] = y
-                zdraws[[i]] = z
-            self.session.vars['Wdraws'] = Wdraws
-            self.session.vars['xdraws'] = xdraws
-            self.session.vars['ydraws'] = ydraws
-            self.session.vars['zdraws'] = zdraws
+            for p in self.get_players():
+                p.participant.vars['Wdraws'] = np.random.choice(np.arange(3.90, 7.00, 0.10), 10, replace=False)
+                p.participant.vars['xdraws'] = np.random.choice(np.arange(0.10, 1.10, 0.10), 10, replace=False)
+                p.participant.vars['ydraws'] = np.random.choice(np.arange(1.00, 2.10, 0.10), 10, replace=False)
+                p.participant.vars['zdraws'] = np.random.choice(np.arange(2.00, 3.10, 0.10), 10, replace=False)
+
+
+            # for i in range(1, len(self.get_players())):
+            #     W = np.random.choice(np.arange(3.90, 7.00, 0.10), 10, replace=False)
+            #     x = np.random.choice(np.arange(0.10, 1.10, 0.10), 10, replace=False)
+            #     y = np.random.choice(np.arange(1.00, 2.10, 0.10), 10, replace=False)
+            #     z = np.random.choice(np.arange(2.00, 3.10, 0.10), 10, replace=False)
+            #     Wdraws[i-1] = W
+            #     xdraws[i-1] = x
+            #     ydraws[i-1] = y
+            #     zdraws[i-1] = z
+            # self.session.vars['Wdraws'] = Wdraws
+            # self.session.vars['xdraws'] = xdraws
+            # self.session.vars['ydraws'] = ydraws
+            # self.session.vars['zdraws'] = zdraws
 
 
 class Group(BaseGroup):
 
-    ThiefChoice = models.StringField(
+    ThiefChoice = models.IntegerField(
         widget=widgets.RadioSelect,
         label='Please Report the Division'
     )
