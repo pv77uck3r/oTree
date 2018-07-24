@@ -34,18 +34,18 @@ class Decisions(Page):
     def ThiefChoice_choices(self):
         choices = [
             [1, 'Report Truthfully'],
-            [2, 'Take ${0:.1f} of your counterpart\'s money.'.format(self.participant.vars['xdraws'][self.subsession.round_number - 1])],
-            [3, 'Take ${0:.1f} of your counterpart\'s money.'.format(self.participant.vars['ydraws'][self.subsession.round_number - 1])],
-            [4, 'Take ${0:.1f} of your counterpart\'s money.'.format(self.participant.vars['zdraws'][self.subsession.round_number - 1])],
+            [2, 'Take ${0:.2f} of your counterpart\'s money.'.format(self.participant.vars['xdraws'][self.subsession.round_number - 1])],
+            [3, 'Take ${0:.2f} of your counterpart\'s money.'.format(self.participant.vars['ydraws'][self.subsession.round_number - 1])],
+            [4, 'Take ${0:.2f} of your counterpart\'s money.'.format(self.participant.vars['zdraws'][self.subsession.round_number - 1])],
         ]
         return choices
 
     def vars_for_template(self):
-        return {'W': round(self.participant.vars['Wdraws'][self.subsession.round_number - 1], 1),
-                '10W': round(10 - self.participant.vars['Wdraws'][self.subsession.round_number - 1], 1),
-                'x': round(self.participant.vars['xdraws'][self.subsession.round_number - 1], 1),
-                'y': round(self.participant.vars['ydraws'][self.subsession.round_number - 1], 1),
-                'z': round(self.participant.vars['zdraws'][self.subsession.round_number - 1], 1)}
+        return {'W': format(self.participant.vars['Wdraws'][self.subsession.round_number - 1], '.2f'),
+                '10W': format(10 - self.participant.vars['Wdraws'][self.subsession.round_number - 1], '.2f'),
+                'x': format(self.participant.vars['xdraws'][self.subsession.round_number - 1], '.2f'),
+                'y': format(self.participant.vars['ydraws'][self.subsession.round_number - 1], '.2f'),
+                'z': format(self.participant.vars['zdraws'][self.subsession.round_number - 1], '.2f')}
 
 
 page_sequence = [
