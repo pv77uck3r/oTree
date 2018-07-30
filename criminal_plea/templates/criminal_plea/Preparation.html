@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Decisions section will begin now.
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        The computer will now provide you with the possible plea bargains that you might get if the prosecutor observes
+        evidence that suggests you are guilty.
+    </p>
+
+    <p>
+        These possible plea bargains are for the decision you made a few minutes ago where the computer randomly chose
+        a preset division of $10 of $W for you and $10-W for your counterpart.
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

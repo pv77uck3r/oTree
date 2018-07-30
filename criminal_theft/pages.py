@@ -28,7 +28,7 @@ class Quiz(Page):
 
 class Decisions(Page):
 
-    form_model = 'group'
+    form_model = 'player'
     form_fields = ['ThiefChoice']
 
     def ThiefChoice_choices(self):

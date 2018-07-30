@@ -4,10 +4,10 @@ from otree.api import (
     Currency as c, currency_range
 )
 
-author = 'Your name here'
+author = 'Jason Ralston'
 
 doc = """
-Your app description
+Variant of lying game.
 """
 
 
@@ -15,6 +15,9 @@ class Constants(BaseConstants):
     name_in_url = 'criminal_theft'
     players_per_group = 2
     num_rounds = 10
+
+    ###EXPERIMENTER SETS THE NUMBER OF DRAWS BELOW###
+    numdraws = 10
 
 
 class Subsession(BaseSubsession):
@@ -27,10 +30,11 @@ class Subsession(BaseSubsession):
         # zdraws = [None]*len(self.get_players())
         if self.round_number == 1:
             for p in self.get_players():
-                p.participant.vars['Wdraws'] = np.random.choice(np.arange(3.90, 7.00, 0.10), 10, replace=False)
-                p.participant.vars['xdraws'] = np.random.choice(np.arange(0.10, 1.10, 0.10), 10, replace=False)
-                p.participant.vars['ydraws'] = np.random.choice(np.arange(1.00, 2.10, 0.10), 10, replace=False)
-                p.participant.vars['zdraws'] = np.random.choice(np.arange(2.00, 3.10, 0.10), 10, replace=False)
+                p.participant.vars['Wdraws'] = np.random.choice(np.arange(3.90, 7.00, 0.10), Constants.numdraws, replace=False)
+                p.participant.vars['xdraws'] = np.random.choice(np.arange(0.10, 1.10, 0.10), Constants.numdraws, replace=False)
+                p.participant.vars['ydraws'] = np.random.choice(np.arange(1.00, 2.10, 0.10), Constants.numdraws, replace=False)
+                p.participant.vars['zdraws'] = np.random.choice(np.arange(2.00, 3.10, 0.10), Constants.numdraws, replace=False)
+                p.participant.vars['randround'] = np.random.choice(range(1, 11))
 
 
             # for i in range(1, len(self.get_players())):
@@ -49,12 +53,7 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-
-    ThiefChoice = models.IntegerField(
-        widget=widgets.RadioSelect,
-        label='Please Report the Division'
-    )
-
+    pass
 
 class Player(BasePlayer):
 
@@ -84,3 +83,12 @@ class Player(BasePlayer):
         if self.id_in_group == 2:
             return 'NonThief'
 
+    ThiefChoice = models.IntegerField(
+        widget=widgets.RadioSelect,
+        label='Please Report the Division'
+    )
+
+    def record_choice(self):
+        for p in self.get_players():
+            if self.subsession.round_number == p.participant.vars['randround']:
+                p.participant.vars['choice'] = self.ThiefChoice

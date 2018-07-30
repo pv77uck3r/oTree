@@ -4,10 +4,10 @@ from otree.api import (
 )
 
 
-author = 'Your name here'
+author = 'Jason Ralston'
 
 doc = """
-Your app description
+Variant of trust game
 """
 
 
@@ -23,7 +23,7 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
 
     def creating_session(self):
-        self.group_randomly()
+        self.set_group_matrix(self.session.vars['subjlists'][1])
 
 
 class Group(BaseGroup):
@@ -203,6 +203,9 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
         label="Any quarters you return to your counterpart "
     )
+
+    payment1 = models.IntegerField()
+    payment2 = models.IntegerField()
 
     def role(self):
         if self.id_in_group == 1:
