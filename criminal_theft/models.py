@@ -91,4 +91,16 @@ class Player(BasePlayer):
     def record_choice(self):
         for p in self.get_players():
             if self.subsession.round_number == p.participant.vars['randround']:
-                p.participant.vars['choice'] = self.ThiefChoice
+                p.participant.vars['theftchoice'] = self.ThiefChoice
+                if self.ThiefChoice == 1:
+                    p.participant.vars['amountstolen'] = 0
+                if self.ThiefChoice == 2:
+                    p.participant.vars['amountstolen'] = p.participant.vars['xdraws'][self.subsession.round_number - 1]
+                if self.ThiefChoice == 3:
+                    p.participant.vars['amountstolen'] = p.participant.vars['ydraws'][self.subsession.round_number - 1]
+                if self.ThiefChoice == 4:
+                    p.participant.vars['amountstolen'] = p.participant.vars['zdraws'][self.subsession.round_number - 1]
+                if self.participant.vars['amountstolen'] == 0:
+                    p.participant.vars['innocencelevel'] = np.random.choice([1, 2, 3, 4], 1, replace=False, p=[.2, .4, .25, .15])
+                else:
+                    p.participant.vars['innocencelevel'] = np.random.choice([1, 2, 3, 4], 1, replace=False, p=[.7, .15, .1, .05])

@@ -126,6 +126,26 @@ class Group(BaseGroup):
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 30)")
 
+    def keep_decisions(self):
+        for p in self.get_players():
+            if p.role == 'Investor':
+                p.participant.vars['investor_decision1'] = self.investor_decision1
+                p.participant.vars['investor_decision2'] = self.investor_decision2
+                p.participant.vars['investor_decision3'] = self.investor_decision3
+                p.participant.vars['investor_decision4'] = self.investor_decision4
+                p.participant.vars['investor_decision5'] = self.investor_decision5
+            if p.role == 'Trustee':
+                p.participant.vars['trustee_decision1'] = self.trustee_decision1
+                p.participant.vars['trustee_decision2'] = self.trustee_decision2
+                p.participant.vars['trustee_decision3'] = self.trustee_decision3
+                p.participant.vars['trustee_decision4'] = self.trustee_decision4
+                p.participant.vars['trustee_decision5'] = self.trustee_decision5
+                p.participant.vars['trustee_decision6'] = self.trustee_decision6
+                p.participant.vars['trustee_decision7'] = self.trustee_decision7
+                p.participant.vars['trustee_decision8'] = self.trustee_decision8
+                p.participant.vars['trustee_decision9'] = self.trustee_decision9
+                p.participant.vars['trustee_decision10'] = self.trustee_decision10
+
 
 class Player(BasePlayer):
 
@@ -203,9 +223,6 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
         label="Any quarters you return to your counterpart "
     )
-
-    payment1 = models.IntegerField()
-    payment2 = models.IntegerField()
 
     def role(self):
         if self.id_in_group == 1:

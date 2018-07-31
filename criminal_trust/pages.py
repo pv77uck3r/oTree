@@ -71,10 +71,16 @@ class DecisionsT(Page):
         return self.player.id_in_group == 2
 
 
+class RecordDecisions(WaitPage):
+    def after_all_players_arrive(self):
+        self.group.keep_decisions()
+
+
 page_sequence = [
     Instructions,
     QuizI,
     QuizT,
     DecisionsI,
-    DecisionsT
+    DecisionsT,
+    RecordDecisions
 ]
