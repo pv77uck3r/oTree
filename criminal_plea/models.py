@@ -1,3 +1,6 @@
+import xlrd
+import os.path
+import numpy as np
 from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
@@ -38,7 +41,31 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    pass
+
+    def creating_session(self):
+        if self.round_number == 1:
+            for p in self.get_players():
+
+                # Generating sets of innocence: 1 is the true level of innocence, the other is from higher/lower
+                # category and is purely hypothetical
+
+                if p.participant.vars['innocencelevel'] == 1 or p.participant.vars['innocencelevel'] == 2:
+                    p.alt_innocence_level = np.random.choice([3, 4])
+                else:
+                    p.alt_innocence_level = np.random.choice([1, 2])
+                p.participant.vars['conjinnocencelevels'] = [p.participant.vars['innocencelevel'], p.alt_innocence_level]
+
+                # Generating sets of guilt: 1 is the true level of guilty, the other is from higher/lower category
+                # and is purely hypothetical
+
+                if p.participant.vars['guiltlevel'] == 1 or p.participant.vars['guiltlevel'] == 2:
+                    p.alt_guilt_level = np.random.choice([3, 4])
+                else:
+                    p.alt_guilt_level = np.random.choice([1, 2])
+                p.participant.vars['conjguiltlevels'] = [p.participant.vars['guiltlevel'], p.alt_guilt_level]
+
+    # We will import real prosecutor decisions here, based on the set of cartesian products of conjinnocencelevels and
+    # conjguiltlevels.
 
 
 class Group(BaseGroup):
@@ -98,3 +125,11 @@ class Player(BasePlayer):
                                    '(a Large Crime) you will')
     trial_decision5 = trial_decision('If the monetary penalty for being found guilty at trial is between $1.40 and $1.60 '
                                    '(a Large Crime) you will')
+
+    alt_innocence_level = models.IntegerField()
+
+    alt_guilt_level = models.IntegerField()
+
+    alt_punishment_level1 = models.IntegerField()
+
+    alt_punishment_level2 = models.IntegerField()

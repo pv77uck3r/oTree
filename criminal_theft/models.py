@@ -16,7 +16,8 @@ class Constants(BaseConstants):
     players_per_group = 2
     num_rounds = 10
 
-    ###EXPERIMENTER SETS THE NUMBER OF DRAWS BELOW###
+    ### EXPERIMENTER SETS THE NUMBER OF DRAWS BELOW ###
+
     numdraws = 10
 
 
@@ -89,6 +90,13 @@ class Player(BasePlayer):
     )
 
     def record_choice(self):
+
+        # LEVELS OF EVIDENCE CODING:
+        # 1 - no evidence of ______
+        # 2 - small evidence of ______
+        # 3 - medium evidence of ______
+        # 4 - large evidence of ______
+
         for p in self.get_players():
             if self.subsession.round_number == p.participant.vars['randround']:
                 p.participant.vars['theftchoice'] = self.ThiefChoice
@@ -101,6 +109,10 @@ class Player(BasePlayer):
                 if self.ThiefChoice == 4:
                     p.participant.vars['amountstolen'] = p.participant.vars['zdraws'][self.subsession.round_number - 1]
                 if self.participant.vars['amountstolen'] == 0:
+                    p.participant.vars['trulyinnocent'] = True
                     p.participant.vars['innocencelevel'] = np.random.choice([1, 2, 3, 4], 1, replace=False, p=[.2, .4, .25, .15])
+                    p.participant.vars['guiltlevel'] = np.random.choice([1, 2, 3 , 4], 1, replace=False, p=[.7, .15, .1, .05])
                 else:
+                    p.participant.vars['trulyinnocent'] = False
                     p.participant.vars['innocencelevel'] = np.random.choice([1, 2, 3, 4], 1, replace=False, p=[.7, .15, .1, .05])
+                    p.participant.vars['guiltlevel'] = np.random.choice([1, 2, 3, 4], 1, replace=False, p=[.3, .3, .25, .15])
