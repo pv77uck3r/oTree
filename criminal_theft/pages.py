@@ -47,9 +47,20 @@ class Decisions(Page):
                 'y': format(self.participant.vars['ydraws'][self.subsession.round_number - 1], '.2f'),
                 'z': format(self.participant.vars['zdraws'][self.subsession.round_number - 1], '.2f')}
 
+    def before_next_page(self):
+        self.player.record_choice()
+
+class SetPayoffs(WaitPage):
+    def is_displayed(self):
+        return self.subsession.round_number == Constants.num_rounds
+
+    def after_all_players_arrive(self):
+        self.group.group_decisions()
+
 
 page_sequence = [
     Instructions,
     Quiz,
-    Decisions
+    Decisions,
+    SetPayoffs
 ]

@@ -54,9 +54,47 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    pass
+    kept = models.FloatField()
+
+    def group_decisions(self):
+        self.subsession.set_group_matrix(self.session.vars['subjlists'][2])
+        for p in self.get_players():
+            if p.id_in_group == 1:
+                if p.participant.vars['theftchoice'] == 1:
+                    self.kept = p.participant.vars['Wdraws'][self.subsession.round_number]
+                if p.participant.vars['theftchoice'] == 2:
+                    self.kept = p.participant.vars['Wdraws'][self.subsession.round_number] + p.participant.vars['xdraws'][self.subsession.round_number]
+                if p.participant.vars['theftchoice'] == 3:
+                    self.kept = p.participant.vars['Wdraws'][self.subsession.round_number] + p.participant.vars['ydraws'][self.subsession.round_number]
+                if p.participant.vars['theftchoice'] == 4:
+                    self.kept = p.participant.vars['Wdraws'][self.subsession.round_number] + p.participant.vars['zdraws'][self.subsession.round_number]
+                p.payoff1 = self.kept
+            if p.id_in_group == 2:
+                p.payoff1 = 10 - self.kept
+        self.subsession.set_group_matrix(self.session.vars['subjlists'][3])
+        for p in self.get_players():
+            if p.id_in_group == 1:
+                if p.participant.vars['theftchoice'] == 1:
+                    self.kept = p.participant.vars['Wdraws'][self.subsession.round_number]
+                if p.participant.vars['theftchoice'] == 2:
+                    self.kept = p.participant.vars['Wdraws'][self.subsession.round_number] + \
+                                p.participant.vars['xdraws'][self.subsession.round_number]
+                if p.participant.vars['theftchoice'] == 3:
+                    self.kept = p.participant.vars['Wdraws'][self.subsession.round_number] + \
+                                p.participant.vars['ydraws'][self.subsession.round_number]
+                if p.participant.vars['theftchoice'] == 4:
+                    self.kept = p.participant.vars['Wdraws'][self.subsession.round_number] + \
+                                p.participant.vars['zdraws'][self.subsession.round_number]
+                p.payoff2 = self.kept
+            if p.id_in_group == 2:
+                p.payoff2 = 10 - self.kept
+        for p in self.subsession.get_players():
+            p.set_payoff()
 
 class Player(BasePlayer):
+
+    payoff1 = models.FloatField()
+    payoff2 = models.FloatField()
 
     quiz1 = models.IntegerField(
         widget=widgets.RadioSelect(),
@@ -116,3 +154,6 @@ class Player(BasePlayer):
                     p.participant.vars['trulyinnocent'] = False
                     p.participant.vars['innocencelevel'] = np.random.choice([1, 2, 3, 4], 1, replace=False, p=[.7, .15, .1, .05])
                     p.participant.vars['guiltlevel'] = np.random.choice([1, 2, 3, 4], 1, replace=False, p=[.3, .3, .25, .15])
+
+    def set_payoff(self):
+        self.payoff = self.payoff1 + self.payoff2

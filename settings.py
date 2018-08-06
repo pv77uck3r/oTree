@@ -24,6 +24,18 @@ SESSION_CONFIGS = [
         'num_demo_participants': 2,
         'app_sequence': ['criminal_theft'],
     },
+    {
+        'name': 'criminal_plea',
+        'display_name': "Defendant Plea Task for Innocence Problem Project",
+        'num_demo_participants': 2,
+        'app_sequence': ['criminal_plea'],
+    },
+    {
+        'name': 'criminal_wrapper',
+        'display_name': "Innocence Problem - All tasks",
+        'num_demo_participants': 8,
+        'app_sequence': ['criminal_wrapper', 'criminal_trust', 'criminal_theft', 'criminal_plea'],
+    },
 ]
 # see the end of this file for the inactive session configs
 

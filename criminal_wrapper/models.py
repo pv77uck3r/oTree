@@ -32,14 +32,12 @@ class Subsession(BaseSubsession):
 
     def creating_session(self):
         if self.round_number == 1:
-            subjlist = self.get_players()
-            oddsubjlist = subjlist[0:][::2]
-            evensubjlist = subjlist[1:][::2]
-            lst = evensubjlist
+            list = self.get_players()
+            oddsubjlist = list[0:][::2]
+            evensubjlist = list[1:][::2]
             size = len(evensubjlist)
             for i in range(1, size):
-                lst = shift_right(lst)
-            evensubjlist = lst
+                evensubjlist = shift_right(evensubjlist)
             evensubjlist1 = evensubjlist
             evensubjlist2 = shift_right(evensubjlist1)
             evensubjlist3 = shift_right(evensubjlist2)
@@ -48,16 +46,20 @@ class Subsession(BaseSubsession):
             newsubjlist2 = []
             newsubjlist3 = []
             newsubjlist4 = []
-            for i in range(1, size):
-                newsubjlist1.append(oddsubjlist[i-1])
-                newsubjlist1.append(evensubjlist1[i-1])
+            for i in range(1, size + 1):
+                newsubjlist1.append(oddsubjlist[i - 1])
+                newsubjlist1.append(evensubjlist1[i - 1])
                 newsubjlist2.append(oddsubjlist[i - 1])
                 newsubjlist2.append(evensubjlist2[i - 1])
                 newsubjlist3.append(evensubjlist3[i - 1])
                 newsubjlist3.append(oddsubjlist[i - 1])
                 newsubjlist4.append(oddsubjlist[i - 1])
                 newsubjlist4.append(evensubjlist4[i - 1])
-            listofsubjlists = [newsubjlist1, newsubjlist2, newsubjlist3, newsubjlist4]
+            grouplist1 = [newsubjlist1[i * Constants.players_per_group:(i + 1) * Constants.players_per_group] for i in range((len(newsubjlist1) + Constants.players_per_group - 1) // Constants.players_per_group)]
+            grouplist2 = [newsubjlist2[i * Constants.players_per_group:(i + 1) * Constants.players_per_group] for i in range((len(newsubjlist2) + Constants.players_per_group - 1) // Constants.players_per_group)]
+            grouplist3 = [newsubjlist3[i * Constants.players_per_group:(i + 1) * Constants.players_per_group] for i in range((len(newsubjlist3) + Constants.players_per_group - 1) // Constants.players_per_group)]
+            grouplist4 = [newsubjlist4[i * Constants.players_per_group:(i + 1) * Constants.players_per_group] for i in range((len(newsubjlist4) + Constants.players_per_group - 1) // Constants.players_per_group)]
+            listofsubjlists = [grouplist1, grouplist2, grouplist3, grouplist4]
             self.session.vars['subjlists'] = listofsubjlists
 
             # The following code must be modified whe I get a usable list of prosecutors and their decisions over
@@ -69,9 +71,7 @@ class Subsession(BaseSubsession):
             # the levels of evidence generated from the decisions of each subject in criminal_theft.
 
             # Below we import jury decisions.
-            juryprobs = pd.read_excel('C:\Users\jason_ralston\oTree\_static\criminal_wrapper', 'Sheet 1')
-
-
+            self.session.vars['juryprobs'] = pd.read_excel('GuiltyProbs_jr_08022018.xlsx', 'Sheet1')
 
 
 class Group(BaseGroup):
