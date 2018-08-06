@@ -24,7 +24,7 @@ A simple program that sets groups of arbitrary size. also displays a welcome scr
 
 class Constants(BaseConstants):
     name_in_url = 'criminal_wrapper'
-    players_per_group = None
+    players_per_group = 2
     num_rounds = 1
 
 
