@@ -9,8 +9,6 @@ list = [1, 2, 3, 4, 5, 6, 7, 8]
 oddsubjlist = list[0:][::2]
 evensubjlist = list[1:][::2]
 size = len(evensubjlist)
-for i in range(1, size):
-    evensubjlist = shift_right(evensubjlist)
 evensubjlist1 = evensubjlist
 evensubjlist2 = shift_right(evensubjlist1)
 evensubjlist3 = shift_right(evensubjlist2)
@@ -50,6 +48,11 @@ print(grouplist1)
 print(grouplist2)
 print(grouplist3)
 print(grouplist4)
+
+biglist = [grouplist1, grouplist2, grouplist3, grouplist4]
+
+print(biglist)
+print(biglist[1])
 
 # print(grouplist1)
 # print(grouplist2)

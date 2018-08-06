@@ -57,7 +57,7 @@ class Group(BaseGroup):
     kept = models.FloatField()
 
     def group_decisions(self):
-        self.subsession.set_group_matrix(self.session.vars['subjlists'][2])
+        self.subsession.set_group_matrix(self.session.vars['subjlists'][1])
         for p in self.get_players():
             if p.id_in_group == 1:
                 if p.participant.vars['theftchoice'] == 1:
@@ -71,7 +71,7 @@ class Group(BaseGroup):
                 p.payoff1 = self.kept
             if p.id_in_group == 2:
                 p.payoff1 = 10 - self.kept
-        self.subsession.set_group_matrix(self.session.vars['subjlists'][3])
+        self.subsession.set_group_matrix(self.session.vars['subjlists'][2])
         for p in self.get_players():
             if p.id_in_group == 1:
                 if p.participant.vars['theftchoice'] == 1:

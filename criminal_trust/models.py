@@ -23,7 +23,8 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
 
     def creating_session(self):
-        self.set_group_matrix(self.session.vars['subjlists'][1])
+        if self.round_number == 1:
+            self.set_group_matrix(self.session.vars['subjlists'][0])
 
 
 class Group(BaseGroup):
