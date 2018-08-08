@@ -42,7 +42,7 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
 
-    def creating_session(self):
+    def gen_info_sets(self):
         if self.round_number == 1:
             for p in self.get_players():
 
@@ -58,15 +58,14 @@ class Subsession(BaseSubsession):
                 # Generating sets of guilt: 1 is the true level of guilty, the other is from higher/lower category
                 # and is purely hypothetical
 
-                if p.participant.vars['guiltlevel'] == 1 or p.participant.vars['guiltlevel'] == 2:
-                    p.alt_guilt_level = np.random.choice([3, 4])
-                else:
-                    p.alt_guilt_level = np.random.choice([1, 2])
-                p.participant.vars['conjguiltlevels'] = [p.participant.vars['guiltlevel'], p.alt_guilt_level]
+                # if p.participant.vars['guiltlevel'] == 1 or p.participant.vars['guiltlevel'] == 2:
+                #     p.alt_guilt_level = np.random.choice([3, 4])
+                # else:
+                #     p.alt_guilt_level = np.random.choice([1, 2])
+                p.participant.vars['conjguiltlevels'] = [1, 2, 3, 4]
 
-    # We will import real prosecutor decisions here, based on the set of cartesian products of conjinnocencelevels and
-    # conjguiltlevels.
-
+                #Creating triplet of real, fake, and fake punishment levels:
+                
 
 class Group(BaseGroup):
     pass
