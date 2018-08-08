@@ -73,6 +73,12 @@ class Subsession(BaseSubsession):
             # in the criminal_plea game, we will use this table to match the representative prosecutors decisions with
             # the levels of evidence generated from the decisions of each subject in criminal_theft.
 
+            # Below we import prosecutor decisions
+            self.session.vars['prosecutordecisions'] = pd.read_excel('ProsecutorDecisions.xlsx', 'Sheet1')
+            maxprosecutor = self.session.vars['prosecutordecisions']['subjectid'].max()
+            randprosecutor = np.choose(range(1, maxprosecutor + 1))
+            self.session.vars['prosecutordecisions'] = self.session.vars['prosecutordecisions'][self.session.vars['prosecutordecisions'].subjectid == randprosecutor]
+
             # Below we import jury decisions.
             self.session.vars['juryprobs'] = pd.read_excel('GuiltyProbs_jr_08022018.xlsx', 'Sheet1')
 
