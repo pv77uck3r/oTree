@@ -1,0 +1,74 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Decision
+{% endblock %}
+
+{% block content %}
+<center>
+<table class="tg">
+  <tr>
+    <th class="tg-0ord">YOU ARE TRULY</th>
+    <th class="tg-031e">{{ innocence }}</th>
+  </tr>
+  <tr>
+    <td class="tg-0ord">Your Evidence of Innocence is</td>
+    <td class="tg-031e">{{ innocenceevidence }}</td>
+  </tr>
+  <tr>
+    <td class="tg-0ord">The Prosecutor's Evidence of Guilt is</td>
+    <td class="tg-031e">{{ guiltevidence }}</td>
+  </tr>
+  <tr>
+    <td class="tg-0ord">The Plea Bargain Offered Implies a Guilty Plea to a </td>
+    <td class="tg-031e">{{ crimelevel }}</td>
+  </tr>
+  <tr>
+    <td class="tg-lqy6">The Plea Bargain Offered Implies a Guaranteed Monetary Punishment of</td>
+    <td class="tg-yw4l">{{ punlevel }}</td>
+  </tr>
+</table>
+</center>
+
+<p>
+    <center><b>If the prosecutor decides to not drop the charge but also chooses to not offer a plea bargain, we
+    need to know whether you would like to provide your evidence of innocence at trial.</b></center>
+</p>
+
+<p>
+    {% formfield player.trial_decision1 %}
+</p>
+
+<p>
+    {% formfield player.trial_decision2 %}
+</p>
+
+<p>
+    {% formfield player.trial_decision3 %}
+</p>
+
+<p>
+    {% formfield player.trial_decision4 %}
+</p>
+
+<p>
+    {% formfield player.trial_decision5 %}
+</p>
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block styles %}
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+.tg .tg-0ord{text-align:right}
+.tg .tg-lqy6{text-align:right;vertical-align:top}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+
+{% endblock %}

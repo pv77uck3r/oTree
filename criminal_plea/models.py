@@ -1,5 +1,6 @@
 import xlrd
 import os.path
+from itertools import product
 import numpy as np
 from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
@@ -62,10 +63,53 @@ class Subsession(BaseSubsession):
                 #     p.alt_guilt_level = np.random.choice([3, 4])
                 # else:
                 #     p.alt_guilt_level = np.random.choice([1, 2])
-                p.participant.vars['conjguiltlevels'] = [1, 2, 3, 4]
+                p.participant.vars['conjguiltlevels'] = [2, 3, 4]
 
-                #Creating triplet of real, fake, and fake punishment levels:
-                
+                # Creating triplet of real, fake, and fake punishment levels:
+                # Also creating the true punishment amount and crime level
+                if p.participant.vars['proschoice'] == 2 or p.participant.vars['proschoice'] == 1:
+                    p.alt_pun_level_1 = np.choose([.2, .5])
+                    p.alt_pun_level_2 = np.choice([.7, 1])
+                    p.alt_pun_level_3 = 1.2
+                    p.participant.vars['conjpunlevel'] = [p.alt_pun_level_1, p.alt_pun_level_2, p.alt_pun_level_3]
+                if p.participant.vars['proschoice'] == 3:
+                    if p.participant.vars['pleacharge'] == 1:
+                        p.alt_pun_level_1 = .2
+                        p.alt_pun_level_2 = np.choice([.7, 1])
+                        p.alt_pun_level_3 = 1.2
+                        p.participant.vars['conjpunlevel'] = [p.alt_pun_level_1, p.alt_pun_level_2, p.alt_pun_level_3]
+                    if p.participant.vars['pleacharge'] == 2:
+                        p.alt_pun_level_1 = .5
+                        p.alt_pun_level_2 = np.choice([.7, 1])
+                        p.alt_pun_level_3 = 1.2
+                        p.participant.vars['conjpunlevel'] = [p.alt_pun_level_1, p.alt_pun_level_2, p.alt_pun_level_3]
+                    if p.participant.vars['pleacharge'] == 3:
+                        p.alt_pun_level_1 = np.choose([.2, .5])
+                        p.alt_pun_level_2 = .7
+                        p.alt_pun_level_3 = 1.2
+                        p.participant.vars['conjpunlevel'] = [p.alt_pun_level_1, p.alt_pun_level_2, p.alt_pun_level_3]
+                    if p.participant.vars['pleacharge'] == 4:
+                        p.alt_pun_level_1 = np.choose([.2, .5])
+                        p.alt_pun_level_2 = 1
+                        p.alt_pun_level_3 = 1.2
+                        p.participant.vars['conjpunlevel'] = [p.alt_pun_level_1, p.alt_pun_level_2, p.alt_pun_level_3]
+                    if p.participant.vars['pleacharge'] == 5:
+                        p.alt_pun_level_1 = np.choose([.2, .5])
+                        p.alt_pun_level_2 = np.choose([.7, 1])
+                        p.alt_pun_level_3 = 1.2
+                        p.participant.vars['conjpunlevel'] = [p.alt_pun_level_1, p.alt_pun_level_2, p.alt_pun_level_3]
+                p.participant.vars['conjcrimelevel'] = [1, 2, 3]
+
+                p.participant.vars['infosets'] = [p.participant.vars['conjinnocencelevels'],
+                                                  p.participant.vars['conjguiltlevels'],
+                                                  p.participant.vars['conjpunlevel'],
+                                                  p.participant.vars['crimelevel']]
+
+                # Now create all possible cartesian products of 1. innocence level, 2. guilt levels, 3. punishment
+                # levels
+
+                tupleproduct = list(product(*p.participant.vars['infosets']))
+                p.participant.vars['allpossibleinfo'] = list(tupleproduct)
 
 class Group(BaseGroup):
     pass
@@ -129,6 +173,32 @@ class Player(BasePlayer):
 
     alt_guilt_level = models.IntegerField()
 
-    alt_punishment_level1 = models.IntegerField()
+    alt_pun_level1 = models.IntegerField()
 
-    alt_punishment_level2 = models.IntegerField()
+    alt_pun_level2 = models.IntegerField()
+
+    alt_pun_level3 = models.IntegerField()
+
+
+    #####################################################
+    #####################################################
+    ##############COME BACK HERE TOMORROW################
+    #####################################################
+    #####################################################
+    def set_payoff(self):
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == self.participant.vars['innocencelevel'] and \
+                self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][1] == self.participant.vars['guiltlevel'] and \
+                self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][2] == self.participant.vars['pleapunishment']:
+                if self.participant.vars['proschoice'] == 3:
+                    if self.participant.vars['pleathreat'] == 1:
+                        self.participant.vars['relevantdecision'] = self.plea_decision1
+                    if self.participant.vars['pleathreat'] == 2:
+                        self.participant.vars['relevantdecision'] = self.plea_decision2
+                    if self.participant.vars['pleathreat'] == 3:
+                        self.participant.vars['relevantdecision'] = self.plea_decision3
+                    if self.participant.vars['pleathreat'] == 4:
+                        self.participant.vars['relevantdecision'] = self.plea_decision4
+                    if self.participant.vars['pleathreat'] == 5:
+                        self.participant.vars['relevantdecision'] = self.plea_decision5
+                    if self.participant.vars['relevantdecision'] == 1:
+
