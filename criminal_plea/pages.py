@@ -87,7 +87,8 @@ class Plea_Decisions(Page):
 class Trial_Decisions(Page):
 
     form_model = 'player'
-    form_fields = ['trial_decision1', 'trial_decision2', 'trial_decision3', 'trial_decision4', 'trial_decision5']
+    form_fields = ['trial_decision1', 'trial_decision2', 'trial_decision3', 'trial_decision4', 'trial_decision5',
+                   'trial_decision6']
 
     def vars_for_template(self):
         innocence = self.participant.vars['trulyinnocent']
@@ -124,7 +125,10 @@ class Trial_Decisions(Page):
                 'innocenceevidence': innocencestring,
                 'guiltevidence': guiltevidencestring,
                 'punlevel': punlevel,
-                'crimelevel': crimelevel}
+                'crimelevel': crimelevel,
+                'innocencenumber': innocenceevidence,
+                'guiltnumber': guiltevidence
+                }
 
 
 class Results(Page):

@@ -31,6 +31,7 @@
 </table>
 </center>
 
+{% if punlevel == 0.2 %}
 <p>
     {% formfield player.plea_decision1 %}
 </p>
@@ -50,6 +51,57 @@
 <p>
     {% formfield player.plea_decision5 %}
 </p>
+{% endif %}
+
+{% if punlevel == 0.5 %}
+<p>
+    {% formfield player.plea_decision2 %}
+</p>
+
+<p>
+    {% formfield player.plea_decision3 %}
+</p>
+
+<p>
+    {% formfield player.plea_decision4 %}
+</p>
+
+<p>
+    {% formfield player.plea_decision5 %}
+</p>
+{% endif %}
+
+{% if punlevel == 0.7 %}
+<p>
+    {% formfield player.plea_decision3 %}
+</p>
+
+<p>
+    {% formfield player.plea_decision4 %}
+</p>
+
+<p>
+    {% formfield player.plea_decision5 %}
+</p>
+{% endif %}
+
+{% if punlevel == 1 %}
+<p>
+    {% formfield player.plea_decision4 %}
+</p>
+
+<p>
+    {% formfield player.plea_decision5 %}
+</p>
+{% endif %}
+
+{% if punlevel == 1.2 %}
+<p>
+    {% formfield player.plea_decision5 %}
+</p>
+{% endif %}
+
+
 
     {% next_button %}
 
