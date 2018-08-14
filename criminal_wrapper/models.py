@@ -74,7 +74,7 @@ class Subsession(BaseSubsession):
             # the levels of evidence generated from the decisions of each subject in criminal_theft.
 
             # Below we import prosecutor decisions
-            self.session.vars['prosecutordecisions'] = pd.read_excel('ProsecutorDecisions.xlsx', 'Sheet1')
+            self.session.vars['prosecutordecisions'] = pd.read_excel('ProsecutorDecisions.xls', 'Sheet1')
             maxprosecutor = self.session.vars['prosecutordecisions']['subjectid'].max()
             randprosecutor = np.choose(range(1, maxprosecutor + 1))
             self.session.vars['prosecutordecisions'] = self.session.vars['prosecutordecisions'][self.session.vars['prosecutordecisions'].subjectid == randprosecutor]
