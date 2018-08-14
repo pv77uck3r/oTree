@@ -2,12 +2,44 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Results
 {% endblock %}
 
 {% block content %}
 
+    {% if player.ending_trial_status == False%}
+        <p>You were not taken to trial.</p>
+        {% if player.ending_guilt == False %}
+            <p>Hence, you are not guilty and have received no monetary punishment.</p>
+        {% endif %}
+
+        {% if player.ending_guilt == True %}
+            <p>You were found guilty of a {{ crimelevel }} crime.</p>
+            <p>You have been penalized {{ punishment }}.</p>
+            <p>The guilty verdict was a result of a plea bargain.</p>
+        {% endif %}
+
+    {% endif %}
+
+    {% if player.ending_trial_status == True %}
+
+        <p>You were taken to trial.</p>
+
+            {% if player.ending_guilt == False %}
+                <p>However, the jury returned a verdict of "Not Guilty".</p>
+                <p>Hence, you are not guilty and have received no monetary punishment.</p>
+            {% endif %}
+
+            {% if player.ending_guilt == True %}
+                <p>The jury returned a verdict of "Guilty".</p>
+                <p>You were found guilty of a {{ crimelevel }} crime.</p>
+                <p>You have been penalized {{ punishment }}.</p>
+            {% endif %}
+
+    {% endif %}
+
     {% next_button %}
+    
 {% endblock %}
 
 

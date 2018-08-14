@@ -194,17 +194,23 @@ class Player(BasePlayer):
     # False - took plea
 
 
-    #####################################################
-    #####################################################
-    ##############COME BACK HERE TOMORROW################
-    #####################################################
-    #####################################################
     def set_payoff(self):
+        # WE RECORD DECISIONS ONLY WHEN THE INNOCENCE LEVEL, GUILT LEVEL, AND PLEA MATCH THOSE SEEN BY A JURY OR PLEA
+        # OFFERED BY A PROSECUTOR
         if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == self.participant.vars['innocencelevel'] and \
                 self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][1] == self.participant.vars['guiltlevel'] and \
                 self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][2] == self.participant.vars['pleapunishment']:
+
+                # FIRST WE LOOK AT WHEN THE PROSECUTOR DECIDES TO MAKE A PLEA OFFER
+
                 if self.participant.vars['proschoice'] == 3:
+
+                    # NOW WE RESTRICT OUR ATTENTION TO WHICH PLEA THREAT WAS MADE
+
                     if self.participant.vars['pleathreat'] == 1:
+
+                        # WE RECORD THE DEFENDANT'S DECISION
+
                         self.participant.vars['relevantdecision'] = self.plea_decision1
                     if self.participant.vars['pleathreat'] == 2:
                         self.participant.vars['relevantdecision'] = self.plea_decision2
@@ -214,82 +220,237 @@ class Player(BasePlayer):
                         self.participant.vars['relevantdecision'] = self.plea_decision4
                     if self.participant.vars['pleathreat'] == 5:
                         self.participant.vars['relevantdecision'] = self.plea_decision5
+
+                    # IF THE DEFENDANT TAKES THE PLEA DEAL, INDICATED BY A 1, THEN WE SET THEIR PAYOFF FOR THIS MODULE
+                    # TO THE PROPOSED PUNISHMENT AMOUNT
+
                     if self.participant.vars['relevantdecision'] == 1:
                         self.ending_guilt = True
                         self.ending_guilt_level = self.participant.vars['pleacrimelevel']
                         self.ending_punishment = self.participant.vars['pleapunishment']
                         self.ending_trial_status = False
                         self.payoff = -self.participant.vars['pleapunishment']
-                if self.participant.vars['proschoice'] == 2:
-                    if self.participant.vars['nopleapun'] == 1:
-                        self.participant.vars['relevantdecision'] = self.trial_decision1
-                        trialcrime = 1
-                        if self.participant.vars['relevantdecision'] == 1:
-                            trialdefevid = self.participant.vars['innocencelevel']
-                        else:
-                            trialdefevid = 0
-                        trialprosevid = self.participant.vars['nopleaevidence']
-                    if self.participant.vars['nopleapun'] == 2:
-                        self.participant.vars['relevantdecision'] = self.trial_decision2
-                        trialcrime = 1
-                        if self.participant.vars['relevantdecision'] == 1:
-                            trialdefevid = self.participant.vars['innocencelevel']
-                        else:
-                            trialdefevid = 0
-                        trialprosevid = self.participant.vars['nopleaevidence']
-                    if self.participant.vars['nopleapun'] == 3:
-                        self.participant.vars['relevantdecision'] = self.trial_decision3
-                        trialcrime = 2
-                        if self.participant.vars['relevantdecision'] == 1:
-                            trialdefevid = self.participant.vars['innocencelevel']
-                        else:
-                            trialdefevid = 0
-                        trialprosevid = self.participant.vars['nopleaevidence']
-                    if self.participant.vars['nopleapun'] == 4:
-                        self.participant.vars['relevantdecision'] = self.trial_decision4
-                        trialcrime = 2
-                        if self.participant.vars['relevantdecision'] == 1:
-                            trialdefevid = self.participant.vars['innocencelevel']
-                        else:
-                            trialdefevid = 0
-                        trialprosevid = self.participant.vars['nopleaevidence']
-                    if self.participant.vars['nopleapun'] == 5:
-                        self.participant.vars['relevantdecision'] = self.trial_decision5
-                        trialcrime = 3
-                        if self.participant.vars['relevantdecision'] == 1:
-                            trialdefevid = self.participant.vars['innocencelevel']
-                        else:
-                            trialdefevid = 0
-                        trialprosevid = self.participant.vars['nopleaevidence']
-                    if self.participant.vars['nopleapun'] == 6:
-                        self.participant.vars['relevantdecision'] = self.trial_decision6
-                        trialcrime = 3
-                        if self.participant.vars['relevantdecision'] == 1:
-                            trialdefevid = self.participant.vars['innocencelevel']
-                        else:
-                            trialdefevid = 0
-                        trialprosevid = self.participant.vars['nopleaevidence']
-                    self.participant.vars['jurydecision'] = np.random.binomial(1, (self.session.vars['juryprobs'].loc[self.session.vars['juryprobs']['Crime'] == trialcrime and self.session.vars['juryprobs']['Defense evidence'] == trialdefevid and self.session.vars['juryprobs']['Prosecutor evidence'] == trialprosevid, 'Probability of a guilty findng at trial'].item()))
-                    if self.participant.vars['jurydecision'] == 0:
-                        self.payoff = 0
-                        self.ending_guilt = False
-                        self.ending_guilt_level = 0
-                        self.ending_punishment = 0
-                    else:
-                        if self.participant.vars['nopleapun'] == 1:
-                            self.payoff = -np.random.choice([.1, .2, .3])
-                        if self.participant.vars['nopleapun'] == 2:
-                            self.payoff = -np.random.choice([.4, .5, .6])
-                        if self.participant.vars['nopleapun'] == 3:
-                            self.payoff = -np.random.choice([.6, .7, .8])
-                        if self.participant.vars['nopleapun'] == 4:
-                            self.payoff = -np.random.choice([.9, 1, 1.1])
-                        if self.participant.vars['nopleapun'] == 5:
-                            self.payoff = -np.random.choice([1.1, 1.2, 1.3])
-                        if self.participant.vars['nopleapun'] == 6:
-                            self.payoff = -np.random.choice([1.4, 1.5, 1.6])
-                if self.participant.vars['proschoice == 1']:
-                    self.payoff = 0
 
+                    # IF THE DEFENDANT GOES TO TRIAL WITH THEIR INNOCENCE LEVEL PROVIDED, INDICATED BY A 2, THEN WE
+                    # GATHER THE THE THREATENED CRIME LEVEL (FROM PROSECUTOR), THREATENED EVIDENCE LEVEL (FROM
+                    # PROSECUTOR), AND THE INNOCENCE LEVEL (FROM DEFENDANT) AND FIND THE APPROPRIATE ROW IN THE JURY
+                    # DECISION TABLE, AND SIMULATE A TRIAL.
+
+                    if self.participant.vars['relevantdecision'] == 2:
+                        self.ending_trial_status = True
+                        if self.participant.vars['pleathreat'] == 1:
+                            trialcrime = 1
+                            trialdefevid = self.participant.vars['innocencelevel']
+                            trialprosevid = self.participant.vars['pleaevidence']
+                        if self.participant.vars['pleathreat'] == 2:
+                            trialcrime = 2
+                            trialdefevid = self.participant.vars['innocencelevel']
+                            trialprosevid = self.participant.vars['pleaevidence']
+                        if self.participant.vars['pleathreat'] == 3:
+                            trialcrime = 2
+                            trialdefevid = self.participant.vars['innocencelevel']
+                            trialprosevid = self.participant.vars['pleaevidence']
+                        if self.participant.vars['pleathreat'] == 4:
+                            trialcrime = 3
+                            trialdefevid = self.participant.vars['innocencelevel']
+                            trialprosevid = self.participant.vars['pleaevidence']
+                        if self.participant.vars['pleathreat'] == 5:
+                            trialcrime = 3
+                            trialdefevid = self.participant.vars['innocencelevel']
+                            trialprosevid = self.participant.vars['pleaevidence']
+
+                        # HERE WE ACTUALLY SIMULATE THE GUILTY/NOT GUILTY FINDING FROM THE JURY TABLE
+
+                        self.participant.vars['jurydecision'] = np.random.binomial(1, (self.session.vars['juryprobs'].loc[self.session.vars['juryprobs']['Crime'] == trialcrime and self.session.vars['juryprobs']['Defense evidence'] == trialdefevid and self.session.vars['juryprobs']['Prosecutor evidence'] == trialprosevid, 'Probability of a guilty findng at trial'].item()))
+
+                        # IF JURY DECIDES NOT GUILTY, INDICATED BY A 0, THEN NO PUNISHMENT
+
+                        if self.participant.vars['jurydecision'] == 0:
+                            self.payoff = 0
+                            self.ending_guilt = False
+                            self.ending_guilt_level = 0
+                            self.ending_punishment = 0
+
+                        # IF JURY DECIDES GUILTY, THEN WE LOOK AT THE RELEVANT THREAT LEVEL AND GENERATE A PUNISHMENT
+
+                        else:
+                            self.ending_guilt = True
+                            if self.participant.vars['pleathreat'] == 1:
+                                self.payoff = -np.random.choice([.1, .2, .3])
+                                self.ending_punishment = self.payoff
+                                self.ending_guilt_level = 1
+                            if self.participant.vars['pleathreat'] == 2:
+                                self.payoff = -np.random.choice([.4, .5, .6])
+                                self.ending_punishment = self.payoff
+                                self.ending_guilt_level = 1
+                            if self.participant.vars['pleathreat'] == 3:
+                                self.payoff = -np.random.choice([.6, .7, .8])
+                                self.ending_punishment = self.payoff
+                                self.ending_guilt_level = 2
+                            if self.participant.vars['pleathreat'] == 4:
+                                self.payoff = -np.random.choice([.9, 1, 1.1])
+                                self.ending_punishment = self.payoff
+                                self.ending_guilt_level = 2
+                            if self.participant.vars['pleathreat'] == 5:
+                                self.payoff = -np.random.choice([1.1, 1.2, 1.3])
+                                self.ending_punishment = self.payoff
+                                self.ending_guilt_level = 3
+
+                    # WE DO SOMETHING VERY SIMILAR FOR WHEN THE DEFENDANT DECIDES TO PLEA THE FIFTH, INDICATED BY A 3
+
+                    if self.participant.vars['relevantdecision'] == 3:
+                        self.ending_trial_status = True
+                        if self.participant.vars['pleathreat'] == 1:
+                            trialcrime = 1
+                            trialdefevid = 0
+                            trialprosevid = self.participant.vars['pleaevidence']
+                        if self.participant.vars['pleathreat'] == 2:
+                            trialcrime = 2
+                            trialdefevid = 0
+                            trialprosevid = self.participant.vars['pleaevidence']
+                        if self.participant.vars['pleathreat'] == 3:
+                            trialcrime = 2
+                            trialdefevid = 0
+                            trialprosevid = self.participant.vars['pleaevidence']
+                        if self.participant.vars['pleathreat'] == 4:
+                            trialcrime = 3
+                            trialdefevid = 0
+                            trialprosevid = self.participant.vars['pleaevidence']
+                        if self.participant.vars['pleathreat'] == 5:
+                            trialcrime = 3
+                            trialdefevid = 0
+                            trialprosevid = self.participant.vars['pleaevidence']
+                        self.participant.vars['jurydecision'] = np.random.binomial(1, (self.session.vars['juryprobs'].loc[self.session.vars['juryprobs']['Crime'] == trialcrime and self.session.vars['juryprobs']['Defense evidence'] == trialdefevid and self.session.vars['juryprobs']['Prosecutor evidence'] == trialprosevid, 'Probability of a guilty findng at trial'].item()))
+
+                        if self.participant.vars['jurydecision'] == 0:
+                            self.payoff = 0
+                            self.ending_guilt = False
+                            self.ending_guilt_level = 0
+                            self.ending_punishment = 0
+                        else:
+                            self.ending_guilt = True
+                            if self.participant.vars['pleathreat'] == 1:
+                                self.payoff = -np.random.choice([.1, .2, .3])
+                                self.ending_punishment = self.payoff
+                                self.ending_guilt_level = 1
+                            if self.participant.vars['pleathreat'] == 2:
+                                self.payoff = -np.random.choice([.4, .5, .6])
+                                self.ending_punishment = self.payoff
+                                self.ending_guilt_level = 1
+                            if self.participant.vars['pleathreat'] == 3:
+                                self.payoff = -np.random.choice([.6, .7, .8])
+                                self.ending_punishment = self.payoff
+                                self.ending_guilt_level = 2
+                            if self.participant.vars['pleathreat'] == 4:
+                                self.payoff = -np.random.choice([.9, 1, 1.1])
+                                self.ending_punishment = self.payoff
+                                self.ending_guilt_level = 2
+                            if self.participant.vars['pleathreat'] == 5:
+                                self.payoff = -np.random.choice([1.1, 1.2, 1.3])
+                                self.ending_punishment = self.payoff
+                                self.ending_guilt_level = 3
+
+        # NEXT WE CONSIDER WHEN THEIR IS NO PLEA OFFER AND THE PROSECUTOR GOES STRAIGHT TO TRIAL. THIS IS ALL VERY
+        # SIMILAR TO WHAT IS DONE ABOVE WHEN THE DEFENDANT WANTS TO GO TO TRIAL AGAINST A THREAT
+
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == self.participant.vars['innocencelevel'] and \
+                self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][1] == self.participant.vars['guiltlevel']:
+            if self.participant.vars['proschoice'] == 2:
+                self.ending_trial_status = True
+                if self.participant.vars['nopleapun'] == 1:
+                    self.participant.vars['relevantdecision'] = self.trial_decision1
+                    trialcrime = 1
+                    if self.participant.vars['relevantdecision'] == 1:
+                        trialdefevid = self.participant.vars['innocencelevel']
+                    else:
+                        trialdefevid = 0
+                    trialprosevid = self.participant.vars['nopleaevidence']
+                if self.participant.vars['nopleapun'] == 2:
+                    self.participant.vars['relevantdecision'] = self.trial_decision2
+                    trialcrime = 1
+                    if self.participant.vars['relevantdecision'] == 1:
+                        trialdefevid = self.participant.vars['innocencelevel']
+                    else:
+                        trialdefevid = 0
+                    trialprosevid = self.participant.vars['nopleaevidence']
+                if self.participant.vars['nopleapun'] == 3:
+                    self.participant.vars['relevantdecision'] = self.trial_decision3
+                    trialcrime = 2
+                    if self.participant.vars['relevantdecision'] == 1:
+                        trialdefevid = self.participant.vars['innocencelevel']
+                    else:
+                        trialdefevid = 0
+                    trialprosevid = self.participant.vars['nopleaevidence']
+                if self.participant.vars['nopleapun'] == 4:
+                    self.participant.vars['relevantdecision'] = self.trial_decision4
+                    trialcrime = 2
+                    if self.participant.vars['relevantdecision'] == 1:
+                        trialdefevid = self.participant.vars['innocencelevel']
+                    else:
+                        trialdefevid = 0
+                    trialprosevid = self.participant.vars['nopleaevidence']
+                if self.participant.vars['nopleapun'] == 5:
+                    self.participant.vars['relevantdecision'] = self.trial_decision5
+                    trialcrime = 3
+                    if self.participant.vars['relevantdecision'] == 1:
+                        trialdefevid = self.participant.vars['innocencelevel']
+                    else:
+                        trialdefevid = 0
+                    trialprosevid = self.participant.vars['nopleaevidence']
+                if self.participant.vars['nopleapun'] == 6:
+                    self.participant.vars['relevantdecision'] = self.trial_decision6
+                    trialcrime = 3
+                    if self.participant.vars['relevantdecision'] == 1:
+                        trialdefevid = self.participant.vars['innocencelevel']
+                    else:
+                        trialdefevid = 0
+                    trialprosevid = self.participant.vars['nopleaevidence']
+                self.participant.vars['jurydecision'] = np.random.binomial(1, (self.session.vars['juryprobs'].loc[self.session.vars['juryprobs']['Crime'] == trialcrime and self.session.vars['juryprobs']['Defense evidence'] == trialdefevid and self.session.vars['juryprobs']['Prosecutor evidence'] == trialprosevid, 'Probability of a guilty findng at trial'].item()))
+                if self.participant.vars['jurydecision'] == 0:
+                    self.payoff = 0
+                    self.ending_guilt = False
+                    self.ending_guilt_level = 0
+                    self.ending_punishment = 0
+                else:
+                    self.ending_guilt = True
+                    if self.participant.vars['nopleapun'] == 1:
+                        self.payoff = -np.random.choice([.1, .2, .3])
+                        self.ending_punishment = self.payoff
+                        self.ending_guilt_level = 1
+                    if self.participant.vars['nopleapun'] == 2:
+                        self.payoff = -np.random.choice([.4, .5, .6])
+                        self.ending_punishment = self.payoff
+                        self.ending_guilt_level = 1
+                    if self.participant.vars['nopleapun'] == 3:
+                        self.payoff = -np.random.choice([.6, .7, .8])
+                        self.ending_punishment = self.payoff
+                        self.ending_guilt_level = 2
+                    if self.participant.vars['nopleapun'] == 4:
+                        self.payoff = -np.random.choice([.9, 1, 1.1])
+                        self.ending_punishment = self.payoff
+                        self.ending_guilt_level = 2
+                    if self.participant.vars['nopleapun'] == 5:
+                        self.payoff = -np.random.choice([1.1, 1.2, 1.3])
+                        self.ending_punishment = self.payoff
+                        self.ending_guilt_level = 3
+                    if self.participant.vars['nopleapun'] == 6:
+                        self.payoff = -np.random.choice([1.4, 1.5, 1.6])
+                        self.ending_punishment = self.payoff
+                        self.ending_guilt_level = 3
+            if self.participant.vars['proschoice'] == 1:
+                self.ending_trial_status = False
+                self.ending_guilt_level = False
+                self.payoff = 0
+                self.ending_guilt_level = 0
+                self.ending_punishment = 0
+
+        # Record this decision so it can be displayed on final page
+
+        self.participant.vars['payoffmodule3'] = self.payoff
+
+            # THINGS RECORDED:
+            # payoff - the resulting punishment, if anything
+            # ending_guilt_level - what level of crime they were determined to have committed, if any
+            # ending_punishment - same thing as payoff in this module
 
 

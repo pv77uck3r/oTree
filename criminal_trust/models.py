@@ -123,7 +123,7 @@ class Group(BaseGroup):
                                                   "between 0 and 27)")
 
     trustee_decision10 = models.IntegerField(min=0, max=30,
-                                            label="If your counterpart sends you 1 quarter (tripled into 30 quarters),"
+                                            label="If your counterpart sends you 10 quarter (tripled into 30 quarters),"
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 30)")
 

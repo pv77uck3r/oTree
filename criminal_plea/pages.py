@@ -83,12 +83,18 @@ class Plea_Decisions(Page):
                 'punlevel': punlevel,
                 'crimelevel': crimelevel}
 
+    def before_next_page(self):
+        self.player.set_payoff()
+
 
 class Trial_Decisions(Page):
 
     form_model = 'player'
     form_fields = ['trial_decision1', 'trial_decision2', 'trial_decision3', 'trial_decision4', 'trial_decision5',
                    'trial_decision6']
+
+    def is_displayed(self):
+        return self.subsession.round_number % 3 == 0
 
     def vars_for_template(self):
         innocence = self.participant.vars['trulyinnocent']
@@ -130,11 +136,30 @@ class Trial_Decisions(Page):
                 'guiltnumber': guiltevidence
                 }
 
+    def before_next_page(self):
+        self.player.set_payoff()
+
 
 class Results(Page):
 
     def is_displayed(self):
         return self.subsession.round_number == Constants.num_rounds
+
+    def vars_for_template(self):
+        if self.player.ending_guilt_level == 1:
+            crime = 'SMALL'
+        if self.player.ending_guilt_level == 2:
+            crime = 'MEDIUM'
+        if self.player.ending_guilt_level == 3:
+            crime = 'LARGE'
+        if self.participant.vars['proschoice'] == 3 and self.participant.vars['relevantchoice'] == 1:
+            trial = 'Plea Bargain'
+        else:
+            trial = 'Jury Trial'
+
+        return {'crimelevel': crime,
+                'punishment': self.player.ending_punishment,
+                'trialornot': trial}
 
 
 page_sequence = [

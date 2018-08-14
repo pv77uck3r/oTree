@@ -281,3 +281,4 @@ class Player(BasePlayer):
 
     def set_payoff(self):
         self.payoff = self.payoff1 + self.payoff2
+        self.participant.vars['payoffmodule2'] = self.payoff
