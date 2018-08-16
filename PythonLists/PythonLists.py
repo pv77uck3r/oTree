@@ -1,3 +1,4 @@
+import random
 def shift_right(lst):
     try:
         return [lst[-1]] + lst[:-1]

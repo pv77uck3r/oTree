@@ -36,6 +36,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 8,
         'app_sequence': ['criminal_wrapper', 'criminal_trust', 'criminal_theft', 'criminal_plea'],
     },
+    {
+        'name': 'dictator',
+        'display_name': "DICTATOR TEST",
+        'num_demo_participants': 2,
+        'app_sequence': ['dictator'],
+    },
 ]
 # see the end of this file for the inactive session configs
 

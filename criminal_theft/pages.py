@@ -51,17 +51,56 @@ class Decisions(Page):
         self.player.record_choice()
         self.player.set_prosecutor_decisions()
 
-class SetPayoffs(WaitPage):
+
+class WaitForEveryone(WaitPage):
+    wait_for_all_groups = True
+
+
+class SetPayoffs1(WaitPage):
+    wait_for_all_groups = True
+
     def is_displayed(self):
         return self.subsession.round_number == Constants.num_rounds
 
     def after_all_players_arrive(self):
-        self.group.group_decisions()
+        self.subsession.set_groups_1()
+
+
+class SetPayoffs2(WaitPage):
+
+    def is_displayed(self):
+        return self.subsession.round_number == Constants.num_rounds
+
+    def after_all_players_arrive(self):
+        self.group.group_decisions_1()
+
+
+class SetPayoffs3(WaitPage):
+    wait_for_all_groups = True
+
+    def is_displayed(self):
+        return self.subsession.round_number == Constants.num_rounds
+
+    def after_all_players_arrive(self):
+        self.subsession.set_groups_2()
+
+
+class SetPayoffs4(WaitPage):
+
+    def is_displayed(self):
+        return self.subsession.round_number == Constants.num_rounds
+
+    def after_all_players_arrive(self):
+        self.group.group_decisions_2()
 
 
 page_sequence = [
     Instructions,
     Quiz,
     Decisions,
-    SetPayoffs
+    WaitForEveryone,
+    SetPayoffs1,
+    SetPayoffs2,
+    SetPayoffs3,
+    SetPayoffs4
 ]

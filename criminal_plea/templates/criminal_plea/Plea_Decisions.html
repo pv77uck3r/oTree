@@ -33,10 +33,6 @@
 
 {% if punlevel == 0.2 %}
 <p>
-    {% formfield player.plea_decision1 %}
-</p>
-
-<p>
     {% formfield player.plea_decision2 %}
 </p>
 
@@ -50,15 +46,15 @@
 
 <p>
     {% formfield player.plea_decision5 %}
+</p>
+
+<p>
+    {% formfield player.plea_decision6 %}
 </p>
 {% endif %}
 
 {% if punlevel == 0.5 %}
 <p>
-    {% formfield player.plea_decision2 %}
-</p>
-
-<p>
     {% formfield player.plea_decision3 %}
 </p>
 
@@ -68,36 +64,40 @@
 
 <p>
     {% formfield player.plea_decision5 %}
+</p>
+
+<p>
+    {% formfield player.plea_decision6 %}
 </p>
 {% endif %}
 
 {% if punlevel == 0.7 %}
 <p>
-    {% formfield player.plea_decision3 %}
-</p>
-
-<p>
     {% formfield player.plea_decision4 %}
 </p>
 
 <p>
     {% formfield player.plea_decision5 %}
+</p>
+
+<p>
+    {% formfield player.plea_decision6 %}
 </p>
 {% endif %}
 
 {% if punlevel == 1 %}
 <p>
-    {% formfield player.plea_decision4 %}
+    {% formfield player.plea_decision5 %}
 </p>
 
 <p>
-    {% formfield player.plea_decision5 %}
+    {% formfield player.plea_decision6 %}
 </p>
 {% endif %}
 
 {% if punlevel == 1.2 %}
 <p>
-    {% formfield player.plea_decision5 %}
+    {% formfield player.plea_decision6 %}
 </p>
 {% endif %}
 
@@ -110,9 +110,13 @@
 {% block styles %}
 
 <style type="text/css">
+table, td, th {
+    border: 1px solid black;
+}
+
 .tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border: 1px solid black;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border: 1px solid black;overflow:hidden;word-break:normal;}
 .tg .tg-0ord{text-align:right}
 .tg .tg-lqy6{text-align:right;vertical-align:top}
 .tg .tg-yw4l{vertical-align:top}

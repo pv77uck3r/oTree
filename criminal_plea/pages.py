@@ -44,14 +44,14 @@ class Preparation(Page):
 class Plea_Decisions(Page):
 
     form_model = 'player'
-    form_fields = ['plea_decision1', 'plea_decision2', 'plea_decision3', 'plea_decision4', 'plea_decision5']
+    form_fields = ['plea_decision2', 'plea_decision3', 'plea_decision4', 'plea_decision5', 'plea_decision6']
 
     def vars_for_template(self):
         innocence = self.participant.vars['trulyinnocent']
         if innocence == True:
             innocencestring = 'INNOCENT'
         if innocence == False:
-            innocentstring = 'GUILTY'
+            innocencestring = 'GUILTY'
         innocenceevidence = self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0]
         if innocenceevidence == 1:
             innocenceevidencestring = 'NONEXISTENT'
@@ -77,8 +77,9 @@ class Plea_Decisions(Page):
             crimelevel = 'MEDIUM CRIME'
         if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][2] == 1.2:
             crimelevel = 'LARGE CRIME'
+
         return {'innocence': innocencestring,
-                'innocenceevidence': innocencestring,
+                'innocenceevidence': innocenceevidencestring,
                 'guiltevidence': guiltevidencestring,
                 'punlevel': punlevel,
                 'crimelevel': crimelevel}

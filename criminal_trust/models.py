@@ -30,7 +30,7 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     #################INVESTOR DECISIONS#####################
     investor_decision1 = models.IntegerField(min=0, max=10,
-                                            choices=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                                            choices=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                                             widget=widgets.RadioSelectHorizontal,
                                             label="How many of your initial 10 quarters will you send to your "
                                                   "counterpart if your counterpart WAS NEVER ACCUSED of taking a small, "
@@ -40,7 +40,7 @@ class Group(BaseGroup):
                                                   " number of quarters.")
 
     investor_decision2 = models.IntegerField(min=0, max=10,
-                                             choices=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                                             choices=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                                              widget=widgets.RadioSelectHorizontal,
                                              label="How many of your initial 10 quarters will you send to your "
                                                    "counterpart if your counterpart WAS ACCUSED but FOUND NOT-GUILTY of "
@@ -50,7 +50,7 @@ class Group(BaseGroup):
                                                    "tripled number of quarters.")
 
     investor_decision3 = models.IntegerField(min=0, max=10,
-                                            choices=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                                            choices=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                                             widget=widgets.RadioSelectHorizontal,
                                             label="How many of your initial 10 quarters will you send to your "
                                                   "counterpart if your counterpart WAS FOUND GUILTY of taking a SMALL "
@@ -59,7 +59,7 @@ class Group(BaseGroup):
                                                   "back to you between 0 and that tripled number of quarters.")
 
     investor_decision4 = models.IntegerField(min=0, max=10,
-                                            choices=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                                            choices=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                                             widget=widgets.RadioSelectHorizontal,
                                             label="How many of your initial 10 quarters will you send to your "
                                                   "counterpart if your counterpart WAS FOUND GUILTY of taking a MEDIUM "
@@ -68,7 +68,7 @@ class Group(BaseGroup):
                                                   "back to you between 0 and that tripled number of quarters.")
 
     investor_decision5 = models.IntegerField(min=0, max=10,
-                                            choices=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                                            choices=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                                             widget=widgets.RadioSelectHorizontal,
                                             label="How many of your initial 10 quarters will you send to your "
                                                   "counterpart if your counterpart WAS FOUND GUILTY of taking a LARGE "

@@ -38,7 +38,7 @@ def trial_decision(label):
 class Constants(BaseConstants):
     name_in_url = 'criminal_plea'
     players_per_group = None
-    num_rounds = 1
+    num_rounds = 18
 
 
 class Subsession(BaseSubsession):
@@ -68,7 +68,7 @@ class Subsession(BaseSubsession):
                 # Creating triplet of real, fake, and fake punishment levels:
                 # Also creating the true punishment amount and crime level
                 if p.participant.vars['proschoice'] == 2 or p.participant.vars['proschoice'] == 1:
-                    p.alt_pun_level_1 = np.choose([.2, .5])
+                    p.alt_pun_level_1 = np.random.choice([.2, .5])
                     p.alt_pun_level_2 = np.random.choice([.7, 1])
                     p.alt_pun_level_3 = 1.2
                     p.participant.vars['conjpunlevel'] = [p.alt_pun_level_1, p.alt_pun_level_2, p.alt_pun_level_3]
@@ -98,18 +98,18 @@ class Subsession(BaseSubsession):
                         p.alt_pun_level_2 = np.random.choice([.7, 1])
                         p.alt_pun_level_3 = 1.2
                         p.participant.vars['conjpunlevel'] = [p.alt_pun_level_1, p.alt_pun_level_2, p.alt_pun_level_3]
-                p.participant.vars['conjcrimelevel'] = [1, 2, 3]
 
                 p.participant.vars['infosets'] = [p.participant.vars['conjinnocencelevels'],
                                                   p.participant.vars['conjguiltlevels'],
-                                                  p.participant.vars['conjpunlevel'],
-                                                  p.participant.vars['crimelevel']]
+                                                  p.participant.vars['conjpunlevel']
+                                                  ]
 
                 # Now create all possible cartesian products of 1. innocence level, 2. guilt levels, 3. punishment
                 # levels
 
-                tupleproduct = list(product(*p.participant.vars['infosets']))
-                p.participant.vars['allpossibleinfo'] = list(tupleproduct)
+                tupleproduct = [[w, x, y] for w in p.participant.vars['conjinnocencelevels'] for x in p.participant.vars['conjguiltlevels'] for y in p.participant.vars['conjpunlevel']]
+                p.participant.vars['allpossibleinfo'] = tupleproduct
+
 
 class Group(BaseGroup):
     pass
@@ -261,7 +261,7 @@ class Player(BasePlayer):
 
                         # HERE WE ACTUALLY SIMULATE THE GUILTY/NOT GUILTY FINDING FROM THE JURY TABLE
 
-                        self.participant.vars['jurydecision'] = np.random.binomial(1, (self.session.vars['juryprobs'].loc[self.session.vars['juryprobs']['Crime'] == trialcrime and self.session.vars['juryprobs']['Defense evidence'] == trialdefevid and self.session.vars['juryprobs']['Prosecutor evidence'] == trialprosevid, 'Probability of a guilty findng at trial'].item()))
+                        self.participant.vars['jurydecision'] = np.random.binomial(1, (self.session.vars['juryprobs'].loc[self.session.vars['juryprobs']['Crime'] == trialcrime & self.session.vars['juryprobs']['Defense evidence'] == trialdefevid & self.session.vars['juryprobs']['Prosecutor evidence'] == trialprosevid, 'Probability of a guilty findng at trial'].item()))
 
                         # IF JURY DECIDES NOT GUILTY, INDICATED BY A 0, THEN NO PUNISHMENT
 
@@ -320,7 +320,7 @@ class Player(BasePlayer):
                             trialcrime = 3
                             trialdefevid = 0
                             trialprosevid = self.participant.vars['pleaevidence']
-                        self.participant.vars['jurydecision'] = np.random.binomial(1, (self.session.vars['juryprobs'].loc[self.session.vars['juryprobs']['Crime'] == trialcrime and self.session.vars['juryprobs']['Defense evidence'] == trialdefevid and self.session.vars['juryprobs']['Prosecutor evidence'] == trialprosevid, 'Probability of a guilty findng at trial'].item()))
+                        self.participant.vars['jurydecision'] = np.random.binomial(1, (self.session.vars['juryprobs'].loc[self.session.vars['juryprobs']['Crime'] == trialcrime & self.session.vars['juryprobs']['Defense evidence'] == trialdefevid & self.session.vars['juryprobs']['Prosecutor evidence'] == trialprosevid, 'Probability of a guilty findng at trial'].item()))
 
                         if self.participant.vars['jurydecision'] == 0:
                             self.payoff = 0
@@ -405,7 +405,7 @@ class Player(BasePlayer):
                     else:
                         trialdefevid = 0
                     trialprosevid = self.participant.vars['nopleaevidence']
-                self.participant.vars['jurydecision'] = np.random.binomial(1, (self.session.vars['juryprobs'].loc[self.session.vars['juryprobs']['Crime'] == trialcrime and self.session.vars['juryprobs']['Defense evidence'] == trialdefevid and self.session.vars['juryprobs']['Prosecutor evidence'] == trialprosevid, 'Probability of a guilty findng at trial'].item()))
+                self.participant.vars['jurydecision'] = np.random.binomial(1, (self.session.vars['juryprobs'].loc[self.session.vars['juryprobs']['Crime'] == trialcrime & self.session.vars['juryprobs']['Defense evidence'] == trialdefevid & self.session.vars['juryprobs']['Prosecutor evidence'] == trialprosevid, 'Probability of a guilty findng at trial'].item()))
                 if self.participant.vars['jurydecision'] == 0:
                     self.payoff = 0
                     self.ending_guilt = False

@@ -7,11 +7,14 @@ class Introduction(Page):
 
 
 class Offer(Page):
-    form_model = 'group'
-    form_fields = ['kept']
+    form_model = 'player'
+    form_fields = ['dictatorchoice']
 
     def is_displayed(self):
         return self.player.id_in_group == 1
+
+    def before_next_page(self):
+        self.group.translate()
 
 
 class ResultsWaitPage(WaitPage):

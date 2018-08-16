@@ -37,6 +37,10 @@ class Group(BaseGroup):
         min=0, max=Constants.endowment,
     )
 
+    def translate(self):
+        p1 = self.get_player_by_id(1)
+        self.kept = p1.dictatorchoice
+
     def set_payoffs(self):
         p1 = self.get_player_by_id(1)
         p2 = self.get_player_by_id(2)
@@ -45,4 +49,8 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pass
+
+     dictatorchoice = models.CurrencyField(
+         doc="""Amount dictator decided to keep for himself""",
+         min=0, max=Constants.endowment,
+     )
