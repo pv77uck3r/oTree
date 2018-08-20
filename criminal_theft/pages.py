@@ -94,6 +94,15 @@ class SetPayoffs4(WaitPage):
         self.group.group_decisions_2()
 
 
+class SetPayoffs5(WaitPage):
+
+    def is_displayed(self):
+        return self.subsession.round_number == Constants.num_rounds
+
+    def after_all_players_arrive(self):
+        self.group.set_payoffs()
+
+
 page_sequence = [
     Instructions,
     Quiz,
@@ -102,5 +111,6 @@ page_sequence = [
     SetPayoffs1,
     SetPayoffs2,
     SetPayoffs3,
-    SetPayoffs4
+    SetPayoffs4,
+    SetPayoffs5
 ]

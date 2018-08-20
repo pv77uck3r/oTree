@@ -38,13 +38,21 @@ class Quiz(Page):
 
 
 class Preparation(Page):
-    pass
+
+    def is_displayed(self):
+        return self.subsession.round_number == 1
 
 
 class Plea_Decisions(Page):
 
     form_model = 'player'
-    form_fields = ['plea_decision2', 'plea_decision3', 'plea_decision4', 'plea_decision5', 'plea_decision6']
+    def get_form_fields(self):
+        if self.subsession.round_number % 3 == 1:
+            return ['plea_decision2', 'plea_decision3', 'plea_decision4', 'plea_decision5', 'plea_decision6']
+        if self.subsession.round_number % 3 == 2:
+            return ['plea_decision4', 'plea_decision5', 'plea_decision6']
+        if self.subsession.round_number % 3 == 0:
+            return ['plea_decision6']
 
     def vars_for_template(self):
         innocence = self.participant.vars['trulyinnocent']
@@ -129,7 +137,7 @@ class Trial_Decisions(Page):
         if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][2] == 1.2:
             crimelevel = 'LARGE CRIME'
         return {'innocence': innocencestring,
-                'innocenceevidence': innocencestring,
+                'innocenceevidence': innocenceevidencestring,
                 'guiltevidence': guiltevidencestring,
                 'punlevel': punlevel,
                 'crimelevel': crimelevel,

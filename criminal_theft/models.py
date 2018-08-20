@@ -110,8 +110,13 @@ class Group(BaseGroup):
                 self.kept = p1.participant.vars['W'] + p1.participant.vars['amountstolen']
             p1.payoff2 = self.kept
             p2.payoff2 = 10 - self.kept
-        for p in self.subsession.get_players():
-            p.set_payoff()
+
+    def set_payoffs(self):
+        if self.subsession.round_number == Constants.num_rounds:
+            p1 = self.get_player_by_id(1)
+            p2 = self.get_player_by_id(2)
+            p1.set_payoff()
+            p2.set_payoff()
 
 
 class Player(BasePlayer):

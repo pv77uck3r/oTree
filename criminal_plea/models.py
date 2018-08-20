@@ -211,15 +211,15 @@ class Player(BasePlayer):
 
                         # WE RECORD THE DEFENDANT'S DECISION
 
-                        self.participant.vars['relevantdecision'] = self.plea_decision1
-                    if self.participant.vars['pleathreat'] == 2:
                         self.participant.vars['relevantdecision'] = self.plea_decision2
-                    if self.participant.vars['pleathreat'] == 3:
+                    if self.participant.vars['pleathreat'] == 2:
                         self.participant.vars['relevantdecision'] = self.plea_decision3
-                    if self.participant.vars['pleathreat'] == 4:
+                    if self.participant.vars['pleathreat'] == 3:
                         self.participant.vars['relevantdecision'] = self.plea_decision4
-                    if self.participant.vars['pleathreat'] == 5:
+                    if self.participant.vars['pleathreat'] == 4:
                         self.participant.vars['relevantdecision'] = self.plea_decision5
+                    if self.participant.vars['pleathreat'] == 5:
+                        self.participant.vars['relevantdecision'] = self.plea_decision6
 
                     # IF THE DEFENDANT TAKES THE PLEA DEAL, INDICATED BY A 1, THEN WE SET THEIR PAYOFF FOR THIS MODULE
                     # TO THE PROPOSED PUNISHMENT AMOUNT
