@@ -49,7 +49,7 @@ class Decisions(Page):
 
     def before_next_page(self):
         self.player.record_choice()
-        self.player.set_prosecutor_decisions()
+        # self.player.set_prosecutor_decisions()
 
 
 class WaitForEveryone(WaitPage):

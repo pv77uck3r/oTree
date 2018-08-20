@@ -110,8 +110,8 @@ class Group(BaseGroup):
                 self.kept = p1.participant.vars['W'] + p1.participant.vars['amountstolen']
             p1.payoff2 = self.kept
             p2.payoff2 = 10 - self.kept
-        # for p in self.subsession.get_players():
-        #     p.set_payoff()
+        for p in self.subsession.get_players():
+            p.set_payoff()
 
 
 class Player(BasePlayer):
@@ -120,6 +120,12 @@ class Player(BasePlayer):
     payoff2 = models.FloatField()
 
     record_choice_indicator = models.BooleanField(initial=False)
+
+    proschoice = models.IntegerField()
+
+    guiltlevel = models.IntegerField()
+    innocencelevel = models.IntegerField()
+    trulyinnocent = models.BooleanField()
 
     quiz1 = models.IntegerField(
         widget=widgets.RadioSelect(),
@@ -191,9 +197,18 @@ class Player(BasePlayer):
                 self.participant.vars['trulyinnocent'] = False
                 self.participant.vars['innocencelevel'] = np.random.choice([1, 2, 3, 4], 1, replace=False, p=[.7, .15, .1, .05])
                 self.participant.vars['guiltlevel'] = np.random.choice([1, 2, 3, 4], 1, replace=False, p=[.3, .3, .25, .15])
+            if self.participant.vars['guiltlevel'] == 2:
+                self.participant.vars['crimelevel'] = np.random.choice([2, 3, 4], 1, replace=False, p=[.5, .25, .25])
+            if self.participant.vars['guiltlevel'] == 3:
+                self.participant.vars['crimelevel'] = np.random.choice([2, 3, 4], 1, replace=False, p=[.25, .5, .25])
+            if self.participant.vars['guiltlevel'] == 4:
+                self.participant.vars['crimelevel'] = np.random.choice([2, 3, 4], 1, replace=False, p=[.25, .25, .5])
+            self.guiltlevel = self.participant.vars['guiltlevel']
+            self.innocencelevel = self.participant.vars['innocencelevel']
+            self.trulyinnocent = self.participant.vars['trulyinnocent']
 
-    def set_prosecutor_decisions(self):
-        if self.subsession.round_number == self.participant.vars['randround']:
+    #def set_prosecutor_decisions(self):
+        #if self.subsession.round_number == self.participant.vars['randround']:
             if self.participant.vars['guiltlevel'] == 1:
                 self.participant.vars['proschoice'] = 1
             if self.participant.vars['guiltlevel'] == 2:
@@ -304,6 +319,7 @@ class Player(BasePlayer):
                     self.participant.vars['pleaevidence'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 1, 'pros_evid_P'].item()
                     self.participant.vars['pleathreat'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 1, 'threat_P'].item()
                     self.participant.vars['threatcharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 1, 'threat'].item()
+            self.proschoice = self.participant.vars['proschoice']
 
     def set_payoff(self):
         self.payoff = self.payoff1 + self.payoff2

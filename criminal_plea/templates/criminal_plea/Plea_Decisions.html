@@ -123,3 +123,14 @@ table, td, th {
 </style>
 
 {% endblock %}
+
+{% block scripts %}
+<script>
+setTimeout(
+    function () {
+        alert("Time has run out. Please make your decision.");
+    },
+    60*1000 // 60 seconds
+);
+</script>
+{% endblock %}
