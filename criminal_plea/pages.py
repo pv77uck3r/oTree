@@ -46,13 +46,21 @@ class Preparation(Page):
 class Plea_Decisions(Page):
 
     form_model = 'player'
+
     def get_form_fields(self):
-        if self.subsession.round_number % 3 == 1:
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][2] == .2:
             return ['plea_decision2', 'plea_decision3', 'plea_decision4', 'plea_decision5', 'plea_decision6']
-        if self.subsession.round_number % 3 == 2:
-            return ['plea_decision4', 'plea_decision5', 'plea_decision6']
-        if self.subsession.round_number % 3 == 0:
-            return ['plea_decision6']
+        else:
+            if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][2] == .5:
+                return ['plea_decision3', 'plea_decision4', 'plea_decision5', 'plea_decision6']
+            else:
+                if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][2] == .7:
+                    return ['plea_decision4', 'plea_decision5', 'plea_decision6']
+                else:
+                    if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][2] == 1:
+                        return ['plea_decision5', 'plea_decision6']
+                    else:
+                        return ['plea_decision6']
 
     def vars_for_template(self):
         innocence = self.participant.vars['trulyinnocent']
@@ -110,7 +118,7 @@ class Trial_Decisions(Page):
         if innocence == True:
             innocencestring = 'INNOCENT'
         if innocence == False:
-            innocentstring = 'GUILTY'
+            innocencestring = 'GUILTY'
         innocenceevidence = self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0]
         if innocenceevidence == 1:
             innocenceevidencestring = 'NONEXISTENT'
@@ -157,18 +165,28 @@ class Results(Page):
     def vars_for_template(self):
         if self.player.ending_guilt_level == 1:
             crime = 'SMALL'
-        if self.player.ending_guilt_level == 2:
-            crime = 'MEDIUM'
-        if self.player.ending_guilt_level == 3:
-            crime = 'LARGE'
+        else:
+            if self.player.ending_guilt_level == 2:
+                crime = 'MEDIUM'
+            else:
+                if self.player.ending_guilt_level == 3:
+                    crime = 'LARGE'
+                else:
+                    crime = 'NONE'
         if self.participant.vars['proschoice'] == 3 and self.participant.vars['relevantchoice'] == 1:
             trial = 'Plea Bargain'
         else:
-            trial = 'Jury Trial'
-
+            if (self.participant.vars['proschoice'] == 3 and (self.participant.vars['relevantchoice'] == 2 or
+                                                              self.participant.vars['relevantchoice'] == 1)) or \
+                    (self.participant.vars['proschoice'] == 2):
+                trial = 'Jury Trial'
+            else:
+                trial = 'NONE'
         return {'crimelevel': crime,
                 'punishment': self.player.ending_punishment,
-                'trialornot': trial}
+                'trialornot': trial,
+                'ending_guilt': self.participant.vars['ending_guilt'],
+                'ending_trial_status': self.participant.vars['ending_trial_status']}
 
 
 page_sequence = [

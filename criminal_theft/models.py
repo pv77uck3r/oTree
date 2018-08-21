@@ -202,12 +202,18 @@ class Player(BasePlayer):
                 self.participant.vars['trulyinnocent'] = False
                 self.participant.vars['innocencelevel'] = np.random.choice([1, 2, 3, 4], 1, replace=False, p=[.7, .15, .1, .05])
                 self.participant.vars['guiltlevel'] = np.random.choice([1, 2, 3, 4], 1, replace=False, p=[.3, .3, .25, .15])
-            if self.participant.vars['guiltlevel'] == 2:
-                self.participant.vars['crimelevel'] = np.random.choice([2, 3, 4], 1, replace=False, p=[.5, .25, .25])
-            if self.participant.vars['guiltlevel'] == 3:
-                self.participant.vars['crimelevel'] = np.random.choice([2, 3, 4], 1, replace=False, p=[.25, .5, .25])
-            if self.participant.vars['guiltlevel'] == 4:
-                self.participant.vars['crimelevel'] = np.random.choice([2, 3, 4], 1, replace=False, p=[.25, .25, .5])
+            if self.participant.vars['guiltlevel'] > 1:
+                if self.participant.vars['crimelevel'] == 1:
+                    self.participant.vars['crimelevel'] = np.random.choice([2, 3, 4])
+                if self.participant.vars['crimelevel'] == 2:
+                    self.participant.vars['crimelevel'] = np.random.choice([2, 3, 4], 1, replace=False,
+                                                                           p=[.5, .25, .25])
+                if self.participant.vars['crimelevel'] == 3:
+                    self.participant.vars['crimelevel'] = np.random.choice([2, 3, 4], 1, replace=False,
+                                                                           p=[.25, .5, .25])
+                if self.participant.vars['crimelevel'] == 4:
+                    self.participant.vars['crimelevel'] = np.random.choice([2, 3, 4], 1, replace=False,
+                                                                           p=[.25, .25, .5])
             self.guiltlevel = self.participant.vars['guiltlevel']
             self.innocencelevel = self.participant.vars['innocencelevel']
             self.trulyinnocent = self.participant.vars['trulyinnocent']

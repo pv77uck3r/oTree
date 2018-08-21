@@ -7,13 +7,13 @@
 
 {% block content %}
 
-    {% if player.ending_trial_status == False%}
+    {% if ending_trial_status == False%}
         <p>You were not taken to trial.</p>
-        {% if player.ending_guilt == False %}
+        {% if ending_guilt == False %}
             <p>Hence, you are not guilty and have received no monetary punishment.</p>
         {% endif %}
 
-        {% if player.ending_guilt == True %}
+        {% if ending_guilt == True %}
             <p>You were found guilty of a {{ crimelevel }} crime.</p>
             <p>You have been penalized {{ punishment }}.</p>
             <p>The guilty verdict was a result of a plea bargain.</p>
@@ -21,21 +21,27 @@
 
     {% endif %}
 
-    {% if player.ending_trial_status == True %}
+    {% if ending_trial_status == True %}
 
         <p>You were taken to trial.</p>
 
-            {% if player.ending_guilt == False %}
+            {% if ending_guilt == False %}
                 <p>However, the jury returned a verdict of "Not Guilty".</p>
                 <p>Hence, you are not guilty and have received no monetary punishment.</p>
             {% endif %}
 
-            {% if player.ending_guilt == True %}
+            {% if ending_guilt == True %}
                 <p>The jury returned a verdict of "Guilty".</p>
                 <p>You were found guilty of a {{ crimelevel }} crime.</p>
                 <p>You have been penalized {{ punishment }}.</p>
             {% endif %}
 
+    {% endif %}
+
+    {% if trialornot == 'NONE' and ending_trial_status != False and ending_trial_status != True %}
+        <p>The prosecutor had no evidence of a crime.</p>
+        <p>Therefore, you were not taken to trial.</p>
+        <p>Hence, you were not found guilty nor were you penalized.</p>
     {% endif %}
 
     {% next_button %}
