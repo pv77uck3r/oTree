@@ -44,20 +44,20 @@ class Subsession(BaseSubsession):
                 p.participant.vars['randround'] = np.random.choice(range(1, 11))
 
     def set_groups_1(self):
-        self.groups_1_indicator_pre = 1
+        self.groups_1_indicator_pre = True
         self.set_group_matrix(self.session.vars['subjlists'][1])
         for group in self.get_groups():
             players = group.get_players()
             group.set_players(players)
-        self.groups_1_indicator_post = 1
+        self.groups_1_indicator_post = True
 
     def set_groups_2(self):
-        self.groups_2_indicator_pre = 1
+        self.groups_2_indicator_pre = True
         self.set_group_matrix(self.session.vars['subjlists'][2])
         for group in self.get_groups():
             players = group.get_players()
             group.set_players(players)
-        self.groups_2_indicator_post = 1
+        self.groups_2_indicator_post = True
 
             # for i in range(1, len(self.get_players())):
             #     W = np.random.choice(np.arange(3.90, 7.00, 0.10), 10, replace=False)
@@ -85,28 +85,28 @@ class Group(BaseGroup):
 
     def group_decisions_1(self):
         if self.subsession.round_number == Constants.num_rounds:
-            self.decisions_1_indicator = 1
+            self.decisions_1_indicator = True
             p1 = self.get_player_by_id(1)
             p2 = self.get_player_by_id(2)
             if p1.participant.vars['theftchoice'] == 1:
-                self.first_calc_indicator = 1
+                self.first_calc_indicator = True
                 self.kept = p1.participant.vars['W']
             else:
-                self.first_calc_indicator = 1
+                self.first_calc_indicator = True
                 self.kept = p1.participant.vars['W'] + p1.participant.vars['amountstolen']
             p1.payoff1 = self.kept
             p2.payoff1 = 10 - self.kept
 
     def group_decisions_2(self):
         if self.subsession.round_number == Constants.num_rounds:
-            self.decisions_2_indicator = 1
+            self.decisions_2_indicator = True
             p1 = self.get_player_by_id(1)
             p2 = self.get_player_by_id(2)
             if p1.participant.vars['theftchoice'] == 1:
-                self.second_calc_indicator = 1
+                self.second_calc_indicator = True
                 self.kept = p1.participant.vars['W']
             else:
-                self.second_calc_indicator = 1
+                self.second_calc_indicator = True
                 self.kept = p1.participant.vars['W'] + p1.participant.vars['amountstolen']
             p1.payoff2 = self.kept
             p2.payoff2 = 10 - self.kept
@@ -131,6 +131,27 @@ class Player(BasePlayer):
     guiltlevel = models.IntegerField()
     innocencelevel = models.IntegerField()
     trulyinnocent = models.BooleanField()
+
+
+    no_plea_charge = models.IntegerField()
+    no_plea_evidence = models.IntegerField()
+    no_plea_pun = models.IntegerField()
+    plea_charge = models.IntegerField()
+    plea_crime_level = models.IntegerField()
+    plea_punishment = models.FloatField()
+    plea_evidence = models.IntegerField()
+    plea_threat = models.IntegerField()
+    threat_charge = models.IntegerField()
+
+    # self.participant.vars['nopleacharge'] = -1
+    # self.participant.vars['nopleaevidence'] = -1
+    # self.participant.vars['nopleapun'] = -1
+    # self.participant.vars['pleacharge'] = -1
+    # self.participant.vars['pleacrimelevel'] = -1
+    # self.participant.vars['pleapunishment'] = -1
+    # self.participant.vars['pleaevidence'] = -1
+    # self.participant.vars['pleaethreat'] = -1
+    # self.participant.vars['threatcharge'] = -1
 
     quiz1 = models.IntegerField(
         widget=widgets.RadioSelect(),
@@ -222,6 +243,15 @@ class Player(BasePlayer):
         #if self.subsession.round_number == self.participant.vars['randround']:
             if self.participant.vars['guiltlevel'] == 1:
                 self.participant.vars['proschoice'] = 1
+                self.participant.vars['nopleacharge'] = -1
+                self.participant.vars['nopleaevidence'] = -1
+                self.participant.vars['nopleapun'] = -1
+                self.participant.vars['pleacharge'] = -1
+                self.participant.vars['pleacrimelevel'] = -1
+                self.participant.vars['pleapunishment'] = -1
+                self.participant.vars['pleaevidence'] = -1
+                self.participant.vars['pleathreat'] = -1
+                self.participant.vars['threatcharge'] = -1
             if self.participant.vars['guiltlevel'] == 2:
                 if self.participant.vars['crimelevel'] == 2:
                     self.participant.vars['proschoice'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 9, 'choice'].item()
@@ -230,7 +260,7 @@ class Player(BasePlayer):
                     self.participant.vars['nopleapun'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 9, 'crime_pun_NP'].item()
                     self.participant.vars['pleacharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 9, 'plea'].item()
                     self.participant.vars['pleacrimelevel'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 9, 'crime_P'].item()
-                    self.participant.vars['pleapunishment'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 9, 'pun_P'].item()
+                    self.participant.vars['pleapunishment'] = round(self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 9, 'pun_P'].item(), 1)
                     self.participant.vars['pleaevidence'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 9, 'pros_evid_P'].item()
                     self.participant.vars['pleathreat'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 9, 'threat_P'].item()
                     self.participant.vars['threatcharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 9, 'threat'].item()
@@ -242,7 +272,7 @@ class Player(BasePlayer):
                     self.participant.vars['nopleapun'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 8, 'crime_pun_NP'].item()
                     self.participant.vars['pleacharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 8, 'plea'].item()
                     self.participant.vars['pleacrimelevel'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 8, 'crime_P'].item()
-                    self.participant.vars['pleapunishment'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 8, 'pun_P'].item()
+                    self.participant.vars['pleapunishment'] = round(self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 8, 'pun_P'].item(), 1)
                     self.participant.vars['pleaevidence'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 8, 'pros_evid_P'].item()
                     self.participant.vars['pleathreat'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 8, 'threat_P'].item()
                     self.participant.vars['threatcharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 8, 'threat'].item()
@@ -254,7 +284,7 @@ class Player(BasePlayer):
                     self.participant.vars['nopleapun'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 7, 'crime_pun_NP'].item()
                     self.participant.vars['pleacharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 7, 'plea'].item()
                     self.participant.vars['pleacrimelevel'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 7, 'crime_P'].item()
-                    self.participant.vars['pleapunishment'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 7, 'pun_P'].item()
+                    self.participant.vars['pleapunishment'] = round(self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 7, 'pun_P'].item(), 1)
                     self.participant.vars['pleaevidence'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 7, 'pros_evid_P'].item()
                     self.participant.vars['pleathreat'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 7, 'threat_P'].item()
                     self.participant.vars['threatcharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 7, 'threat'].item()
@@ -266,7 +296,7 @@ class Player(BasePlayer):
                     self.participant.vars['nopleapun'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 6, 'crime_pun_NP'].item()
                     self.participant.vars['pleacharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 6, 'plea'].item()
                     self.participant.vars['pleacrimelevel'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 6, 'crime_P'].item()
-                    self.participant.vars['pleapunishment'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 6, 'pun_P'].item()
+                    self.participant.vars['pleapunishment'] = round(self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 6, 'pun_P'].item(), 1)
                     self.participant.vars['pleaevidence'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 6, 'pros_evid_P'].item()
                     self.participant.vars['pleathreat'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 6, 'threat_P'].item()
                     self.participant.vars['threatcharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 6, 'threat'].item()
@@ -278,7 +308,7 @@ class Player(BasePlayer):
                     self.participant.vars['nopleapun'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 5, 'crime_pun_NP'].item()
                     self.participant.vars['pleacharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 5, 'plea'].item()
                     self.participant.vars['pleacrimelevel'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 5, 'crime_P'].item()
-                    self.participant.vars['pleapunishment'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 5, 'pun_P'].item()
+                    self.participant.vars['pleapunishment'] = round(self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 5, 'pun_P'].item(), 1)
                     self.participant.vars['pleaevidence'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 5, 'pros_evid_P'].item()
                     self.participant.vars['pleathreat'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 5, 'threat_P'].item()
                     self.participant.vars['threatcharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 5, 'threat'].item()
@@ -290,7 +320,7 @@ class Player(BasePlayer):
                     self.participant.vars['nopleapun'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 4, 'crime_pun_NP'].item()
                     self.participant.vars['pleacharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 4, 'plea'].item()
                     self.participant.vars['pleacrimelevel'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 4, 'crime_P'].item()
-                    self.participant.vars['pleapunishment'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 4, 'pun_P'].item()
+                    self.participant.vars['pleapunishment'] = round(self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 4, 'pun_P'].item(), 1)
                     self.participant.vars['pleaevidence'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 4, 'pros_evid_P'].item()
                     self.participant.vars['pleathreat'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 4, 'threat_P'].item()
                     self.participant.vars['threatcharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 4, 'threat'].item()
@@ -302,7 +332,7 @@ class Player(BasePlayer):
                     self.participant.vars['nopleapun'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 3, 'crime_pun_NP'].item()
                     self.participant.vars['pleacharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 3, 'plea'].item()
                     self.participant.vars['pleacrimelevel'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 3, 'crime_P'].item()
-                    self.participant.vars['pleapunishment'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 3, 'pun_P'].item()
+                    self.participant.vars['pleapunishment'] = round(self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 3, 'pun_P'].item(), 1)
                     self.participant.vars['pleaevidence'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 3, 'pros_evid_P'].item()
                     self.participant.vars['pleathreat'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 3, 'threat_P'].item()
                     self.participant.vars['threatcharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 3, 'threat'].item()
@@ -314,7 +344,7 @@ class Player(BasePlayer):
                     self.participant.vars['nopleapun'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 2, 'crime_pun_NP'].item()
                     self.participant.vars['pleacharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 2, 'plea'].item()
                     self.participant.vars['pleacrimelevel'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 2, 'crime_P'].item()
-                    self.participant.vars['pleapunishment'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 2, 'pun_P'].item()
+                    self.participant.vars['pleapunishment'] = round(self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 2, 'pun_P'].item(), 1)
                     self.participant.vars['pleaevidence'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 2, 'pros_evid_P'].item()
                     self.participant.vars['pleathreat'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 2, 'threat_P'].item()
                     self.participant.vars['threatcharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 2, 'threat'].item()
@@ -326,11 +356,20 @@ class Player(BasePlayer):
                     self.participant.vars['nopleapun'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 1, 'crime_pun_NP'].item()
                     self.participant.vars['pleacharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 1, 'plea'].item()
                     self.participant.vars['pleacrimelevel'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 1, 'crime_P'].item()
-                    self.participant.vars['pleapunishment'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 1, 'pun_P'].item()
+                    self.participant.vars['pleapunishment'] = round(self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 1, 'pun_P'].item(), 1)
                     self.participant.vars['pleaevidence'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 1, 'pros_evid_P'].item()
                     self.participant.vars['pleathreat'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 1, 'threat_P'].item()
                     self.participant.vars['threatcharge'] = self.session.vars['prosecutordecisions'].loc[self.session.vars['prosecutordecisions']['onetonine'] == 1, 'threat'].item()
             self.proschoice = self.participant.vars['proschoice']
+            self.no_plea_charge = self.participant.vars['nopleacharge']
+            self.no_plea_evidence = self.participant.vars['nopleaevidence']
+            self.no_plea_pun = self.participant.vars['nopleapun']
+            self.plea_charge = self.participant.vars['pleacharge']
+            self.plea_crime_level = self.participant.vars['pleacrimelevel']
+            self.plea_punishment = self.participant.vars['pleapunishment']
+            self.plea_evidence = self.participant.vars['pleaevidence']
+            self.plea_threat = self.participant.vars['pleathreat']
+            self.threat_charge = self.participant.vars['threatcharge']
 
     def set_payoff(self):
         self.payoff = self.payoff1 + self.payoff2

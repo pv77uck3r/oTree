@@ -101,7 +101,8 @@ class Plea_Decisions(Page):
                 'crimelevel': crimelevel}
 
     def before_next_page(self):
-        self.player.set_payoff()
+        if self.participant.vars['proschoice'] == 3:
+            self.player.set_payoff()
 
 
 class Trial_Decisions(Page):
@@ -154,7 +155,8 @@ class Trial_Decisions(Page):
                 }
 
     def before_next_page(self):
-        self.player.set_payoff()
+        if self.participant.vars['proschoice'] == 2:
+            self.player.set_payoff()
 
 
 class Results(Page):
@@ -163,27 +165,27 @@ class Results(Page):
         return self.subsession.round_number == Constants.num_rounds
 
     def vars_for_template(self):
-        if self.player.ending_guilt_level == 1:
+        if self.participant.vars['ending_guilt_level'] == 1:
             crime = 'SMALL'
         else:
-            if self.player.ending_guilt_level == 2:
+            if self.participant.vars['ending_guilt_level'] == 2:
                 crime = 'MEDIUM'
             else:
-                if self.player.ending_guilt_level == 3:
+                if self.participant.vars['ending_guilt_level'] == 3:
                     crime = 'LARGE'
                 else:
                     crime = 'NONE'
-        if self.participant.vars['proschoice'] == 3 and self.participant.vars['relevantchoice'] == 1:
+        if self.participant.vars['proschoice'] == 3 and self.participant.vars['relevantdecision'] == 1:
             trial = 'Plea Bargain'
         else:
-            if (self.participant.vars['proschoice'] == 3 and (self.participant.vars['relevantchoice'] == 2 or
-                                                              self.participant.vars['relevantchoice'] == 1)) or \
+            if (self.participant.vars['proschoice'] == 3 and (self.participant.vars['relevantdecision'] == 2 or
+                                                              self.participant.vars['relevantdecision'] == 1)) or \
                     (self.participant.vars['proschoice'] == 2):
                 trial = 'Jury Trial'
             else:
                 trial = 'NONE'
         return {'crimelevel': crime,
-                'punishment': self.player.ending_punishment,
+                'punishment': self.participant.vars['ending_punishment'],
                 'trialornot': trial,
                 'ending_guilt': self.participant.vars['ending_guilt'],
                 'ending_trial_status': self.participant.vars['ending_trial_status']}
