@@ -12,7 +12,7 @@ Variant of trust game
 
 
 class Constants(BaseConstants):
-    name_in_url = 'criminal_trust'
+    name_in_url = 'criminal_trust_2'
     players_per_group = 2
     num_rounds = 1
 
@@ -227,6 +227,8 @@ class Player(BasePlayer):
 
     def role(self):
         if self.id_in_group == 1:
+            self.participant.vars['firstrole'] = 'Investor'
             return 'Investor'
         if self.id_in_group == 2:
+            self.participant.vars['firstrole'] = 'Trustee'
             return 'Trustee'

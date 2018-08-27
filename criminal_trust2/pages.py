@@ -76,11 +76,40 @@ class RecordDecisions(WaitPage):
         self.group.keep_decisions()
 
 
+class SetGroups1(WaitPage):
+    wait_for_all_groups = True
+
+    def after_all_players_arrive(self):
+        self.subsession.set_groups_1()
+
+
+class GenTrustGame1Payoffs(WaitPage):
+    def after_all_players_arrive(self):
+        self.group.set_payoffs_1()
+
+
+class SetGroups2(WaitPage):
+    wait_for_all_groups = True
+
+    def after_all_players_arrive(self):
+        self.subsession.set_groups_2()
+
+
+class GenTrustGame2Payoffs(WaitPage):
+    def after_all_players_arrive(self):
+        self.group.set_payoffs_2()
+
+
+class Results(Page):
+    pass
+
+
 page_sequence = [
-    Instructions,
-    QuizI,
-    QuizT,
+    SetGroups1,
+    GenTrustGame1Payoffs,
+    SetGroups2,
     DecisionsI,
     DecisionsT,
-    RecordDecisions
+    GenTrustGame2Payoffs,
+    Results
 ]

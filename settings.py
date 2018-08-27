@@ -31,6 +31,12 @@ SESSION_CONFIGS = [
         'app_sequence': ['criminal_plea'],
     },
     {
+        'name': 'criminal_trust2',
+        'display_name': "Defendant Trust Game for Innocence Problem Project",
+        'num_demo_participants': 2,
+        'app_sequence': ['criminal_trust2'],
+    },
+    {
         'name': 'criminal_wrapper',
         'display_name': "Innocence Problem - All tasks",
         'num_demo_participants': 8,
