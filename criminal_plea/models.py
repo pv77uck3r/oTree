@@ -177,29 +177,62 @@ class Player(BasePlayer):
         label='At trial, which of the following is true?'
     )
 
-    plea_decision2 = plea_decision('If the monetary penalty for being found guilty at trial is between $0.40 and $0.60 '
-                                   '(a Small Crime) you will')
-    plea_decision3 = plea_decision('If the monetary penalty for being found guilty at trial is between $0.60 and $0.80 '
-                                   '(a Medium Crime) you will')
-    plea_decision4 = plea_decision('If the monetary penalty for being found guilty at trial is between $0.90 and $1.10 '
-                                   '(a Medium Crime) you will')
-    plea_decision5 = plea_decision('If the monetary penalty for being found guilty at trial is between $1.10 and $1.30 '
-                                   '(a Large Crime) you will')
-    plea_decision6 = plea_decision('If the monetary penalty for being found guilty at trial is between $1.40 and $1.60 '
-                                   '(a Large Crime) you will')
+    plea_decision2 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        label='If the monetary penalty for being found guilty at trial is between $0.40 and $0.60 '
+                                   '(a Small Crime) you will'
+    )
+    plea_decision3 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        label='If the monetary penalty for being found guilty at trial is between $0.60 and $0.80 '
+                                   '(a Medium Crime) you will'
+    )
+    plea_decision4 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        label='If the monetary penalty for being found guilty at trial is between $0.90 and $1.10 '
+                                   '(a Medium Crime) you will'
+    )
+    plea_decision5 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        label='If the monetary penalty for being found guilty at trial is between $1.10 and $1.30 '
+                                   '(a Large Crime) you will'
+    )
+    plea_decision6 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        label='If the monetary penalty for being found guilty at trial is between $1.40 and $1.60 '
+                                   '(a Large Crime) you will'
+    )
 
-    trial_decision1 = trial_decision('If the monetary penalty for being found guilty at trial is between $0.10 and $0.30 '
-                                   '(a Small Crime) you will')
-    trial_decision2 = trial_decision('If the monetary penalty for being found guilty at trial is between $0.40 and $0.60 '
-                                   '(a Small Crime) you will')
-    trial_decision3 = trial_decision('If the monetary penalty for being found guilty at trial is between $0.60 and $0.80 '
-                                   '(a Medium Crime) you will')
-    trial_decision4 = trial_decision('If the monetary penalty for being found guilty at trial is between $0.90 and $1.10 '
-                                   '(a Medium Crime) you will')
-    trial_decision5 = trial_decision('If the monetary penalty for being found guilty at trial is between $1.10 and $1.30 '
-                                   '(a Large Crime) you will')
-    trial_decision6 = trial_decision('If the monetary penalty for being found guilty at trial is between $1.40 and $1.60 '
-                                   '(a Large Crime) you will')
+    trial_decision1 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        label='If the monetary penalty for being found guilty at trial is between $0.10 and $0.30 '
+                                   '(a Small Crime) you will'
+    )
+    trial_decision2 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        label='If the monetary penalty for being found guilty at trial is between $0.40 and $0.60 '
+                                   '(a Small Crime) you will'
+    )
+    trial_decision3 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        label='If the monetary penalty for being found guilty at trial is between $0.60 and $0.80 '
+                                   '(a Medium Crime) you will'
+    )
+    trial_decision4 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        label='If the monetary penalty for being found guilty at trial is between $0.90 and $1.10 '
+                                   '(a Medium Crime) you will'
+    )
+    trial_decision5 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        label='If the monetary penalty for being found guilty at trial is between $1.10 and $1.30 '
+                                   '(a Large Crime) you will'
+    )
+    trial_decision6 = models.IntegerField(
+        widget=widgets.RadioSelect,
+        label='If the monetary penalty for being found guilty at trial is between $1.40 and $1.60 '
+                                   '(a Large Crime) you will'
+    )
 
     alt_innocence_level = models.IntegerField()
 

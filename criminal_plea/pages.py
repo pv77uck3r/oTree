@@ -62,6 +62,77 @@ class Plea_Decisions(Page):
                     else:
                         return ['plea_decision6']
 
+    def plea_decision2_choices(self):
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+            choices = [
+                [1, 'Accept plea'],
+                [3, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        else:
+            choices = [
+                [1, 'Accept plea'],
+                [2, 'Go to trial and present your evidence of innocence'],
+                [3, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        return choices
+
+    def plea_decision3_choices(self):
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+            choices = [
+                [1, 'Accept plea'],
+                [3, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        else:
+            choices = [
+                [1, 'Accept plea'],
+                [2, 'Go to trial and present your evidence of innocence'],
+                [3, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        return choices
+
+    def plea_decision4_choices(self):
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+            choices = [
+                [1, 'Accept plea'],
+                [3, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        else:
+            choices = [
+                [1, 'Accept plea'],
+                [2, 'Go to trial and present your evidence of innocence'],
+                [3, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        return choices
+
+    def plea_decision5_choices(self):
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+            choices = [
+                [1, 'Accept plea'],
+                [3, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        else:
+            choices = [
+                [1, 'Accept plea'],
+                [2, 'Go to trial and present your evidence of innocence'],
+                [3, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        return choices
+
+    def plea_decision6_choices(self):
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+            choices = [
+                [1, 'Accept plea'],
+                [3, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        else:
+            choices = [
+                [1, 'Accept plea'],
+                [2, 'Go to trial and present your evidence of innocence'],
+                [3, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        return choices
+
+
     def vars_for_template(self):
         innocence = self.participant.vars['trulyinnocent']
         if innocence == True:
@@ -110,6 +181,78 @@ class Trial_Decisions(Page):
     form_model = 'player'
     form_fields = ['trial_decision1', 'trial_decision2', 'trial_decision3', 'trial_decision4', 'trial_decision5',
                    'trial_decision6']
+
+    def trial_decision1_choices(self):
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+            choices = [
+                [2, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        else:
+            choices = [
+                [1, 'Go to trial and present your evidence of innocence'],
+                [2, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        return choices
+
+    def trial_decision2_choices(self):
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+            choices = [
+                [2, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        else:
+            choices = [
+                [1, 'Go to trial and present your evidence of innocence'],
+                [2, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        return choices
+
+    def trial_decision3_choices(self):
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+            choices = [
+                [2, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        else:
+            choices = [
+                [1, 'Go to trial and present your evidence of innocence'],
+                [2, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        return choices
+
+    def trial_decision4_choices(self):
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+            choices = [
+                [2, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        else:
+            choices = [
+                [1, 'Go to trial and present your evidence of innocence'],
+                [2, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        return choices
+
+    def trial_decision5_choices(self):
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+            choices = [
+                [2, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        else:
+            choices = [
+                [1, 'Go to trial and present your evidence of innocence'],
+                [2, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        return choices
+
+    def trial_decision6_choices(self):
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+            choices = [
+                [2, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        else:
+            choices = [
+                [1, 'Go to trial and present your evidence of innocence'],
+                [2, 'Go to trial and exercise right to not present your evidence of innocence']
+            ]
+        return choices
 
     def is_displayed(self):
         return self.subsession.round_number % 3 == 0
