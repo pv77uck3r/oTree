@@ -139,7 +139,7 @@ class Subsession(BaseSubsession):
                     else:
                         p.participant.vars['whatround'] = p.participant.vars['allpossibleinfo'].index([p.participant.vars['innocencelevel'].item(), p.participant.vars['guiltlevel'].item(), 1.2]) + 1
                 else:
-                    p.participant.vars['whatround'] = -1
+                    p.participant.vars['whatround'] = 1
 
 class Group(BaseGroup):
     pass

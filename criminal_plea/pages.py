@@ -63,7 +63,7 @@ class Plea_Decisions(Page):
                         return ['plea_decision6']
 
     def plea_decision2_choices(self):
-        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 1:
             choices = [
                 [1, 'Accept plea'],
                 [3, 'Go to trial and exercise right to not present your evidence of innocence']
@@ -77,7 +77,7 @@ class Plea_Decisions(Page):
         return choices
 
     def plea_decision3_choices(self):
-        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 1:
             choices = [
                 [1, 'Accept plea'],
                 [3, 'Go to trial and exercise right to not present your evidence of innocence']
@@ -91,7 +91,7 @@ class Plea_Decisions(Page):
         return choices
 
     def plea_decision4_choices(self):
-        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 1:
             choices = [
                 [1, 'Accept plea'],
                 [3, 'Go to trial and exercise right to not present your evidence of innocence']
@@ -105,7 +105,7 @@ class Plea_Decisions(Page):
         return choices
 
     def plea_decision5_choices(self):
-        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 1:
             choices = [
                 [1, 'Accept plea'],
                 [3, 'Go to trial and exercise right to not present your evidence of innocence']
@@ -119,7 +119,7 @@ class Plea_Decisions(Page):
         return choices
 
     def plea_decision6_choices(self):
-        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 1:
             choices = [
                 [1, 'Accept plea'],
                 [3, 'Go to trial and exercise right to not present your evidence of innocence']
@@ -172,7 +172,6 @@ class Plea_Decisions(Page):
                 'crimelevel': crimelevel}
 
     def before_next_page(self):
-        if self.participant.vars['proschoice'] == 3:
             self.player.set_payoff()
 
 
@@ -183,7 +182,7 @@ class Trial_Decisions(Page):
                    'trial_decision6']
 
     def trial_decision1_choices(self):
-        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 1:
             choices = [
                 [2, 'Go to trial and exercise right to not present your evidence of innocence']
             ]
@@ -195,7 +194,7 @@ class Trial_Decisions(Page):
         return choices
 
     def trial_decision2_choices(self):
-        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 1:
             choices = [
                 [2, 'Go to trial and exercise right to not present your evidence of innocence']
             ]
@@ -207,7 +206,7 @@ class Trial_Decisions(Page):
         return choices
 
     def trial_decision3_choices(self):
-        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 1:
             choices = [
                 [2, 'Go to trial and exercise right to not present your evidence of innocence']
             ]
@@ -219,7 +218,7 @@ class Trial_Decisions(Page):
         return choices
 
     def trial_decision4_choices(self):
-        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 1:
             choices = [
                 [2, 'Go to trial and exercise right to not present your evidence of innocence']
             ]
@@ -231,7 +230,7 @@ class Trial_Decisions(Page):
         return choices
 
     def trial_decision5_choices(self):
-        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 1:
             choices = [
                 [2, 'Go to trial and exercise right to not present your evidence of innocence']
             ]
@@ -243,7 +242,7 @@ class Trial_Decisions(Page):
         return choices
 
     def trial_decision6_choices(self):
-        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 0:
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 1:
             choices = [
                 [2, 'Go to trial and exercise right to not present your evidence of innocence']
             ]
@@ -298,7 +297,6 @@ class Trial_Decisions(Page):
                 }
 
     def before_next_page(self):
-        if self.participant.vars['proschoice'] == 2:
             self.player.set_payoff()
 
 
@@ -368,7 +366,7 @@ class Results(Page):
                 'ending_guilt': self.participant.vars['ending_guilt'],
                 'ending_trial_status': self.participant.vars['ending_trial_status'],
                 'amountstolen': self.participant.vars['amountstolen'],
-                'beginning_innocence': beginning_innocence,
+                'beginning_innocence_tf': beginning_innocence,
                 'beginning_crime': crime_time,
                 'beginning_innocence': innocence_time,
                 'beginning_guilt': guilt_time
