@@ -184,11 +184,52 @@ class Results(Page):
                 trial = 'Jury Trial'
             else:
                 trial = 'NONE'
+        if self.participant.vars['trulyinnocent'] == True:
+            beginning_innocence = 'truly innocent'
+        else:
+            beginning_innocence = 'truly guilty'
+        if self.participant.vars['crimelevel'] == 0:
+            crime_time = 'NO CRIME'
+        else:
+            if self.participant.vars['crimelevel'] == 1:
+                crime_time = 'SMALL'
+            else:
+                if self.participant.vars['crimelevel'] == 2:
+                    crime_time = 'MEDIUM'
+                else:
+                    crime_time = 'LARGE'
+        if self.participant.vars['innocencelevel'] == 0:
+            innocence_time = 'NO'
+        else:
+            if self.participant.vars['innocencelevel'] == 1:
+                innocence_time = 'WEAK'
+            else:
+                if self.participant.vars['innocencelevel'] == 2:
+                    innocence_time = 'MEDIUM'
+                else:
+                    innocence_time = 'STRONG'
+        if self.participant.vars['guiltlevel'] == 0:
+            guilt_time = 'NO'
+        else:
+            if self.participant.vars['guiltlevel'] == 1:
+                guilt_time = 'WEAK'
+            else:
+                if self.participant.vars['guiltlevel'] == 2:
+                    guilt_time = 'MEDIUM'
+                else:
+                    guilt_time = 'STRONG'
+
         return {'crimelevel': crime,
                 'punishment': self.participant.vars['ending_punishment'],
                 'trialornot': trial,
                 'ending_guilt': self.participant.vars['ending_guilt'],
-                'ending_trial_status': self.participant.vars['ending_trial_status']}
+                'ending_trial_status': self.participant.vars['ending_trial_status'],
+                'amountstolen': self.participant.vars['amountstolen'],
+                'beginning_innocence': beginning_innocence,
+                'beginning_crime': crime_time,
+                'beginning_innocence': innocence_time,
+                'beginning_guilt': guilt_time
+                }
 
 
 page_sequence = [

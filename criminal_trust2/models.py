@@ -590,6 +590,8 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
+    Final_Payoff = models.FloatField()
+
     investor_quiz1 = models.IntegerField(
         choices=[
             [1, '(a) You each start with 5.'],
@@ -673,3 +675,4 @@ class Player(BasePlayer):
 
     def set_big_payoff(self):
         self.participant.vars['bigpayoff'] = self.participant.vars['payoffmodule1'] + self.participant.vars['payoffmodule2'] + self.participant.vars['payoffmodule3'] + self.participant.vars['payoffmodule4']
+        self.Final_Payoff = self.participant.vars['bigpayoff']

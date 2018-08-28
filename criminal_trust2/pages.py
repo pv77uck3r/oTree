@@ -101,13 +101,21 @@ class GenTrustGame2Payoffs(WaitPage):
 
 
 class Results(Page):
-    pass
+
+    def vars_for_template(self):
+        return {'payoff1': format(self.participant.vars['payoffmodule1'], '.2f'),
+                'payoff2': format(self.participant.vars['payoffmodule2'], '.2f'),
+                'payoff3': format(self.participant.vars['payoffmodule3'], '.2f'),
+                'payoff4': format(self.participant.vars['payoffmodule4'], '.2f'),
+                'finalpayoff': format(self.participant.vars['bigpayoff'], '.2f')
+        }
 
 
 page_sequence = [
     SetGroups1,
     GenTrustGame1Payoffs,
     SetGroups2,
+    Instructions,
     DecisionsI,
     DecisionsT,
     GenTrustGame2Payoffs,
