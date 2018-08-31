@@ -587,8 +587,44 @@ class Group(BaseGroup):
         p1.set_big_payoff()
         p2.set_big_payoff()
 
+    def keep_decisions(self):
+        p1 = self.get_player_by_id(1)
+        p2 = self.get_player_by_id(2)
+        p1.investor_decision1 = self.investor_decision1
+        p1.investor_decision2 = self.investor_decision2
+        p1.investor_decision3 = self.investor_decision3
+        p1.investor_decision4 = self.investor_decision4
+        p1.investor_decision5 = self.investor_decision5
+
+        p2.trustee_decision1 = self.trustee_decision1
+        p2.trustee_decision2 = self.trustee_decision2
+        p2.trustee_decision3 = self.trustee_decision3
+        p2.trustee_decision4 = self.trustee_decision4
+        p2.trustee_decision5 = self.trustee_decision5
+        p2.trustee_decision6 = self.trustee_decision6
+        p2.trustee_decision7 = self.trustee_decision7
+        p2.trustee_decision8 = self.trustee_decision8
+        p2.trustee_decision9 = self.trustee_decision9
+        p2.trustee_decision10 = self.trustee_decision10
 
 class Player(BasePlayer):
+
+    investor_decision1 = models.IntegerField()
+    investor_decision2 = models.IntegerField()
+    investor_decision3 = models.IntegerField()
+    investor_decision4 = models.IntegerField()
+    investor_decision5 = models.IntegerField()
+
+    trustee_decision1 = models.IntegerField()
+    trustee_decision2 = models.IntegerField()
+    trustee_decision3 = models.IntegerField()
+    trustee_decision4 = models.IntegerField()
+    trustee_decision5 = models.IntegerField()
+    trustee_decision6 = models.IntegerField()
+    trustee_decision7 = models.IntegerField()
+    trustee_decision8 = models.IntegerField()
+    trustee_decision9 = models.IntegerField()
+    trustee_decision10 = models.IntegerField()
 
     Final_Payoff = models.FloatField()
 

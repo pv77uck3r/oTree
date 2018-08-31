@@ -248,7 +248,7 @@ class Player(BasePlayer):
 
     ending_guilt_level = models.IntegerField()
 
-    ending_punishment = models.FloatField()
+    ending_punishment = models.CurrencyField()
 
     ending_trial_status = models.BooleanField()
 
@@ -259,6 +259,8 @@ class Player(BasePlayer):
     guilt_level = models.IntegerField()
 
     plea_punishment = models.FloatField()
+
+    no_plea_punishment = models.FloatField()
 
     crime_level = models.IntegerField()
 
@@ -286,6 +288,7 @@ class Player(BasePlayer):
         self.crime_level = self.participant.vars['crimelevel']
         self.pros_choice = self.participant.vars['proschoice']
         self.plea_punishment = self.participant.vars['pleapunishment']
+        self.no_plea_punishment = self.participant.vars['nopleapun']
         self.plea_threat = self.participant.vars['pleathreat']
         self.innocence_level_this_round = self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0]
         self.guilt_level_this_round = self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][1]
@@ -479,6 +482,7 @@ class Player(BasePlayer):
                 self.ending_trial_status = True
                 if self.participant.vars['nopleapun'] == 0:
                     self.participant.vars['relevantdecision'] = self.trial_decision1
+                    self.relevant_decision = self.participant.vars['relevantdecision']
                     trialcrime = 1
                     if self.participant.vars['relevantdecision'] == 1:
                         trialdefevid = self.participant.vars['innocencelevel'].item()
@@ -487,6 +491,7 @@ class Player(BasePlayer):
                     trialprosevid = self.participant.vars['nopleaevidence']
                 if self.participant.vars['nopleapun'] == 1:
                     self.participant.vars['relevantdecision'] = self.trial_decision2
+                    self.relevant_decision = self.participant.vars['relevantdecision']
                     trialcrime = 1
                     if self.participant.vars['relevantdecision'] == 1:
                         trialdefevid = self.participant.vars['innocencelevel'].item()
@@ -495,6 +500,7 @@ class Player(BasePlayer):
                     trialprosevid = self.participant.vars['nopleaevidence']
                 if self.participant.vars['nopleapun'] == 2:
                     self.participant.vars['relevantdecision'] = self.trial_decision3
+                    self.relevant_decision = self.participant.vars['relevantdecision']
                     trialcrime = 2
                     if self.participant.vars['relevantdecision'] == 1:
                         trialdefevid = self.participant.vars['innocencelevel'].item()
@@ -503,6 +509,7 @@ class Player(BasePlayer):
                     trialprosevid = self.participant.vars['nopleaevidence']
                 if self.participant.vars['nopleapun'] == 3:
                     self.participant.vars['relevantdecision'] = self.trial_decision4
+                    self.relevant_decision = self.participant.vars['relevantdecision']
                     trialcrime = 2
                     if self.participant.vars['relevantdecision'] == 1:
                         trialdefevid = self.participant.vars['innocencelevel'].item()
@@ -511,6 +518,7 @@ class Player(BasePlayer):
                     trialprosevid = self.participant.vars['nopleaevidence']
                 if self.participant.vars['nopleapun'] == 4:
                     self.participant.vars['relevantdecision'] = self.trial_decision5
+                    self.relevant_decision = self.participant.vars['relevantdecision']
                     trialcrime = 3
                     if self.participant.vars['relevantdecision'] == 1:
                         trialdefevid = self.participant.vars['innocencelevel'].item()
@@ -519,6 +527,7 @@ class Player(BasePlayer):
                     trialprosevid = self.participant.vars['nopleaevidence']
                 if self.participant.vars['nopleapun'] == 5:
                     self.participant.vars['relevantdecision'] = self.trial_decision6
+                    self.relevant_decision = self.participant.vars['relevantdecision']
                     trialcrime = 3
                     if self.participant.vars['relevantdecision'] == 1:
                         trialdefevid = self.participant.vars['innocencelevel'].item()
@@ -568,7 +577,7 @@ class Player(BasePlayer):
 
         # WE MUST ALSO CONSIDER THE CASE WHERE THE PROSECUTOR OR DOESNT HAS NO EVIDENCE
 
-        if self.participant.vars['guiltlevel'].item() == 0:
+        if self.participant.vars['guiltlevel'].item() == 1:
             self.ending_trial_status = False
             self.participant.vars['ending_trial_status'] = self.ending_trial_status
             self.ending_guilt = False
@@ -578,6 +587,7 @@ class Player(BasePlayer):
             self.participant.vars['ending_guilt_level'] = self.ending_guilt_level
             self.ending_punishment = 0
             self.participant.vars['ending_punishment'] = self.ending_punishment
+            self.participant.vars['relevantdecision'] = None
             self.relevant_decision = self.participant.vars['relevantdecision']
             self.participant.vars['payoffmodule3'] = self.ending_punishment
 

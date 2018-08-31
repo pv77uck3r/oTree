@@ -329,43 +329,43 @@ class Results(Page):
             beginning_innocence = 'truly innocent'
         else:
             beginning_innocence = 'truly guilty'
-        if self.participant.vars['crimelevel'] == 0:
+        if self.participant.vars['crimelevel'] == 1:
             crime_time = 'NO CRIME'
         else:
-            if self.participant.vars['crimelevel'] == 1:
+            if self.participant.vars['crimelevel'] == 2:
                 crime_time = 'SMALL'
             else:
-                if self.participant.vars['crimelevel'] == 2:
+                if self.participant.vars['crimelevel'] == 3:
                     crime_time = 'MEDIUM'
                 else:
                     crime_time = 'LARGE'
-        if self.participant.vars['innocencelevel'] == 0:
+        if self.participant.vars['innocencelevel'] == 1:
             innocence_time = 'NO'
         else:
-            if self.participant.vars['innocencelevel'] == 1:
+            if self.participant.vars['innocencelevel'] == 2:
                 innocence_time = 'WEAK'
             else:
-                if self.participant.vars['innocencelevel'] == 2:
+                if self.participant.vars['innocencelevel'] == 3:
                     innocence_time = 'MEDIUM'
                 else:
                     innocence_time = 'STRONG'
-        if self.participant.vars['guiltlevel'] == 0:
+        if self.participant.vars['guiltlevel'] == 1:
             guilt_time = 'NO'
         else:
-            if self.participant.vars['guiltlevel'] == 1:
+            if self.participant.vars['guiltlevel'] == 2:
                 guilt_time = 'WEAK'
             else:
-                if self.participant.vars['guiltlevel'] == 2:
+                if self.participant.vars['guiltlevel'] == 3:
                     guilt_time = 'MEDIUM'
                 else:
                     guilt_time = 'STRONG'
 
         return {'crimelevel': crime,
-                'punishment': self.participant.vars['ending_punishment'],
+                'punishment': format(self.participant.vars['ending_punishment'], '.2f'),
                 'trialornot': trial,
                 'ending_guilt': self.participant.vars['ending_guilt'],
                 'ending_trial_status': self.participant.vars['ending_trial_status'],
-                'amountstolen': self.participant.vars['amountstolen'],
+                'amountstolen': format(self.participant.vars['amountstolen'], '.2f'),
                 'beginning_innocence_tf': beginning_innocence,
                 'beginning_crime': crime_time,
                 'beginning_innocence': innocence_time,

@@ -84,6 +84,7 @@ class SetGroups1(WaitPage):
 
 
 class GenTrustGame1Payoffs(WaitPage):
+
     def after_all_players_arrive(self):
         self.group.set_payoffs_1()
 
@@ -93,6 +94,11 @@ class SetGroups2(WaitPage):
 
     def after_all_players_arrive(self):
         self.subsession.set_groups_2()
+
+
+class KeepDecisions(WaitPage):
+    def after_all_players_arrive(self):
+        self.group.keep_decisions()
 
 
 class GenTrustGame2Payoffs(WaitPage):
@@ -108,7 +114,7 @@ class Results(Page):
                 'payoff3': format(self.participant.vars['payoffmodule3'], '.2f'),
                 'payoff4': format(self.participant.vars['payoffmodule4'], '.2f'),
                 'finalpayoff': format(self.participant.vars['bigpayoff'], '.2f')
-        }
+                }
 
 
 page_sequence = [
@@ -118,6 +124,7 @@ page_sequence = [
     Instructions,
     DecisionsI,
     DecisionsT,
+    KeepDecisions,
     GenTrustGame2Payoffs,
     Results
 ]

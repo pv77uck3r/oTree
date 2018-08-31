@@ -128,24 +128,26 @@ class Group(BaseGroup):
                                                   "between 0 and 30)")
 
     def keep_decisions(self):
-        for p in self.get_players():
-            if p.role == 'Investor':
-                p.participant.vars['investor_decision1'] = self.investor_decision1
-                p.participant.vars['investor_decision2'] = self.investor_decision2
-                p.participant.vars['investor_decision3'] = self.investor_decision3
-                p.participant.vars['investor_decision4'] = self.investor_decision4
-                p.participant.vars['investor_decision5'] = self.investor_decision5
-            if p.role == 'Trustee':
-                p.participant.vars['trustee_decision1'] = self.trustee_decision1
-                p.participant.vars['trustee_decision2'] = self.trustee_decision2
-                p.participant.vars['trustee_decision3'] = self.trustee_decision3
-                p.participant.vars['trustee_decision4'] = self.trustee_decision4
-                p.participant.vars['trustee_decision5'] = self.trustee_decision5
-                p.participant.vars['trustee_decision6'] = self.trustee_decision6
-                p.participant.vars['trustee_decision7'] = self.trustee_decision7
-                p.participant.vars['trustee_decision8'] = self.trustee_decision8
-                p.participant.vars['trustee_decision9'] = self.trustee_decision9
-                p.participant.vars['trustee_decision10'] = self.trustee_decision10
+        p1 = self.get_player_by_id(1)
+        p2 = self.get_player_by_id(2)
+        p1.participant.vars['investor_decision1'] = self.investor_decision1
+        p1.participant.vars['investor_decision2'] = self.investor_decision2
+        p1.participant.vars['investor_decision3'] = self.investor_decision3
+        p1.participant.vars['investor_decision4'] = self.investor_decision4
+        p1.participant.vars['investor_decision5'] = self.investor_decision5
+        p1.participant.vars['initial_role'] = p1.role
+
+        p2.participant.vars['trustee_decision1'] = self.trustee_decision1
+        p2.participant.vars['trustee_decision2'] = self.trustee_decision2
+        p2.participant.vars['trustee_decision3'] = self.trustee_decision3
+        p2.participant.vars['trustee_decision4'] = self.trustee_decision4
+        p2.participant.vars['trustee_decision5'] = self.trustee_decision5
+        p2.participant.vars['trustee_decision6'] = self.trustee_decision6
+        p2.participant.vars['trustee_decision7'] = self.trustee_decision7
+        p2.participant.vars['trustee_decision8'] = self.trustee_decision8
+        p2.participant.vars['trustee_decision9'] = self.trustee_decision9
+        p2.participant.vars['trustee_decision10'] = self.trustee_decision10
+        p2.participant.vars['initial_role'] = p2.role
 
 
 class Player(BasePlayer):
