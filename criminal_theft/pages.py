@@ -107,7 +107,6 @@ page_sequence = [
     Instructions,
     Quiz,
     Decisions,
-    WaitForEveryone,
     SetPayoffs1,
     SetPayoffs2,
     SetPayoffs3,

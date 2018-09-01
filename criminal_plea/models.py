@@ -543,28 +543,28 @@ class Player(BasePlayer):
                     self.relevant_decision = self.participant.vars['relevantdecision']
                 else:
                     self.ending_guilt = True
+                    if self.participant.vars['nopleapun'] == 0:
+                        self.payoff = -c(np.random.choice([.1, .2, .3]))
+                        self.ending_punishment = self.payoff
+                        self.ending_guilt_level = 1
                     if self.participant.vars['nopleapun'] == 1:
-                        self.payoff = -np.random.choice([.1, .2, .3])
+                        self.payoff = -c(np.random.choice([.4, .5, .6]))
                         self.ending_punishment = self.payoff
                         self.ending_guilt_level = 1
                     if self.participant.vars['nopleapun'] == 2:
-                        self.payoff = -np.random.choice([.4, .5, .6])
+                        self.payoff = -c(np.random.choice([.6, .7, .8]))
                         self.ending_punishment = self.payoff
-                        self.ending_guilt_level = 1
+                        self.ending_guilt_level = 2
                     if self.participant.vars['nopleapun'] == 3:
-                        self.payoff = -np.random.choice([.6, .7, .8])
+                        self.payoff = -c(np.random.choice([.9, 1, 1.1]))
                         self.ending_punishment = self.payoff
                         self.ending_guilt_level = 2
                     if self.participant.vars['nopleapun'] == 4:
-                        self.payoff = -np.random.choice([.9, 1, 1.1])
-                        self.ending_punishment = self.payoff
-                        self.ending_guilt_level = 2
-                    if self.participant.vars['nopleapun'] == 5:
-                        self.payoff = -np.random.choice([1.1, 1.2, 1.3])
+                        self.payoff = -c(np.random.choice([1.1, 1.2, 1.3]))
                         self.ending_punishment = self.payoff
                         self.ending_guilt_level = 3
-                    if self.participant.vars['nopleapun'] == 6:
-                        self.payoff = -np.random.choice([1.4, 1.5, 1.6])
+                    if self.participant.vars['nopleapun'] == 5:
+                        self.payoff = -c(np.random.choice([1.4, 1.5, 1.6]))
                         self.ending_punishment = self.payoff
                         self.ending_guilt_level = 3
             if self.participant.vars['proschoice'] == 1:
