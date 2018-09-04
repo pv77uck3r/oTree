@@ -78,52 +78,52 @@ class Group(BaseGroup):
 
     #################TRUSTEE DECISIONS#######################
     trustee_decision1 = models.IntegerField(min=0, max=3,
-                                            label="If your counterpart sends you 1 quarter (tripled into 3 quarters),"
+                                            label="If your counterpart sends you 1 quarter (tripled into 3 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 3)")
 
     trustee_decision2 = models.IntegerField(min=0, max=6,
-                                            label="If your counterpart sends you 2 quarter (tripled into 6 quarters),"
+                                            label="If your counterpart sends you 2 quarters (tripled into 6 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 6)")
 
     trustee_decision3 = models.IntegerField(min=0, max=9,
-                                            label="If your counterpart sends you 3 quarter (tripled into 9 quarters),"
+                                            label="If your counterpart sends you 3 quarters (tripled into 9 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 9)")
 
     trustee_decision4 = models.IntegerField(min=0, max=12,
-                                            label="If your counterpart sends you 4 quarter (tripled into 12 quarters),"
+                                            label="If your counterpart sends you 4 quarters (tripled into 12 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 12)")
 
     trustee_decision5 = models.IntegerField(min=0, max=15,
-                                            label="If your counterpart sends you 5 quarter (tripled into 15 quarters),"
+                                            label="If your counterpart sends you 5 quarters (tripled into 15 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 15)")
 
     trustee_decision6 = models.IntegerField(min=0, max=18,
-                                            label="If your counterpart sends you 6 quarter (tripled into 18 quarters),"
+                                            label="If your counterpart sends you 6 quarters (tripled into 18 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 18)")
 
     trustee_decision7 = models.IntegerField(min=0, max=21,
-                                            label="If your counterpart sends you 7 quarter (tripled into 21 quarters),"
+                                            label="If your counterpart sends you 7 quarters (tripled into 21 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 21)")
 
     trustee_decision8 = models.IntegerField(min=0, max=24,
-                                            label="If your counterpart sends you 8 quarter (tripled into 24 quarters),"
+                                            label="If your counterpart sends you 8 quarters (tripled into 24 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 24)")
 
     trustee_decision9 = models.IntegerField(min=0, max=27,
-                                            label="If your counterpart sends you 9 quarter (tripled into 27 quarters),"
+                                            label="If your counterpart sends you 9 quarters (tripled into 27 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 27)")
 
     trustee_decision10 = models.IntegerField(min=0, max=30,
-                                            label="If your counterpart sends you 10 quarter (tripled into 30 quarters),"
+                                            label="If your counterpart sends you 10 quarters (tripled into 30 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 30)")
 
@@ -160,7 +160,7 @@ class Player(BasePlayer):
             [4, '(d) You each start with 10.']
         ],
         widget=widgets.RadioSelect,
-        label="How many quarters do you and your counterpart start with in this part of the experiment?"
+        label="Question 1: How many quarters do you and your counterpart start with in this part of the experiment?"
     )
 
     investor_quiz2 = models.IntegerField(
@@ -170,7 +170,7 @@ class Player(BasePlayer):
             [3, '(c) They will receive 4 quarters.'],
         ],
         widget=widgets.RadioSelect,
-        label="If you send your counterpart 4 quarters "
+        label="Question 2: If you send your counterpart 4 quarters "
     )
 
     investor_quiz3 = models.IntegerField(
@@ -180,7 +180,7 @@ class Player(BasePlayer):
             [3, '(c) Will not be multiplied before reaching you.'],
         ],
         widget=widgets.RadioSelect,
-        label="Any quarters your counterpart returns to you "
+        label="Question 3: Any quarters your counterpart returns to you "
     )
 
     investor_quiz4 = models.IntegerField(
@@ -193,7 +193,7 @@ class Player(BasePlayer):
                 'penalty from their guilty finding.'],
         ],
         widget=widgets.RadioSelect,
-        label="Which of the following is true "
+        label="Question 4: Which of the following is true "
     )
 
     trustee_quiz1 = models.IntegerField(
@@ -204,7 +204,7 @@ class Player(BasePlayer):
             [4, '(d) You each start with 10.']
         ],
         widget=widgets.RadioSelect,
-        label="How many quarters do you and your counterpart start with? "
+        label="Question 1: How many quarters do you and your counterpart start with? "
     )
 
     trustee_quiz2 = models.IntegerField(
@@ -214,7 +214,7 @@ class Player(BasePlayer):
             [3, '(c) You will receive 4 quarters.']
         ],
         widget=widgets.RadioSelect,
-        label="If your counterpart sends you 4 quarters "
+        label="Question 2: If your counterpart sends you 4 quarters "
     )
 
     trustee_quiz3 = models.IntegerField(
@@ -224,7 +224,7 @@ class Player(BasePlayer):
             [3, '(c) Will not be multiplied before reaching them.']
         ],
         widget=widgets.RadioSelect,
-        label="Any quarters you return to your counterpart "
+        label="Question 3: Any quarters you return to your counterpart "
     )
 
     def role(self):

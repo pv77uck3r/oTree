@@ -168,7 +168,7 @@ class Plea_Decisions(Page):
         return {'innocence': innocencestring,
                 'innocenceevidence': innocenceevidencestring,
                 'guiltevidence': guiltevidencestring,
-                'punlevel': punlevel,
+                'punlevel': format(punlevel, '.2f'),
                 'crimelevel': crimelevel}
 
     def before_next_page(self):

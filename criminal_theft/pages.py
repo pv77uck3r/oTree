@@ -33,7 +33,7 @@ class Decisions(Page):
 
     def ThiefChoice_choices(self):
         choices = [
-            [1, 'Report Truthfully'],
+            [1, 'Report Accurately'],
             [2, 'Take ${0:.2f} of your counterpart\'s money.'.format(self.participant.vars['xdraws'][self.subsession.round_number - 1])],
             [3, 'Take ${0:.2f} of your counterpart\'s money.'.format(self.participant.vars['ydraws'][self.subsession.round_number - 1])],
             [4, 'Take ${0:.2f} of your counterpart\'s money.'.format(self.participant.vars['zdraws'][self.subsession.round_number - 1])],

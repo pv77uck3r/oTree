@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Decisions
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Your decision is to tell us how many of your initial 10 quarters you will send to your counterpart in this part
+        of the experiment.
+    </p>
+
+    <p>
+        {% formfield group.investor_decision4 %}
+    </p>
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block styles %}
+
+<style>
+input[type="radio"]{
+  margin: 0 10px 0 10px;
+}
+</style>
+
+{% endblock %}

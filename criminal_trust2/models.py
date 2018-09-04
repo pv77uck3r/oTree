@@ -86,52 +86,52 @@ class Group(BaseGroup):
 
     #################TRUSTEE DECISIONS#######################
     trustee_decision1 = models.IntegerField(min=0, max=3,
-                                            label="If your counterpart sends you 1 quarter (tripled into 3 quarters),"
+                                            label="If your counterpart sends you 1 quarter (tripled into 3 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 3)")
 
     trustee_decision2 = models.IntegerField(min=0, max=6,
-                                            label="If your counterpart sends you 2 quarter (tripled into 6 quarters),"
+                                            label="If your counterpart sends you 2 quarters (tripled into 6 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 6)")
 
     trustee_decision3 = models.IntegerField(min=0, max=9,
-                                            label="If your counterpart sends you 3 quarter (tripled into 9 quarters),"
+                                            label="If your counterpart sends you 3 quarters (tripled into 9 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 9)")
 
     trustee_decision4 = models.IntegerField(min=0, max=12,
-                                            label="If your counterpart sends you 4 quarter (tripled into 12 quarters),"
+                                            label="If your counterpart sends you 4 quarters (tripled into 12 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 12)")
 
     trustee_decision5 = models.IntegerField(min=0, max=15,
-                                            label="If your counterpart sends you 5 quarter (tripled into 15 quarters),"
+                                            label="If your counterpart sends you 5 quarters (tripled into 15 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 15)")
 
     trustee_decision6 = models.IntegerField(min=0, max=18,
-                                            label="If your counterpart sends you 6 quarter (tripled into 18 quarters),"
+                                            label="If your counterpart sends you 6 quarters (tripled into 18 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 18)")
 
     trustee_decision7 = models.IntegerField(min=0, max=21,
-                                            label="If your counterpart sends you 7 quarter (tripled into 21 quarters),"
+                                            label="If your counterpart sends you 7 quarters (tripled into 21 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 21)")
 
     trustee_decision8 = models.IntegerField(min=0, max=24,
-                                            label="If your counterpart sends you 8 quarter (tripled into 24 quarters),"
+                                            label="If your counterpart sends you 8 quarters (tripled into 24 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 24)")
 
     trustee_decision9 = models.IntegerField(min=0, max=27,
-                                            label="If your counterpart sends you 9 quarter (tripled into 27 quarters),"
+                                            label="If your counterpart sends you 9 quarters (tripled into 27 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 27)")
 
     trustee_decision10 = models.IntegerField(min=0, max=30,
-                                            label="If your counterpart sends you 10 quarter (tripled into 30 quarters),"
+                                            label="If your counterpart sends you 10 quarters (tripled into 30 quarters), "
                                                   "how many quarters will you send back to them? (Enter a number "
                                                   "between 0 and 30)")
 
@@ -140,452 +140,457 @@ class Group(BaseGroup):
         p2 = self.get_player_by_id(2)
         if not (p2.participant.vars['proschoice'] == 2 or p2.participant.vars['proschoice'] == 3):
             if p1.participant.vars['investor_decision1'] == 0:
-                p1.participant.vars['payoffmodule1'] = 10
-                p2.participant.vars['payoffmodule1'] = 10
+                p1.participant.vars['payoffmodule1'] = c(10)
+                p2.participant.vars['payoffmodule1'] = c(10)
             if p1.participant.vars['investor_decision1'] == 1:
-                p1.participant.vars['payoffmodule1'] = 9 + p2.participant.vars['trustee_decision1']
-                p2.participant.vars['payoffmodule1'] = 10 + 3*p1.participant.vars['investor_decision1'] - \
-                                                       p2.participant.vars['trustee_decision1']
+                p1.participant.vars['payoffmodule1'] = c(9 + p2.participant.vars['trustee_decision1'])
+                p2.participant.vars['payoffmodule1'] = c(10 + 3*p1.participant.vars['investor_decision1'] - \
+                                                       p2.participant.vars['trustee_decision1'])
             if p1.participant.vars['investor_decision1'] == 2:
-                p1.participant.vars['payoffmodule1'] = 8 + p2.participant.vars['trustee_decision2']
-                p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision1'] - \
-                                                       p2.participant.vars['trustee_decision2']
+                p1.participant.vars['payoffmodule1'] = c(8 + p2.participant.vars['trustee_decision2'])
+                p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision1'] - \
+                                                       p2.participant.vars['trustee_decision2'])
             if p1.participant.vars['investor_decision1'] == 3:
-                p1.participant.vars['payoffmodule1'] = 7 + p2.participant.vars['trustee_decision3']
-                p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision1'] - \
-                                                       p2.participant.vars['trustee_decision3']
+                p1.participant.vars['payoffmodule1'] = c(7 + p2.participant.vars['trustee_decision3'])
+                p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision1'] - \
+                                                       p2.participant.vars['trustee_decision3'])
             if p1.participant.vars['investor_decision1'] == 4:
-                p1.participant.vars['payoffmodule1'] = 6 + p2.participant.vars['trustee_decision4']
-                p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision1'] - \
-                                                       p2.participant.vars['trustee_decision4']
+                p1.participant.vars['payoffmodule1'] = c(6 + p2.participant.vars['trustee_decision4'])
+                p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision1'] - \
+                                                       p2.participant.vars['trustee_decision4'])
             if p1.participant.vars['investor_decision1'] == 5:
-                p1.participant.vars['payoffmodule1'] = 5 + p2.participant.vars['trustee_decision5']
-                p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision1'] - \
-                                                       p2.participant.vars['trustee_decision5']
+                p1.participant.vars['payoffmodule1'] = c(5 + p2.participant.vars['trustee_decision5'])
+                p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision1'] - \
+                                                       p2.participant.vars['trustee_decision5'])
             if p1.participant.vars['investor_decision1'] == 6:
-                p1.participant.vars['payoffmodule1'] = 4 + p2.participant.vars['trustee_decision6']
-                p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision1'] - \
-                                                       p2.participant.vars['trustee_decision6']
+                p1.participant.vars['payoffmodule1'] = c(4 + p2.participant.vars['trustee_decision6'])
+                p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision1'] - \
+                                                       p2.participant.vars['trustee_decision6'])
             if p1.participant.vars['investor_decision1'] == 7:
-                p1.participant.vars['payoffmodule1'] = 3 + p2.participant.vars['trustee_decision7']
-                p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision1'] - \
-                                                       p2.participant.vars['trustee_decision7']
+                p1.participant.vars['payoffmodule1'] = c(3 + p2.participant.vars['trustee_decision7'])
+                p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision1'] - \
+                                                       p2.participant.vars['trustee_decision7'])
             if p1.participant.vars['investor_decision1'] == 8:
-                p1.participant.vars['payoffmodule1'] = 2 + p2.participant.vars['trustee_decision8']
-                p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision1'] - \
-                                                       p2.participant.vars['trustee_decision8']
+                p1.participant.vars['payoffmodule1'] = c(2 + p2.participant.vars['trustee_decision8'])
+                p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision1'] - \
+                                                       p2.participant.vars['trustee_decision8'])
             if p1.participant.vars['investor_decision1'] == 9:
-                p1.participant.vars['payoffmodule1'] = 1 + p2.participant.vars['trustee_decision9']
-                p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision1'] - \
-                                                       p2.participant.vars['trustee_decision9']
+                p1.participant.vars['payoffmodule1'] = c(1 + p2.participant.vars['trustee_decision9'])
+                p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision1'] - \
+                                                       p2.participant.vars['trustee_decision9'])
             if p1.participant.vars['investor_decision1'] == 10:
-                p1.participant.vars['payoffmodule1'] = p2.participant.vars['trustee_decision10']
-                p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision1'] - \
-                                                       p2.participant.vars['trustee_decision10']
+                p1.participant.vars['payoffmodule1'] = c(p2.participant.vars['trustee_decision10'])
+                p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision1'] - \
+                                                       p2.participant.vars['trustee_decision10'])
         if p2.participant.vars['proschoice'] == 2 or p2.participant.vars['proschoice'] == 3:
             if p2.participant.vars['ending_guilt_level'] == 0:
                 if p1.participant.vars['investor_decision2'] == 0:
-                    p1.participant.vars['payoffmodule1'] = 10
-                    p2.participant.vars['payoffmodule1'] = 10
+                    p1.participant.vars['payoffmodule1'] = c(10)
+                    p2.participant.vars['payoffmodule1'] = c(10)
                 if p1.participant.vars['investor_decision2'] == 1:
-                    p1.participant.vars['payoffmodule1'] = 9 + p2.participant.vars['trustee_decision1']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision2'] - \
-                                                           p2.participant.vars['trustee_decision1']
+                    p1.participant.vars['payoffmodule1'] = c(9 + p2.participant.vars['trustee_decision1'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision2'] - \
+                                                           p2.participant.vars['trustee_decision1'])
                 if p1.participant.vars['investor_decision2'] == 2:
-                    p1.participant.vars['payoffmodule1'] = 8 + p2.participant.vars['trustee_decision2']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision2'] - \
-                                                           p2.participant.vars['trustee_decision2']
+                    p1.participant.vars['payoffmodule1'] = c(8 + p2.participant.vars['trustee_decision2'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision2'] - \
+                                                           p2.participant.vars['trustee_decision2'])
                 if p1.participant.vars['investor_decision2'] == 3:
-                    p1.participant.vars['payoffmodule1'] = 7 + p2.participant.vars['trustee_decision3']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision2'] - \
-                                                           p2.participant.vars['trustee_decision3']
+                    p1.participant.vars['payoffmodule1'] = c(7 + p2.participant.vars['trustee_decision3'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision2'] - \
+                                                           p2.participant.vars['trustee_decision3'])
                 if p1.participant.vars['investor_decision2'] == 4:
-                    p1.participant.vars['payoffmodule1'] = 6 + p2.participant.vars['trustee_decision4']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision2'] - \
-                                                           p2.participant.vars['trustee_decision4']
+                    p1.participant.vars['payoffmodule1'] = c(6 + p2.participant.vars['trustee_decision4'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision2'] - \
+                                                           p2.participant.vars['trustee_decision4'])
                 if p1.participant.vars['investor_decision2'] == 5:
-                    p1.participant.vars['payoffmodule1'] = 5 + p2.participant.vars['trustee_decision5']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision2'] - \
-                                                           p2.participant.vars['trustee_decision5']
+                    p1.participant.vars['payoffmodule1'] = c(5 + p2.participant.vars['trustee_decision5'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision2'] - \
+                                                           p2.participant.vars['trustee_decision5'])
                 if p1.participant.vars['investor_decision2'] == 6:
-                    p1.participant.vars['payoffmodule1'] = 4 + p2.participant.vars['trustee_decision6']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision2'] - \
-                                                           p2.participant.vars['trustee_decision6']
+                    p1.participant.vars['payoffmodule1'] = c(4 + p2.participant.vars['trustee_decision6'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision2'] - \
+                                                           p2.participant.vars['trustee_decision6'])
                 if p1.participant.vars['investor_decision2'] == 7:
-                    p1.participant.vars['payoffmodule1'] = 3 + p2.participant.vars['trustee_decision7']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision2'] - \
-                                                           p2.participant.vars['trustee_decision7']
+                    p1.participant.vars['payoffmodule1'] = c(3 + p2.participant.vars['trustee_decision7'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision2'] - \
+                                                           p2.participant.vars['trustee_decision7'])
                 if p1.participant.vars['investor_decision2'] == 8:
-                    p1.participant.vars['payoffmodule1'] = 2 + p2.participant.vars['trustee_decision8']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision2'] - \
-                                                           p2.participant.vars['trustee_decision8']
+                    p1.participant.vars['payoffmodule1'] = c(2 + p2.participant.vars['trustee_decision8'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision2'] - \
+                                                           p2.participant.vars['trustee_decision8'])
                 if p1.participant.vars['investor_decision2'] == 9:
-                    p1.participant.vars['payoffmodule1'] = 1 + p2.participant.vars['trustee_decision9']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision2'] - \
-                                                           p2.participant.vars['trustee_decision9']
+                    p1.participant.vars['payoffmodule1'] = c(1 + p2.participant.vars['trustee_decision9'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision2'] - \
+                                                           p2.participant.vars['trustee_decision9'])
                 if p1.participant.vars['investor_decision2'] == 10:
-                    p1.participant.vars['payoffmodule1'] = p2.participant.vars['trustee_decision10']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision2'] - \
-                                                           p2.participant.vars['trustee_decision10']
+                    p1.participant.vars['payoffmodule1'] = c(p2.participant.vars['trustee_decision10'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision2'] - \
+                                                           p2.participant.vars['trustee_decision10'])
             if p2.participant.vars['ending_guilt_level'] == 1:
                 if p1.participant.vars['investor_decision3'] == 0:
-                    p1.participant.vars['payoffmodule1'] = 10
-                    p2.participant.vars['payoffmodule1'] = 10
+                    p1.participant.vars['payoffmodule1'] = c(10)
+                    p2.participant.vars['payoffmodule1'] = c(10)
                 if p1.participant.vars['investor_decision3'] == 1:
-                    p1.participant.vars['payoffmodule1'] = 9 + p2.participant.vars['trustee_decision1']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision3'] - \
-                                                           p2.participant.vars['trustee_decision1']
+                    p1.participant.vars['payoffmodule1'] = c(9 + p2.participant.vars['trustee_decision1'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision3'] - \
+                                                           p2.participant.vars['trustee_decision1'])
                 if p1.participant.vars['investor_decision3'] == 2:
-                    p1.participant.vars['payoffmodule1'] = 8 + p2.participant.vars['trustee_decision2']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision3'] - \
-                                                           p2.participant.vars['trustee_decision2']
+                    p1.participant.vars['payoffmodule1'] = c(8 + p2.participant.vars['trustee_decision2'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision3'] - \
+                                                           p2.participant.vars['trustee_decision2'])
                 if p1.participant.vars['investor_decision3'] == 3:
-                    p1.participant.vars['payoffmodule1'] = 7 + p2.participant.vars['trustee_decision3']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision3'] - \
-                                                           p2.participant.vars['trustee_decision3']
+                    p1.participant.vars['payoffmodule1'] = c(7 + p2.participant.vars['trustee_decision3'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision3'] - \
+                                                           p2.participant.vars['trustee_decision3'])
                 if p1.participant.vars['investor_decision3'] == 4:
-                    p1.participant.vars['payoffmodule1'] = 6 + p2.participant.vars['trustee_decision4']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision3'] - \
-                                                           p2.participant.vars['trustee_decision4']
+                    p1.participant.vars['payoffmodule1'] = c(6 + p2.participant.vars['trustee_decision4'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision3'] - \
+                                                           p2.participant.vars['trustee_decision4'])
                 if p1.participant.vars['investor_decision3'] == 5:
-                    p1.participant.vars['payoffmodule1'] = 5 + p2.participant.vars['trustee_decision5']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision3'] - \
-                                                           p2.participant.vars['trustee_decision5']
+                    p1.participant.vars['payoffmodule1'] = c(5 + p2.participant.vars['trustee_decision5'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision3'] - \
+                                                           p2.participant.vars['trustee_decision5'])
                 if p1.participant.vars['investor_decision3'] == 6:
-                    p1.participant.vars['payoffmodule1'] = 4 + p2.participant.vars['trustee_decision6']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision3'] - \
-                                                           p2.participant.vars['trustee_decision6']
+                    p1.participant.vars['payoffmodule1'] = c(4 + p2.participant.vars['trustee_decision6'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision3'] - \
+                                                           p2.participant.vars['trustee_decision6'])
                 if p1.participant.vars['investor_decision3'] == 7:
-                    p1.participant.vars['payoffmodule1'] = 3 + p2.participant.vars['trustee_decision7']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision3'] - \
-                                                           p2.participant.vars['trustee_decision7']
+                    p1.participant.vars['payoffmodule1'] = c(3 + p2.participant.vars['trustee_decision7'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision3'] - \
+                                                           p2.participant.vars['trustee_decision7'])
                 if p1.participant.vars['investor_decision3'] == 8:
-                    p1.participant.vars['payoffmodule1'] = 2 + p2.participant.vars['trustee_decision8']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision3'] - \
-                                                           p2.participant.vars['trustee_decision8']
+                    p1.participant.vars['payoffmodule1'] = c(2 + p2.participant.vars['trustee_decision8'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision3'] - \
+                                                           p2.participant.vars['trustee_decision8'])
                 if p1.participant.vars['investor_decision3'] == 9:
-                    p1.participant.vars['payoffmodule1'] = 1 + p2.participant.vars['trustee_decision9']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision3'] - \
-                                                           p2.participant.vars['trustee_decision9']
+                    p1.participant.vars['payoffmodule1'] = c(1 + p2.participant.vars['trustee_decision9'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision3'] - \
+                                                           p2.participant.vars['trustee_decision9'])
                 if p1.participant.vars['investor_decision3'] == 10:
-                    p1.participant.vars['payoffmodule1'] = p2.participant.vars['trustee_decision10']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision3'] - \
-                                                           p2.participant.vars['trustee_decision10']
+                    p1.participant.vars['payoffmodule1'] = c(p2.participant.vars['trustee_decision10'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision3'] - \
+                                                           p2.participant.vars['trustee_decision10'])
             if p2.participant.vars['ending_guilt_level'] == 2:
                 if p1.participant.vars['investor_decision4'] == 0:
-                    p1.participant.vars['payoffmodule1'] = 10
-                    p2.participant.vars['payoffmodule1'] = 10
+                    p1.participant.vars['payoffmodule1'] = c(10)
+                    p2.participant.vars['payoffmodule1'] = c(10)
                 if p1.participant.vars['investor_decision4'] == 1:
-                    p1.participant.vars['payoffmodule1'] = 9 + p2.participant.vars['trustee_decision1']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision4'] - \
-                                                           p2.participant.vars['trustee_decision1']
+                    p1.participant.vars['payoffmodule1'] = c(9 + p2.participant.vars['trustee_decision1'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision4'] - \
+                                                           p2.participant.vars['trustee_decision1'])
                 if p1.participant.vars['investor_decision4'] == 2:
-                    p1.participant.vars['payoffmodule1'] = 8 + p2.participant.vars['trustee_decision2']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision4'] - \
-                                                           p2.participant.vars['trustee_decision2']
+                    p1.participant.vars['payoffmodule1'] = c(8 + p2.participant.vars['trustee_decision2'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision4'] - \
+                                                           p2.participant.vars['trustee_decision2'])
                 if p1.participant.vars['investor_decision4'] == 3:
-                    p1.participant.vars['payoffmodule1'] = 7 + p2.participant.vars['trustee_decision3']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision4'] - \
-                                                           p2.participant.vars['trustee_decision3']
+                    p1.participant.vars['payoffmodule1'] = c(7 + p2.participant.vars['trustee_decision3'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision4'] - \
+                                                           p2.participant.vars['trustee_decision3'])
                 if p1.participant.vars['investor_decision4'] == 4:
-                    p1.participant.vars['payoffmodule1'] = 6 + p2.participant.vars['trustee_decision4']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision4'] - \
-                                                           p2.participant.vars['trustee_decision4']
+                    p1.participant.vars['payoffmodule1'] = c(6 + p2.participant.vars['trustee_decision4'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision4'] - \
+                                                           p2.participant.vars['trustee_decision4'])
                 if p1.participant.vars['investor_decision4'] == 5:
-                    p1.participant.vars['payoffmodule1'] = 5 + p2.participant.vars['trustee_decision5']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision4'] - \
-                                                           p2.participant.vars['trustee_decision5']
+                    p1.participant.vars['payoffmodule1'] = c(5 + p2.participant.vars['trustee_decision5'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision4'] - \
+                                                           p2.participant.vars['trustee_decision5'])
                 if p1.participant.vars['investor_decision4'] == 6:
-                    p1.participant.vars['payoffmodule1'] = 4 + p2.participant.vars['trustee_decision6']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision4'] - \
-                                                           p2.participant.vars['trustee_decision6']
+                    p1.participant.vars['payoffmodule1'] = c(4 + p2.participant.vars['trustee_decision6'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision4'] - \
+                                                           p2.participant.vars['trustee_decision6'])
                 if p1.participant.vars['investor_decision4'] == 7:
-                    p1.participant.vars['payoffmodule1'] = 3 + p2.participant.vars['trustee_decision7']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision4'] - \
-                                                           p2.participant.vars['trustee_decision7']
+                    p1.participant.vars['payoffmodule1'] = c(3 + p2.participant.vars['trustee_decision7'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision4'] - \
+                                                           p2.participant.vars['trustee_decision7'])
                 if p1.participant.vars['investor_decision4'] == 8:
-                    p1.participant.vars['payoffmodule1'] = 2 + p2.participant.vars['trustee_decision8']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision4'] - \
-                                                           p2.participant.vars['trustee_decision8']
+                    p1.participant.vars['payoffmodule1'] = c(2 + p2.participant.vars['trustee_decision8'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision4'] - \
+                                                           p2.participant.vars['trustee_decision8'])
                 if p1.participant.vars['investor_decision4'] == 9:
-                    p1.participant.vars['payoffmodule1'] = 1 + p2.participant.vars['trustee_decision9']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision4'] - \
-                                                           p2.participant.vars['trustee_decision9']
+                    p1.participant.vars['payoffmodule1'] = c(1 + p2.participant.vars['trustee_decision9'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision4'] - \
+                                                           p2.participant.vars['trustee_decision9'])
                 if p1.participant.vars['investor_decision4'] == 10:
-                    p1.participant.vars['payoffmodule1'] = p2.participant.vars['trustee_decision10']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision4'] - \
-                                                           p2.participant.vars['trustee_decision10']
+                    p1.participant.vars['payoffmodule1'] = c(p2.participant.vars['trustee_decision10'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision4'] - \
+                                                           p2.participant.vars['trustee_decision10'])
             if p2.participant.vars['ending_guilt_level'] == 3:
                 if p1.participant.vars['investor_decision5'] == 0:
-                    p1.participant.vars['payoffmodule1'] = 10
-                    p2.participant.vars['payoffmodule1'] = 10
+                    p1.participant.vars['payoffmodule1'] = c(10)
+                    p2.participant.vars['payoffmodule1'] = c(10)
                 if p1.participant.vars['investor_decision5'] == 1:
-                    p1.participant.vars['payoffmodule1'] = 9 + p2.participant.vars['trustee_decision1']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision5'] - \
-                                                           p2.participant.vars['trustee_decision1']
+                    p1.participant.vars['payoffmodule1'] = c(9 + p2.participant.vars['trustee_decision1'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision5'] - \
+                                                           p2.participant.vars['trustee_decision1'])
                 if p1.participant.vars['investor_decision5'] == 2:
-                    p1.participant.vars['payoffmodule1'] = 8 + p2.participant.vars['trustee_decision2']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision5'] - \
-                                                           p2.participant.vars['trustee_decision2']
+                    p1.participant.vars['payoffmodule1'] = c(8 + p2.participant.vars['trustee_decision2'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision5'] - \
+                                                           p2.participant.vars['trustee_decision2'])
                 if p1.participant.vars['investor_decision5'] == 3:
-                    p1.participant.vars['payoffmodule1'] = 7 + p2.participant.vars['trustee_decision3']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision5'] - \
-                                                           p2.participant.vars['trustee_decision3']
+                    p1.participant.vars['payoffmodule1'] = c(7 + p2.participant.vars['trustee_decision3'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision5'] - \
+                                                           p2.participant.vars['trustee_decision3'])
                 if p1.participant.vars['investor_decision5'] == 4:
-                    p1.participant.vars['payoffmodule1'] = 6 + p2.participant.vars['trustee_decision4']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision5'] - \
-                                                           p2.participant.vars['trustee_decision4']
+                    p1.participant.vars['payoffmodule1'] = c(6 + p2.participant.vars['trustee_decision4'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision5'] - \
+                                                           p2.participant.vars['trustee_decision4'])
                 if p1.participant.vars['investor_decision5'] == 5:
-                    p1.participant.vars['payoffmodule1'] = 5 + p2.participant.vars['trustee_decision5']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision5'] - \
-                                                           p2.participant.vars['trustee_decision5']
+                    p1.participant.vars['payoffmodule1'] = c(5 + p2.participant.vars['trustee_decision5'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision5'] - \
+                                                           p2.participant.vars['trustee_decision5'])
                 if p1.participant.vars['investor_decision5'] == 6:
-                    p1.participant.vars['payoffmodule1'] = 4 + p2.participant.vars['trustee_decision6']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision5'] - \
-                                                           p2.participant.vars['trustee_decision6']
+                    p1.participant.vars['payoffmodule1'] = c(4 + p2.participant.vars['trustee_decision6'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision5'] - \
+                                                           p2.participant.vars['trustee_decision6'])
                 if p1.participant.vars['investor_decision5'] == 7:
-                    p1.participant.vars['payoffmodule1'] = 3 + p2.participant.vars['trustee_decision7']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision5'] - \
-                                                           p2.participant.vars['trustee_decision7']
+                    p1.participant.vars['payoffmodule1'] = c(3 + p2.participant.vars['trustee_decision7'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision5'] - \
+                                                           p2.participant.vars['trustee_decision7'])
                 if p1.participant.vars['investor_decision5'] == 8:
-                    p1.participant.vars['payoffmodule1'] = 2 + p2.participant.vars['trustee_decision8']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision5'] - \
-                                                           p2.participant.vars['trustee_decision8']
+                    p1.participant.vars['payoffmodule1'] = c(2 + p2.participant.vars['trustee_decision8'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision5'] - \
+                                                           p2.participant.vars['trustee_decision8'])
                 if p1.participant.vars['investor_decision5'] == 9:
-                    p1.participant.vars['payoffmodule1'] = 1 + p2.participant.vars['trustee_decision9']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision5'] - \
-                                                           p2.participant.vars['trustee_decision9']
+                    p1.participant.vars['payoffmodule1'] = c(1 + p2.participant.vars['trustee_decision9'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision5'] - \
+                                                           p2.participant.vars['trustee_decision9'])
                 if p1.participant.vars['investor_decision5'] == 10:
-                    p1.participant.vars['payoffmodule1'] = p2.participant.vars['trustee_decision10']
-                    p2.participant.vars['payoffmodule1'] = 10 + 3 * p1.participant.vars['investor_decision5'] - \
-                                                           p2.participant.vars['trustee_decision10']
+                    p1.participant.vars['payoffmodule1'] = c(p2.participant.vars['trustee_decision10'])
+                    p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision5'] - \
+                                                           p2.participant.vars['trustee_decision10'])
+        p1.payoffmodule1 = p1.participant.vars['payoffmodule1']
+        p2.payoffmodule1 = p2.participant.vars['payoffmodule1']
 
     def set_payoffs_2(self):
         p1 = self.get_player_by_id(1)
         p2 = self.get_player_by_id(2)
         if not (p2.participant.vars['proschoice'] == 2 or p2.participant.vars['proschoice'] == 3):
             if p1.investor_decision1 == 0:
-                p1.participant.vars['payoffmodule4'] = 10
-                p2.participant.vars['payoffmodule4'] = 10
+                p1.participant.vars['payoffmodule4'] = c(10)
+                p2.participant.vars['payoffmodule4'] = c(10)
             if p1.investor_decision1 == 1:
-                p1.participant.vars['payoffmodule4'] = 9 + p2.trustee_decision1
-                p2.participant.vars['payoffmodule4'] = 10 + 3*p1.investor_decision1 - \
-                                                       p2.trustee_decision1
+                p1.participant.vars['payoffmodule4'] = c(9 + p2.trustee_decision1)
+                p2.participant.vars['payoffmodule4'] = c(10 + 3*p1.investor_decision1 - \
+                                                       p2.trustee_decision1)
             if p1.investor_decision1 == 2:
-                p1.participant.vars['payoffmodule4'] = 8 + p2.trustee_decision2
-                p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision1 - \
-                                                       p2.trustee_decision2
+                p1.participant.vars['payoffmodule4'] = c(8 + p2.trustee_decision2)
+                p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision1 - \
+                                                       p2.trustee_decision2)
             if p1.investor_decision1 == 3:
-                p1.participant.vars['payoffmodule4'] = 7 + p2.trustee_decision3
-                p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision1 - \
-                                                       p2.trustee_decision3
+                p1.participant.vars['payoffmodule4'] = c(7 + p2.trustee_decision3)
+                p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision1 - \
+                                                       p2.trustee_decision3)
             if p1.investor_decision1 == 4:
-                p1.participant.vars['payoffmodule4'] = 6 + p2.trustee_decision4
-                p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision1 - \
-                                                       p2.trustee_decision4
+                p1.participant.vars['payoffmodule4'] = c(6 + p2.trustee_decision4)
+                p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision1 - \
+                                                       p2.trustee_decision4)
             if p1.investor_decision1 == 5:
-                p1.participant.vars['payoffmodule4'] = 5 + p2.trustee_decision5
-                p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision1 - \
-                                                       p2.trustee_decision5
+                p1.participant.vars['payoffmodule4'] = c(5 + p2.trustee_decision5)
+                p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision1 - \
+                                                       p2.trustee_decision5)
             if p1.investor_decision1 == 6:
-                p1.participant.vars['payoffmodule4'] = 4 + p2.trustee_decision6
-                p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision1 - \
-                                                       p2.trustee_decision6
+                p1.participant.vars['payoffmodule4'] = c(4 + p2.trustee_decision6)
+                p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision1 - \
+                                                       p2.trustee_decision6)
             if p1.investor_decision1 == 7:
-                p1.participant.vars['payoffmodule4'] = 3 + p2.trustee_decision7
-                p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision1 - \
-                                                       p2.trustee_decision7
+                p1.participant.vars['payoffmodule4'] = c(3 + p2.trustee_decision7)
+                p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision1 - \
+                                                       p2.trustee_decision7)
             if p1.investor_decision1 == 8:
-                p1.participant.vars['payoffmodule4'] = 2 + p2.trustee_decision8
-                p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision1 - \
-                                                       p2.trustee_decision8
+                p1.participant.vars['payoffmodule4'] = c(2 + p2.trustee_decision8)
+                p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision1 - \
+                                                       p2.trustee_decision8)
             if p1.investor_decision1 == 9:
-                p1.participant.vars['payoffmodule4'] = 1 + p2.trustee_decision9
-                p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision1 - \
-                                                       p2.trustee_decision9
+                p1.participant.vars['payoffmodule4'] = c(1 + p2.trustee_decision9)
+                p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision1 - \
+                                                       p2.trustee_decision9)
             if p1.investor_decision1 == 10:
-                p1.participant.vars['payoffmodule4'] = p2.trustee_decision10
-                p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision1 - \
-                                                       p2.trustee_decision10
+                p1.participant.vars['payoffmodule4'] = c(p2.trustee_decision10)
+                p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision1 - \
+                                                       p2.trustee_decision10)
         if p2.participant.vars['proschoice'] == 2 or p2.participant.vars['proschoice'] == 3:
             if p2.participant.vars['ending_guilt_level'] == 0:
                 if p1.investor_decision2 == 0:
-                    p1.participant.vars['payoffmodule4'] = 10
-                    p2.participant.vars['payoffmodule4'] = 10
+                    p1.participant.vars['payoffmodule4'] = c(10)
+                    p2.participant.vars['payoffmodule4'] = c(10)
                 if p1.investor_decision2 == 1:
-                    p1.participant.vars['payoffmodule4'] = 9 + p2.trustee_decision1
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision2 - \
-                                                           p2.trustee_decision1
+                    p1.participant.vars['payoffmodule4'] = c(9 + p2.trustee_decision1)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision2 - \
+                                                           p2.trustee_decision1)
                 if p1.investor_decision2 == 2:
-                    p1.participant.vars['payoffmodule4'] = 8 + p2.trustee_decision2
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision2 - \
-                                                           p2.trustee_decision2
+                    p1.participant.vars['payoffmodule4'] = c(8 + p2.trustee_decision2)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision2 - \
+                                                           p2.trustee_decision2)
                 if p1.investor_decision2 == 3:
-                    p1.participant.vars['payoffmodule4'] = 7 + p2.trustee_decision3
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision2 - \
-                                                           p2.trustee_decision3
+                    p1.participant.vars['payoffmodule4'] = c(7 + p2.trustee_decision3)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision2 - \
+                                                           p2.trustee_decision3)
                 if p1.investor_decision2 == 4:
-                    p1.participant.vars['payoffmodule4'] = 6 + p2.trustee_decision4
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision2 - \
-                                                           p2.trustee_decision4
+                    p1.participant.vars['payoffmodule4'] = c(6 + p2.trustee_decision4)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision2 - \
+                                                           p2.trustee_decision4)
                 if p1.investor_decision2 == 5:
-                    p1.participant.vars['payoffmodule4'] = 5 + p2.trustee_decision5
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision2 - \
-                                                           p2.trustee_decision5
+                    p1.participant.vars['payoffmodule4'] = c(5 + p2.trustee_decision5)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision2 - \
+                                                           p2.trustee_decision5)
                 if p1.investor_decision2 == 6:
-                    p1.participant.vars['payoffmodule4'] = 4 + p2.trustee_decision6
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision2 - \
-                                                           p2.trustee_decision6
+                    p1.participant.vars['payoffmodule4'] = c(4 + p2.trustee_decision6)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision2 - \
+                                                           p2.trustee_decision6)
                 if p1.investor_decision2 == 7:
-                    p1.participant.vars['payoffmodule4'] = 3 + p2.trustee_decision7
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision2 - \
-                                                           p2.trustee_decision7
+                    p1.participant.vars['payoffmodule4'] = c(3 + p2.trustee_decision7)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision2 - \
+                                                           p2.trustee_decision7)
                 if p1.investor_decision2 == 8:
-                    p1.participant.vars['payoffmodule4'] = 2 + p2.trustee_decision8
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision2 - \
-                                                           p2.trustee_decision8
+                    p1.participant.vars['payoffmodule4'] = c(2 + p2.trustee_decision8)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision2 - \
+                                                           p2.trustee_decision8)
                 if p1.investor_decision2 == 9:
-                    p1.participant.vars['payoffmodule4'] = 1 + p2.trustee_decision9
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision2 - \
-                                                           p2.trustee_decision9
+                    p1.participant.vars['payoffmodule4'] = c(1 + p2.trustee_decision9)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision2 - \
+                                                           p2.trustee_decision9)
                 if p1.investor_decision2 == 10:
-                    p1.participant.vars['payoffmodule4'] = p2.trustee_decision10
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision2 - \
-                                                           p2.trustee_decision10
+                    p1.participant.vars['payoffmodule4'] = c(p2.trustee_decision10)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision2 - \
+                                                           p2.trustee_decision10)
             if p2.participant.vars['ending_guilt_level'] == 1:
                 if p1.investor_decision3 == 0:
-                    p1.participant.vars['payoffmodule4'] = 10
-                    p2.participant.vars['payoffmodule4'] = 10
+                    p1.participant.vars['payoffmodule4'] = c(10)
+                    p2.participant.vars['payoffmodule4'] = c(10)
                 if p1.investor_decision3 == 1:
-                    p1.participant.vars['payoffmodule4'] = 9 + p2.trustee_decision1
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision3 - \
-                                                           p2.trustee_decision1
+                    p1.participant.vars['payoffmodule4'] = c(9 + p2.trustee_decision1)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision3 - \
+                                                           p2.trustee_decision1)
                 if p1.investor_decision3 == 2:
-                    p1.participant.vars['payoffmodule4'] = 8 + p2.trustee_decision2
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision3 - \
-                                                           p2.trustee_decision2
+                    p1.participant.vars['payoffmodule4'] = c(8 + p2.trustee_decision2)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision3 - \
+                                                           p2.trustee_decision2)
                 if p1.investor_decision3 == 3:
-                    p1.participant.vars['payoffmodule4'] = 7 + p2.trustee_decision3
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision3 - \
-                                                           p2.trustee_decision3
+                    p1.participant.vars['payoffmodule4'] = c(7 + p2.trustee_decision3)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision3 - \
+                                                           p2.trustee_decision3)
                 if p1.investor_decision3 == 4:
-                    p1.participant.vars['payoffmodule4'] = 6 + p2.trustee_decision4
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision3 - \
-                                                           p2.trustee_decision4
+                    p1.participant.vars['payoffmodule4'] = c(6 + p2.trustee_decision4)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision3 - \
+                                                           p2.trustee_decision4)
                 if p1.investor_decision3 == 5:
-                    p1.participant.vars['payoffmodule4'] = 5 + p2.trustee_decision5
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision3 - \
-                                                           p2.trustee_decision5
+                    p1.participant.vars['payoffmodule4'] = c(5 + p2.trustee_decision5)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision3 - \
+                                                           p2.trustee_decision5)
                 if p1.investor_decision3 == 6:
-                    p1.participant.vars['payoffmodule4'] = 4 + p2.trustee_decision6
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision3 - \
-                                                           p2.trustee_decision6
+                    p1.participant.vars['payoffmodule4'] = c(4 + p2.trustee_decision6)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision3 - \
+                                                           p2.trustee_decision6)
                 if p1.investor_decision3 == 7:
-                    p1.participant.vars['payoffmodule4'] = 3 + p2.trustee_decision7
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision3 - \
-                                                           p2.trustee_decision7
+                    p1.participant.vars['payoffmodule4'] = c(3 + p2.trustee_decision7)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision3 - \
+                                                           p2.trustee_decision7)
                 if p1.investor_decision3 == 8:
-                    p1.participant.vars['payoffmodule4'] = 2 + p2.trustee_decision8
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision3 - \
-                                                           p2.trustee_decision8
+                    p1.participant.vars['payoffmodule4'] = c(2 + p2.trustee_decision8)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision3 - \
+                                                           p2.trustee_decision8)
                 if p1.investor_decision3 == 9:
-                    p1.participant.vars['payoffmodule4'] = 1 + p2.trustee_decision9
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision3 - \
-                                                           p2.trustee_decision9
+                    p1.participant.vars['payoffmodule4'] = c(1 + p2.trustee_decision9)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision3 - \
+                                                           p2.trustee_decision9)
                 if p1.investor_decision3 == 10:
-                    p1.participant.vars['payoffmodule4'] = p2.trustee_decision10
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision3 - \
-                                                           p2.trustee_decision10
+                    p1.participant.vars['payoffmodule4'] = c(p2.trustee_decision10)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision3 - \
+                                                           p2.trustee_decision10)
             if p2.participant.vars['ending_guilt_level'] == 2:
                 if p1.investor_decision4 == 0:
-                    p1.participant.vars['payoffmodule4'] = 10
-                    p2.participant.vars['payoffmodule4'] = 10
+                    p1.participant.vars['payoffmodule4'] = c(10)
+                    p2.participant.vars['payoffmodule4'] = c(10)
                 if p1.investor_decision4 == 1:
-                    p1.participant.vars['payoffmodule4'] = 9 + p2.trustee_decision1
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision4 - \
-                                                           p2.trustee_decision1
+                    p1.participant.vars['payoffmodule4'] = c(9 + p2.trustee_decision1)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision4 - \
+                                                           p2.trustee_decision1)
                 if p1.investor_decision4 == 2:
-                    p1.participant.vars['payoffmodule4'] = 8 + p2.trustee_decision2
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision4 - \
-                                                           p2.trustee_decision2
+                    p1.participant.vars['payoffmodule4'] = c(8 + p2.trustee_decision2)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision4 - \
+                                                           p2.trustee_decision2)
                 if p1.investor_decision4 == 3:
-                    p1.participant.vars['payoffmodule4'] = 7 + p2.trustee_decision3
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision4 - \
-                                                           p2.trustee_decision3
+                    p1.participant.vars['payoffmodule4'] = c(7 + p2.trustee_decision3)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision4 - \
+                                                           p2.trustee_decision3)
                 if p1.investor_decision4 == 4:
-                    p1.participant.vars['payoffmodule4'] = 6 + p2.trustee_decision4
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision4 - \
-                                                           p2.trustee_decision4
+                    p1.participant.vars['payoffmodule4'] = c(6 + p2.trustee_decision4)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision4 - \
+                                                           p2.trustee_decision4)
                 if p1.investor_decision4 == 5:
-                    p1.participant.vars['payoffmodule4'] = 5 + p2.trustee_decision5
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision4 - \
-                                                           p2.trustee_decision5
+                    p1.participant.vars['payoffmodule4'] = c(5 + p2.trustee_decision5)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision4 - \
+                                                           p2.trustee_decision5)
                 if p1.investor_decision4 == 6:
-                    p1.participant.vars['payoffmodule4'] = 4 + p2.trustee_decision6
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision4 - \
-                                                           p2.trustee_decision6
+                    p1.participant.vars['payoffmodule4'] = c(4 + p2.trustee_decision6)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision4 - \
+                                                           p2.trustee_decision6)
                 if p1.investor_decision4 == 7:
-                    p1.participant.vars['payoffmodule4'] = 3 + p2.trustee_decision7
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision4 - \
-                                                           p2.trustee_decision7
+                    p1.participant.vars['payoffmodule4'] = c(3 + p2.trustee_decision7)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision4 - \
+                                                           p2.trustee_decision7)
                 if p1.investor_decision4 == 8:
-                    p1.participant.vars['payoffmodule4'] = 2 + p2.trustee_decision8
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision4 - \
-                                                           p2.trustee_decision8
+                    p1.participant.vars['payoffmodule4'] = c(2 + p2.trustee_decision8)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision4 - \
+                                                           p2.trustee_decision8)
                 if p1.investor_decision4 == 9:
-                    p1.participant.vars['payoffmodule4'] = 1 + p2.trustee_decision9
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision4 - \
-                                                           p2.trustee_decision9
+                    p1.participant.vars['payoffmodule4'] = c(1 + p2.trustee_decision9)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision4 - \
+                                                           p2.trustee_decision9)
                 if p1.investor_decision4 == 10:
-                    p1.participant.vars['payoffmodule4'] = p2.trustee_decision10
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision4 - \
-                                                           p2.trustee_decision10
+                    p1.participant.vars['payoffmodule4'] = c(p2.trustee_decision10)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision4 - \
+                                                           p2.trustee_decision10)
             if p2.participant.vars['ending_guilt_level'] == 3:
                 if p1.investor_decision5 == 0:
-                    p1.participant.vars['payoffmodule4'] = 10
-                    p2.participant.vars['payoffmodule4'] = 10
+                    p1.participant.vars['payoffmodule4'] = c(10)
+                    p2.participant.vars['payoffmodule4'] = c(10)
                 if p1.investor_decision5 == 1:
-                    p1.participant.vars['payoffmodule4'] = 9 + p2.trustee_decision1
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision5 - \
-                                                           p2.trustee_decision1
+                    p1.participant.vars['payoffmodule4'] = c(9 + p2.trustee_decision1)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision5 - \
+                                                           p2.trustee_decision1)
                 if p1.investor_decision5 == 2:
-                    p1.participant.vars['payoffmodule4'] = 8 + p2.trustee_decision2
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision5 - \
-                                                           p2.trustee_decision2
+                    p1.participant.vars['payoffmodule4'] = c(8 + p2.trustee_decision2)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision5 - \
+                                                           p2.trustee_decision2)
                 if p1.investor_decision5 == 3:
-                    p1.participant.vars['payoffmodule4'] = 7 + p2.trustee_decision3
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision5 - \
-                                                           p2.trustee_decision3
+                    p1.participant.vars['payoffmodule4'] = c(7 + p2.trustee_decision3)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision5 - \
+                                                           p2.trustee_decision3)
                 if p1.investor_decision5 == 4:
-                    p1.participant.vars['payoffmodule4'] = 6 + p2.trustee_decision4
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision5 - \
-                                                           p2.trustee_decision4
+                    p1.participant.vars['payoffmodule4'] = c(6 + p2.trustee_decision4)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision5 - \
+                                                           p2.trustee_decision4)
                 if p1.investor_decision5 == 5:
-                    p1.participant.vars['payoffmodule4'] = 5 + p2.trustee_decision5
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision5 - \
-                                                           p2.trustee_decision5
+                    p1.participant.vars['payoffmodule4'] = c(5 + p2.trustee_decision5)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision5 - \
+                                                           p2.trustee_decision5)
                 if p1.investor_decision5 == 6:
-                    p1.participant.vars['payoffmodule4'] = 4 + p2.trustee_decision6
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision5 - \
-                                                           p2.trustee_decision6
+                    p1.participant.vars['payoffmodule4'] = c(4 + p2.trustee_decision6)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision5 - \
+                                                           p2.trustee_decision6)
                 if p1.investor_decision5 == 7:
-                    p1.participant.vars['payoffmodule4'] = 3 + p2.trustee_decision7
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision5 - \
-                                                           p2.trustee_decision7
+                    p1.participant.vars['payoffmodule4'] = c(3 + p2.trustee_decision7)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision5 - \
+                                                           p2.trustee_decision7)
                 if p1.investor_decision5 == 8:
-                    p1.participant.vars['payoffmodule4'] = 2 + p2.trustee_decision8
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision5 - \
-                                                           p2.trustee_decision8
+                    p1.participant.vars['payoffmodule4'] = c(2 + p2.trustee_decision8)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision5 - \
+                                                           p2.trustee_decision8)
                 if p1.investor_decision5 == 9:
-                    p1.participant.vars['payoffmodule4'] = 1 + p2.trustee_decision9
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision5 - \
-                                                           p2.trustee_decision9
+                    p1.participant.vars['payoffmodule4'] = c(1 + p2.trustee_decision9)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision5 - \
+                                                           p2.trustee_decision9)
                 if p1.investor_decision5 == 10:
-                    p1.participant.vars['payoffmodule4'] = p2.trustee_decision10
-                    p2.participant.vars['payoffmodule4'] = 10 + 3 * p1.investor_decision5 - \
-                                                           p2.trustee_decision10
+                    p1.participant.vars['payoffmodule4'] = c(p2.trustee_decision10)
+                    p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision5 - \
+                                                           p2.trustee_decision10)
+        p1.payoffmodule4 = p1.participant.vars['payoffmodule4']
+        p2.payoffmodule4 = p2.participant.vars['payoffmodule4']
         p1.set_big_payoff()
         p2.set_big_payoff()
+
 
     def keep_decisions(self):
         p1 = self.get_player_by_id(1)
@@ -626,7 +631,10 @@ class Player(BasePlayer):
     trustee_decision9 = models.IntegerField()
     trustee_decision10 = models.IntegerField()
 
-    Final_Payoff = models.FloatField()
+    Final_Payoff = models.CurrencyField()
+
+    payoffmodule1 = models.CurrencyField()
+    payoffmodule4 = models.CurrencyField()
 
     investor_quiz1 = models.IntegerField(
         choices=[

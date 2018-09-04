@@ -153,7 +153,7 @@ class Player(BasePlayer):
             [1, 'True'],
             [2, 'False']
         ],
-        label='If you accept a plea bargain you are not contesting your guilt (in other words you are not claiming '
+        label='Question 1: If you accept a plea bargain you are not contesting your guilt (in other words you are not claiming '
               'innocence)'
     )
 
@@ -163,7 +163,7 @@ class Player(BasePlayer):
             [1, 'True'],
             [2, 'False']
         ],
-        label='If you accept a plea bargain or are found guilty at the experimental trial, then the monetary penalty '
+        label='Question 2: If you accept a plea bargain or are found guilty at the experimental trial, then the monetary penalty '
               'will reduce your experimental payment today.'
     )
 
@@ -174,7 +174,7 @@ class Player(BasePlayer):
             [2, 'You have to present your evidence of innocence'],
             [3, 'There is no monetary penalty if you are found guilty']
         ],
-        label='At trial, which of the following is true?'
+        label='Question 3: At trial, which of the following is true?'
     )
 
     plea_decision2 = models.IntegerField(
@@ -275,6 +275,8 @@ class Player(BasePlayer):
     plea_punishment_this_round = models.FloatField()
 
     what_round = models.IntegerField()
+
+    payoffmodule3 = models.CurrencyField()
 
     # Trial status:
     # True - went to trial
@@ -381,28 +383,23 @@ class Player(BasePlayer):
                         else:
                             self.ending_guilt = True
                             if self.participant.vars['pleathreat'] == 1:
-                                self.payoff = -np.random.choice([.1, .2, .3])
-                                self.ending_punishment = self.payoff
+                                self.ending_punishment = np.random.choice([.1, .2, .3])
                                 self.ending_guilt_level = 1
                                 self.relevant_decision = self.participant.vars['relevantdecision']
                             if self.participant.vars['pleathreat'] == 2:
-                                self.payoff = -np.random.choice([.4, .5, .6])
-                                self.ending_punishment = self.payoff
+                                self.ending_punishment = np.random.choice([.4, .5, .6])
                                 self.ending_guilt_level = 1
                                 self.relevant_decision = self.participant.vars['relevantdecision']
                             if self.participant.vars['pleathreat'] == 3:
-                                self.payoff = -np.random.choice([.6, .7, .8])
-                                self.ending_punishment = self.payoff
+                                self.ending_punishment = np.random.choice([.6, .7, .8])
                                 self.ending_guilt_level = 2
                                 self.relevant_decision = self.participant.vars['relevantdecision']
                             if self.participant.vars['pleathreat'] == 4:
-                                self.payoff = -np.random.choice([.9, 1, 1.1])
-                                self.ending_punishment = self.payoff
+                                self.ending_punishment = np.random.choice([.9, 1, 1.1])
                                 self.ending_guilt_level = 2
                                 self.relevant_decision = self.participant.vars['relevantdecision']
                             if self.participant.vars['pleathreat'] == 5:
-                                self.payoff = -np.random.choice([1.1, 1.2, 1.3])
-                                self.ending_punishment = self.payoff
+                                self.ending_punishment = np.random.choice([1.1, 1.2, 1.3])
                                 self.ending_guilt_level = 3
                                 self.relevant_decision = self.participant.vars['relevantdecision']
 
@@ -446,28 +443,23 @@ class Player(BasePlayer):
                         else:
                             self.ending_guilt = True
                             if self.participant.vars['pleathreat'] == 1:
-                                self.payoff = -np.random.choice([.1, .2, .3])
-                                self.ending_punishment = self.payoff
+                                self.ending_punishment = np.random.choice([.1, .2, .3])
                                 self.ending_guilt_level = 1
                                 self.relevant_decision = self.participant.vars['relevantdecision']
                             if self.participant.vars['pleathreat'] == 2:
-                                self.payoff = -np.random.choice([.4, .5, .6])
-                                self.ending_punishment = self.payoff
+                                self.ending_punishment = np.random.choice([.4, .5, .6])
                                 self.ending_guilt_level = 1
                                 self.relevant_decision = self.participant.vars['relevantdecision']
                             if self.participant.vars['pleathreat'] == 3:
-                                self.payoff = -np.random.choice([.6, .7, .8])
-                                self.ending_punishment = self.payoff
+                                self.ending_punishment = np.random.choice([.6, .7, .8])
                                 self.ending_guilt_level = 2
                                 self.relevant_decision = self.participant.vars['relevantdecision']
                             if self.participant.vars['pleathreat'] == 4:
-                                self.payoff = -np.random.choice([.9, 1, 1.1])
-                                self.ending_punishment = self.payoff
+                                self.ending_punishment = np.random.choice([.9, 1, 1.1])
                                 self.ending_guilt_level = 2
                                 self.relevant_decision = self.participant.vars['relevantdecision']
                             if self.participant.vars['pleathreat'] == 5:
-                                self.payoff = -np.random.choice([1.1, 1.2, 1.3])
-                                self.ending_punishment = self.payoff
+                                self.ending_punishment = np.random.choice([1.1, 1.2, 1.3])
                                 self.ending_guilt_level = 3
                                 self.relevant_decision = self.participant.vars['relevantdecision']
 
@@ -544,28 +536,22 @@ class Player(BasePlayer):
                 else:
                     self.ending_guilt = True
                     if self.participant.vars['nopleapun'] == 0:
-                        self.payoff = -c(np.random.choice([.1, .2, .3]))
-                        self.ending_punishment = self.payoff
+                        self.ending_punishment = np.random.choice([.1, .2, .3])
                         self.ending_guilt_level = 1
                     if self.participant.vars['nopleapun'] == 1:
-                        self.payoff = -c(np.random.choice([.4, .5, .6]))
-                        self.ending_punishment = self.payoff
+                        self.ending_punishment = np.random.choice([.4, .5, .6])
                         self.ending_guilt_level = 1
                     if self.participant.vars['nopleapun'] == 2:
-                        self.payoff = -c(np.random.choice([.6, .7, .8]))
-                        self.ending_punishment = self.payoff
+                        self.ending_punishment = np.random.choice([.6, .7, .8])
                         self.ending_guilt_level = 2
                     if self.participant.vars['nopleapun'] == 3:
-                        self.payoff = -c(np.random.choice([.9, 1, 1.1]))
-                        self.ending_punishment = self.payoff
+                        self.ending_punishment = np.random.choice([.9, 1, 1.1])
                         self.ending_guilt_level = 2
                     if self.participant.vars['nopleapun'] == 4:
-                        self.payoff = -c(np.random.choice([1.1, 1.2, 1.3]))
-                        self.ending_punishment = self.payoff
+                        self.ending_punishment = np.random.choice([1.1, 1.2, 1.3])
                         self.ending_guilt_level = 3
                     if self.participant.vars['nopleapun'] == 5:
-                        self.payoff = -c(np.random.choice([1.4, 1.5, 1.6]))
-                        self.ending_punishment = self.payoff
+                        self.ending_punishment = np.random.choice([1.4, 1.5, 1.6])
                         self.ending_guilt_level = 3
             if self.participant.vars['proschoice'] == 1:
                 self.ending_trial_status = False
@@ -589,11 +575,11 @@ class Player(BasePlayer):
             self.participant.vars['ending_punishment'] = self.ending_punishment
             self.participant.vars['relevantdecision'] = None
             self.relevant_decision = self.participant.vars['relevantdecision']
-            self.participant.vars['payoffmodule3'] = self.ending_punishment
+            self.participant.vars['payoffmodule3'] = c(self.ending_punishment)
 
         # Record this decision so it can be displayed on final page
 
-        self.participant.vars['payoffmodule3'] = self.ending_punishment
+        # self.participant.vars['payoffmodule3'] = c(self.ending_punishment)
 
         # For excel checking purposes...
         if self.subsession.round_number == self.participant.vars['whatround']:
@@ -605,8 +591,9 @@ class Player(BasePlayer):
             self.participant.vars['ending_guilt_level'] = self.ending_guilt_level
             self.ending_guilt_level = self.ending_guilt_level
             self.participant.vars['ending_punishment'] = self.ending_punishment
-            self.participant.vars['payoffmodule3'] = self.ending_punishment
+            self.participant.vars['payoffmodule3'] = c(-self.ending_punishment)
             self.ending_punishment = self.ending_punishment
+            self.payoffmodule3 = self.participant.vars['ending_punishment']
 
 
             # THINGS RECORDED:

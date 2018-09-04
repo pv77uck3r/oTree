@@ -142,6 +142,7 @@ class Player(BasePlayer):
     plea_evidence = models.IntegerField()
     plea_threat = models.IntegerField()
     threat_charge = models.IntegerField()
+    payoffmodule2 = models.CurrencyField()
 
     # self.participant.vars['nopleacharge'] = -1
     # self.participant.vars['nopleaevidence'] = -1
@@ -159,7 +160,7 @@ class Player(BasePlayer):
             [1, 'True'],
             [2, 'False']
         ],
-        label='If you report the division of money accurately it is impossible for there to be evidence suggesting you '
+        label='Question 2: If you report the division of money accurately it is impossible for there to be evidence suggesting you '
               'are guilty.'
     )
 
@@ -169,7 +170,7 @@ class Player(BasePlayer):
             [1, 'True'],
             [2, 'False']
         ],
-        label='If you report the division of money inaccurately (and take some of your counterpart\'s money), there is '
+        label='Question 2: If you report the division of money inaccurately (and take some of your counterpart\'s money), there is '
               'guaranteed to be evidence suggesting you are guilty.'
     )
 
@@ -374,3 +375,4 @@ class Player(BasePlayer):
     def set_payoff(self):
         self.payoff = self.payoff1 + self.payoff2
         self.participant.vars['payoffmodule2'] = self.payoff
+        self.payoffmodule2 = self.participant.vars['payoffmodule2']

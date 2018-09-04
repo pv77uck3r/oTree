@@ -52,10 +52,41 @@ class QuizT(Page):
             return 'Question 3 is incorrect. Please try again.'
 
 
-class DecisionsI(Page):
+class DecisionsI1(Page):
     form_model = 'group'
-    form_fields = ['investor_decision1', 'investor_decision2', 'investor_decision3', 'investor_decision4',
-                   'investor_decision5']
+    form_fields = ['investor_decision1']
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1
+
+
+class DecisionsI2(Page):
+    form_model = 'group'
+    form_fields = ['investor_decision2']
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1
+
+
+class DecisionsI3(Page):
+    form_model = 'group'
+    form_fields = ['investor_decision3']
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1
+
+
+class DecisionsI4(Page):
+    form_model = 'group'
+    form_fields = ['investor_decision4']
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1
+
+
+class DecisionsI5(Page):
+    form_model = 'group'
+    form_fields = ['investor_decision5']
 
     def is_displayed(self):
         return self.player.id_in_group == 1
@@ -80,7 +111,11 @@ page_sequence = [
     Instructions,
     QuizI,
     QuizT,
-    DecisionsI,
+    DecisionsI1,
+    DecisionsI2,
+    DecisionsI3,
+    DecisionsI4,
+    DecisionsI5,
     DecisionsT,
     RecordDecisions
 ]
