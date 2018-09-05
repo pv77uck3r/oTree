@@ -54,8 +54,8 @@ class Subsession(BaseSubsession):
                 newsubjlist2.append(evensubjlist2[i - 1])
                 newsubjlist3.append(evensubjlist3[i - 1])
                 newsubjlist3.append(oddsubjlist[i - 1])
-                newsubjlist4.append(oddsubjlist[i - 1])
                 newsubjlist4.append(evensubjlist4[i - 1])
+                newsubjlist4.append(oddsubjlist[i - 1])
             n = 2
             grouplist1 = [newsubjlist1[i * n:(i + 1) * n] for i in range((len(newsubjlist1) + n - 1) // n)]
             grouplist2 = [newsubjlist2[i * n:(i + 1) * n] for i in range((len(newsubjlist2) + n - 1) // n)]

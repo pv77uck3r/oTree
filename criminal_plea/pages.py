@@ -39,6 +39,18 @@ class Quiz(Page):
 
 class Preparation(Page):
 
+    def vars_for_template(self):
+        if self.participant.vars['trulyinnocent'] == 1:
+            trueguilt = 'truly innocent'
+        else:
+            trueguilt = 'truly guilty'
+        return{
+            'TrueGuilt': trueguilt,
+            'W': self.participant.vars['W'],
+            '10W': 10 - self.participant.vars['W'],
+            'AmountTaken': self.participant.vars['amountstolen']
+        }
+
     def is_displayed(self):
         return self.subsession.round_number == 1
 

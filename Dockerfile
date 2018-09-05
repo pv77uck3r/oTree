@@ -14,7 +14,13 @@ RUN apk -U add --no-cache bash \
     && pip install --no-cache-dir -r /opt/otree/requirements.txt \
     && mkdir -p /opt/init \
     && chmod +x /opt/otree/entrypoint.sh \
-    && apk del curl gcc musl-dev postgresql-dev
+    && apk del curl gcc musl-dev postgresql-dev \
+    # && ln -s /usr/include/locale.h /usr/include/xlocale.h \
+    # Enable some numpy optimization
+    && pip3 install cython \
+    && pip3 install numpy \
+    && pip3 install pandas \
+    && pip3 install xlrd
 
 WORKDIR /opt/otree
 VOLUME /opt/init
