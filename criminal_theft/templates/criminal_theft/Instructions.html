@@ -9,7 +9,7 @@
 
     {% include 'criminal_theft/InstructionsTemplate.html' %}
 
-<div class="content">
+<div id="content">
     {% next_button %}
 </div>
 
@@ -17,11 +17,10 @@
 
 {% block scripts %}
 
-    <script>
-        $(document).ready(function() {
-    setTimeout(function() {
-        $(".content").fadeIn(1500);
-    }, 60*1000);
+        <script>
+        $(function() {
+    $('#content').hide().delay(60*1000).fadeIn('slow');
+
 });
     </script>
 

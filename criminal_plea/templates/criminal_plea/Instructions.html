@@ -9,18 +9,17 @@
 
     {% include 'criminal_plea/InstructionsTemplate.html' %}
 
-<div class="content">
+<div id="content">
     {% next_button %}
 </div>
 {% endblock %}
 
 {% block scripts %}
 
-    <script>
-        $(document).ready(function() {
-    setTimeout(function() {
-        $(".content").fadeIn(1500);
-    }, 60*1000);
+        <script>
+        $(function() {
+    $('#content').hide().delay(60*1000).fadeIn('slow');
+
 });
     </script>
 
