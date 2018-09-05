@@ -2,66 +2,33 @@
 {% load otree static %}
 
 {% block title %}
-    Decision
+    Decisions
 {% endblock %}
 
 {% block content %}
-<center>
-<table class="tg">
-  <tr>
-    <th class="tg-0ord">YOU ARE TRULY</th>
-    <th class="tg-031e">{{ innocence }}</th>
-  </tr>
-  <tr>
-    <td class="tg-0ord">Your Evidence of Innocence is</td>
-    <td class="tg-031e">{{ innocenceevidence }}</td>
-  </tr>
-  <tr>
-    <td class="tg-0ord">The Prosecutor's Evidence of Guilt is</td>
-    <td class="tg-031e">{{ guiltevidence }}</td>
-  </tr>
-</table>
-</center>
 
-<p>
-    <center><b>If the prosecutor decides not to drop the charge but also chooses to not offer a plea bargain, we
-    need to know whether you would like to provide your evidence of innocence at trial.</b></center>
-</p>
+    <p>
+        Your decision is to tell us how many of your initial 10 quarters you will send to your counterpart in this part
+        of the experiment.
+    </p>
 
-<p>
-    {% formfield player.trial_decision1 %}
-</p>
-
-<p>
-    {% formfield player.trial_decision2 %}
-</p>
-
-<p>
-    {% formfield player.trial_decision3 %}
-</p>
-
-<p>
-    {% formfield player.trial_decision4 %}
-</p>
-
-<p>
-    {% formfield player.trial_decision5 %}
-</p>
-
-<p>
-    {% formfield player.trial_decision6 %}
-</p>
+    <p>
+        {% formfield group.investor_decision3 %}
+    </p>
 
     {% next_button %}
 
-    </center>
+            <center>
+        <!-- Trigger/Open The Modal -->
+<a href="#" id="myBtn">Review instructions</a>
+</center>
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    {% include 'criminal_plea/InstructionsTemplate.html' %}
+    {% include 'criminal_trust/InstructionsI.html' %}
   </div>
 
 </div>
@@ -70,20 +37,13 @@
 
 {% block styles %}
 
-<style type="text/css">
-table, td, th {
-    border: 1px solid black;
+<style>
+input[type="radio"]{
+  margin: 0 10px 0 10px;
 }
-
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border: 1px solid black;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border: 1px solid black;overflow:hidden;word-break:normal;}
-.tg .tg-0ord{text-align:right}
-.tg .tg-lqy6{text-align:right;vertical-align:top}
-.tg .tg-yw4l{vertical-align:top}
 </style>
 
-        <style>
+    <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 
 /* The Modal (background) */
@@ -145,14 +105,6 @@ a:hover, a:active {
 {% endblock %}
 
 {% block scripts %}
-<script>
-setTimeout(
-    function () {
-        alert("Time has run out. Please make your decision.");
-    },
-    60*1000 // 60 seconds
-);
-</script>
 
     <script>
 // Get the modal
@@ -181,4 +133,5 @@ window.onclick = function(event) {
     }
 }
 </script>
+
 {% endblock %}

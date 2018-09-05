@@ -60,6 +60,44 @@ class DecisionsI(Page):
     def is_displayed(self):
         return self.player.id_in_group == 1
 
+class DecisionsI1(Page):
+    form_model = 'group'
+    form_fields = ['investor_decision1']
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1
+
+
+class DecisionsI2(Page):
+    form_model = 'group'
+    form_fields = ['investor_decision2']
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1
+
+
+class DecisionsI3(Page):
+    form_model = 'group'
+    form_fields = ['investor_decision3']
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1
+
+
+class DecisionsI4(Page):
+    form_model = 'group'
+    form_fields = ['investor_decision4']
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1
+
+
+class DecisionsI5(Page):
+    form_model = 'group'
+    form_fields = ['investor_decision5']
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1
 
 class DecisionsT(Page):
     form_model = 'group'
@@ -122,7 +160,11 @@ page_sequence = [
     GenTrustGame1Payoffs,
     SetGroups2,
     Instructions,
-    DecisionsI,
+    DecisionsI1,
+    DecisionsI2,
+    DecisionsI3,
+    DecisionsI4,
+    DecisionsI5,
     DecisionsT,
     KeepDecisions,
     GenTrustGame2Payoffs,
