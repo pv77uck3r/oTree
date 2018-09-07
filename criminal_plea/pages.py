@@ -46,9 +46,9 @@ class Preparation(Page):
             trueguilt = 'truly guilty'
         return{
             'TrueGuilt': trueguilt,
-            'W': self.participant.vars['W'],
-            '10W': 10 - self.participant.vars['W'],
-            'AmountTaken': self.participant.vars['amountstolen']
+            'W': format(self.participant.vars['W'], '.2f'),
+            '10W': format(10 - self.participant.vars['W'], '.2f'),
+            'AmountTaken': format(self.participant.vars['amountstolen'], '.2f')
         }
 
     def is_displayed(self):

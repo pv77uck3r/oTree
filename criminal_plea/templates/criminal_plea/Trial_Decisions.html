@@ -6,19 +6,22 @@
 {% endblock %}
 
 {% block content %}
+
+    <p class="fixed" id="demo"></p>
+<p class="blink_me" id="demo2"></p>
 <center>
 <table class="tg">
   <tr>
-    <th class="tg-0ord">YOU ARE TRULY</th>
-    <th class="tg-031e">{{ innocence }}</th>
+    <th class="tg-xldj">YOU ARE TRULY</th>
+    <th class="tg-xldj">{{ innocence }}</th>
   </tr>
   <tr>
-    <td class="tg-0ord">Your Evidence of Innocence is</td>
-    <td class="tg-031e">{{ innocenceevidence }}</td>
+    <td class="tg-xldj">Your Evidence of Innocence is</td>
+    <td class="tg-xldj">{{ innocenceevidence }}</td>
   </tr>
   <tr>
-    <td class="tg-0ord">The Prosecutor's Evidence of Guilt is</td>
-    <td class="tg-031e">{{ guiltevidence }}</td>
+    <td class="tg-xldj">The Prosecutor's Evidence of Guilt is</td>
+    <td class="tg-xldj">{{ guiltevidence }}</td>
   </tr>
 </table>
 </center>
@@ -71,16 +74,10 @@
 {% block styles %}
 
 <style type="text/css">
-table, td, th {
-    border: 1px solid black;
-}
-
 .tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border: 1px solid black;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border: 1px solid black;overflow:hidden;word-break:normal;}
-.tg .tg-0ord{text-align:right}
-.tg .tg-lqy6{text-align:right;vertical-align:top}
-.tg .tg-yw4l{vertical-align:top}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-xldj{border-color:inherit;text-align:left}
 </style>
 
         <style>
@@ -142,6 +139,37 @@ a:hover, a:active {
 }
 </style>
 
+    <style>
+.blink_me {
+  animation: blinker 1s linear infinite;
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  right: 0%;
+  width: 250px;
+  color:red;
+  font-size: 30px;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+</style>
+
+<style>
+p.fixed {
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    right: 0%;
+    width: 250px%;
+    font-size: 30px;
+    border: 3px solid #73AD21;
+}
+</style>
+
 {% endblock %}
 
 {% block scripts %}
@@ -180,5 +208,33 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+</script>
+
+    <script>
+// Set the date we're counting down to
+var countDownDate = new Date().getTime() + 60000;
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML = "Time remaining: " + seconds + "s ";
+
+    // If the count down is over, write some text
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").remove();
+        document.getElementById("demo2").innerHTML = "PLEASE REACH A DECISION";
+    }
+}, 1000);
 </script>
 {% endblock %}

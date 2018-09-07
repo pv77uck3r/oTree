@@ -51,6 +51,7 @@ SESSION_CONFIGS = [
 ]
 # see the end of this file for the inactive session configs
 
+SENTRY_DSN = environ.get('SENTRY_DSN')
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
