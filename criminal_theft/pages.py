@@ -48,7 +48,8 @@ class Decisions(Page):
                 'z': format(self.participant.vars['zdraws'][self.subsession.round_number - 1], '.2f')}
 
     def before_next_page(self):
-        self.player.record_choice()
+        if self.player.ThiefChoice > 1 and self.player.crime_indicator == 0:
+            self.player.crime_indicator = self.subsession.round_number
         # self.player.set_prosecutor_decisions()
 
 
@@ -103,10 +104,27 @@ class SetPayoffs5(WaitPage):
         self.group.set_payoffs()
 
 
+class RetainDecisions(WaitPage):
+
+    def after_all_players_arrive(self):
+        self.subsession.retain_stuff()
+
+
+class FinalDecision(WaitPage):
+
+    def is_displayed(self):
+        return self.subsession.round_number == Constants.num_rounds
+
+    def after_all_players_arrive(self):
+        self.subsession.sub_record_choice()
+
+
 page_sequence = [
     Instructions,
     Quiz,
+    RetainDecisions,
     Decisions,
+    FinalDecision,
     SetPayoffs1,
     SetPayoffs2,
     SetPayoffs3,

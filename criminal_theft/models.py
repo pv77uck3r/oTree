@@ -41,7 +41,6 @@ class Subsession(BaseSubsession):
                 p.participant.vars['xdraws'] = np.random.choice(np.arange(0.10, 1.10, 0.10), Constants.numdraws, replace=False)
                 p.participant.vars['ydraws'] = np.random.choice(np.arange(1.00, 2.10, 0.10), Constants.numdraws, replace=False)
                 p.participant.vars['zdraws'] = np.random.choice(np.arange(2.00, 3.10, 0.10), Constants.numdraws, replace=False)
-                p.participant.vars['randround'] = np.random.choice(range(1, 11))
 
     def set_groups_1(self):
         self.groups_1_indicator_pre = True
@@ -72,6 +71,15 @@ class Subsession(BaseSubsession):
             # self.session.vars['xdraws'] = xdraws
             # self.session.vars['ydraws'] = ydraws
             # self.session.vars['zdraws'] = zdraws
+
+    def retain_stuff(self):
+        if self.round_number > 1:
+            for p in self.get_players():
+                p.retain_theft_round()
+
+    def sub_record_choice(self):
+        for p in self.get_players():
+            p.record_choice()
 
 
 class Group(BaseGroup):
@@ -144,6 +152,8 @@ class Player(BasePlayer):
     threat_charge = models.IntegerField()
     payoffmodule2 = models.CurrencyField()
 
+    crime_indicator = models.IntegerField(initial=0)
+
     # self.participant.vars['nopleacharge'] = -1
     # self.participant.vars['nopleaevidence'] = -1
     # self.participant.vars['nopleapun'] = -1
@@ -185,6 +195,11 @@ class Player(BasePlayer):
         label='Please Report the Division'
     )
 
+    def retain_theft_round(self):
+        if self.subsession.round_number > 1:
+            self.crime_indicator = self.in_round(self.subsession.round_number - 1).crime_indicator
+
+
     def record_choice(self):
 
         # LEVELS OF EVIDENCE CODING:
@@ -200,21 +215,162 @@ class Player(BasePlayer):
         # 4 - large crime
 
         #for p in self.get_players():
-        if self.subsession.round_number == self.participant.vars['randround']:
+
+        # Choosing a random round #
+        # Rounds are chosen at random, with increased probability on the first round in which a theft was committed #
+        # This requires a lot of conditionals
+        numplayer = len(self.subsession.get_players())
+        if self.crime_indicator == 0:
+            self.participant.vars['randround'] = np.random.choice(range(1, Constants.num_rounds + 1))
+        else:
+            if self.crime_indicator == 1:
+                self.participant.vars['randround'] = np.random.choice(range(1, Constants.num_rounds + 1), replace=False,
+                                                                      p=[(1/2), (1/2)/numplayer, (1/2)/numplayer,
+                                                                         (1/2)/numplayer, (1/2)/numplayer,
+                                                                         (1/2)/numplayer, (1/2)/numplayer,
+                                                                         (1/2)/numplayer, (1/2)/numplayer,
+                                                                         (1/2)/numplayer])
+            else:
+                if self.crime_indicator == 2:
+                    self.participant.vars['randround'] = np.random.choice(range(1, Constants.num_rounds + 1),
+                                                                          replace=False,
+                                                                          p=[(1 / 2) / numplayer, (1 / 2),
+                                                                             (1 / 2) / numplayer, (1 / 2) / numplayer,
+                                                                             (1 / 2) / numplayer, (1 / 2) / numplayer,
+                                                                             (1 / 2) / numplayer, (1 / 2) / numplayer,
+                                                                             (1 / 2) / numplayer, (1 / 2) / numplayer])
+                else:
+                    if self.crime_indicator == 3:
+                        self.participant.vars['randround'] = np.random.choice(range(1, Constants.num_rounds + 1),
+                                                                              replace=False,
+                                                                              p=[(1 / 2) / numplayer,
+                                                                                 (1 / 2) / numplayer,
+                                                                                 (1 / 2),
+                                                                                 (1 / 2) / numplayer,
+                                                                                 (1 / 2) / numplayer,
+                                                                                 (1 / 2) / numplayer,
+                                                                                 (1 / 2) / numplayer,
+                                                                                 (1 / 2) / numplayer,
+                                                                                 (1 / 2) / numplayer,
+                                                                                 (1 / 2) / numplayer])
+                    else:
+                        if self.crime_indicator == 4:
+                            self.participant.vars['randround'] = np.random.choice(range(1, Constants.num_rounds + 1),
+                                                                                  replace=False,
+                                                                                  p=[(1 / 2) / numplayer,
+                                                                                     (1 / 2) / numplayer,
+                                                                                     (1 / 2) / numplayer,
+                                                                                     (1 / 2),
+                                                                                     (1 / 2) / numplayer,
+                                                                                     (1 / 2) / numplayer,
+                                                                                     (1 / 2) / numplayer,
+                                                                                     (1 / 2) / numplayer,
+                                                                                     (1 / 2) / numplayer,
+                                                                                     (1 / 2) / numplayer])
+                        else:
+                            if self.crime_indicator == 5:
+                                self.participant.vars['randround'] = np.random.choice(
+                                    range(1, Constants.num_rounds + 1),
+                                    replace=False,
+                                    p=[(1 / 2) / numplayer,
+                                       (1 / 2) / numplayer,
+                                       (1 / 2) / numplayer,
+                                       (1 / 2) / numplayer,
+                                       (1 / 2),
+                                       (1 / 2) / numplayer,
+                                       (1 / 2) / numplayer,
+                                       (1 / 2) / numplayer,
+                                       (1 / 2) / numplayer,
+                                       (1 / 2) / numplayer])
+                            else:
+                                if self.crime_indicator == 6:
+                                    self.participant.vars['randround'] = np.random.choice(
+                                        range(1, Constants.num_rounds + 1),
+                                        replace=False,
+                                        p=[(1 / 2) / numplayer,
+                                           (1 / 2) / numplayer,
+                                           (1 / 2) / numplayer,
+                                           (1 / 2) / numplayer,
+                                           (1 / 2) / numplayer,
+                                           (1 / 2),
+                                           (1 / 2) / numplayer,
+                                           (1 / 2) / numplayer,
+                                           (1 / 2) / numplayer,
+                                           (1 / 2) / numplayer])
+                                else:
+                                    if self.crime_indicator == 7:
+                                        self.participant.vars['randround'] = np.random.choice(
+                                            range(1, Constants.num_rounds + 1),
+                                            replace=False,
+                                            p=[(1 / 2) / numplayer,
+                                               (1 / 2) / numplayer,
+                                               (1 / 2) / numplayer,
+                                               (1 / 2) / numplayer,
+                                               (1 / 2) / numplayer,
+                                               (1 / 2) / numplayer,
+                                               (1 / 2),
+                                               (1 / 2) / numplayer,
+                                               (1 / 2) / numplayer,
+                                               (1 / 2) / numplayer])
+                                    else:
+                                        if self.crime_indicator == 8:
+                                            self.participant.vars['randround'] = np.random.choice(
+                                                range(1, Constants.num_rounds + 1),
+                                                replace=False,
+                                                p=[(1 / 2) / numplayer,
+                                                   (1 / 2) / numplayer,
+                                                   (1 / 2) / numplayer,
+                                                   (1 / 2) / numplayer,
+                                                   (1 / 2) / numplayer,
+                                                   (1 / 2) / numplayer,
+                                                   (1 / 2) / numplayer,
+                                                   (1 / 2),
+                                                   (1 / 2) / numplayer,
+                                                   (1 / 2) / numplayer])
+                                        else:
+                                            if self.crime_indicator == 9:
+                                                self.participant.vars['randround'] = np.random.choice(
+                                                    range(1, Constants.num_rounds + 1),
+                                                    replace=False,
+                                                    p=[(1 / 2) / numplayer,
+                                                       (1 / 2) / numplayer,
+                                                       (1 / 2) / numplayer,
+                                                       (1 / 2) / numplayer,
+                                                       (1 / 2) / numplayer,
+                                                       (1 / 2) / numplayer,
+                                                       (1 / 2) / numplayer,
+                                                       (1 / 2) / numplayer,
+                                                       (1 / 2),
+                                                       (1 / 2) / numplayer])
+                                            else:
+                                                self.participant.vars['randround'] = np.random.choice(
+                                                    range(1, Constants.num_rounds + 1),
+                                                    replace=False,
+                                                    p=[(1 / 2) / numplayer,
+                                                       (1 / 2) / numplayer,
+                                                       (1 / 2) / numplayer,
+                                                       (1 / 2) / numplayer,
+                                                       (1 / 2) / numplayer,
+                                                       (1 / 2) / numplayer,
+                                                       (1 / 2) / numplayer,
+                                                       (1 / 2) / numplayer,
+                                                       (1 / 2) / numplayer,
+                                                       (1 / 2)])
+
             self.record_choice_indicator = True
-            self.participant.vars['W'] = self.participant.vars['Wdraws'][self.subsession.round_number - 1]
-            self.participant.vars['theftchoice'] = self.ThiefChoice
+            self.participant.vars['W'] = self.participant.vars['Wdraws'][self.participant.vars['randround'] - 1]
+            self.participant.vars['theftchoice'] = self.in_round(self.participant.vars['randround']).ThiefChoice
             if self.ThiefChoice == 1:
                 self.participant.vars['amountstolen'] = 0
                 self.participant.vars['crimelevel'] = 1
             if self.ThiefChoice == 2:
-                self.participant.vars['amountstolen'] = self.participant.vars['xdraws'][self.subsession.round_number - 1]
+                self.participant.vars['amountstolen'] = self.participant.vars['xdraws'][self.participant.vars['randround'] - 1]
                 self.participant.vars['crimelevel'] = 2
             if self.ThiefChoice == 3:
-                self.participant.vars['amountstolen'] = self.participant.vars['ydraws'][self.subsession.round_number - 1]
+                self.participant.vars['amountstolen'] = self.participant.vars['ydraws'][self.participant.vars['randround'] - 1]
                 self.participant.vars['crimelevel'] = 3
             if self.ThiefChoice == 4:
-                self.participant.vars['amountstolen'] = self.participant.vars['zdraws'][self.subsession.round_number - 1]
+                self.participant.vars['amountstolen'] = self.participant.vars['zdraws'][self.participant.vars['randround'] - 1]
                 self.participant.vars['crimelevel'] = 4
             if self.participant.vars['amountstolen'] == 0:
                 self.participant.vars['trulyinnocent'] = True
