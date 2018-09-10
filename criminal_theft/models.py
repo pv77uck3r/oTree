@@ -224,138 +224,123 @@ class Player(BasePlayer):
             self.participant.vars['randround'] = np.random.choice(range(1, Constants.num_rounds + 1))
         else:
             if self.crime_indicator == 1:
+                p = [(1/2), (1/2)/(numplayer - 1), (1/2)/(numplayer - 1),
+                                                                         (1/2)/(numplayer - 1), (1/2)/(numplayer - 1),
+                                                                         (1/2)/(numplayer - 1), (1/2)/(numplayer - 1),
+                                                                         (1/2)/(numplayer - 1), (1/2)/(numplayer - 1),
+                                                                         (1/2)/(numplayer - 1)]
+                p = [x / sum(p) for x in p]
                 self.participant.vars['randround'] = np.random.choice(range(1, Constants.num_rounds + 1), replace=False,
-                                                                      p=[(1/2), (1/2)/numplayer, (1/2)/numplayer,
-                                                                         (1/2)/numplayer, (1/2)/numplayer,
-                                                                         (1/2)/numplayer, (1/2)/numplayer,
-                                                                         (1/2)/numplayer, (1/2)/numplayer,
-                                                                         (1/2)/numplayer])
+                                                                      p=p)
             else:
                 if self.crime_indicator == 2:
+                    p = [(1 / 2) / (numplayer - 1), (1 / 2), (1 / 2) / (numplayer - 1),
+                         (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                         (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                         (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                         (1 / 2) / (numplayer - 1)]
+                    p = [x / sum(p) for x in p]
                     self.participant.vars['randround'] = np.random.choice(range(1, Constants.num_rounds + 1),
                                                                           replace=False,
-                                                                          p=[(1 / 2) / numplayer, (1 / 2),
-                                                                             (1 / 2) / numplayer, (1 / 2) / numplayer,
-                                                                             (1 / 2) / numplayer, (1 / 2) / numplayer,
-                                                                             (1 / 2) / numplayer, (1 / 2) / numplayer,
-                                                                             (1 / 2) / numplayer, (1 / 2) / numplayer])
+                                                                          p=p)
                 else:
                     if self.crime_indicator == 3:
+                        p = [(1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1), (1 / 2),
+                             (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                             (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                             (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                             (1 / 2) / (numplayer - 1)]
+                        p = [x / sum(p) for x in p]
                         self.participant.vars['randround'] = np.random.choice(range(1, Constants.num_rounds + 1),
                                                                               replace=False,
-                                                                              p=[(1 / 2) / numplayer,
-                                                                                 (1 / 2) / numplayer,
-                                                                                 (1 / 2),
-                                                                                 (1 / 2) / numplayer,
-                                                                                 (1 / 2) / numplayer,
-                                                                                 (1 / 2) / numplayer,
-                                                                                 (1 / 2) / numplayer,
-                                                                                 (1 / 2) / numplayer,
-                                                                                 (1 / 2) / numplayer,
-                                                                                 (1 / 2) / numplayer])
+                                                                              p=p)
                     else:
                         if self.crime_indicator == 4:
+                            p = [(1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                 (1 / 2), (1 / 2) / (numplayer - 1),
+                                 (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                 (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                 (1 / 2) / (numplayer - 1)]
+                            p = [x / sum(p) for x in p]
                             self.participant.vars['randround'] = np.random.choice(range(1, Constants.num_rounds + 1),
                                                                                   replace=False,
-                                                                                  p=[(1 / 2) / numplayer,
-                                                                                     (1 / 2) / numplayer,
-                                                                                     (1 / 2) / numplayer,
-                                                                                     (1 / 2),
-                                                                                     (1 / 2) / numplayer,
-                                                                                     (1 / 2) / numplayer,
-                                                                                     (1 / 2) / numplayer,
-                                                                                     (1 / 2) / numplayer,
-                                                                                     (1 / 2) / numplayer,
-                                                                                     (1 / 2) / numplayer])
+                                                                                  p=p)
                         else:
                             if self.crime_indicator == 5:
+                                p = [(1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                     (1 / 2) / (numplayer - 1), (1 / 2),
+                                     (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                     (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                     (1 / 2) / (numplayer - 1)]
+                                p = [x / sum(p) for x in p]
                                 self.participant.vars['randround'] = np.random.choice(
                                     range(1, Constants.num_rounds + 1),
                                     replace=False,
-                                    p=[(1 / 2) / numplayer,
-                                       (1 / 2) / numplayer,
-                                       (1 / 2) / numplayer,
-                                       (1 / 2) / numplayer,
-                                       (1 / 2),
-                                       (1 / 2) / numplayer,
-                                       (1 / 2) / numplayer,
-                                       (1 / 2) / numplayer,
-                                       (1 / 2) / numplayer,
-                                       (1 / 2) / numplayer])
+                                    p=p)
                             else:
                                 if self.crime_indicator == 6:
+                                    p = [(1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                         (1 / 2) / (numplayer - 1),
+                                         (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                         (1 / 2), (1 / 2) / (numplayer - 1),
+                                         (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                         (1 / 2) / (numplayer - 1)]
+                                    p = [x / sum(p) for x in p]
                                     self.participant.vars['randround'] = np.random.choice(
                                         range(1, Constants.num_rounds + 1),
                                         replace=False,
-                                        p=[(1 / 2) / numplayer,
-                                           (1 / 2) / numplayer,
-                                           (1 / 2) / numplayer,
-                                           (1 / 2) / numplayer,
-                                           (1 / 2) / numplayer,
-                                           (1 / 2),
-                                           (1 / 2) / numplayer,
-                                           (1 / 2) / numplayer,
-                                           (1 / 2) / numplayer,
-                                           (1 / 2) / numplayer])
+                                        p=p)
                                 else:
                                     if self.crime_indicator == 7:
+                                        p = [(1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                             (1 / 2) / (numplayer - 1),
+                                             (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                             (1 / 2) / (numplayer - 1), (1 / 2),
+                                             (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                             (1 / 2) / (numplayer - 1)]
+                                        p = [x / sum(p) for x in p]
                                         self.participant.vars['randround'] = np.random.choice(
                                             range(1, Constants.num_rounds + 1),
                                             replace=False,
-                                            p=[(1 / 2) / numplayer,
-                                               (1 / 2) / numplayer,
-                                               (1 / 2) / numplayer,
-                                               (1 / 2) / numplayer,
-                                               (1 / 2) / numplayer,
-                                               (1 / 2) / numplayer,
-                                               (1 / 2),
-                                               (1 / 2) / numplayer,
-                                               (1 / 2) / numplayer,
-                                               (1 / 2) / numplayer])
+                                            p=p)
                                     else:
                                         if self.crime_indicator == 8:
+                                            p = [(1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                                 (1 / 2) / (numplayer - 1),
+                                                 (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                                 (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                                 (1 / 2), (1 / 2) / (numplayer - 1),
+                                                 (1 / 2) / (numplayer - 1)]
+                                            p = [x / sum(p) for x in p]
                                             self.participant.vars['randround'] = np.random.choice(
                                                 range(1, Constants.num_rounds + 1),
                                                 replace=False,
-                                                p=[(1 / 2) / numplayer,
-                                                   (1 / 2) / numplayer,
-                                                   (1 / 2) / numplayer,
-                                                   (1 / 2) / numplayer,
-                                                   (1 / 2) / numplayer,
-                                                   (1 / 2) / numplayer,
-                                                   (1 / 2) / numplayer,
-                                                   (1 / 2),
-                                                   (1 / 2) / numplayer,
-                                                   (1 / 2) / numplayer])
+                                                p=p)
                                         else:
                                             if self.crime_indicator == 9:
+                                                p = [(1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                                     (1 / 2) / (numplayer - 1),
+                                                     (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                                     (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                                     (1 / 2) / (numplayer - 1), (1 / 2),
+                                                     (1 / 2) / (numplayer - 1)]
+                                                p = [x / sum(p) for x in p]
                                                 self.participant.vars['randround'] = np.random.choice(
                                                     range(1, Constants.num_rounds + 1),
                                                     replace=False,
-                                                    p=[(1 / 2) / numplayer,
-                                                       (1 / 2) / numplayer,
-                                                       (1 / 2) / numplayer,
-                                                       (1 / 2) / numplayer,
-                                                       (1 / 2) / numplayer,
-                                                       (1 / 2) / numplayer,
-                                                       (1 / 2) / numplayer,
-                                                       (1 / 2) / numplayer,
-                                                       (1 / 2),
-                                                       (1 / 2) / numplayer])
+                                                    p=p)
                                             else:
+                                                p = [(1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                                     (1 / 2) / (numplayer - 1),
+                                                     (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                                     (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                                     (1 / 2) / (numplayer - 1), (1 / 2) / (numplayer - 1),
+                                                     (1 / 2)]
+                                                p = [x / sum(p) for x in p]
                                                 self.participant.vars['randround'] = np.random.choice(
                                                     range(1, Constants.num_rounds + 1),
                                                     replace=False,
-                                                    p=[(1 / 2) / numplayer,
-                                                       (1 / 2) / numplayer,
-                                                       (1 / 2) / numplayer,
-                                                       (1 / 2) / numplayer,
-                                                       (1 / 2) / numplayer,
-                                                       (1 / 2) / numplayer,
-                                                       (1 / 2) / numplayer,
-                                                       (1 / 2) / numplayer,
-                                                       (1 / 2) / numplayer,
-                                                       (1 / 2)])
+                                                    p=p)
 
             self.record_choice_indicator = True
             self.participant.vars['W'] = self.participant.vars['Wdraws'][self.participant.vars['randround'] - 1]
