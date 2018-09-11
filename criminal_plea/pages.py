@@ -184,7 +184,14 @@ class Plea_Decisions(Page):
                 'crimelevel': crimelevel}
 
     def before_next_page(self):
-            self.player.set_payoff()
+        self.player.set_payoff()
+        if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 1 and self.subsession.round_number % 3 == 0:
+            self.player.trial_decision1 = 2
+            self.player.trial_decision2 = 2
+            self.player.trial_decision3 = 2
+            self.player.trial_decision4 = 2
+            self.player.trial_decision5 = 2
+            self.player.trial_decision6 = 2
 
 
 class Trial_Decisions(Page):
@@ -266,7 +273,7 @@ class Trial_Decisions(Page):
         return choices
 
     def is_displayed(self):
-        return self.subsession.round_number % 3 == 0
+        return self.subsession.round_number % 3 == 0 and self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] != 1
 
     def vars_for_template(self):
         innocence = self.participant.vars['trulyinnocent']
