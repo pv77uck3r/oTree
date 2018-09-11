@@ -111,6 +111,7 @@ class RetainDecisions(WaitPage):
 
 
 class FinalDecision(WaitPage):
+    wait_for_all_groups = True
 
     def is_displayed(self):
         return self.subsession.round_number == Constants.num_rounds
