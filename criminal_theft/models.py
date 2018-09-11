@@ -346,24 +346,24 @@ class Player(BasePlayer):
                                                     replace=False,
                                                     p=p)
 
-        ThiefDecisions = [p.ThiefChoice for p in self.subsession.get_players()]
+        ThiefDecisions = [p.ThiefChoice for p in self.in_all_rounds()]
 
         self.randround = self.participant.vars['randround']
         self.record_choice_indicator = True
-        self.participant.vars['W'] = self.participant.vars['Wdraws'][self.participant.vars['randround'].item() - 1]
+        self.participant.vars['W'] = self.participant.vars['Wdraws'][self.participant.vars['randround'] - 1]
         self.participant.vars['theftchoice'] = ThiefDecisions[self.participant.vars['randround'] - 1]
         self.theftchoice = self.participant.vars['theftchoice']
         if self.participant.vars['theftchoice'] == 1:
             self.participant.vars['amountstolen'] = 0
             self.participant.vars['crimelevel'] = 1
         if self.participant.vars['theftchoice'] == 2:
-            self.participant.vars['amountstolen'] = self.participant.vars['xdraws'][self.participant.vars['randround'].item() - 1]
+            self.participant.vars['amountstolen'] = self.participant.vars['xdraws'][self.participant.vars['randround'] - 1]
             self.participant.vars['crimelevel'] = 2
         if self.participant.vars['theftchoice'] == 3:
-            self.participant.vars['amountstolen'] = self.participant.vars['ydraws'][self.participant.vars['randround'].item() - 1]
+            self.participant.vars['amountstolen'] = self.participant.vars['ydraws'][self.participant.vars['randround'] - 1]
             self.participant.vars['crimelevel'] = 3
         if self.participant.vars['theftchoice'] == 4:
-            self.participant.vars['amountstolen'] = self.participant.vars['zdraws'][self.participant.vars['randround'].item() - 1]
+            self.participant.vars['amountstolen'] = self.participant.vars['zdraws'][self.participant.vars['randround'] - 1]
             self.participant.vars['crimelevel'] = 4
         if self.participant.vars['amountstolen'] == 0:
             self.participant.vars['trulyinnocent'] = True
@@ -389,8 +389,8 @@ class Player(BasePlayer):
         self.innocencelevel = self.participant.vars['innocencelevel']
         self.trulyinnocent = self.participant.vars['trulyinnocent']
 
-#def set_prosecutor_decisions(self):
-    #if self.subsession.round_number == self.participant.vars['randround']:
+        #def set_prosecutor_decisions(self):
+        #if self.subsession.round_number == self.participant.vars['randround']:
         if self.participant.vars['guiltlevel'] == 1:
             self.participant.vars['proschoice'] = 1
             self.participant.vars['nopleacharge'] = -1
