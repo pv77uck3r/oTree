@@ -1,0 +1,202 @@
+<div class="card bg-light">
+    <div class="card-body">
+
+    <h3>
+        Instructions
+    </h3>
+ {% comment %}   <p>
+        In a previous set of experiments, real participants in the role of a prosecutor considered evidence of guilt
+        coming from decisions about taking money in situations like the ones you faced.  Crimes those prosecutors
+        observed were either a Small crime (taking money from another subject between $0.10 and $1.00), a Medium crime
+        (between $1.00 and $2.00), or a Large crime (between $2.00 and $3.00). Those prosecutors made decisions about
+        how to proceed when facing specific types of evidence they observe about a person (henceforth called a
+        defendant).  For instance, a prosecutor could decide to drop the charge, they could decide to take the
+        defendant to trial (in a computerized experimental trial in the lab today), or they could decide to make a plea
+        bargain offer to the defendant.  We will match you randomly with the decisions of one of these prosecutor
+        participants to determine how to proceed in today’s experiment.
+    </p>{% endcomment %}
+    <p>
+        If the prosecutor receives no evidence suggesting that you are guilty or the prosecutor decided not to pursue a
+        charge against a defendant with the evidence of guilt that you have, then “the case is closed” and your
+        decisions in this part of the experiment will not affect your pay.
+    </p>
+    <p>
+        Depending upon the type of evidence the prosecutor receives regarding your innocence/guilt, the prosecutor may
+        decide to offer you a plea bargain.  The prosecutor will not see your evidence of innocence (or lack thereof)
+        when making their plea bargain decision.
+    </p>
+    <p>
+        A plea bargain would involve you pleading guilty to a specific charge (or not contesting the charge) against
+        you and would have a set monetary penalty associated with the guilty plea for that charge.
+    </p>
+    <p>
+        A plea bargain offered by the prosecutor will also indicate to you what the prosecutor would charge you with at
+        an experimental trial, an interval that the monetary penalty would come from if you were found guilty at the
+        trial, and the evidence level they have of your guilt.  If you turn down the plea bargain then you and the
+        prosecutor would take your case to trial.
+    </p>
+   {% comment %} <p>
+        An experimental trial means taking the evidence of guilt for the charge the prosecutor is accusing you of and
+        looking at the decisions of real participants who made decisions as jurors in previous experiments about these
+        types of cases. The juror participants made decisions based upon different levels of evidence of innocence and
+        guilt as to whether or not participants were guilty “beyond a reasonable doubt” with that level of evidence. An
+        experimental trial consists of randomly drawing three of these past jurors’ decisions for the set of prosecutor
+        and defense evidence presented in that case. If all three juror decisions are the same, then the unanimous
+        decision determines whether the defendant is found guilty (if all three jurors chose “Guilty”) or not-guilty
+        (if all three jurors chose “Not-Guilty”).  If all three jurors’ decisions are not the same, then the trial is
+        called a “mistrial” and the computer will randomly select alternative sets of three jurors until the first time
+        all three selected juror decisions match.
+    </p>
+    <h2>
+        <b>More details on evidence:</b>
+    </h2>
+    <p>
+        As you can see in the table below, the actual guilt or innocence of a defendant determines both the
+        prosecutorial and defense evidence.  On the prosecution side, if the defendant is truly guilty the prosecutor
+        will receive some evidence of guilt 70% of the time. However, if the defendant is truly innocent the prosecutor
+        will receive some evidence of guilt 30% of the time.
+    </p>
+    <p>
+        On the defense side, 80% of truly innocent defendants will receive some evidence of their own innocence, but
+        20% will not. On the other hand, 30% of truly guilty defendants will receive some evidence of their own
+        innocence, but 70% will not. The actual guilt or innocence status of a defendant is not known to the prosecutor
+        or the jurors. You (the defendant) know for sure whether you are truly innocent or truly guilty.
+    </p>
+    <center>
+    <table class="tg">
+        <tr>
+            <th class="tg-bn8h"></th>
+         <th class="tg-ao2g" colspan="2"><span style="font-weight:bold">Prosecutorial Evidence</span><br><span style="font-weight:bold">of </span><span style="font-weight:bold;font-style:italic">Guilt</span></th>
+            <th class="tg-ao2g"></th>
+            <th class="tg-ao2g"></th>
+            <th class="tg-9ydz" colspan="2">Defense Evidence<br>of <span style="font-style:italic">Innocence</span></th>
+         </tr>
+         <tr>
+            <td class="tg-ysmt"></td>
+            <td class="tg-y7ca">If Truly Innocent<br>Defendant</td>
+            <td class="tg-y7ca">If Truly Guilty<br>Defendant</td>
+            <td class="tg-ysmt"></td>
+            <td class="tg-ysmt"></td>
+            <td class="tg-y7ca">If Truly<br>Innocent<br>Defendant</td>
+            <td class="tg-y7ca">If Truly Guilty<br>Defendant</td>
+         </tr>
+        <tr>
+            <td class="tg-9ydz">Some<br>Evidence of <br>Guilt</td>
+            <td class="tg-ao2g"> 30 of every<br>100 truly<br>innocent</td>
+            <td class="tg-ao2g">70 of every<br>100 truly<br>guilty</td>
+            <td class="tg-ao2g"></td>
+            <td class="tg-9ydz">Some<br>Evidence of<br>Innocence</td>
+            <td class="tg-ao2g">80 of every<br>100 truly<br>innocent</td>
+            <td class="tg-ao2g">30 of every<br>100 truly<br>guilty</td>
+        </tr>
+        <tr>
+            <td class="tg-y7ca">No Evidence<br>of Guilt</td>
+            <td class="tg-ysmt">70 of every<br>100 truly<br>innocent</td>
+            <td class="tg-ysmt">30 of every<br>100 truly<br>guilty</td>
+            <td class="tg-ysmt"></td>
+            <td class="tg-y7ca">No Evidence<br>of Evidence</td>
+            <td class="tg-ysmt">20 of every<br>100 truly<br>innocent</td>
+            <td class="tg-ysmt">70 of every<br>100 truly<br>guilty</td>
+        </tr>
+    </table>
+    </center>
+
+    <p>
+        A prosecutor will only bring a case to trial if there is evidence of guilt. If the prosecutor receives evidence
+        of guilt (see table above), there are three possible levels of evidence: Strong, Medium, and Weak.  If the
+        defendant receives evidence of innocence, there are three possible levels of evidence: Strong, Medium, and Weak.
+    </p>
+    <p>
+        As the names suggest, Strong evidence is harder to get (and implies there is more evidence of guilt or
+        innocence) than Medium evidence.  Medium evidence is harder to get (and implies there is more evidence of guilt
+        or innocence) than Weak evidence.  For each of these three levels, a prosecutor is always more likely to get a
+        particular level of evidence of guilt if the defendant is truly guilty compared to a truly innocent defendant.
+        For each of these three levels, a truly innocent defendant is always more likely to get a particular level of
+        evidence of innocence compared to a truly guilty defendant.
+    </p>
+    <h2>
+        <b>Plea Bargain Decisions </b>
+    </h2>
+    <p>
+        We will ask you to go through the all the possible plea bargain offers that the prosecutor could offer you if
+        they receive evidence suggesting your guilt.  If the prosecutor receives no evidence suggesting your guilt or
+        the prosecutor declines to offer a plea bargain, these decisions will not affect your payments. If the
+        prosecutor does receive evidence suggesting your guilt and offers you a plea bargain we will look at the
+        relevant plea bargain response.
+    </p>
+    <p>
+        Each computer screen will show you a specific possible plea bargain you could face for a given set of evidence
+        of guilt and innocence and a particular crime and penalty offer to you.  After that penalty and crime are
+        several possible trial threats that the prosecutor could make if you were to reject the plea bargain.  For each
+        possible trial threat, please tell us whether, if the prosecutor assigned to you made that threat and
+        associated plea bargain, you would prefer to a) take the plea bargain, b) go to trial and present your evidence
+        of innocence, or c) go to trial but exercise your right to not testify on your own behalf.  Note: all jurors
+        were instructed that:
+    </p>
+    <blockquote>
+        “A defendant has the option to make their evidence of innocence available or not.  This right to not “testify”
+        is guaranteed by the United States Constitution and should not be taken as implying guilt.”
+    </blockquote>
+    <p>
+       Your computer screen will be laid out as follows:
+    </p>
+    <p>
+       At the top of the screen:
+    </p>
+    <ul>
+        <li>You will first see whether you are truly innocent or truly guilty of taking money from the participant for
+            the decision you are being accused of taking money from the other participant.</li>
+        <li>You will see your own evidence level of innocence (not observed by prosecutor). </li>
+        <li>You will see the prosecutor’s level of evidence of guilt (would be presented at a trial).</li>
+        <li>You will see the plea bargain offer, in other words what the punishment/monetary penalty would be for
+            accepting the plea and what the charge associated with that plea bargain is.</li>
+    </ul>
+    <p>
+        Bottom portion of the screen:
+    </p>
+    <ul>
+        <li>You will then see a list of 1 to 5 possible trial threats for what you would face if you reject the plea
+            offer indicated at the top of the screen. </li>
+        <li>Each of these trial threats is a different possible choice that the prosecutor could have made. Treat
+            these each as separate decisions.</li>
+        <li>Indicate for each decision whether you would: a) take the plea bargain, b) go to trial and present your
+            evidence of innocence, or c) go to trial but exercise your right to not testify on your own behalf.  </li>
+    </ul>
+    <p>
+        For example, one screen might indicate that the relevant situation you are making decisions about is for when
+        1) you are truly innocent;  2) your evidence of innocence is strong; 3) the prosecutor’s evidence of guilt is
+        weak; 4) the plea bargain would be for you to plead guilty to a medium crime; and 5) pay a monetary fine of
+        $1.00.  That screen would have two decisions for you to make.  First decision: Would you take the plea if
+        rejecting the plea meant that you would go to trial for a large crime with a monetary penalty of between $1.10
+        and $1.30 if you are found guilty at trial? You would choose to take the plea, go to trial with your evidence,
+        or go to trial but choose not to present your evidence. Second decision: Would you take the plea if rejecting
+        the plea meant that you would go to trial for a large crime with a monetary penalty of between $1.40 and $1.60
+        if you are found guilty at trial? You would choose to take the plea, go to trial with your evidence, or go to
+        trial but choose not to present your evidence. Remember each set of three choices represents a different
+        possible plea bargain offer and trial threat and thus a different decision.
+    </p>
+    <p>
+        There are many possible situations that you have to evaluate.  The computer will give you 30 seconds to make
+        your selection on each page.  Each page contains 1 to 5 different plea bargains decisions.  If time expires,
+        the computer will remind you to make your decisions quickly. Payoffs can only be calculated when the last
+        participant has finished, which means that all participants must wait on the choices of the slowest participant
+        before they may proceed to the next section of the experiment.
+    </p>
+{% endcomment %}
+    </div>
+</div>
+
+{% block styles %}
+
+    <style>
+        .tg  {border-collapse:collapse;border-spacing:0;border:none;}
+        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+        .tg .tg-y7ca{font-weight:bold;border-color:#333333;text-align:center;vertical-align:top}
+        .tg .tg-9ydz{font-weight:bold;border-color:#333333;text-align:center;vertical-align:top}
+        .tg .tg-ysmt{border-color:#333333;text-align:center;vertical-align:top}
+        .tg .tg-bn8h{border-color:#333333;text-align:center}
+        .tg .tg-ao2g{border-color:#333333;text-align:center;vertical-align:top}
+    </style>
+
+{% endblock %}

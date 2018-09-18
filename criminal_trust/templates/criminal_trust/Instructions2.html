@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Part 1
+{% endblock %}
+
+{% block content %}
+
+    {% if player.role == 'Investor' %}
+
+        {% include 'criminal_trust/InstructionsI2.html' %}
+
+
+    {% endif %}
+
+
+<div id="content">
+    {% next_button %}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script>
+        $(function() {
+    $('#content').hide().delay(60*1000).fadeIn('slow');
+
+});
+    </script>
+
+{% endblock %}

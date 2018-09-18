@@ -10,7 +10,55 @@ class InfoDump(WaitPage):
     def after_all_players_arrive(self):
         self.subsession.gen_info_sets()
 
-class Instructions(Page):
+class Instructions1(Page):
+
+    def is_displayed(self):
+        return self.subsession.round_number == 1
+
+
+class Instructions2(Page):
+
+    def is_displayed(self):
+        return self.subsession.round_number == 1
+
+
+class Instructions3(Page):
+
+    def is_displayed(self):
+        return self.subsession.round_number == 1
+
+
+class Instructions4(Page):
+
+    def is_displayed(self):
+        return self.subsession.round_number == 1
+
+
+class Instructions5(Page):
+
+    def is_displayed(self):
+        return self.subsession.round_number == 1
+
+
+class Instructions6(Page):
+
+    def is_displayed(self):
+        return self.subsession.round_number == 1
+
+
+class Instructions7(Page):
+
+    def is_displayed(self):
+        return self.subsession.round_number == 1
+
+
+class Instructions8(Page):
+
+    def is_displayed(self):
+        return self.subsession.round_number == 1
+
+
+class Instructions9(Page):
 
     def is_displayed(self):
         return self.subsession.round_number == 1
@@ -394,7 +442,15 @@ class Results(Page):
 
 page_sequence = [
     InfoDump,
-    Instructions,
+    Instructions1,
+    Instructions2,
+    Instructions3,
+    Instructions4,
+    Instructions5,
+    Instructions6,
+    Instructions7,
+    Instructions8,
+    Instructions9,
     Quiz,
     Preparation,
     Plea_Decisions,

@@ -7,6 +7,12 @@ class Instructions(Page):
     pass
 
 
+class Instructions2(Page):
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1
+
+
 class QuizI(Page):
     form_model = 'player'
     form_fields = ['investor_quiz1', 'investor_quiz2', 'investor_quiz3', 'investor_quiz4']
@@ -109,6 +115,7 @@ class RecordDecisions(WaitPage):
 
 page_sequence = [
     Instructions,
+    Instructions2,
     QuizI,
     QuizT,
     DecisionsI1,
