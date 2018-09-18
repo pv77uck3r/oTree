@@ -718,5 +718,5 @@ class Player(BasePlayer):
             return 'Trustee'
 
     def set_big_payoff(self):
-        self.participant.vars['bigpayoff'] = self.participant.vars['payoffmodule1'] + self.participant.vars['payoffmodule2'] + self.participant.vars['payoffmodule3'] + self.participant.vars['payoffmodule4']
+        self.participant.vars['bigpayoff'] = self.participant.vars['payoffmodule1']*0.25 + self.participant.vars['payoffmodule2'] + self.participant.vars['payoffmodule3'] + self.participant.vars['payoffmodule4']*0.25
         self.Final_Payoff = self.participant.vars['bigpayoff']

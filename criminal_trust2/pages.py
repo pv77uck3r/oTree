@@ -147,10 +147,10 @@ class GenTrustGame2Payoffs(WaitPage):
 class Results(Page):
 
     def vars_for_template(self):
-        return {'payoff1': format(self.participant.vars['payoffmodule1'], '.2f'),
+        return {'payoff1': format(self.participant.vars['payoffmodule1']*0.25, '.2f'),
                 'payoff2': format(self.participant.vars['payoffmodule2'], '.2f'),
                 'payoff3': format(self.participant.vars['payoffmodule3'], '.2f'),
-                'payoff4': format(self.participant.vars['payoffmodule4'], '.2f'),
+                'payoff4': format(self.participant.vars['payoffmodule4']*0.25, '.2f'),
                 'finalpayoff': format(self.participant.vars['bigpayoff'], '.2f')
                 }
 
