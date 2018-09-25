@@ -234,6 +234,13 @@ class Player(BasePlayer):
                                    '(a Large Crime) you will'
     )
 
+    belief = models.FloatField(
+        min=0,
+        max=100,
+        widget=widgets.Slider(attrs={'step': '1.0'}),
+        label=None
+    )
+
     alt_innocence_level = models.IntegerField()
 
     alt_guilt_level = models.IntegerField()

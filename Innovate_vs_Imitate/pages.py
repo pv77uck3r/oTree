@@ -5,7 +5,7 @@ from .models import Constants
 
 
 class Decision(Page):
-    form_model = models.Player
+    form_model = 'player'
     form_fields = ['InnovateorImitateButton', 'Innovate', 'NoInnovate']
 
     def is_displayed(self):

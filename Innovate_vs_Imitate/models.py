@@ -65,7 +65,7 @@ class Subsession(BaseSubsession):
             self.triangleb = self.in_round(self.round_number-1).triangleb + 0.5*self.StepCounter
 
 
-    def before_session_starts(self):
+    def creating_session(self):
         if self.round_number == 1:
             randomchoice = np.random.choice(range(1,Constants.num_players+1), Constants.num_players, replace=False)
             self.session.vars['randomchoice'] = randomchoice

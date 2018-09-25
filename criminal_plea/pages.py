@@ -246,7 +246,7 @@ class Trial_Decisions(Page):
 
     form_model = 'player'
     form_fields = ['trial_decision1', 'trial_decision2', 'trial_decision3', 'trial_decision4', 'trial_decision5',
-                   'trial_decision6']
+                   'trial_decision6', 'belief']
 
     def trial_decision1_choices(self):
         if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 1:
