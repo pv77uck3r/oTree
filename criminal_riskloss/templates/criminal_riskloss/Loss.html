@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Elicitation 2
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        For the next set of decisions, you will select either "Accept" or "Reject" to indicate whether you would like to
+        take the 50/50 gamble or not. One of the following 12 decisions will be chosen uniformly at random for payment.
+        If you have chosen "Accept" for the randomly chosen decision, then the computer will randomly generate a number
+        between 0 and 100. Each number is equally likely to be generated. If the number is less than 50, then the
+        lower payoff will be selected for payment. If the number is greater than or equal to 50, then the higher payoff
+        will be selected for payment. If you have chosen "Reject" then you will earn a payment of $0 for this decision.
+    </p>
+
+    <p>
+        If the randomly selected decision is one of the decisions that involves "six independent repetitions of the
+        gamble, and you selected "Accept" for that decision, the computer will randomly generate 6 numbers between 0 and
+        100. The six randomly generate numbers will determine 6 payments in the manner described above, and these
+        payments will be summed together for your your total payment for this elicitation.
+    </p>
+
+    
+    {% next_button %}
+{% endblock %}
+
+
