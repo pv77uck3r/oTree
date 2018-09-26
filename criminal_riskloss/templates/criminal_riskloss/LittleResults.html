@@ -1,0 +1,42 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Part 5 - Results
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        The {{ modulechosen }} module was randomly chosen for payment.
+    </p>
+
+    {% if modulechosen == 1 %}
+        <p>
+            In this module, you chose {{ riskchoice }} and the computer randomly generated a number {{ randomroll }}.
+            Therefore, your payoff from Part 5 is ${{ riskpayment }}.
+        </p>
+
+    {% endif %}
+
+    {% if modulechose == 2 %}
+        <p>
+            In this module, the computer randomly chose {{ lossdecision }} for payment. {% if player.loss_payment != 0 %}
+            For this decision you chose "Accept". {% else %} For this decision you chose "Reject". Therefore, your
+            payoff from Part 5 is $0.00.{% endif %}
+        </p>
+
+        {% if singleloss == 1 %}
+            The computer randomly generated a number {{ randomroll }}. Therefore, your payoff from Part 5 is
+            ${{ losspayment }}.
+        {% else %}
+            This was one of the "six independent repetitions of the gamble" decisions. The computer rolled
+            {{ randomroll }} numbers that were greater than or equal to 50 and {{ otherroll }} that were less than 50.
+            Therefore, your payoff from Part 5 was ${{ losspayment }}.
+        {% endif %}
+    {% endif %}
+    
+    {% next_button %}
+{% endblock %}
+
+

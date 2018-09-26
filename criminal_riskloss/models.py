@@ -20,6 +20,7 @@ class Constants(BaseConstants):
     name_in_url = 'criminal_riskloss'
     players_per_group = None
     num_rounds = 1
+    num_cointosses = 6
 
 
 class Subsession(BaseSubsession):
@@ -43,7 +44,7 @@ class Subsession(BaseSubsession):
                             if x.participant.vars['LossDecision'] % 2 == 1:
                                 x.participant.vars['HTLoss'] = np.random.choice([1, 2])
                             else:
-                                x.participant.vars['numheadsLoss'] = np.random.binomial(6, p=0.5)
+                                x.participant.vars['numheadsLoss'] = np.random.binomial(Constants.num_cointosses, p=0.5)
                         else:
                             pass
 
@@ -181,4 +182,176 @@ class Player(BasePlayer):
               'you will be paid off the outcomes of six independent coin tosses.'
     )
 
+    risk_payment = models.FloatField()
+    loss_payment = models.FloatField()
+
+    Final_Payoff = models.CurrencyField()
+
+    def payoffs(self):
+        if self.participant.vars['paymentmodule'] == 1:
+            if self.risk_decision == 1:
+                if self.participant.vars['HTRisk'] == 0:
+                    self.risk_payment = 4.30
+                else:
+                    self.risk_payment = 5.65
+            else:
+                if self.risk_decision == 2:
+                    if self.participant.vars['HTRisk'] == 0:
+                        self.risk_payment = 4.15
+                    else:
+                        self.risk_payment = 5.95
+                else:
+                    if self.risk_decision == 3:
+                        if self.participant.vars['HTRisk'] == 0:
+                            self.risk_payment = 4.00
+                        else:
+                            self.risk_payment = 6.25
+                    else:
+                        if self.risk_decision == 4:
+                            if self.participant.vars['HTRisk'] == 0:
+                                self.risk_payment = 3.85
+                            else:
+                                self.risk_payment = 6.55
+                        else:
+                            if self.risk_decision == 5:
+                                if self.participant.vars['HTRisk'] == 0:
+                                    self.risk_payment = 3.65
+                                else:
+                                    self.risk_payment = 6.90
+                            else:
+                                if self.risk_decision == 6:
+                                    if self.participant.vars['HTRisk'] == 0:
+                                        self.risk_payment = 3.45
+                                    else:
+                                        self.risk_payment = 7.20
+                                else:
+                                    if self.risk_decision == 7:
+                                        if self.participant.vars['HTRisk'] == 0:
+                                            self.risk_payment = 3.10
+                                        else:
+                                            self.risk_payment = 7.60
+        else:
+            if self.participant.vars['paymentmodule'] == 2:
+                if self.participant.vars['LossDecision'] % 2 == 1:
+                    if self.participant.vars['LossDecision'] == 1:
+                        if self.loss_decision_1 == 1:
+                            if self.participant.vars['HTLoss'] == 0:
+                                self.loss_payment = -2.00
+                            else:
+                                self.loss_payment = 6.00
+                        else:
+                            self.loss_payment = 0
+                    else:
+                        if self.participant.vars['LossDecision'] == 3:
+                            if self.loss_decision_3 == 1:
+                                if self.participant.vars['HTLoss'] == 0:
+                                    self.loss_payment = -3.00
+                                else:
+                                    self.loss_payment = 6.00
+                            else:
+                                self.loss_payment = 0
+                        else:
+                            if self.participant.vars['LossDecision'] == 5:
+                                if self.loss_decision_5 == 1:
+                                    if self.participant.vars['HTLoss'] == 0:
+                                        self.loss_payment = -4.00
+                                    else:
+                                        self.loss_payment = 6.00
+                                else:
+                                    self.loss_payment = 0
+                            else:
+                                if self.participant.vars['LossDecision'] == 7:
+                                    if self.loss_decision_7 == 1:
+                                        if self.participant.vars['HTLoss'] == 0:
+                                            self.loss_payment = -5.00
+                                        else:
+                                            self.loss_payment = 6.00
+                                    else:
+                                        self.loss_payment = 0
+                                else:
+                                    if self.participant.vars['LossDecision'] == 9:
+                                        if self.loss_decision_9 == 1:
+                                            if self.participant.vars['HTLoss'] == 0:
+                                                self.loss_payment = -6.00
+                                            else:
+                                                self.loss_payment = 6.00
+                                        else:
+                                            self.loss_payment = 0
+                                    else:
+                                        if self.participant.vars['LossDecision'] == 11:
+                                            if self.loss_decision_11 == 1:
+                                                if self.participant.vars['HTLoss'] == 0:
+                                                    self.loss_payment = -7.00
+                                                else:
+                                                    self.loss_payment = 6.00
+                                            else:
+                                                self.loss_payment = 0
+                else:
+                    if self.participant.vars['LossDecision'] == 2:
+                        if self.loss_decision_2 == 1:
+                            self.loss_payment = self.participant.vars['numheadsLoss']*6.00 + \
+                                                (Constants.num_cointosses - self.participant.vars['numheadsLoss'])*-2.00
+                        else:
+                            self.loss_payment = 0
+                    else:
+                        if self.participant.vars['LossDecision'] == 4:
+                            if self.loss_decision_4 == 1:
+                                self.loss_payment = self.participant.vars['numheadsLoss'] * 6.00 + \
+                                                    (Constants.num_cointosses - self.participant.vars[
+                                                        'numheadsLoss']) * -3.00
+                            else:
+                                self.loss_payment = 0
+                        else:
+                            if self.participant.vars['LossDecision'] == 6:
+                                if self.loss_decision_6 == 1:
+                                    self.loss_payment = self.participant.vars['numheadsLoss'] * 6.00 + \
+                                                        (Constants.num_cointosses - self.participant.vars[
+                                                            'numheadsLoss']) * -4.00
+                                else:
+                                    self.loss_payment = 0
+                            else:
+                                if self.participant.vars['LossDecision'] == 8:
+                                    if self.loss_decision_8 == 1:
+                                        self.loss_payment = self.participant.vars['numheadsLoss'] * 6.00 + \
+                                                            (Constants.num_cointosses - self.participant.vars[
+                                                                'numheadsLoss']) * -5.00
+                                    else:
+                                        self.loss_payment = 0
+                                else:
+                                    if self.participant.vars['LossDecision'] == 10:
+                                        if self.loss_decision_10 == 1:
+                                            self.loss_payment = self.participant.vars['numheadsLoss'] * 6.00 + \
+                                                                (Constants.num_cointosses - self.participant.vars[
+                                                                    'numheadsLoss']) * -6.00
+                                        else:
+                                            self.loss_payment = 0
+                                    else:
+                                        if self.participant.vars['LossDecision'] == 12:
+                                            if self.loss_decision_12 == 1:
+                                                self.loss_payment = self.participant.vars['numheadsLoss'] * 6.00 + \
+                                                                    (Constants.num_cointosses - self.participant.vars[
+                                                                        'numheadsLoss']) * -7.00
+                                            else:
+                                                self.loss_payment = 0
+            else:
+                pass
+
+    def set_payoffs(self):
+        if self.participant.vars['paymentmodule'] == 1:
+            self.participant.vars['payoffmodule5'] = self.risk_payment
+        else:
+            if self.participant.vars['paymentmodule'] == 2:
+                self.participant.vars['payoffmodule5'] = self.loss_payment
+            else:
+                if self.participant.vars['paymentmodule'] == 3:
+                    self.participant.vars['payoffmodule5'] = 0
+
+    def set_big_payoff(self):
+        self.participant.vars['bigpayoff'] = 7 + \
+                                             self.participant.vars['payoffmodule1']*0.25 + \
+                                             self.participant.vars['payoffmodule2'] + \
+                                             self.participant.vars['payoffmodule3'] + \
+                                             self.participant.vars['payoffmodule4']*0.25 + \
+                                             self.participant.vars['payoffmodule5']
+        self.Final_Payoff = self.participant.vars['bigpayoff']
 

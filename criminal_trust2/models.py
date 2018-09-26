@@ -588,8 +588,8 @@ class Group(BaseGroup):
                                                            p2.trustee_decision10)
         p1.payoffmodule4 = p1.participant.vars['payoffmodule4']
         p2.payoffmodule4 = p2.participant.vars['payoffmodule4']
-        p1.set_big_payoff()
-        p2.set_big_payoff()
+        # p1.set_big_payoff()
+        # p2.set_big_payoff()
 
 
     def keep_decisions(self):
@@ -631,7 +631,7 @@ class Player(BasePlayer):
     trustee_decision9 = models.IntegerField()
     trustee_decision10 = models.IntegerField()
 
-    Final_Payoff = models.CurrencyField()
+    # Final_Payoff = models.CurrencyField()
 
     payoffmodule1 = models.CurrencyField()
     payoffmodule4 = models.CurrencyField()
@@ -717,6 +717,6 @@ class Player(BasePlayer):
         if self.id_in_group == 2:
             return 'Trustee'
 
-    def set_big_payoff(self):
-        self.participant.vars['bigpayoff'] = 7 + self.participant.vars['payoffmodule1']*0.25 + self.participant.vars['payoffmodule2'] + self.participant.vars['payoffmodule3'] + self.participant.vars['payoffmodule4']*0.25
-        self.Final_Payoff = self.participant.vars['bigpayoff']
+    # def set_big_payoff(self):
+    #     self.participant.vars['bigpayoff'] = 7 + self.participant.vars['payoffmodule1']*0.25 + self.participant.vars['payoffmodule2'] + self.participant.vars['payoffmodule3'] + self.participant.vars['payoffmodule4']*0.25
+    #     self.Final_Payoff = self.participant.vars['bigpayoff']
