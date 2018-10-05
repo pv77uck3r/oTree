@@ -120,9 +120,8 @@ class Subsession(BaseSubsession):
                         p.participant.vars['conjpunlevel'] = [p.alt_pun_level_1, p.alt_pun_level_2, p.alt_pun_level_3]
 
                 p.participant.vars['realtriplet'] = [p.participant.vars['innocencelevel'].item(), p.participant.vars['guiltlevel'].item(), p.participant.vars['pleapunishment']]
-
-                shuffle(p.participant.vars['conjinnocencelevels'])
-                shuffle(p.participant.vars['conjguiltlevels'])
+                np.random.shuffle(p.participant.vars['conjinnocencelevels'])
+                np.random.shuffle(p.participant.vars['conjguiltlevels'])
                 p.participant.vars['infosets'] = [p.participant.vars['conjinnocencelevels'],
                                                   p.participant.vars['conjguiltlevels'],
                                                   p.participant.vars['conjpunlevel']
@@ -234,11 +233,11 @@ class Player(BasePlayer):
                                    '(a Large Crime) you will'
     )
 
-    belief = models.FloatField(
+    belief = models.IntegerField(
         min=0,
         max=100,
-        widget=widgets.Slider(attrs={'step': '1.0'}),
-        label=None
+        widget=widgets.Slider(attrs={'size': 100}),
+        label=''
     )
 
     alt_innocence_level = models.IntegerField()
@@ -568,7 +567,7 @@ class Player(BasePlayer):
                 self.ending_punishment = 0
                 self.relevant_decision = 0
 
-        # WE MUST ALSO CONSIDER THE CASE WHERE THE PROSECUTOR OR DOESNT HAS NO EVIDENCE
+        # WE MUST ALSO CONSIDER THE CASE WHERE THE PROSECUTOR HAS NO EVIDENCE
 
         if self.participant.vars['guiltlevel'].item() == 1:
             self.ending_trial_status = False

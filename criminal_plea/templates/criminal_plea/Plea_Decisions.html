@@ -41,9 +41,11 @@ Suppose a trial were to be held for the exact circumstances as described by the 
     evidence of innocence, what do you believe the probability of a guilty verdict to be?
 </p>
 
-<div class="input-group">
-    {{form.belief}}  <span class="input-group-addon">%</span>
+  <div class="form-inline" style="width: 500px;">
+    {% formfield player.belief label="" %}
+    %
 </div>
+
 
 {% if punlevel == '0.20' %}
 <p>

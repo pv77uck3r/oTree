@@ -36,17 +36,18 @@ class Subsession(BaseSubsession):
                 for p in self.get_players():
                     # If we pay for risk, we select a 0 - Heads or 1 - Tails.
                     p.participant.vars['HTRisk'] = np.random.choice([0, 1])
-                else:
-                    if self.session.vars['paymentmodule'] == 2:
-                        for x in self.get_players():
-                            # If we pay for loss, we select a random decision they made and also a coin toss
-                            x.participant.vars['LossDecision'] = np.random.choice(range(1, 13))
-                            if x.participant.vars['LossDecision'] % 2 == 1:
-                                x.participant.vars['HTLoss'] = np.random.choice([1, 2])
-                            else:
-                                x.participant.vars['numheadsLoss'] = np.random.binomial(Constants.num_cointosses, p=0.5)
+            else:
+                if self.session.vars['paymentmodule'] == 2:
+                    for p in self.get_players():
+                        # If we pay for loss, we select a random decision they made and also a coin toss or series
+                        # of coin tosses
+                        p.participant.vars['LossDecision'] = np.random.choice(list(np.arange(13)))
+                        if p.participant.vars['LossDecision'] % 2 == 1:
+                            p.participant.vars['HTLoss'] = np.random.choice([1, 2])
                         else:
-                            pass
+                            p.participant.vars['numheadsLoss'] = np.random.binomial(Constants.num_cointosses, p=0.5)
+                    else:
+                        pass
 
 
 class Group(BaseGroup):
@@ -187,8 +188,12 @@ class Player(BasePlayer):
 
     Final_Payoff = models.CurrencyField()
 
+    ModuleChoice = models.IntegerField()
+    LossDecision = models.IntegerField()
+
     def payoffs(self):
-        if self.participant.vars['paymentmodule'] == 1:
+        if self.session.vars['paymentmodule'] == 1:
+            self.ModuleChoice = self.session.vars['paymentmodule']
             if self.risk_decision == 1:
                 if self.participant.vars['HTRisk'] == 0:
                     self.risk_payment = 4.30
@@ -231,7 +236,9 @@ class Player(BasePlayer):
                                         else:
                                             self.risk_payment = 7.60
         else:
-            if self.participant.vars['paymentmodule'] == 2:
+            if self.session.vars['paymentmodule'] == 2:
+                self.ModuleChoice = self.session.vars['paymentmodule']
+                self.LossDecision = self.participant.vars['LossDecision']
                 if self.participant.vars['LossDecision'] % 2 == 1:
                     if self.participant.vars['LossDecision'] == 1:
                         if self.loss_decision_1 == 1:
@@ -334,16 +341,17 @@ class Player(BasePlayer):
                                             else:
                                                 self.loss_payment = 0
             else:
+                self.ModuleChoice = self.session.vars['paymentmodule']
                 pass
 
     def set_payoffs(self):
-        if self.participant.vars['paymentmodule'] == 1:
+        if self.session.vars['paymentmodule'] == 1:
             self.participant.vars['payoffmodule5'] = self.risk_payment
         else:
-            if self.participant.vars['paymentmodule'] == 2:
+            if self.session.vars['paymentmodule'] == 2:
                 self.participant.vars['payoffmodule5'] = self.loss_payment
             else:
-                if self.participant.vars['paymentmodule'] == 3:
+                if self.session.vars['paymentmodule'] == 3:
                     self.participant.vars['payoffmodule5'] = 0
 
     def set_big_payoff(self):

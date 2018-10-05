@@ -40,7 +40,8 @@ SESSION_CONFIGS = [
         'name': 'criminal_wrapper',
         'display_name': "Innocence Problem - All tasks",
         'num_demo_participants': 8,
-        'app_sequence': ['criminal_wrapper', 'criminal_trust', 'criminal_theft', 'criminal_plea', 'criminal_trust2'],
+        'app_sequence': ['criminal_wrapper', 'criminal_trust', 'criminal_theft', 'criminal_plea', 'criminal_trust2',
+                         'criminal_riskloss'],
     },
     {
         'name': 'dictator',

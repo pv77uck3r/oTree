@@ -109,18 +109,18 @@ class Plea_Decisions(Page):
 
     def get_form_fields(self):
         if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][2] == .2:
-            return ['plea_decision2', 'plea_decision3', 'plea_decision4', 'plea_decision5', 'plea_decision6']
+            return ['plea_decision2', 'plea_decision3', 'plea_decision4', 'plea_decision5', 'plea_decision6', 'belief']
         else:
             if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][2] == .5:
-                return ['plea_decision3', 'plea_decision4', 'plea_decision5', 'plea_decision6']
+                return ['plea_decision3', 'plea_decision4', 'plea_decision5', 'plea_decision6', 'belief']
             else:
                 if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][2] == .7:
-                    return ['plea_decision4', 'plea_decision5', 'plea_decision6']
+                    return ['plea_decision4', 'plea_decision5', 'plea_decision6', 'belief']
                 else:
                     if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][2] == 1:
-                        return ['plea_decision5', 'plea_decision6']
+                        return ['plea_decision5', 'plea_decision6', 'belief']
                     else:
-                        return ['plea_decision6']
+                        return ['plea_decision6', 'belief']
 
     def plea_decision2_choices(self):
         if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 1:
@@ -246,7 +246,7 @@ class Trial_Decisions(Page):
 
     form_model = 'player'
     form_fields = ['trial_decision1', 'trial_decision2', 'trial_decision3', 'trial_decision4', 'trial_decision5',
-                   'trial_decision6', 'belief']
+                   'trial_decision6']
 
     def trial_decision1_choices(self):
         if self.participant.vars['allpossibleinfo'][self.subsession.round_number - 1][0] == 1:

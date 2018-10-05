@@ -25,14 +25,14 @@ class Loss(Page):
 class LittleResults(Page):
 
     def vars_for_template(self):
-        if self.player.participant.vars['paymentmodule'] == 1:
+        if self.session.vars['paymentmodule'] == 1:
             modulechosen = 'first'
             if self.player.participant.vars['HTRisk'] == 0:
                 randomroll = 'below 50'
             else:
                 randomroll = 'greater than or equal to 50'
         else:
-            if self.player.participant.vars['paymentmodule'] == 2:
+            if self.session.vars['paymentmodule'] == 2:
                 modulechosen = 'second'
                 if self.player.participant.vars['LossDecision'] % 2 == 1:
                     singleloss = 1

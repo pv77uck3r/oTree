@@ -174,7 +174,7 @@ class Player(BasePlayer):
             [1, 'True'],
             [2, 'False']
         ],
-        label='Question 2: If you report the division of money accurately it is impossible for there to be evidence suggesting you '
+        label='Question 1: If you report the division of money accurately it is impossible for there to be evidence suggesting you '
               'are guilty.'
     )
 

@@ -167,6 +167,5 @@ page_sequence = [
     DecisionsI5,
     DecisionsT,
     KeepDecisions,
-    GenTrustGame2Payoffs,
-    Results
+    GenTrustGame2Payoffs
 ]
