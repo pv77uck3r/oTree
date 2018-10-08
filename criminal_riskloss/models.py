@@ -31,23 +31,28 @@ class Subsession(BaseSubsession):
             # 1 - risk
             # 2 - loss
             # 3 - ambiguity
-            self.session.vars['paymentmodule'] = np.random.choice([1, 2, 3])
+            self.session.vars['paymentmodule'] = np.random.choice([1, 2])
             if self.session.vars['paymentmodule'] == 1:
                 for p in self.get_players():
                     # If we pay for risk, we select a 0 - Heads or 1 - Tails.
                     p.participant.vars['HTRisk'] = np.random.choice([0, 1])
-            else:
-                if self.session.vars['paymentmodule'] == 2:
+                    p.participant.vars['LossDecision'] = None
+                    p.participant.vars['HTLoss'] = None
+                    p.participant.vars['numheadsLoss'] = None
+                    p.ModuleChoice = self.session.vars['paymentmodule']
+            elif self.session.vars['paymentmodule'] == 2:
                     for p in self.get_players():
                         # If we pay for loss, we select a random decision they made and also a coin toss or series
                         # of coin tosses
+                        p.participant.vars['HTRisk'] = None
                         p.participant.vars['LossDecision'] = np.random.choice(list(np.arange(13)))
+                        p.LossDecision = p.participant.vars['LossDecision']
                         if p.participant.vars['LossDecision'] % 2 == 1:
                             p.participant.vars['HTLoss'] = np.random.choice([1, 2])
                         else:
                             p.participant.vars['numheadsLoss'] = np.random.binomial(Constants.num_cointosses, p=0.5)
-                    else:
-                        pass
+            else:
+                pass
 
 
 class Group(BaseGroup):
@@ -194,6 +199,7 @@ class Player(BasePlayer):
     def payoffs(self):
         if self.session.vars['paymentmodule'] == 1:
             self.ModuleChoice = self.session.vars['paymentmodule']
+            self.loss_payment = 0
             if self.risk_decision == 1:
                 if self.participant.vars['HTRisk'] == 0:
                     self.risk_payment = 4.30
@@ -237,6 +243,7 @@ class Player(BasePlayer):
                                             self.risk_payment = 7.60
         else:
             if self.session.vars['paymentmodule'] == 2:
+                self.risk_payment = 0
                 self.ModuleChoice = self.session.vars['paymentmodule']
                 self.LossDecision = self.participant.vars['LossDecision']
                 if self.participant.vars['LossDecision'] % 2 == 1:
@@ -362,4 +369,5 @@ class Player(BasePlayer):
                                              self.participant.vars['payoffmodule4']*0.25 + \
                                              self.participant.vars['payoffmodule5']
         self.Final_Payoff = self.participant.vars['bigpayoff']
+        self.participant.payoff = self.Final_Payoff
 

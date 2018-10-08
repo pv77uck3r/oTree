@@ -27,6 +27,8 @@ class LittleResults(Page):
     def vars_for_template(self):
         if self.session.vars['paymentmodule'] == 1:
             modulechosen = 'first'
+            singleloss = None
+            otherroll = None
             if self.player.participant.vars['HTRisk'] == 0:
                 randomroll = 'below 50'
             else:
@@ -36,16 +38,20 @@ class LittleResults(Page):
                 modulechosen = 'second'
                 if self.player.participant.vars['LossDecision'] % 2 == 1:
                     singleloss = 1
+                    otherroll = None
                     if self.player.participant.vars['HTLoss'] == 0:
                         randomroll = 'below 50'
                     else:
                         randomroll = 'greater than or equal to 50'
                 else:
-                    randomroll = self.player.participant.vars['numberheadsLoss']
+                    randomroll = self.player.participant.vars['numheadsLoss']
                     otherroll = Constants.num_cointosses - randomroll
+                    singleloss = None
             else:
                 modulechosen = 'third'
                 randomroll = 'Not Yet Defined'
+                singleloss = None
+                otherroll = None
 
         return {'modulechosen': modulechosen,
                 'randomroll': randomroll,
@@ -65,7 +71,8 @@ class Results(Page):
                 'payoff3': format(self.participant.vars['payoffmodule3'], '.2f'),
                 'payoff4': format(self.participant.vars['payoffmodule4']*0.25, '.2f'),
                 'payoff5': format(self.participant.vars['payoffmodule5'], '.2f'),
-                'finalpayoff': format(self.participant.vars['bigpayoff'], '.2f')
+                'finalpayoff': format(self.participant.vars['bigpayoff'], '.2f'),
+                'SubjectID': self.participant.id_in_session
                 }
 
 
