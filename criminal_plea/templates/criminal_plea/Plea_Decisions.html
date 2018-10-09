@@ -35,16 +35,20 @@
 </table>
 </center>
 
+    <div class="two">
 <p>
 Suppose a trial were to be held for the exact circumstances as described by the table above. With the accusation of a
     <b>{{ crimelevel }}</b> crime, <b>{{ guiltevidence }}</b> evidence of guilt, and <b>{{ innocenceevidence }}</b>
     evidence of innocence, what do you believe the probability of a guilty verdict to be?
 </p>
 
-  <div class="form-inline" style="width: 500px;">
+    <div class="center">
+    <div class="form-inline">
     {% formfield player.belief label="" %}
     %
 </div>
+    </div>
+    </div>
 
 
 {% if punlevel == '0.20' %}
@@ -234,6 +238,21 @@ p.fixed {
     width: 250px;
     font-size: 30px;
     border: 3px solid #73AD21;
+}
+</style>
+
+<style>
+.center {
+    margin: auto;
+    width: 35%;
+    padding: 10px;
+}
+</style>
+
+    <style>
+    .two {
+    border-style: solid;
+    border-width: medium;
 }
 </style>
 
