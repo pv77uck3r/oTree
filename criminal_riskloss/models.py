@@ -45,7 +45,7 @@ class Subsession(BaseSubsession):
                         # If we pay for loss, we select a random decision they made and also a coin toss or series
                         # of coin tosses
                         p.participant.vars['HTRisk'] = None
-                        p.participant.vars['LossDecision'] = np.random.choice(list(np.arange(13)))
+                        p.participant.vars['LossDecision'] = np.random.choice(list(np.arange(1, 13)))
                         p.LossDecision = p.participant.vars['LossDecision']
                         if p.participant.vars['LossDecision'] % 2 == 1:
                             p.participant.vars['HTLoss'] = np.random.choice([1, 2])
@@ -108,7 +108,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 2: This decision consists of six independent repetitions of the gamble in Decision 3. That is, '
+        label='Decision 4: This decision consists of six independent repetitions of the gamble in Decision 3. That is, '
               'you will be paid off the outcomes of six independent coin tosses.'
     )
 
@@ -127,7 +127,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 2: This decision consists of six independent repetitions of the gamble in Decision 5. That is, '
+        label='Decision 6: This decision consists of six independent repetitions of the gamble in Decision 5. That is, '
               'you will be paid off the outcomes of six independent coin tosses.'
     )
 
@@ -146,7 +146,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 2: This decision consists of six independent repetitions of the gamble in Decision 7. That is, '
+        label='Decision 8: This decision consists of six independent repetitions of the gamble in Decision 7. That is, '
               'you will be paid off the outcomes of six independent coin tosses.'
     )
 
@@ -165,7 +165,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 2: This decision consists of six independent repetitions of the gamble in Decision 9. That is, '
+        label='Decision 10: This decision consists of six independent repetitions of the gamble in Decision 9. That is, '
               'you will be paid off the outcomes of six independent coin tosses.'
     )
 
@@ -184,7 +184,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 2: This decision consists of six independent repetitions of the gamble in Decision 11. That is, '
+        label='Decision 12: This decision consists of six independent repetitions of the gamble in Decision 11. That is, '
               'you will be paid off the outcomes of six independent coin tosses.'
     )
 

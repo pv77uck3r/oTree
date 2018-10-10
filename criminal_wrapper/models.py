@@ -30,6 +30,9 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
 
+    prosecutorchosen = models.IntegerField()
+    oneortwochosen = models.IntegerField()
+
     def creating_session(self):
         num_subjs = len(self.get_players())
         if self.round_number == 1:
@@ -76,11 +79,13 @@ class Subsession(BaseSubsession):
             # Below we import prosecutor decisions
             self.session.vars['prosecutordecisions'] = pd.read_excel('ProsecutorDecisions.xls', 'Sheet1')
             maxprosecutor = self.session.vars['prosecutordecisions']['subjectid'].max()
-            randprosecutor = np.random.choice(range(1, maxprosecutor + 1))
+            randprosecutor = np.random.choice(np.arange(1, maxprosecutor + 1))
+            self.prosecutorchosen = randprosecutor
             self.session.vars['prosecutordecisions'] = self.session.vars['prosecutordecisions'][self.session.vars['prosecutordecisions'].subjectid == randprosecutor]
 
             # Then we randomly select which type of incentive scheme the prosecutor had.
             incentive = np.random.choice([1, 2])
+            self.oneortwochosen = incentive
             self.session.vars['prosecutordecisions'] = self.session.vars['prosecutordecisions'][self.session.vars['prosecutordecisions'].Period == incentive]
 
             # Below we import jury decisions.

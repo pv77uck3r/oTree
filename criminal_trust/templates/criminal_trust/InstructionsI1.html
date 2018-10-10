@@ -31,7 +31,7 @@
 
     <p>
         <span class="popup" onclick="myFunction()"> <b>For example,</b>
-            <span class="popuptext" id="myPopup"><img src="{% static "criminal_trust/InvestorExample.jpg" %}"/></span>
+            <span class="popuptext" id="myPopup"><img src="{% static "criminal_trust/InvestorExample.png" %}"/></span>
         </span> if you send your counterpart 2 quarters, he/she would receive 6 quarters (2x3 = 6). His/her
         decision would be whether to send 0, 1, 2, 3, 4, 5, or 6 quarters back to you. The total number of quarters you
         would have is the exact amount your counterpart sent back to you plus the remaining 8 quarters from your initial
@@ -88,7 +88,7 @@
         /* The actual popup */
         .popup .popuptext {
             visibility: hidden;
-            width: 160px;
+            width: 530px;
             background-color: #555;
             color: #fff;
             text-align: center;
@@ -96,21 +96,21 @@
             padding: 8px 0;
             position: absolute;
             z-index: 1;
-            bottom: 125%;
-            left: 50%;
+            top: -180px;
+            left: 190%;
             margin-left: -80px;
         }
 
         /* Popup arrow */
         .popup .popuptext::after {
-            content: "";
+            content: " ";
             position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
+            top: 51%;
+            right: 100%; /* To the left of the tooltip */
+            margin-top: -5px;
             border-width: 5px;
             border-style: solid;
-            border-color: #555 transparent transparent transparent;
+            border-color: transparent black transparent transparent;
         }
 
         /* Toggle this class - hide and show the popup */

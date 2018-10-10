@@ -31,8 +31,8 @@
 
     <p>
         <span class="popup" onclick="myFunction()"> <b>For example,</b>
-            <span class="popuptext" id="myPopup"><img src="{% static "criminal_trust/TrusteeExample.jpg" %}"/></span>
-        </span>, if your counterpart sends you 2 quarters, you would receive 6 quarters (2x3 = 6). Your decision
+            <span class="popuptext" id="myPopup"><img src="{% static "criminal_trust/TrusteeExample.png" %}"/></span>
+        </span> if your counterpart sends you 2 quarters, you would receive 6 quarters (2x3 = 6). Your decision
         would be whether to send back to your counterpart 0, 1, 2, 3, 4, 5, or 6 quarters. The number of quarters they
         would then have is the exact number you sent them plus their remaining 8 quarters from their initial 10 quarters
         (10-2 = 8). You would keep your initial 10 quarters plus the quarters you did not send back from the tripled
@@ -64,7 +64,7 @@
         /* The actual popup */
         .popup .popuptext {
             visibility: hidden;
-            width: 160px;
+            width: 530px;
             background-color: #555;
             color: #fff;
             text-align: center;
@@ -72,21 +72,21 @@
             padding: 8px 0;
             position: absolute;
             z-index: 1;
-            bottom: 125%;
-            left: 50%;
+            top: -180px;
+            left: 190%;
             margin-left: -80px;
         }
 
         /* Popup arrow */
         .popup .popuptext::after {
-            content: "";
+            content: " ";
             position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
+            top: 51%;
+            right: 100%; /* To the left of the tooltip */
+            margin-top: -5px;
             border-width: 5px;
             border-style: solid;
-            border-color: #555 transparent transparent transparent;
+            border-color: transparent black transparent transparent;
         }
 
         /* Toggle this class - hide and show the popup */
