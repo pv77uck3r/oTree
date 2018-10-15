@@ -39,8 +39,8 @@ class Subsession(BaseSubsession):
             for p in self.get_players():
                 p.participant.vars['Wdraws'] = np.random.choice(np.arange(3.90, 7.00, 0.10), Constants.numdraws, replace=False)
                 p.participant.vars['xdraws'] = np.random.choice(np.arange(0.10, 1.10, 0.10), Constants.numdraws, replace=False)
-                p.participant.vars['ydraws'] = np.random.choice(np.arange(1.00, 2.10, 0.10), Constants.numdraws, replace=False)
-                p.participant.vars['zdraws'] = np.random.choice(np.arange(2.00, 3.10, 0.10), Constants.numdraws, replace=False)
+                p.participant.vars['ydraws'] = np.random.choice(np.arange(1.10, 2.10, 0.10), Constants.numdraws, replace=False)
+                p.participant.vars['zdraws'] = np.random.choice(np.arange(2.10, 3.10, 0.10), Constants.numdraws, replace=False)
 
     def set_groups_1(self):
         self.groups_1_indicator_pre = True
