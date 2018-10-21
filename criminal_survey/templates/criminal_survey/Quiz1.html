@@ -14,17 +14,32 @@
         very moment, even if this is not how you usually feel.
     </p>
 
-    <table class="table">
+    <table class="tg">
+    <tr>
+        <th></th>
+        <th class="tg-s6z2">Not at all</th>
+        <th class="tg-s6z2">A little</th>
+        <th class="tg-s6z2">Moderately</th>
+        <th class="tg-s6z2">Very much so</th>
+    </tr>
     {% for field in form %}
         <tr>
             <th>{{ field.label }}</th>
             {% for choice in field %}
-                <td>{{ choice }}</td>
+                <td class="tg-s6z2">{{ choice }}</td>
             {% endfor %}
         </tr>
     {% endfor %}
     </table>
 
     {% next_button %}
+
+{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg .tg-s6z2{text-align:center}
+</style>
 
 {% endblock %}

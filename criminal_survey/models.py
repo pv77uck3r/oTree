@@ -6,40 +6,21 @@ from otree.api import (
 
 def make_field(label):
     return models.IntegerField(
-        choices=[
-                    [1, 'Not at all'],
-                    [2, 'A little'],
-                    [3, 'Moderately'],
-                    [4, 'Very much so'],
-                ],
+        choices=[1, 2, 3, 4],
         label=label,
         widget=widgets.RadioSelect,
     )
 
 def make_field2(label):
     return models.IntegerField(
-        choices=[
-                    [1, 'Extremely uncharacteristic'],
-                    [2, 'Somewhat uncharacteristic'],
-                    [3, 'Uncertain'],
-                    [4, 'Somewhat characteristic'],
-                    [5, 'Extremely characteristic']
-                ],
+        choices=[1, 2, 3, 4, 5],
         label=label,
         widget=widgets.RadioSelect,
     )
 
 def make_field3(label):
     return models.IntegerField(
-        choices=[
-                    [1, 'Strongly Agree'],
-                    [2, 'Somewhat Agree'],
-                    [3, 'Slightly Agree'],
-                    [4, 'No Opinion'],
-                    [5, 'Slightly Disagree'],
-                    [6, 'Somewhat Disagree'],
-                    [7, 'Strongly Disagree']
-                ],
+        choices=[1, 2, 3, 4, 5, 6, 7],
         label=label,
         widget=widgets.RadioSelect,
     )
