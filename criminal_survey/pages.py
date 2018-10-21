@@ -65,7 +65,12 @@ class Results(Page):
 
 
 page_sequence = [
-    MyPage,
-    ResultsWaitPage,
-    Results
+    Intro,
+    Quiz1,
+    Quiz2,
+    Quiz3,
+    Quiz4,
+    Quiz5,
+    Quiz6,
+    End
 ]
