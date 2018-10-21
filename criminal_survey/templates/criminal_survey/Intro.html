@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Survey - Intro
+{% endblock %}
+
+{% block content %}
+    <p>Thank you for completing the experiment.</p>
+
+    <p>
+    The computer will now display a series of short surveys. Please complete these while we calculate and prepare your
+    cash payments.
+    </p>
+
+    {% next_button %}
+
+{% endblock %}
