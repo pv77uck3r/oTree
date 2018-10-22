@@ -16,11 +16,11 @@
 
     <table class="tg">
     <tr>
-        <th></th>
-        <th class="tg-s6z2">Not at all</th>
-        <th class="tg-s6z2">A little</th>
-        <th class="tg-s6z2">Moderately</th>
-        <th class="tg-s6z2">Very much so</th>
+        <th width="60%" ></th>
+        <th class="tg-s6z2" width="10%">Not at all</th>
+        <th class="tg-s6z2" width="10%">A little</th>
+        <th class="tg-s6z2" width="10%">Moderately</th>
+        <th class="tg-s6z2" width="10%">Very much so</th>
     </tr>
     {% for field in form %}
         <tr>
@@ -38,8 +38,8 @@
 
 {% block styles %}
     <style type="text/css">
-    .tg  {border-collapse:collapse;border-spacing:0;}
-    .tg .tg-s6z2{text-align:center}
+    .tg  {border-collapse:separate;border-spacing:10px;}
+    .tg .tg-s6z2{text-align:center;}
 </style>
 
 {% endblock %}

@@ -2,11 +2,44 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Survey - Part 3
 {% endblock %}
 
 {% block content %}
+    <p>
+        For each of the statements below, please indicate whether or not the statement is characteristic of you.
+    </p>
+
+    <table class="tg">
+    <tr>
+        <th width="50%" ></th>
+        <th class="tg-s6z2" width="(50/7)%">Strongly Agree</th>
+        <th class="tg-s6z2" width="(50/7)%">Somewhat Agree</th>
+        <th class="tg-s6z2" width="(50/7)%">Slightly Agree</th>
+        <th class="tg-s6z2" width="(50/7)%">No Opinion</th>
+        <th class="tg-s6z2" width="(50/7)%">Slightly Disagree</th>
+        <th class="tg-s6z2" width="(50/7)%">Somewhat Disagree</th>
+        <th class="tg-s6z2" width="(50/7)%">Strongly Disagree</th>
+    </tr>
+    {% for field in form %}
+        <tr>
+            <th>{{ field.label }}</th>
+            {% for choice in field %}
+                <td class="tg-s6z2">{{ choice }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
 
     {% next_button %}
+
+{% endblock %}
+
+
+{% block styles %}
+    <style type="text/css">
+    .tg  {border-collapse:separate;border-spacing:10px;}
+    .tg .tg-s6z2{text-align:center;}
+</style>
 
 {% endblock %}

@@ -51,7 +51,11 @@ class Quiz6(Page):
 
 
 class End(Page):
-    pass
+
+    def vars_for_template(self):
+        return {
+            'ID': self.participant.id_in_session
+        }
 
 
 class ResultsWaitPage(WaitPage):

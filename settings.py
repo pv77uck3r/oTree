@@ -41,7 +41,7 @@ SESSION_CONFIGS = [
         'display_name': "Innocence Problem - All tasks",
         'num_demo_participants': 8,
         'app_sequence': ['criminal_wrapper', 'criminal_trust', 'criminal_theft', 'criminal_plea', 'criminal_trust2',
-                         'criminal_riskloss'],
+                         'criminal_riskloss', 'criminal_survey'],
     },
 {
         'name': 'criminal_survey',
@@ -101,7 +101,7 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 
 # Consider '', None, and '0' to be empty/false
-DEBUG = True
+DEBUG = False
 
 DEMO_PAGE_INTRO_HTML = """
 Here are various games implemented with 

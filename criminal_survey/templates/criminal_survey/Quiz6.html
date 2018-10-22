@@ -2,10 +2,30 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Survey - Part 6
 {% endblock %}
 
 {% block content %}
+
+    {% formfield player.ClarityOfInstructions %}
+
+    {% formfield player.PercentTakeSmall %}
+
+    {% formfield player.PercentTakeMedium %}
+
+    {% formfield player.PercentTakeLarge %}
+
+    {% formfield player.ReasonableDoubt %}
+
+    {% formfield player.ReasonableDoubtJuror %}
+
+    {% formfield player.PleadFifth %}
+
+    {% formfield player.InnocentPleadFifth %}
+
+    {% formfield player.GuiltyPleadFifth %}
+
+    {% formfield player.Opinion %}
 
     {% next_button %}
 
