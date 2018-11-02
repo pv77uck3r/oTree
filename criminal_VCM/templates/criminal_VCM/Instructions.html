@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Part 1 - Instructions
+{% endblock %}
+
+{% block content %}
+
+    {% include 'criminal_VCM/InstructionsTemplate.html' %}
+
+<div id="content">
+    {% next_button %}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script>
+        $(function() {
+    $('#content').hide().delay(60*1000).fadeIn('slow');
+
+});
+    </script>
+
+{% endblock %}

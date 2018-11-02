@@ -43,7 +43,7 @@ SESSION_CONFIGS = [
         'app_sequence': ['criminal_wrapper', 'criminal_trust', 'criminal_theft', 'criminal_plea', 'criminal_trust2',
                          'criminal_riskloss', 'criminal_survey'],
     },
-{
+    {
         'name': 'criminal_survey',
         'display_name': "Survey for Innocence Problem",
         'num_demo_participants': 1,
