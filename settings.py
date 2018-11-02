@@ -46,7 +46,7 @@ SESSION_CONFIGS = [
     {
         'name': 'criminal_wrapper2',
         'display_name': "Innocence Problem - All tasks",
-        'num_demo_participants': 8,
+        'num_demo_participants': 12,
         'app_sequence': ['criminal_wrapper2', 'criminal_VCM', 'criminal_theft', 'criminal_plea', 'criminal_VCM2',
                          'criminal_riskloss2', 'criminal_survey'],
     },
