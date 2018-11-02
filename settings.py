@@ -44,6 +44,13 @@ SESSION_CONFIGS = [
                          'criminal_riskloss', 'criminal_survey'],
     },
     {
+        'name': 'criminal_wrapper2',
+        'display_name': "Innocence Problem - All tasks",
+        'num_demo_participants': 8,
+        'app_sequence': ['criminal_wrapper2', 'criminal_VCM', 'criminal_theft', 'criminal_plea', 'criminal_VCM2',
+                         'criminal_riskloss2', 'criminal_survey'],
+    },
+    {
         'name': 'criminal_survey',
         'display_name': "Survey for Innocence Problem",
         'num_demo_participants': 1,

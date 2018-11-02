@@ -1,0 +1,14 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Welcome!
+{% endblock %}
+
+{% block content %}
+
+    {% include 'criminal_wrapper/WelcomeTemplate.html' %}
+
+    {% next_button %}
+
+{% endblock %}

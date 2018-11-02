@@ -12,7 +12,7 @@ Your app description
 
 
 class Constants(BaseConstants):
-    name_in_url = 'criminal_VCM'
+    name_in_url = 'criminal_VCM2'
     players_per_group = 3
     num_rounds = 1
 
