@@ -29,32 +29,32 @@ class Belief3(Page):
 
 class Decision1(Page):
     form_model = 'player'
-    form_fields = ['decision1']
+    form_fields = ['contribution1']
 
 
 class Decision2(Page):
     form_model = 'player'
-    form_fields = ['decision2']
+    form_fields = ['contribution2']
 
 
 class Decision3(Page):
     form_model = 'player'
-    form_fields = ['decision3']
+    form_fields = ['contribution3']
 
 
 class Decision4(Page):
     form_model = 'player'
-    form_fields = ['decision4']
+    form_fields = ['contribution4']
 
 
 class Decision5(Page):
     form_model = 'player'
-    form_fields = ['decision5']
+    form_fields = ['contribution5']
 
 
 class Decision6(Page):
     form_model = 'player'
-    form_fields = ['decision6']
+    form_fields = ['contribution6']
 
 
 class RecordDecisions(WaitPage):

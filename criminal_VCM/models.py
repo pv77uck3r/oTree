@@ -104,9 +104,11 @@ class Player(BasePlayer):
             [8, '$8'],
             [10, '$10']
         ],
+        min=0,
+        max=10,
         label='If your 3 person group is composed with partners according to the table above, how many dollars from '
               'your endowment would you like to contribute to the group account?',
-        widget=widgets.Slider()
+        widget=widgets.Slider(attrs={'step': '2'})
     )
 
     contribution2 = models.IntegerField(
@@ -118,9 +120,11 @@ class Player(BasePlayer):
             [8, '$8'],
             [10, '$10']
         ],
+        min=0,
+        max=10,
         label='If your 3 person group is composed with partners according to the table above, how many dollars from '
               'your endowment would you like to contribute to the group account?',
-        widget=widgets.Slider()
+        widget=widgets.Slider(attrs={'step': '2'})
     )
 
     contribution3 = models.IntegerField(
@@ -132,9 +136,11 @@ class Player(BasePlayer):
             [8, '$8'],
             [10, '$10']
         ],
+        min=0,
+        max=10,
         label='If your 3 person group is composed with partners according to the table above, how many dollars from '
               'your endowment would you like to contribute to the group account?',
-        widget=widgets.Slider()
+        widget=widgets.Slider(attrs={'step': '2'})
     )
 
     contribution4 = models.IntegerField(
@@ -146,9 +152,11 @@ class Player(BasePlayer):
             [8, '$8'],
             [10, '$10']
         ],
+        min=0,
+        max=10,
         label='If your 3 person group is composed with partners according to the table above, how many dollars from '
               'your endowment would you like to contribute to the group account?',
-        widget=widgets.Slider()
+        widget=widgets.Slider(attrs={'step': '2'})
     )
 
     contribution5 = models.IntegerField(
@@ -160,9 +168,11 @@ class Player(BasePlayer):
             [8, '$8'],
             [10, '$10']
         ],
+        min=0,
+        max=10,
         label='If your 3 person group is composed with partners according to the table above, how many dollars from '
               'your endowment would you like to contribute to the group account?',
-        widget=widgets.Slider()
+        widget=widgets.Slider(attrs={'step': '2'})
     )
 
     contribution6 = models.IntegerField(
@@ -174,9 +184,11 @@ class Player(BasePlayer):
             [8, '$8'],
             [10, '$10']
         ],
+        min=0,
+        max=10,
         label='If your 3 person group is composed with partners according to the table above, how many dollars from '
               'your endowment would you like to contribute to the group account?',
-        widget=widgets.Slider()
+        widget=widgets.Slider(attrs={'step': '2'})
     )
 
     belief1 = models.IntegerField(
@@ -188,9 +200,11 @@ class Player(BasePlayer):
             [8, '$8'],
             [10, '$10']
         ],
-        label='What do you believe a participant who has never been accused of taking ANY'
+        min=0,
+        max=10,
+        label='What do you believe a participant who has never been accused of taking ANY '
               'amount of money from their partner will contribute to the group account on average?',
-        widget=widgets.Slider()
+        widget=widgets.Slider(attrs={'step': '2'})
     )
 
     belief2 = models.IntegerField(
@@ -202,12 +216,14 @@ class Player(BasePlayer):
             [8, '$8'],
             [10, '$10']
         ],
+        min=0,
+        max=10,
         label='What do you believe a participant who HAS been accused of taking some amount of money from their '
               'partner, '
               'but never found '
               'guilty, '
               'will contribute to the group account on average?',
-        widget=widgets.Slider()
+        widget=widgets.Slider(attrs={'step': '2'})
     )
 
     belief3 = models.IntegerField(
@@ -219,10 +235,12 @@ class Player(BasePlayer):
             [8, '$8'],
             [10, '$10']
         ],
+        min=0,
+        max=10,
         label='What do you believe a participant who HAS been accused and HAS been found guilty '
               'of taking some amount of money from their '
               'partner will contribute to the group account on average?',
-        widget=widgets.Slider()
+        widget=widgets.Slider(attrs={'step': '2'})
     )
 
     quiz1 = models.IntegerField(
