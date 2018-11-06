@@ -8,7 +8,12 @@
 {% block content %}
     <p>Please answer the question below.</p>
 
-    {% formfield player.belief2 %}
+    <p>What do you believe a participant who HAS been accused and HAS been found guilty of taking some amount of money from their partner will contribute to the group account on average?</p>
+
+    <div class="form-inline">
+    {% formfield player.belief2 label="" %}
+    Dollars
+</div>
 
     {% next_button %}
 
