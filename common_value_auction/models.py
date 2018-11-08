@@ -19,7 +19,7 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 1
 
-    instructions_template = 'common_value_auction/Instructions.html'
+    instructions_template = 'common_value_auction/Instructions_Agent.html'
 
     min_allowable_bid = c(0)
     max_allowable_bid = c(10)

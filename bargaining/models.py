@@ -16,7 +16,7 @@ class Constants(BaseConstants):
     players_per_group = 2
     num_rounds = 1
 
-    instructions_template = 'bargaining/Instructions.html'
+    instructions_template = 'bargaining/Instructions_Agent.html'
 
     amount_shared = c(100)
 

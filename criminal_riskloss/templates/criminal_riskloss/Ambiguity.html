@@ -5,68 +5,68 @@
     Part 5 - Module 3
 {% endblock %}
 
-<p>
+{% block content %}
+
+    <p>
     In the next set of decisions, we use digital urns. In these digital urns, there will always be 10 balls.
     These 10 balls can be either red or blue. In some urns the proportion of red and blue balls are known, but in other
     urns the proportion is unknown. The specifics of each urn are discussed in more detail in the questions below. From
     each urn, a single ball will be drawn.
-</p>
+    </p>
 
-<p>
-    You must make two decisions for each urn:
-</p>
+    <p>
+        You must make two decisions for each urn:
+    </p>
 
-<ol>
-    <li><p>
-        Bet on the color of the drawn ball. If you correctly guess the color of the drawn ball, you will earn $2.50.
-        If you do not correctly guess the color of the ball you will earn $0.00.
-    </p></li>
+    <ol>
+        <li><p>
+            Bet on the color of the drawn ball. If you correctly guess the color of the drawn ball, you will earn $2.50.
+            If you do not correctly guess the color of the ball you will earn $0.00.
+        </p></li>
 
-    <li><p>
-        Specify a price you would be willing be willing to sell your bet for. You can choose any amount between $0.00
-        and $2.50. After you submit your price, the computer will randomly choose its own price between $0.00 and $2.50.
-        Each price has an equal probability of being chosen by the computer. If your submitted price is lower than the
-        price the computer chooses, you will be paid the price the computer has chosen. If your price is higher, your
-        first decision will determine your earnings from the urn.
-    </p></li>
-</ol>
+        <li><p>
+            Specify a price you would be willing be willing to sell your bet for. You can choose any amount between $0.00
+            and $2.50. After you submit your price, the computer will randomly choose its own price between $0.00 and $2.50.
+            Each price has an equal probability of being chosen by the computer. If your submitted price is lower than the
+            price the computer chooses, you will be paid the price the computer has chosen. If your price is higher, your
+            first decision will determine your earnings from the urn.
+        </p></li>
+    </ol>
 
-<p>
-    <b>Urn 1:</b> In this urn there are 10 balls. It is known that there are 5 red balls and five blue balls.
-</p>
+    <p>
+        <b>Urn 1:</b> In this urn there are 10 balls. It is known that there are 5 red balls and five blue balls.
+    </p>
 
-{% formfield player.ambiguity_color_choice_1 %}
+    {% formfield player.ambiguity_color_decision_1 %}
 
-{% formfield player.ambiguity_price_choice_1 %}
+    {% formfield player.ambiguity_price_decision_1 %}
 
-<p>
-    <b>Urn 2:</b> In this urn there are 10 balls. It is known that there are between 4 and 6 red balls and
-    between 4 and 6 blue balls.
-</p>
+    <p>
+        <b>Urn 2:</b> In this urn there are 10 balls. It is known that there are between 4 and 6 red balls and
+        between 4 and 6 blue balls.
+    </p>
 
-{% formfield player.ambiguity_color_choice_2 %}
+    {% formfield player.ambiguity_color_decision_2 %}
 
-{% formfield player.ambiguity_price_choice_2 %}
+    {% formfield player.ambiguity_price_decision_2 %}
 
-<p>
-    <b>Urn 3:</b> In this urn there are 10 balls. It is known that there are between 2 and 8 red balls and
-    between 2 and 8 blue balls.
-</p>
+    <p>
+        <b>Urn 3:</b> In this urn there are 10 balls. It is known that there are between 2 and 8 red balls and
+        between 2 and 8 blue balls.
+    </p>
 
-{% formfield player.ambiguity_color_choice_3 %}
+    {% formfield player.ambiguity_color_decision_3 %}
 
-{% formfield player.ambiguity_price_choice_3 %}
+    {% formfield player.ambiguity_price_decision_3 %}
 
-<p>
-    <b>Urn 4:</b> In this urn there are 10 balls. It is known that there are between 0 and 10 red balls and
-    between 0 and 10 blue balls.
-</p>
+    <p>
+        <b>Urn 4:</b> In this urn there are 10 balls. It is known that there are between 0 and 10 red balls and
+        between 0 and 10 blue balls.
+    </p>
 
-{% formfield player.ambiguity_color_choice_4 %}
+    {% formfield player.ambiguity_color_decision_4 %}
 
-{% formfield player.ambiguity_price_choice_4 %}
-
-{% block content %}
+    {% formfield player.ambiguity_price_decision_4 %}
 
     {% next_button %}
 

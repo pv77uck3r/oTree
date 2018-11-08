@@ -22,7 +22,7 @@ class Constants(BaseConstants):
     players_per_group = 3
     num_rounds = 3
 
-    instructions_template = 'lemon_market/Instructions.html'
+    instructions_template = 'lemon_market/Instructions_Agent.html'
 
     initial_endowment = c(50)
     buyer_extra_value = c(5)

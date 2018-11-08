@@ -22,7 +22,7 @@ class Constants(BaseConstants):
     jackpot = Currency(100)
     guess_max = 100
 
-    instructions_template = 'guess_two_thirds/Instructions.html'
+    instructions_template = 'guess_two_thirds/Instructions_Agent.html'
 
 
 class Subsession(BaseSubsession):

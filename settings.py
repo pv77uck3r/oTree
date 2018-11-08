@@ -176,10 +176,10 @@ INSTALLED_APPS = ['otree']
 ###     ],
 ### },
 ### {
-###     'name': 'principal_agent',
+###     'name': 'criminal_principal_agent2',
 ###     'display_name': "Principal Agent",
 ###     'num_demo_participants': 2,
-###     'app_sequence': ['principal_agent', 'payment_info'],
+###     'app_sequence': ['criminal_principal_agent2', 'payment_info'],
 ### },
 ### {
 ###     'name': 'dictator',

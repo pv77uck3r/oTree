@@ -19,7 +19,7 @@ class Constants(BaseConstants):
     players_per_group = 2
     num_rounds = 1
 
-    instructions_template = 'trust/Instructions.html'
+    instructions_template = 'trust/Instructions_Agent.html'
 
     # Initial amount allocated to each player
     endowment = c(100)

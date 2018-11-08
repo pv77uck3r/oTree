@@ -19,7 +19,7 @@ class Constants(BaseConstants):
     players_per_group = 2
     num_rounds = 1
 
-    instructions_template = 'traveler_dilemma/Instructions.html'
+    instructions_template = 'traveler_dilemma/Instructions_Agent.html'
 
     # Player's reward for the lowest claim"""
     adjustment_abs = c(2)

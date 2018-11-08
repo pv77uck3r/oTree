@@ -18,9 +18,10 @@ class Constants(BaseConstants):
     players_per_group = 2
     num_rounds = 1
 
-    instructions_template = 'criminal_principal_agent2/Instructions_Agent.html'
+    instructions_template_A = 'criminal_principal_agent2/Instructions_Agent.html'
+    instructions_template_P = 'criminal_principal_agent2/Instructions_Principal.html'
 
-    min_fixed_payment = c(-30)
+    min_fixed_payment = c(0)
     max_fixed_payment = c(30)
 
     # """Amount principal gets if contract is rejected"""

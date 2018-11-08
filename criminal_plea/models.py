@@ -284,6 +284,10 @@ class Player(BasePlayer):
 
     payoffmodule3 = models.CurrencyField()
 
+    trialcrime = models.IntegerField()
+    defenseevid = models.IntegerField()
+    prosevid = models.IntegerField()
+
     # Trial status:
     # True - went to trial
     # False - took plea
@@ -373,6 +377,10 @@ class Player(BasePlayer):
 
                         # HERE WE ACTUALLY SIMULATE THE GUILTY/NOT GUILTY FINDING FROM THE JURY TABLE
 
+                        self.trialcrime = trialcrime
+                        self.defenseevid = trialdefevid
+                        self.prosevid = trialprosevid
+
                         self.participant.vars['jurydecision'] = np.random.binomial(1, (self.session.vars['juryprobs'].loc[(self.session.vars['juryprobs']['Crime'] == trialcrime) & (self.session.vars['juryprobs']['Defense evidence'] == trialdefevid) & (self.session.vars['juryprobs']['Prosecutor evidence'] == trialprosevid), 'Probability of a guilty findng at trial'].item()))
 
                         # IF JURY DECIDES NOT GUILTY, INDICATED BY A 0, THEN NO PUNISHMENT
@@ -438,6 +446,10 @@ class Player(BasePlayer):
                             trialdefevid = 0
                             trialprosevid = self.participant.vars['pleaevidence']
                             self.relevant_decision = self.participant.vars['relevantdecision']
+
+                        self.trialcrime = trialcrime
+                        self.defenseevid = trialdefevid
+                        self.prosevid = trialprosevid
                         self.participant.vars['jurydecision'] = np.random.binomial(1, (self.session.vars['juryprobs'].loc[(self.session.vars['juryprobs']['Crime'] == trialcrime) & (self.session.vars['juryprobs']['Defense evidence'] == trialdefevid) & (self.session.vars['juryprobs']['Prosecutor evidence'] == trialprosevid), 'Probability of a guilty findng at trial'].item()))
 
                         if self.participant.vars['jurydecision'] == 0:
@@ -532,6 +544,11 @@ class Player(BasePlayer):
                     else:
                         trialdefevid = 0
                     trialprosevid = self.participant.vars['nopleaevidence']
+
+                self.trialcrime = trialcrime
+                self.defenseevid = trialdefevid
+                self.prosevid = trialprosevid
+
                 self.participant.vars['jurydecision'] = np.random.binomial(1, (self.session.vars['juryprobs'].loc[(self.session.vars['juryprobs']['Crime'] == trialcrime) & (self.session.vars['juryprobs']['Defense evidence'] == trialdefevid) & (self.session.vars['juryprobs']['Prosecutor evidence'] == trialprosevid), 'Probability of a guilty findng at trial'].item()))
                 if self.participant.vars['jurydecision'] == 0:
                     self.payoff = 0
