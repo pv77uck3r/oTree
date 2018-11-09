@@ -160,6 +160,8 @@ page_sequence = [
     GenTrustGame1Payoffs,
     SetGroups2,
     Instructions,
+    QuizI,
+    QuizT,
     DecisionsI1,
     DecisionsI2,
     DecisionsI3,

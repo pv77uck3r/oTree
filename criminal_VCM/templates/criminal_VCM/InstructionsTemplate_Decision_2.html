@@ -1,0 +1,66 @@
+<div class="card bg-light">
+    <div class="card-body">
+
+    <h3>
+        Instructions
+    </h3>
+    <p>
+        As previously stated, you will have $10 at your disposal. You can put them into your Private Account or you can
+        put them into the Group Account. Each subject has two types of decisions in this experiment, which will be
+        referred to as "unconditional contribution" and "contribution list".
+    </p>
+    <ol>
+        <li><p>
+            <b>Unconditional contribution:</b>
+            You will first decide how many of the $10 you want to place into the Group Account.
+        </p></li>
+        <li>
+            <p><b>Contribution list:</b> You will next decide to how to fill in a "contribution list" where you
+            decide how many dollars you would like to contribute to the Group Account <strong>conditional</strong>
+            on each possible contribution of the <ul>other</ul> group members.</p>
+            <p>
+                There will be hypothetical situations that describe the possible contributions of the <strong>other</strong> group members
+                to the Group Account. You simply have to select how many dollars you will contribute to the Group Account
+                for each hypothetical scenario. You must select a number everywhere you can. For example, you will have to
+                indicate how much you will contribute if the other members of the group contribute 0, 2, 4 dollars, etc.
+                Again, you can select any multiple of two dollars ($0, $2, $4, $6, $8, $10).</p>
+            <p>
+                After all participants in your group have made the above two sets of decisions, a random mechanism will
+                select a single group member from every group. They will have their conditional contribution implemented
+                and the rest of the group members will have their unconditional contributions implemented. You do not
+                know whom will be selected in your group, so you must think carefully about both the conditional and
+                unconditional contributions you will make.
+            </p>
+        </li>
+    </ol>
+    <p>
+        Imagine that <strong>you are selected by the random mechanism</strong>. Imagine that the other two members of
+        your group contribute a total of $10. The computer will then look in the contribution list for what you decided
+        to contribute when the other members contributed $10. Imagine you said you would contribute $4 when the other
+        members contributed $10. Then the Group Account would have $10 + $4 = $14. Since everyone gets $0.50 for every
+        dollar in the Group Account, you would receive a $7 return from the Group Account and a $6 return from your
+        Private Account (since $10 - $4 = $6), meaning, in total, you would have earned $13.
+    </p>
+    <p>
+        Now imagine <strong>you are not selected by the random mechanism</strong>. Assume your unconditional
+        contribution to the Group Account is $6 and the other unselected member of the group also contributed $6
+        unconditionally. The computer will then look in the contribution list for what the selected group member decided
+        to contribute when the other members contributed $12. Imagine they contributed $8. Then the Group Account would
+        total $6 + $6 + $8 = $20. Since everyone gets $0.50 for every dollar in the Group Account, you would receive a
+        $10 return from the Group Account and a $4 return from your Private Account (since $10 - $6 = $4), meaning, in
+        total, you would have earned $14.
+    </p>
+    <p>
+        The 2nd member of the group will always be the one that has their conditional contribution used in the payoff
+        calculations. However, the computer <strong>randomly</strong> determines each members group ID number
+        (1, 2, or 3) when forming the groups, and this number is never displayed to you or anyone else. Therefore the
+        process for deciding whose conditional contribution will be used for determining payoffs is also random.
+    </p>
+    </div>
+</div>
+
+{% block scripts %}
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+{% endblock %}

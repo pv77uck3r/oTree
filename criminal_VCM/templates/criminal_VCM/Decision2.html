@@ -7,6 +7,10 @@
 
 {% block content %}
 
+    <p>
+        Please make your unconditional contribution decision.
+    </p>
+
     <p>The type of partners in your 3 person group are described in the table below.</p>
 
     <center>
@@ -36,6 +40,32 @@
 
     {% formfield player.contribution2 %}
 
+    <p>
+        Please fill out the contribution list below.
+    </p>
+
+    {% formfield player.Cond_contribution_2_0 %}
+
+    {% formfield player.Cond_contribution_2_2 %}
+
+    {% formfield player.Cond_contribution_2_4 %}
+
+    {% formfield player.Cond_contribution_2_6 %}
+
+    {% formfield player.Cond_contribution_2_8 %}
+
+    {% formfield player.Cond_contribution_2_10 %}
+
+    {% formfield player.Cond_contribution_2_12 %}
+
+    {% formfield player.Cond_contribution_2_14 %}
+
+    {% formfield player.Cond_contribution_2_16 %}
+
+    {% formfield player.Cond_contribution_2_18 %}
+
+    {% formfield player.Cond_contribution_2_20 %}
+
     {% next_button %}
 
     <center>
@@ -48,7 +78,7 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    {% include 'criminal_VCM/InstructionsTemplate.html' %}
+    {% include 'criminal_VCM/InstructionsTemplate_TOTAL1.html' %}
   </div>
 
 </div>

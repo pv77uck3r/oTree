@@ -42,9 +42,9 @@ class LittleResults(Page):
             urn4 = 0
             totalurn = 0
             if self.player.participant.vars['HTRisk'] == 0:
-                randomroll = 'below 50'
+                randomroll = 'less than or equal to 50'
             else:
-                randomroll = 'greater than or equal to 50'
+                randomroll = 'greater than 50'
         else:
             if self.session.vars['paymentmodule'] == 2:
                 modulechosen = 'second'
@@ -57,9 +57,9 @@ class LittleResults(Page):
                     singleloss = 1
                     otherroll = None
                     if self.player.participant.vars['HTLoss'] == 0:
-                        randomroll = 'below 50'
+                        randomroll = 'less than or equal to 50'
                     else:
-                        randomroll = 'greater than or equal to 50'
+                        randomroll = 'greater than 50'
                 else:
                     randomroll = self.player.participant.vars['numheadsLoss']
                     otherroll = Constants.num_cointosses - randomroll

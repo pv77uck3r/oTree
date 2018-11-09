@@ -7,7 +7,13 @@
 
 {% block content %}
 
-    {% include 'criminal_VCM/InstructionsTemplate.html' %}
+    {% if player.role == 'primed' %}
+        {% include 'criminal_VCM/InstructionsTemplate_1.html' %}
+    {% endif %}
+
+    {% if player.role == 'unprimed' %}
+        {% include 'criminal_VCM/InstructionsTemplate_2.html' %}
+    {% endif %}
 
 <div id="content">
     {% next_button %}

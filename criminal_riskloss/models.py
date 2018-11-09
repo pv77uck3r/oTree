@@ -125,7 +125,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 5: 50% chance to LOSE $2.00, 50% chance to gain $6.00'
+        label='Decision 5: 50% chance to LOSE $4.00, 50% chance to gain $6.00'
     )
 
     loss_decision_6 = models.IntegerField(
@@ -144,7 +144,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 7: 50% chance to LOSE $2.00, 50% chance to gain $6.00'
+        label='Decision 7: 50% chance to LOSE $5.00, 50% chance to gain $6.00'
     )
 
     loss_decision_8 = models.IntegerField(
@@ -163,7 +163,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 9: 50% chance to LOSE $2.00, 50% chance to gain $6.00'
+        label='Decision 9: 50% chance to LOSE $6.00, 50% chance to gain $6.00'
     )
 
     loss_decision_10 = models.IntegerField(
@@ -182,7 +182,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 11: 50% chance to LOSE $2.00, 50% chance to gain $6.00'
+        label='Decision 11: 50% chance to LOSE $7.00, 50% chance to gain $6.00'
     )
 
     loss_decision_12 = models.IntegerField(
