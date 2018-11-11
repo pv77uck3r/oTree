@@ -10,6 +10,11 @@ doc = """
 Your app description
 """
 
+def shift_right(lst):
+    try:
+        return [lst[-1]] + lst[:-1]
+    except IndexError:
+        return lst
 
 class Constants(BaseConstants):
     name_in_url = 'criminal_VCM2'
@@ -25,7 +30,12 @@ class Subsession(BaseSubsession):
         self.set_group_matrix(self.session.vars['module1groupmatrix'])
 
     def set_groups_2(self):
-        self.group_randomly()
+        flattened_matrix = self.session.vars['module1groupmatrix'].flatten
+        new_group_matrix = shift_right(flattened_matrix)
+        self.session.vars['new_group_matrix'] = new_group_matrix
+        n = 3
+        new_group_list = [new_group_matrix[i * n:(i + 1) * n] for i in range((len(new_group_matrix) + n - 1) // n)]
+        self.set_group_matrix(new_group_list)
 
 
 class Group(BaseGroup):
@@ -103,104 +113,346 @@ class Group(BaseGroup):
 
         ## First, Player1 finds their contribution
         ## First, Innocent/Innocent
-
-        if p2.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_trial_status'] == False:
-            contribution1 = p1.participant.vars['contribution1']
-        else:
-            ## Next, Innocent/Acquitted
-            if ((p2.participant.vars['ending_trial_status'] == True and p2.participant.vars['ending_guilt'] == False)
-                and (p3.participant.vars['ending_trial_status'] == False)) or ((p3.participant.vars['ending_trial_status'] == True and p3.participant.vars['ending_guilt'] == False)
-                and (p2.participant.vars['ending_trial_status'] == False)):
-                contribution1 = p1.participant.vars['contribution2']
+        if p1.participant.id_in_session % 2 == 0:
+            if p2.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_trial_status'] == False:
+                contribution1 = p1.participant.vars['contribution1']
             else:
-                ## Next, Innocent/Guilty
-                if (p2.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_guilt'] == True) \
-                    or (p2.participant.vars['ending_guilt'] == True or p3.participant.vars['ending_trial_status'] == False):
-                    contribution1 = p1.participant.vars['contribution3']
+                ## Next, Innocent/Acquitted
+                if ((p2.participant.vars['ending_trial_status'] == True and p2.participant.vars['ending_guilt'] == False)
+                    and (p3.participant.vars['ending_trial_status'] == False)) or ((p3.participant.vars['ending_trial_status'] == True and p3.participant.vars['ending_guilt'] == False)
+                    and (p2.participant.vars['ending_trial_status'] == False)):
+                    contribution1 = p1.participant.vars['contribution2']
                 else:
-                    ##Next, Acquitted/Acquitted
-                    if (p2.participant.vars['ending_trial_status'] == True and p2.participant.vars['ending_guilt'] == False) and \
-                        (p3.participant.vars['ending_trial_status'] == True and p3.participant.vars['ending_guilt'] == False):
-                        contribution1 = p1.participant.vars['contribution4']
+                    ## Next, Innocent/Guilty
+                    if (p2.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_guilt'] == True) \
+                        or (p2.participant.vars['ending_guilt'] == True or p3.participant.vars['ending_trial_status'] == False):
+                        contribution1 = p1.participant.vars['contribution3']
                     else:
-                        ## Next, Guilty/Guilty
-                        if (p2.participant.vars['ending_guilt'] == True and p3.participant.vars['ending_guilt'] == True):
-                            contribution1 = p1.participant.vars['contribution6']
-                        ## Last, Acquitted/Guilty
+                        ##Next, Acquitted/Acquitted
+                        if (p2.participant.vars['ending_trial_status'] == True and p2.participant.vars['ending_guilt'] == False) and \
+                            (p3.participant.vars['ending_trial_status'] == True and p3.participant.vars['ending_guilt'] == False):
+                            contribution1 = p1.participant.vars['contribution4']
                         else:
-                            contribution1 = p1.participant.vars['contribution5']
+                            ## Next, Guilty/Guilty
+                            if (p2.participant.vars['ending_guilt'] == True and p3.participant.vars['ending_guilt'] == True):
+                                contribution1 = p1.participant.vars['contribution6']
+                            ## Last, Acquitted/Guilty
+                            else:
+                                contribution1 = p1.participant.vars['contribution5']
+        else:
+            contribution1 = p1.participant.vars['contribution1']
+
+        ## Next, Player3 finds their contribution
+        if p3.participant.id_in_session % 2 == 0:
+            if p1.participant.vars['ending_trial_status'] == False and p2.participant.vars['ending_trial_status'] == False:
+                contribution3 = p3.participant.vars['contribution1']
+            else:
+                ## Next, Innocent/Acquitted
+                if ((p1.participant.vars['ending_trial_status'] == True and p1.participant.vars['ending_guilt'] == False)
+                    and (p2.participant.vars['ending_trial_status'] == False)) or ((p2.participant.vars[
+                                                                                        'ending_trial_status'] == True and
+                                                                                    p2.participant.vars[
+                                                                                        'ending_guilt'] == False)
+                                                                                   and (p1.participant.vars[
+                                                                                            'ending_trial_status'] == False)):
+                    contribution3 = p3.participant.vars['contribution2']
+                else:
+                    ## Next, Innocent/Guilty
+                    if (p1.participant.vars['ending_trial_status'] == False and p2.participant.vars['ending_guilt'] == True) \
+                            or (p1.participant.vars['ending_guilt'] == True or p2.participant.vars[
+                        'ending_trial_status'] == False):
+                        contribution3 = p3.participant.vars['contribution3']
+                    else:
+                        ##Next, Acquitted/Acquitted
+                        if (p1.participant.vars['ending_trial_status'] == True and p1.participant.vars[
+                            'ending_guilt'] == False) and \
+                                (p2.participant.vars['ending_trial_status'] == True and p2.participant.vars[
+                                    'ending_guilt'] == False):
+                            contribution3 = p3.participant.vars['contribution4']
+                        else:
+                            ## Next, Guilty/Guilty
+                            if (p1.participant.vars['ending_guilt'] == True and p2.participant.vars[
+                                'ending_guilt'] == True):
+                                contribution3 = p1.participant.vars['contribution6']
+                            ## Last, Acquitted/Guilty
+                            else:
+                                contribution3 = p3.participant.vars['contribution5']
+        else:
+            contribution3 = p3.participant.vars['contribution1']
 
         ## Next, Player2 finds their contribution
+        ## NOTE: Player2 has their conditional decision used
 
-        if p1.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_trial_status'] == False:
-            contribution2 = p1.participant.vars['contribution1']
-        else:
-            ## Next, Innocent/Acquitted
-            if ((p1.participant.vars['ending_trial_status'] == True and p1.participant.vars['ending_guilt'] == False)
-                and (p3.participant.vars['ending_trial_status'] == False)) or ((p3.participant.vars[
-                                                                                    'ending_trial_status'] == True and
-                                                                                p3.participant.vars[
-                                                                                    'ending_guilt'] == False)
-                                                                               and (p1.participant.vars[
-                                                                                        'ending_trial_status'] == False)):
-                contribution2 = p1.participant.vars['contribution2']
-            else:
-                ## Next, Innocent/Guilty
-                if (p1.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_guilt'] == True) \
-                        or (p1.participant.vars['ending_guilt'] == True or p3.participant.vars[
-                    'ending_trial_status'] == False):
-                    contribution2 = p1.participant.vars['contribution3']
+        unconditionalcontributions = contribution1 + contribution3
+
+        if p2.participant.id_in_session % 2 == 0:
+            if p1.participant.vars['ending_trial_status'] == False and p3.participant.vars[
+                'ending_trial_status'] == False:
+                if unconditionalcontributions == 0:
+                    contribution2 = p2.participant.vars['Cond_contribution_1_0']
                 else:
-                    ##Next, Acquitted/Acquitted
-                    if (p1.participant.vars['ending_trial_status'] == True and p1.participant.vars[
-                        'ending_guilt'] == False) and \
-                            (p3.participant.vars['ending_trial_status'] == True and p3.participant.vars[
-                                'ending_guilt'] == False):
-                        contribution2 = p1.participant.vars['contribution4']
+                    if unconditionalcontributions == 2:
+                        contribution2 = p2.participant.vars['Cond_contribution_1_2']
                     else:
-                        ## Next, Guilty/Guilty
-                        if (p1.participant.vars['ending_guilt'] == True and p3.participant.vars[
-                            'ending_guilt'] == True):
-                            contribution2 = p1.participant.vars['contribution6']
-                        ## Last, Acquitted/Guilty
+                        if unconditionalcontributions == 4:
+                            contribution2 = p2.participant.vars['Cond_contribution_1_4']
                         else:
-                            contribution2 = p1.participant.vars['contribution5']
-
-        ## Last, Player3 finds their contribution
-
-        if p1.participant.vars['ending_trial_status'] == False and p2.participant.vars['ending_trial_status'] == False:
-            contribution3 = p1.participant.vars['contribution1']
-        else:
-            ## Next, Innocent/Acquitted
-            if ((p1.participant.vars['ending_trial_status'] == True and p1.participant.vars['ending_guilt'] == False)
-                and (p2.participant.vars['ending_trial_status'] == False)) or ((p2.participant.vars[
-                                                                                    'ending_trial_status'] == True and
-                                                                                p2.participant.vars[
-                                                                                    'ending_guilt'] == False)
-                                                                               and (p1.participant.vars[
-                                                                                        'ending_trial_status'] == False)):
-                contribution3 = p1.participant.vars['contribution2']
+                            if unconditionalcontributions == 6:
+                                contribution2 = p2.participant.vars['Cond_contribution_1_6']
+                            else:
+                                if unconditionalcontributions == 8:
+                                    contribution2 = p2.participant.vars['Cond_contribution_1_8']
+                                else:
+                                    if unconditionalcontributions == 10:
+                                        contribution2 = p2.participant.vars['Cond_contribution_1_10']
+                                    else:
+                                        if unconditionalcontributions == 12:
+                                            contribution2 = p2.participant.vars['Cond_contribution_1_12']
+                                        else:
+                                            if unconditionalcontributions == 14:
+                                                contribution2 = p2.participant.vars['Cond_contribution_1_14']
+                                            else:
+                                                if unconditionalcontributions == 16:
+                                                    contribution2 = p2.participant.vars['Cond_contribution_1_16']
+                                                else:
+                                                    if unconditionalcontributions == 18:
+                                                        contribution2 = p2.participant.vars['Cond_contribution_1_18']
+                                                    else:
+                                                        contribution2 = p2.participant.vars['Cond_contribution_1_20']
             else:
-                ## Next, Innocent/Guilty
-                if (p1.participant.vars['ending_trial_status'] == False and p2.participant.vars['ending_guilt'] == True) \
-                        or (p1.participant.vars['ending_guilt'] == True or p2.participant.vars[
-                    'ending_trial_status'] == False):
-                    contribution3 = p1.participant.vars['contribution3']
-                else:
-                    ##Next, Acquitted/Acquitted
-                    if (p1.participant.vars['ending_trial_status'] == True and p1.participant.vars[
-                        'ending_guilt'] == False) and \
-                            (p2.participant.vars['ending_trial_status'] == True and p2.participant.vars[
-                                'ending_guilt'] == False):
-                        contribution3 = p1.participant.vars['contribution4']
+                ## Next, Innocent/Acquitted
+                if ((p1.participant.vars['ending_trial_status'] == True and p1.participant.vars[
+                    'ending_guilt'] == False)
+                    and (p3.participant.vars['ending_trial_status'] == False)) or ((p3.participant.vars[
+                                                                                        'ending_trial_status'] == True and
+                                                                                    p3.participant.vars[
+                                                                                        'ending_guilt'] == False)
+                                                                                   and (p1.participant.vars[
+                                                                                            'ending_trial_status'] == False)):
+                    if unconditionalcontributions == 0:
+                        contribution2 = p2.participant.vars['Cond_contribution_2_0']
                     else:
-                        ## Next, Guilty/Guilty
-                        if (p1.participant.vars['ending_guilt'] == True and p2.participant.vars[
-                            'ending_guilt'] == True):
-                            contribution3 = p1.participant.vars['contribution6']
-                        ## Last, Acquitted/Guilty
+                        if unconditionalcontributions == 2:
+                            contribution2 = p2.participant.vars['Cond_contribution_2_2']
                         else:
-                            contribution3 = p1.participant.vars['contribution5']
+                            if unconditionalcontributions == 4:
+                                contribution2 = p2.participant.vars['Cond_contribution_2_4']
+                            else:
+                                if unconditionalcontributions == 6:
+                                    contribution2 = p2.participant.vars['Cond_contribution_2_6']
+                                else:
+                                    if unconditionalcontributions == 8:
+                                        contribution2 = p2.participant.vars['Cond_contribution_2_8']
+                                    else:
+                                        if unconditionalcontributions == 10:
+                                            contribution2 = p2.participant.vars['Cond_contribution_2_10']
+                                        else:
+                                            if unconditionalcontributions == 12:
+                                                contribution2 = p2.participant.vars['Cond_contribution_2_12']
+                                            else:
+                                                if unconditionalcontributions == 14:
+                                                    contribution2 = p2.participant.vars['Cond_contribution_2_14']
+                                                else:
+                                                    if unconditionalcontributions == 16:
+                                                        contribution2 = p2.participant.vars['Cond_contribution_2_16']
+                                                    else:
+                                                        if unconditionalcontributions == 18:
+                                                            contribution2 = p2.participant.vars[
+                                                                'Cond_contribution_2_18']
+                                                        else:
+                                                            contribution2 = p2.participant.vars[
+                                                                'Cond_contribution_2_20']
+                else:
+                    ## Next, Innocent/Guilty
+                    if (p1.participant.vars['ending_trial_status'] == False and p3.participant.vars[
+                        'ending_guilt'] == True) \
+                            or (p1.participant.vars['ending_guilt'] == True or p3.participant.vars[
+                        'ending_trial_status'] == False):
+                        if unconditionalcontributions == 0:
+                            contribution2 = p2.participant.vars['Cond_contribution_3_0']
+                        else:
+                            if unconditionalcontributions == 2:
+                                contribution2 = p2.participant.vars['Cond_contribution_3_2']
+                            else:
+                                if unconditionalcontributions == 4:
+                                    contribution2 = p2.participant.vars['Cond_contribution_3_4']
+                                else:
+                                    if unconditionalcontributions == 6:
+                                        contribution2 = p2.participant.vars['Cond_contribution_3_6']
+                                    else:
+                                        if unconditionalcontributions == 8:
+                                            contribution2 = p2.participant.vars['Cond_contribution_3_8']
+                                        else:
+                                            if unconditionalcontributions == 10:
+                                                contribution2 = p2.participant.vars['Cond_contribution_3_10']
+                                            else:
+                                                if unconditionalcontributions == 12:
+                                                    contribution2 = p2.participant.vars['Cond_contribution_3_12']
+                                                else:
+                                                    if unconditionalcontributions == 14:
+                                                        contribution2 = p2.participant.vars['Cond_contribution_3_14']
+                                                    else:
+                                                        if unconditionalcontributions == 16:
+                                                            contribution2 = p2.participant.vars[
+                                                                'Cond_contribution_3_16']
+                                                        else:
+                                                            if unconditionalcontributions == 18:
+                                                                contribution2 = p2.participant.vars[
+                                                                    'Cond_contribution_3_18']
+                                                            else:
+                                                                contribution2 = p2.participant.vars[
+                                                                    'Cond_contribution_3_20']
+                    else:
+                        ##Next, Acquitted/Acquitted
+                        if (p1.participant.vars['ending_trial_status'] == True and p1.participant.vars[
+                            'ending_guilt'] == False) and \
+                                (p3.participant.vars['ending_trial_status'] == True and p3.participant.vars[
+                                    'ending_guilt'] == False):
+                            if unconditionalcontributions == 0:
+                                contribution2 = p2.participant.vars['Cond_contribution_4_0']
+                            else:
+                                if unconditionalcontributions == 2:
+                                    contribution2 = p2.participant.vars['Cond_contribution_4_2']
+                                else:
+                                    if unconditionalcontributions == 4:
+                                        contribution2 = p2.participant.vars['Cond_contribution_4_4']
+                                    else:
+                                        if unconditionalcontributions == 6:
+                                            contribution2 = p2.participant.vars['Cond_contribution_4_6']
+                                        else:
+                                            if unconditionalcontributions == 8:
+                                                contribution2 = p2.participant.vars['Cond_contribution_4_8']
+                                            else:
+                                                if unconditionalcontributions == 10:
+                                                    contribution2 = p2.participant.vars['Cond_contribution_4_10']
+                                                else:
+                                                    if unconditionalcontributions == 12:
+                                                        contribution2 = p2.participant.vars['Cond_contribution_4_12']
+                                                    else:
+                                                        if unconditionalcontributions == 14:
+                                                            contribution2 = p2.participant.vars[
+                                                                'Cond_contribution_4_14']
+                                                        else:
+                                                            if unconditionalcontributions == 16:
+                                                                contribution2 = p2.participant.vars[
+                                                                    'Cond_contribution_4_16']
+                                                            else:
+                                                                if unconditionalcontributions == 18:
+                                                                    contribution2 = p2.participant.vars[
+                                                                        'Cond_contribution_4_18']
+                                                                else:
+                                                                    contribution2 = p2.participant.vars[
+                                                                        'Cond_contribution_4_20']
+                        else:
+                            ## Next, Guilty/Guilty
+                            if (p1.participant.vars['ending_guilt'] == True and p3.participant.vars[
+                                'ending_guilt'] == True):
+                                if unconditionalcontributions == 0:
+                                    contribution2 = p2.participant.vars['Cond_contribution_6_0']
+                                else:
+                                    if unconditionalcontributions == 2:
+                                        contribution2 = p2.participant.vars['Cond_contribution_6_2']
+                                    else:
+                                        if unconditionalcontributions == 4:
+                                            contribution2 = p2.participant.vars['Cond_contribution_6_4']
+                                        else:
+                                            if unconditionalcontributions == 6:
+                                                contribution2 = p2.participant.vars['Cond_contribution_6_6']
+                                            else:
+                                                if unconditionalcontributions == 8:
+                                                    contribution2 = p2.participant.vars['Cond_contribution_6_8']
+                                                else:
+                                                    if unconditionalcontributions == 10:
+                                                        contribution2 = p2.participant.vars['Cond_contribution_6_10']
+                                                    else:
+                                                        if unconditionalcontributions == 12:
+                                                            contribution2 = p2.participant.vars[
+                                                                'Cond_contribution_6_12']
+                                                        else:
+                                                            if unconditionalcontributions == 14:
+                                                                contribution2 = p2.participant.vars[
+                                                                    'Cond_contribution_6_14']
+                                                            else:
+                                                                if unconditionalcontributions == 16:
+                                                                    contribution2 = p2.participant.vars[
+                                                                        'Cond_contribution_6_16']
+                                                                else:
+                                                                    if unconditionalcontributions == 18:
+                                                                        contribution2 = p2.participant.vars[
+                                                                            'Cond_contribution_6_18']
+                                                                    else:
+                                                                        contribution2 = p2.participant.vars[
+                                                                            'Cond_contribution_6_20']
+                            ## Last, Acquitted/Guilty
+                            else:
+                                if unconditionalcontributions == 0:
+                                    contribution2 = p2.participant.vars['Cond_contribution_6_0']
+                                else:
+                                    if unconditionalcontributions == 2:
+                                        contribution2 = p2.participant.vars['Cond_contribution_6_2']
+                                    else:
+                                        if unconditionalcontributions == 4:
+                                            contribution2 = p2.participant.vars['Cond_contribution_6_4']
+                                        else:
+                                            if unconditionalcontributions == 6:
+                                                contribution2 = p2.participant.vars['Cond_contribution_6_6']
+                                            else:
+                                                if unconditionalcontributions == 8:
+                                                    contribution2 = p2.participant.vars['Cond_contribution_6_8']
+                                                else:
+                                                    if unconditionalcontributions == 10:
+                                                        contribution2 = p2.participant.vars['Cond_contribution_6_10']
+                                                    else:
+                                                        if unconditionalcontributions == 12:
+                                                            contribution2 = p2.participant.vars[
+                                                                'Cond_contribution_6_12']
+                                                        else:
+                                                            if unconditionalcontributions == 14:
+                                                                contribution2 = p2.participant.vars[
+                                                                    'Cond_contribution_6_14']
+                                                            else:
+                                                                if unconditionalcontributions == 16:
+                                                                    contribution2 = p2.participant.vars[
+                                                                        'Cond_contribution_6_16']
+                                                                else:
+                                                                    if unconditionalcontributions == 18:
+                                                                        contribution2 = p2.participant.vars[
+                                                                            'Cond_contribution_6_18']
+                                                                    else:
+                                                                        contribution2 = p2.participant.vars[
+                                                                            'Cond_contribution_6_20']
+        else:
+            if unconditionalcontributions == 0:
+                contribution2 = p2.participant.vars['Cond_contribution_1_0']
+            else:
+                if unconditionalcontributions == 2:
+                    contribution2 = p2.participant.vars['Cond_contribution_1_2']
+                else:
+                    if unconditionalcontributions == 4:
+                        contribution2 = p2.participant.vars['Cond_contribution_1_4']
+                    else:
+                        if unconditionalcontributions == 6:
+                            contribution2 = p2.participant.vars['Cond_contribution_1_6']
+                        else:
+                            if unconditionalcontributions == 8:
+                                contribution2 = p2.participant.vars['Cond_contribution_1_8']
+                            else:
+                                if unconditionalcontributions == 10:
+                                    contribution2 = p2.participant.vars['Cond_contribution_1_10']
+                                else:
+                                    if unconditionalcontributions == 12:
+                                        contribution2 = p2.participant.vars['Cond_contribution_1_12']
+                                    else:
+                                        if unconditionalcontributions == 14:
+                                            contribution2 = p2.participant.vars['Cond_contribution_1_14']
+                                        else:
+                                            if unconditionalcontributions == 16:
+                                                contribution2 = p2.participant.vars['Cond_contribution_1_16']
+                                            else:
+                                                if unconditionalcontributions == 18:
+                                                    contribution2 = p2.participant.vars['Cond_contribution_1_18']
+                                                else:
+                                                    contribution2 = p2.participant.vars['Cond_contribution_1_20']
 
         groupaccount = contribution1 + contribution2 + contribution3
         groupaccountreturn = Constants.multiplier * groupaccount
@@ -218,112 +470,337 @@ class Group(BaseGroup):
 
         ## First, Player1 finds their contribution
         ## First, Innocent/Innocent
-
-        if p2.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_trial_status'] == False:
-            contribution1 = p1.contribution1
-        else:
-            ## Next, Innocent/Acquitted
-            if ((p2.participant.vars['ending_trial_status'] == True and p2.participant.vars['ending_guilt'] == False)
-                and (p3.participant.vars['ending_trial_status'] == False)) or ((p3.participant.vars[
-                                                                                    'ending_trial_status'] == True and
-                                                                                p3.participant.vars[
-                                                                                    'ending_guilt'] == False)
-                                                                               and (p2.participant.vars[
-                                                                                        'ending_trial_status'] == False)):
-                contribution1 = p1.contribution2
+        if self.session.vars['new_group_matrix'][p1.participant.id_in_session] % 2 == 0:
+            if p2.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_trial_status'] == False:
+                contribution1 = p1.contribution1
             else:
-                ## Next, Innocent/Guilty
-                if (p2.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_guilt'] == True) \
-                        or (p2.participant.vars['ending_guilt'] == True or p3.participant.vars[
-                    'ending_trial_status'] == False):
-                    contribution1 = p1.contribution3
+                ## Next, Innocent/Acquitted
+                if ((p2.participant.vars['ending_trial_status'] == True and p2.participant.vars['ending_guilt'] == False)
+                    and (p3.participant.vars['ending_trial_status'] == False)) or ((p3.participant.vars[
+                                                                                        'ending_trial_status'] == True and
+                                                                                    p3.participant.vars[
+                                                                                        'ending_guilt'] == False)
+                                                                                   and (p2.participant.vars[
+                                                                                            'ending_trial_status'] == False)):
+                    contribution1 = p1.contribution2
                 else:
-                    ##Next, Acquitted/Acquitted
-                    if (p2.participant.vars['ending_trial_status'] == True and p2.participant.vars[
-                        'ending_guilt'] == False) and \
-                            (p3.participant.vars['ending_trial_status'] == True and p3.participant.vars[
-                                'ending_guilt'] == False):
-                        contribution1 = p1.contribution4
+                    ## Next, Innocent/Guilty
+                    if (p2.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_guilt'] == True) \
+                            or (p2.participant.vars['ending_guilt'] == True or p3.participant.vars[
+                        'ending_trial_status'] == False):
+                        contribution1 = p1.contribution3
                     else:
-                        ## Next, Guilty/Guilty
-                        if (p2.participant.vars['ending_guilt'] == True and p3.participant.vars[
-                            'ending_guilt'] == True):
-                            contribution1 = p1.contribution6
-                        ## Last, Acquitted/Guilty
+                        ##Next, Acquitted/Acquitted
+                        if (p2.participant.vars['ending_trial_status'] == True and p2.participant.vars[
+                            'ending_guilt'] == False) and \
+                                (p3.participant.vars['ending_trial_status'] == True and p3.participant.vars[
+                                    'ending_guilt'] == False):
+                            contribution1 = p1.contribution4
                         else:
-                            contribution1 = p1.contribution5
+                            ## Next, Guilty/Guilty
+                            if (p2.participant.vars['ending_guilt'] == True and p3.participant.vars[
+                                'ending_guilt'] == True):
+                                contribution1 = p1.contribution6
+                            ## Last, Acquitted/Guilty
+                            else:
+                                contribution1 = p1.contribution5
+        else:
+            contribution1 = p1.contribution1
+
+
+        ## Next, Player3 finds their contribution
+        if self.session.vars['new_group_matrix'][p1.participant.id_in_session] % 2 == 0:
+            if p1.participant.vars['ending_trial_status'] == False and p2.participant.vars['ending_trial_status'] == False:
+                contribution3 = p3.contribution1
+            else:
+                ## Next, Innocent/Acquitted
+                if ((p1.participant.vars['ending_trial_status'] == True and p1.participant.vars['ending_guilt'] == False)
+                    and (p2.participant.vars['ending_trial_status'] == False)) or ((p2.participant.vars[
+                                                                                        'ending_trial_status'] == True and
+                                                                                    p2.participant.vars[
+                                                                                        'ending_guilt'] == False)
+                                                                                   and (p1.participant.vars[
+                                                                                            'ending_trial_status'] == False)):
+                    contribution3 = p3.contribution2
+                else:
+                    ## Next, Innocent/Guilty
+                    if (p1.participant.vars['ending_trial_status'] == False and p2.participant.vars['ending_guilt'] == True) \
+                            or (p1.participant.vars['ending_guilt'] == True or p2.participant.vars[
+                        'ending_trial_status'] == False):
+                        contribution3 = p3.contribution3
+                    else:
+                        ##Next, Acquitted/Acquitted
+                        if (p1.participant.vars['ending_trial_status'] == True and p1.participant.vars[
+                            'ending_guilt'] == False) and \
+                                (p2.participant.vars['ending_trial_status'] == True and p2.participant.vars[
+                                    'ending_guilt'] == False):
+                            contribution3 = p3.contribution4
+                        else:
+                            ## Next, Guilty/Guilty
+                            if (p1.participant.vars['ending_guilt'] == True and p2.participant.vars[
+                                'ending_guilt'] == True):
+                                contribution3 = p3.contribution6
+                            ## Last, Acquitted/Guilty
+                            else:
+                                contribution3 = p3.contribution5
+        else:
+            contribution3 = p3.contribution1
+
+        unconditionalcontributions = contribution1 + contribution3
 
         ## Next, Player2 finds their contribution
+        ## NOTE: Player2 has their conditional decision used
 
-        if p1.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_trial_status'] == False:
-            contribution2 = p1.contribution1
-        else:
-            ## Next, Innocent/Acquitted
-            if ((p1.participant.vars['ending_trial_status'] == True and p1.participant.vars['ending_guilt'] == False)
-                and (p3.participant.vars['ending_trial_status'] == False)) or ((p3.participant.vars[
-                                                                                    'ending_trial_status'] == True and
-                                                                                p3.participant.vars[
-                                                                                    'ending_guilt'] == False)
-                                                                               and (p1.participant.vars[
-                                                                                        'ending_trial_status'] == False)):
-                contribution2 = p1.contribution2
-            else:
-                ## Next, Innocent/Guilty
-                if (p1.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_guilt'] == True) \
-                        or (p1.participant.vars['ending_guilt'] == True or p3.participant.vars[
-                    'ending_trial_status'] == False):
-                    contribution2 = p1.contribution3
+        if self.session.vars['new_group_matrix'][p1.participant.id_in_session] % 2 == 0:
+            if p1.participant.vars['ending_trial_status'] == False and p3.participant.vars[
+                'ending_trial_status'] == False:
+                if unconditionalcontributions == 0:
+                    contribution2 = p2.Cond_contribution_1_0
                 else:
-                    ##Next, Acquitted/Acquitted
-                    if (p1.participant.vars['ending_trial_status'] == True and p1.participant.vars[
-                        'ending_guilt'] == False) and \
-                            (p3.participant.vars['ending_trial_status'] == True and p3.participant.vars[
-                                'ending_guilt'] == False):
-                        contribution2 = p1.contribution4
+                    if unconditionalcontributions == 2:
+                        contribution2 = p2.Cond_contribution_1_2
                     else:
-                        ## Next, Guilty/Guilty
-                        if (p1.participant.vars['ending_guilt'] == True and p3.participant.vars[
-                            'ending_guilt'] == True):
-                            contribution2 = p1.contribution6
-                        ## Last, Acquitted/Guilty
+                        if unconditionalcontributions == 4:
+                            contribution2 = p2.Cond_contribution_1_4
                         else:
-                            contribution2 = p1.contribution5
-
-        ## Last, Player3 finds their contribution
-
-        if p1.participant.vars['ending_trial_status'] == False and p2.participant.vars['ending_trial_status'] == False:
-            contribution3 = p1.contribution1
-        else:
-            ## Next, Innocent/Acquitted
-            if ((p1.participant.vars['ending_trial_status'] == True and p1.participant.vars['ending_guilt'] == False)
-                and (p2.participant.vars['ending_trial_status'] == False)) or ((p2.participant.vars[
-                                                                                    'ending_trial_status'] == True and
-                                                                                p2.participant.vars[
-                                                                                    'ending_guilt'] == False)
-                                                                               and (p1.participant.vars[
-                                                                                        'ending_trial_status'] == False)):
-                contribution3 = p1.contribution2
+                            if unconditionalcontributions == 6:
+                                contribution2 = p2.Cond_contribution_1_6
+                            else:
+                                if unconditionalcontributions == 8:
+                                    contribution2 = p2.Cond_contribution_1_8
+                                else:
+                                    if unconditionalcontributions == 10:
+                                        contribution2 = p2.Cond_contribution_1_10
+                                    else:
+                                        if unconditionalcontributions == 12:
+                                            contribution2 = p2.Cond_contribution_1_12
+                                        else:
+                                            if unconditionalcontributions == 14:
+                                                contribution2 = p2.Cond_contribution_1_14
+                                            else:
+                                                if unconditionalcontributions == 16:
+                                                    contribution2 = p2.Cond_contribution_1_16
+                                                else:
+                                                    if unconditionalcontributions == 18:
+                                                        contribution2 = p2.Cond_contribution_1_18
+                                                    else:
+                                                        contribution2 = p2.Cond_contribution_1_20
             else:
-                ## Next, Innocent/Guilty
-                if (p1.participant.vars['ending_trial_status'] == False and p2.participant.vars['ending_guilt'] == True) \
-                        or (p1.participant.vars['ending_guilt'] == True or p2.participant.vars[
-                    'ending_trial_status'] == False):
-                    contribution3 = p1.contribution3
-                else:
-                    ##Next, Acquitted/Acquitted
-                    if (p1.participant.vars['ending_trial_status'] == True and p1.participant.vars[
-                        'ending_guilt'] == False) and \
-                            (p2.participant.vars['ending_trial_status'] == True and p2.participant.vars[
-                                'ending_guilt'] == False):
-                        contribution3 = p1.contribution4
+                ## Next, Innocent/Acquitted
+                if ((p1.participant.vars['ending_trial_status'] == True and p1.participant.vars[
+                    'ending_guilt'] == False)
+                    and (p3.participant.vars['ending_trial_status'] == False)) or ((p3.participant.vars[
+                                                                                        'ending_trial_status'] == True and
+                                                                                    p3.participant.vars[
+                                                                                        'ending_guilt'] == False)
+                                                                                   and (p1.participant.vars[
+                                                                                            'ending_trial_status'] == False)):
+                    if unconditionalcontributions == 0:
+                        contribution2 = p2.Cond_contribution_2_0
                     else:
-                        ## Next, Guilty/Guilty
-                        if (p1.participant.vars['ending_guilt'] == True and p2.participant.vars[
-                            'ending_guilt'] == True):
-                            contribution3 = p1.contribution6
-                        ## Last, Acquitted/Guilty
+                        if unconditionalcontributions == 2:
+                            contribution2 = p2.Cond_contribution_2_2
                         else:
-                            contribution3 = p1.contribution5
+                            if unconditionalcontributions == 4:
+                                contribution2 = p2.Cond_contribution_2_4
+                            else:
+                                if unconditionalcontributions == 6:
+                                    contribution2 = p2.Cond_contribution_2_6
+                                else:
+                                    if unconditionalcontributions == 8:
+                                        contribution2 = p2.Cond_contribution_2_8
+                                    else:
+                                        if unconditionalcontributions == 10:
+                                            contribution2 = p2.Cond_contribution_2_10
+                                        else:
+                                            if unconditionalcontributions == 12:
+                                                contribution2 = p2.Cond_contribution_2_12
+                                            else:
+                                                if unconditionalcontributions == 14:
+                                                    contribution2 = p2.Cond_contribution_2_14
+                                                else:
+                                                    if unconditionalcontributions == 16:
+                                                        contribution2 = p2.Cond_contribution_2_16
+                                                    else:
+                                                        if unconditionalcontributions == 18:
+                                                            contribution2 = p2.Cond_contribution_2_18
+                                                        else:
+                                                            contribution2 = p2.Cond_contribution_2_20
+                else:
+                    ## Next, Innocent/Guilty
+                    if (p1.participant.vars['ending_trial_status'] == False and p3.participant.vars[
+                        'ending_guilt'] == True) \
+                            or (p1.participant.vars['ending_guilt'] == True or p3.participant.vars[
+                        'ending_trial_status'] == False):
+                        if unconditionalcontributions == 0:
+                            contribution2 = p2.Cond_contribution_3_0
+                        else:
+                            if unconditionalcontributions == 2:
+                                contribution2 = p2.Cond_contribution_3_2
+                            else:
+                                if unconditionalcontributions == 4:
+                                    contribution2 = p2.Cond_contribution_3_4
+                                else:
+                                    if unconditionalcontributions == 6:
+                                        contribution2 = p2.Cond_contribution_3_6
+                                    else:
+                                        if unconditionalcontributions == 8:
+                                            contribution2 = p2.Cond_contribution_3_8
+                                        else:
+                                            if unconditionalcontributions == 10:
+                                                contribution2 = p2.Cond_contribution_3_10
+                                            else:
+                                                if unconditionalcontributions == 12:
+                                                    contribution2 = p2.Cond_contribution_3_12
+                                                else:
+                                                    if unconditionalcontributions == 14:
+                                                        contribution2 = p2.Cond_contribution_3_14
+                                                    else:
+                                                        if unconditionalcontributions == 16:
+                                                            contribution2 = p2.participant.vars[
+                                                                'Cond_contribution_3_16']
+                                                        else:
+                                                            if unconditionalcontributions == 18:
+                                                                contribution2 = p2.Cond_contribution_3_18
+                                                            else:
+                                                                contribution2 = p2.Cond_contribution_3_20
+                    else:
+                        ##Next, Acquitted/Acquitted
+                        if (p1.participant.vars['ending_trial_status'] == True and p1.participant.vars[
+                            'ending_guilt'] == False) and \
+                                (p3.participant.vars['ending_trial_status'] == True and p3.participant.vars[
+                                    'ending_guilt'] == False):
+                            if unconditionalcontributions == 0:
+                                contribution2 = p2.Cond_contribution_4_0
+                            else:
+                                if unconditionalcontributions == 2:
+                                    contribution2 = p2.Cond_contribution_4_2
+                                else:
+                                    if unconditionalcontributions == 4:
+                                        contribution2 = p2.Cond_contribution_4_4
+                                    else:
+                                        if unconditionalcontributions == 6:
+                                            contribution2 = p2.Cond_contribution_4_6
+                                        else:
+                                            if unconditionalcontributions == 8:
+                                                contribution2 = p2.Cond_contribution_4_8
+                                            else:
+                                                if unconditionalcontributions == 10:
+                                                    contribution2 = p2.Cond_contribution_4_10
+                                                else:
+                                                    if unconditionalcontributions == 12:
+                                                        contribution2 = p2.Cond_contribution_4_12
+                                                    else:
+                                                        if unconditionalcontributions == 14:
+                                                            contribution2 = p2.Cond_contribution_4_14
+                                                        else:
+                                                            if unconditionalcontributions == 16:
+                                                                contribution2 = p2.Cond_contribution_4_16
+                                                            else:
+                                                                if unconditionalcontributions == 18:
+                                                                    contribution2 = p2.Cond_contribution_4_18
+                                                                else:
+                                                                    contribution2 = p2.Cond_contribution_4_20
+                        else:
+                            ## Next, Guilty/Guilty
+                            if (p1.participant.vars['ending_guilt'] == True and p3.participant.vars[
+                                'ending_guilt'] == True):
+                                if unconditionalcontributions == 0:
+                                    contribution2 = p2.Cond_contribution_6_0
+                                else:
+                                    if unconditionalcontributions == 2:
+                                        contribution2 = p2.Cond_contribution_6_2
+                                    else:
+                                        if unconditionalcontributions == 4:
+                                            contribution2 = p2.Cond_contribution_6_4
+                                        else:
+                                            if unconditionalcontributions == 6:
+                                                contribution2 = p2.Cond_contribution_6_6
+                                            else:
+                                                if unconditionalcontributions == 8:
+                                                    contribution2 = p2.Cond_contribution_6_8
+                                                else:
+                                                    if unconditionalcontributions == 10:
+                                                        contribution2 = p2.Cond_contribution_6_10
+                                                    else:
+                                                        if unconditionalcontributions == 12:
+                                                            contribution2 = p2.Cond_contribution_6_12
+                                                        else:
+                                                            if unconditionalcontributions == 14:
+                                                                contribution2 = p2.Cond_contribution_6_14
+                                                            else:
+                                                                if unconditionalcontributions == 16:
+                                                                    contribution2 = p2.Cond_contribution_6_16
+                                                                else:
+                                                                    if unconditionalcontributions == 18:
+                                                                        contribution2 = p2.Cond_contribution_6_18
+                                                                    else:
+                                                                        contribution2 = p2.Cond_contribution_6_20
+                            ## Last, Acquitted/Guilty
+                            else:
+                                if unconditionalcontributions == 0:
+                                    contribution2 = p2.Cond_contribution_6_0
+                                else:
+                                    if unconditionalcontributions == 2:
+                                        contribution2 = p2.Cond_contribution_6_2
+                                    else:
+                                        if unconditionalcontributions == 4:
+                                            contribution2 = p2.Cond_contribution_6_4
+                                        else:
+                                            if unconditionalcontributions == 6:
+                                                contribution2 = p2.Cond_contribution_6_6
+                                            else:
+                                                if unconditionalcontributions == 8:
+                                                    contribution2 = p2.Cond_contribution_6_8
+                                                else:
+                                                    if unconditionalcontributions == 10:
+                                                        contribution2 = p2.Cond_contribution_6_10
+                                                    else:
+                                                        if unconditionalcontributions == 12:
+                                                            contribution2 = p2.Cond_contribution_6_12
+                                                        else:
+                                                            if unconditionalcontributions == 14:
+                                                                contribution2 = p2.Cond_contribution_6_14
+                                                            else:
+                                                                if unconditionalcontributions == 16:
+                                                                    contribution2 = p2.Cond_contribution_6_16
+                                                                else:
+                                                                    if unconditionalcontributions == 18:
+                                                                        contribution2 = p2.Cond_contribution_6_18
+                                                                    else:
+                                                                        contribution2 = p2.Cond_contribution_6_20
+        else:
+            if unconditionalcontributions == 0:
+                contribution2 = p2.Cond_contribution_1_0
+            else:
+                if unconditionalcontributions == 2:
+                    contribution2 = p2.Cond_contribution_1_2
+                else:
+                    if unconditionalcontributions == 4:
+                        contribution2 = p2.Cond_contribution_1_4
+                    else:
+                        if unconditionalcontributions == 6:
+                            contribution2 = p2.Cond_contribution_1_6
+                        else:
+                            if unconditionalcontributions == 8:
+                                contribution2 = p2.Cond_contribution_1_8
+                            else:
+                                if unconditionalcontributions == 10:
+                                    contribution2 = p2.Cond_contribution_1_10
+                                else:
+                                    if unconditionalcontributions == 12:
+                                        contribution2 = p2.Cond_contribution_1_12
+                                    else:
+                                        if unconditionalcontributions == 14:
+                                            contribution2 = p2.Cond_contribution_1_14
+                                        else:
+                                            if unconditionalcontributions == 16:
+                                                contribution2 = p2.Cond_contribution_1_16
+                                            else:
+                                                if unconditionalcontributions == 18:
+                                                    contribution2 = p2.Cond_contribution_1_18
+                                                else:
+                                                    contribution2 = p2.Cond_contribution_1_20
 
         groupaccount = contribution1 + contribution2 + contribution3
         groupaccountreturn = Constants.multiplier * groupaccount
@@ -336,7 +813,6 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-
     contribution1 = models.IntegerField(
         choices=[
             [0, '$0'],
@@ -348,8 +824,184 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='If your 3 person group is composed with partners according to the table above, how many dollars from '
+        label='How many dollars from '
               'your endowment would you like to contribute to the group account?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_1_0 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $0.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_1_2 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $2.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_1_4 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $4.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_1_6 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $6.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_1_8 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $8.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_1_10 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $10.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_1_12 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $12.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_1_14 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $14.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_1_16 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $16.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_1_18 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $18.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_1_20 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $20.00?',
         widget=widgets.Slider(attrs={'step': '2'})
     )
 
@@ -364,8 +1016,184 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='If your 3 person group is composed with partners according to the table above, how many dollars from '
+        label='How many dollars from '
               'your endowment would you like to contribute to the group account?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_2_0 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $0.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_2_2 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $2.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_2_4 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $4.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_2_6 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $6.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_2_8 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $8.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_2_10 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $10.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_2_12 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $12.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_2_14 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $14.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_2_16 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $16.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_2_18 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $18.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_2_20 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $20.00?',
         widget=widgets.Slider(attrs={'step': '2'})
     )
 
@@ -380,8 +1208,184 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='If your 3 person group is composed with partners according to the table above, how many dollars from '
+        label='How many dollars from '
               'your endowment would you like to contribute to the group account?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_3_0 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $0.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_3_2 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $2.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_3_4 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $4.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_3_6 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $6.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_3_8 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $8.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_3_10 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $10.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_3_12 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $12.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_3_14 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $14.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_3_16 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $16.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_3_18 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $18.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_3_20 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $20.00?',
         widget=widgets.Slider(attrs={'step': '2'})
     )
 
@@ -396,8 +1400,184 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='If your 3 person group is composed with partners according to the table above, how many dollars from '
+        label='How many dollars from '
               'your endowment would you like to contribute to the group account?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_4_0 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $0.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_4_2 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $2.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_4_4 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $4.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_4_6 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $6.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_4_8 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $8.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_4_10 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $10.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_4_12 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $12.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_4_14 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $14.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_4_16 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $16.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_4_18 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $18.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_4_20 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $20.00?',
         widget=widgets.Slider(attrs={'step': '2'})
     )
 
@@ -412,8 +1592,184 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='If your 3 person group is composed with partners according to the table above, how many dollars from '
+        label='How many dollars from '
               'your endowment would you like to contribute to the group account?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_5_0 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $0.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_5_2 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $2.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_5_4 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $4.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_5_6 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $6.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_5_8 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $8.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_5_10 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $10.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_5_12 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $12.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_5_14 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $14.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_5_16 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $16.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_5_18 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $18.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_5_20 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $20.00?',
         widget=widgets.Slider(attrs={'step': '2'})
     )
 
@@ -428,9 +1784,185 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='If your 3 person group is composed with partners according to the table above, how many dollars from '
+        label='How many dollars from '
               'your endowment would you like to contribute to the group account?',
-        widget=widgets.Slider()
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_6_0 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $0.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_6_2 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $2.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_6_4 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $4.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_6_6 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $6.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_6_8 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $8.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_6_10 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $10.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_6_12 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $12.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_6_14 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $14.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_6_16 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $16.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_6_18 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $18.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
+    )
+
+    Cond_contribution_6_20 = models.IntegerField(
+        choices=[
+            [0, '$0'],
+            [2, '$2'],
+            [4, '$4'],
+            [6, '$6'],
+            [8, '$8'],
+            [10, '$10']
+        ],
+        min=0,
+        max=10,
+        label='How many dollars from '
+              'your endowment would you like to contribute to the group account if the other members contribute $20.00?',
+        widget=widgets.Slider(attrs={'step': '2'})
     )
 
     belief1 = models.IntegerField(
@@ -531,9 +2063,74 @@ class Player(BasePlayer):
 
     def keep_contributions(self):
         self.participant.vars['contribution1'] = self.contribution1
+        self.participant.vars['Cond_contribution_1_0'] = self.Cond_contribution_1_0
+        self.participant.vars['Cond_contribution_1_2'] = self.Cond_contribution_1_2
+        self.participant.vars['Cond_contribution_1_4'] = self.Cond_contribution_1_4
+        self.participant.vars['Cond_contribution_1_6'] = self.Cond_contribution_1_6
+        self.participant.vars['Cond_contribution_1_8'] = self.Cond_contribution_1_8
+        self.participant.vars['Cond_contribution_1_10'] = self.Cond_contribution_1_10
+        self.participant.vars['Cond_contribution_1_12'] = self.Cond_contribution_1_12
+        self.participant.vars['Cond_contribution_1_14'] = self.Cond_contribution_1_14
+        self.participant.vars['Cond_contribution_1_16'] = self.Cond_contribution_1_16
+        self.participant.vars['Cond_contribution_1_18'] = self.Cond_contribution_1_18
+        self.participant.vars['Cond_contribution_1_20'] = self.Cond_contribution_1_20
         self.participant.vars['contribution2'] = self.contribution2
+        self.participant.vars['Cond_contribution_2_0'] = self.Cond_contribution_2_0
+        self.participant.vars['Cond_contribution_2_2'] = self.Cond_contribution_2_2
+        self.participant.vars['Cond_contribution_2_4'] = self.Cond_contribution_2_4
+        self.participant.vars['Cond_contribution_2_6'] = self.Cond_contribution_2_6
+        self.participant.vars['Cond_contribution_2_8'] = self.Cond_contribution_2_8
+        self.participant.vars['Cond_contribution_2_10'] = self.Cond_contribution_2_10
+        self.participant.vars['Cond_contribution_2_12'] = self.Cond_contribution_2_12
+        self.participant.vars['Cond_contribution_2_14'] = self.Cond_contribution_2_14
+        self.participant.vars['Cond_contribution_2_16'] = self.Cond_contribution_2_16
+        self.participant.vars['Cond_contribution_2_18'] = self.Cond_contribution_2_18
+        self.participant.vars['Cond_contribution_2_20'] = self.Cond_contribution_2_20
         self.participant.vars['contribution3'] = self.contribution3
+        self.participant.vars['Cond_contribution_3_0'] = self.Cond_contribution_3_0
+        self.participant.vars['Cond_contribution_3_2'] = self.Cond_contribution_3_2
+        self.participant.vars['Cond_contribution_3_4'] = self.Cond_contribution_3_4
+        self.participant.vars['Cond_contribution_3_6'] = self.Cond_contribution_3_6
+        self.participant.vars['Cond_contribution_3_8'] = self.Cond_contribution_3_8
+        self.participant.vars['Cond_contribution_3_10'] = self.Cond_contribution_3_10
+        self.participant.vars['Cond_contribution_3_12'] = self.Cond_contribution_3_12
+        self.participant.vars['Cond_contribution_3_14'] = self.Cond_contribution_3_14
+        self.participant.vars['Cond_contribution_3_16'] = self.Cond_contribution_3_16
+        self.participant.vars['Cond_contribution_3_18'] = self.Cond_contribution_3_18
+        self.participant.vars['Cond_contribution_3_20'] = self.Cond_contribution_3_20
         self.participant.vars['contribution4'] = self.contribution4
+        self.participant.vars['Cond_contribution_4_0'] = self.Cond_contribution_4_0
+        self.participant.vars['Cond_contribution_4_2'] = self.Cond_contribution_4_2
+        self.participant.vars['Cond_contribution_4_4'] = self.Cond_contribution_4_4
+        self.participant.vars['Cond_contribution_4_6'] = self.Cond_contribution_4_6
+        self.participant.vars['Cond_contribution_4_8'] = self.Cond_contribution_4_8
+        self.participant.vars['Cond_contribution_4_10'] = self.Cond_contribution_4_10
+        self.participant.vars['Cond_contribution_4_12'] = self.Cond_contribution_4_12
+        self.participant.vars['Cond_contribution_4_14'] = self.Cond_contribution_4_14
+        self.participant.vars['Cond_contribution_4_16'] = self.Cond_contribution_4_16
+        self.participant.vars['Cond_contribution_4_18'] = self.Cond_contribution_4_18
+        self.participant.vars['Cond_contribution_4_20'] = self.Cond_contribution_4_20
         self.participant.vars['contribution5'] = self.contribution5
+        self.participant.vars['Cond_contribution_5_0'] = self.Cond_contribution_5_0
+        self.participant.vars['Cond_contribution_5_2'] = self.Cond_contribution_5_2
+        self.participant.vars['Cond_contribution_5_4'] = self.Cond_contribution_5_4
+        self.participant.vars['Cond_contribution_5_6'] = self.Cond_contribution_5_6
+        self.participant.vars['Cond_contribution_5_8'] = self.Cond_contribution_5_8
+        self.participant.vars['Cond_contribution_5_10'] = self.Cond_contribution_5_10
+        self.participant.vars['Cond_contribution_5_12'] = self.Cond_contribution_5_12
+        self.participant.vars['Cond_contribution_5_14'] = self.Cond_contribution_5_14
+        self.participant.vars['Cond_contribution_5_16'] = self.Cond_contribution_5_16
+        self.participant.vars['Cond_contribution_5_18'] = self.Cond_contribution_5_18
+        self.participant.vars['Cond_contribution_5_20'] = self.Cond_contribution_5_20
         self.participant.vars['contribution6'] = self.contribution6
-
+        self.participant.vars['Cond_contribution_6_0'] = self.Cond_contribution_6_0
+        self.participant.vars['Cond_contribution_6_2'] = self.Cond_contribution_6_2
+        self.participant.vars['Cond_contribution_6_4'] = self.Cond_contribution_6_4
+        self.participant.vars['Cond_contribution_6_6'] = self.Cond_contribution_6_6
+        self.participant.vars['Cond_contribution_6_8'] = self.Cond_contribution_6_8
+        self.participant.vars['Cond_contribution_6_10'] = self.Cond_contribution_6_10
+        self.participant.vars['Cond_contribution_6_12'] = self.Cond_contribution_6_12
+        self.participant.vars['Cond_contribution_6_14'] = self.Cond_contribution_6_14
+        self.participant.vars['Cond_contribution_6_16'] = self.Cond_contribution_6_16
+        self.participant.vars['Cond_contribution_6_18'] = self.Cond_contribution_6_18
+        self.participant.vars['Cond_contribution_6_20'] = self.Cond_contribution_6_20
