@@ -27,7 +27,11 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
 
     def set_groups_1(self):
-        self.set_group_matrix(self.session.vars['module1groupmatrix'])
+        firstgroups = self.session.vars['module1groupmatrix']
+        self.set_group_matrix(firstgroups)
+        for group in self.get_groups():
+            players = group.get_players()
+            group.set_players(players)
 
     def set_groups_2(self):
         flattened_matrix = self.session.vars['module1groupmatrix'].flatten
@@ -36,6 +40,9 @@ class Subsession(BaseSubsession):
         n = 3
         new_group_list = [new_group_matrix[i * n:(i + 1) * n] for i in range((len(new_group_matrix) + n - 1) // n)]
         self.set_group_matrix(new_group_list)
+        for group in self.get_groups():
+            players = group.get_players()
+            group.set_players(players)
 
 
 class Group(BaseGroup):

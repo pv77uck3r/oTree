@@ -17,7 +17,7 @@ Your app description
 
 
 class Constants(BaseConstants):
-    name_in_url = 'criminal_riskloss2'
+    name_in_url = 'criminal_riskloss_2'
     players_per_group = None
     num_rounds = 1
     num_cointosses = 6
@@ -31,7 +31,7 @@ class Subsession(BaseSubsession):
             # 1 - risk
             # 2 - loss
             # 3 - ambiguity
-            self.session.vars['paymentmodule'] = np.random.choice([1, 2])
+            self.session.vars['paymentmodule'] = np.random.choice([1, 2, 3])
             if self.session.vars['paymentmodule'] == 1:
                 for p in self.get_players():
                     # If we pay for risk, we select a 0 - Heads or 1 - Tails.
@@ -51,8 +51,15 @@ class Subsession(BaseSubsession):
                             p.participant.vars['HTLoss'] = np.random.choice([1, 2])
                         else:
                             p.participant.vars['numheadsLoss'] = np.random.binomial(Constants.num_cointosses, p=0.5)
-            else:
-                pass
+            elif self.session.vars['paymentmodule'] == 3:
+                self.session.vars['redball1'] = 0.5
+                self.session.vars['redball2'] = np.random.choice([0.4, 0.5, 0.6])
+                self.session.vars['redball3'] = np.random.choice([0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8])
+                self.session.vars['redball4'] = np.random.choice([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
+                self.session.vars['randprice1'] = np.random.choice(np.linspace(0,2.51,250,endpoint=False))
+                self.session.vars['randprice2'] = np.random.choice(np.linspace(0,2.51,250,endpoint=False))
+                self.session.vars['randprice3'] = np.random.choice(np.linspace(0,2.51,250,endpoint=False))
+                self.session.vars['randprice4'] = np.random.choice(np.linspace(0,2.51,250,endpoint=False))
 
 
 class Group(BaseGroup):
@@ -118,7 +125,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 5: 50% chance to LOSE $2.00, 50% chance to gain $6.00'
+        label='Decision 5: 50% chance to LOSE $4.00, 50% chance to gain $6.00'
     )
 
     loss_decision_6 = models.IntegerField(
@@ -137,7 +144,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 7: 50% chance to LOSE $2.00, 50% chance to gain $6.00'
+        label='Decision 7: 50% chance to LOSE $5.00, 50% chance to gain $6.00'
     )
 
     loss_decision_8 = models.IntegerField(
@@ -156,7 +163,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 9: 50% chance to LOSE $2.00, 50% chance to gain $6.00'
+        label='Decision 9: 50% chance to LOSE $6.00, 50% chance to gain $6.00'
     )
 
     loss_decision_10 = models.IntegerField(
@@ -175,7 +182,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 11: 50% chance to LOSE $2.00, 50% chance to gain $6.00'
+        label='Decision 11: 50% chance to LOSE $7.00, 50% chance to gain $6.00'
     )
 
     loss_decision_12 = models.IntegerField(
@@ -188,8 +195,72 @@ class Player(BasePlayer):
               'you will be paid off the outcomes of six independent coin tosses.'
     )
 
+    ambiguity_color_decision_1 = models.IntegerField(
+        choices=[
+            [1, 'Red'],
+            [2, 'Blue']
+        ],
+        widget=widgets.RadioSelect,
+        label='What color do you think the randomly drawn ball from this urn will be?'
+    )
+
+    ambiguity_color_decision_2 = models.IntegerField(
+        choices=[
+            [1, 'Red'],
+            [2, 'Blue']
+        ],
+        widget=widgets.RadioSelect,
+        label='What color do you think the randomly drawn ball from this urn will be?'
+    )
+
+    ambiguity_color_decision_3 = models.IntegerField(
+        choices=[
+            [1, 'Red'],
+            [2, 'Blue']
+        ],
+        widget=widgets.RadioSelect,
+        label='What color do you think the randomly drawn ball from this urn will be?'
+    )
+
+    ambiguity_color_decision_4 = models.IntegerField(
+        choices=[
+            [1, 'Red'],
+            [2, 'Blue']
+        ],
+        widget=widgets.RadioSelect,
+        label='What color do you think the randomly drawn ball from this urn will be?'
+    )
+
+    ambiguity_price_decision_1 = models.FloatField(
+        min=0,
+        max=2.50,
+        label='What price would you be willing to sell your bet for?'
+    )
+
+    ambiguity_price_decision_2 = models.FloatField(
+        min=0,
+        max=2.50,
+        label='What price would you be willing to sell your bet for?'
+    )
+
+    ambiguity_price_decision_3 = models.FloatField(
+        min=0,
+        max=2.50,
+        label='What price would you be willing to sell your bet for?'
+    )
+
+    ambiguity_price_decision_4 = models.FloatField(
+        min=0,
+        max=2.50,
+        label='What price would you be willing to sell your bet for?'
+    )
+
     risk_payment = models.FloatField()
     loss_payment = models.FloatField()
+    ambiguity_payment1 = models.FloatField()
+    ambiguity_payment2 = models.FloatField()
+    ambiguity_payment3 = models.FloatField()
+    ambiguity_payment4 = models.FloatField()
 
     Final_Payoff = models.CurrencyField()
 
@@ -349,7 +420,47 @@ class Player(BasePlayer):
                                                 self.loss_payment = 0
             else:
                 self.ModuleChoice = self.session.vars['paymentmodule']
-                pass
+                if self.session.vars['paymentmodule'] == 3:
+                    if self.session.vars['randprice1'] > self.ambiguity_price_decision_1:
+                        self.ambiguity_payment = self.session.vars['randprice1']
+                    else:
+                        ## 1 - red, 0 - blue
+                        ballcolor = np.random.binomial(1, self.session.vars['redball1'])
+                        if ballcolor == self.ambiguity_color_decision_1:
+                            self.ambiguity_payment1 = 2.50
+                        else:
+                            self.ambiguity_payment1 = 0
+
+                    if self.session.vars['randprice2'] > self.ambiguity_price_decision_2:
+                        self.ambiguity_payment = self.session.vars['randprice2']
+                    else:
+                        ## 1 - red, 0 - blue
+                        ballcolor = np.random.binomial(1, self.session.vars['redball2'])
+                        if ballcolor == self.ambiguity_color_decision_2:
+                            self.ambiguity_payment2 = 2.50
+                        else:
+                            self.ambiguity_payment2 = 0
+
+                    if self.session.vars['randprice3'] > self.ambiguity_price_decision_3:
+                        self.ambiguity_payment = self.session.vars['randprice3']
+                    else:
+                        ## 1 - red, 0 - blue
+                        ballcolor = np.random.binomial(1, self.session.vars['redball3'])
+                        if ballcolor == self.ambiguity_color_decision_3:
+                            self.ambiguity_payment3 = 2.50
+                        else:
+                            self.ambiguity_payment3 = 0
+
+                    if self.session.vars['randprice4'] > self.ambiguity_price_decision_4:
+                        self.ambiguity_payment = self.session.vars['randprice4']
+                    else:
+                        ## 1 - red, 0 - blue
+                        ballcolor = np.random.binomial(1, self.session.vars['redball4'])
+                        if ballcolor == self.ambiguity_color_decision_4:
+                            self.ambiguity_payment4 = 2.50
+                        else:
+                            self.ambiguity_payment4 = 0
+
 
     def set_payoffs(self):
         if self.session.vars['paymentmodule'] == 1:
@@ -359,7 +470,8 @@ class Player(BasePlayer):
                 self.participant.vars['payoffmodule5'] = self.loss_payment
             else:
                 if self.session.vars['paymentmodule'] == 3:
-                    self.participant.vars['payoffmodule5'] = 0
+                    self.participant.vars['payoffmodule5'] = self.ambiguity_payment1 + self.ambiguity_payment2 + \
+                                                             self.ambiguity_payment3 + self.ambiguity_payment4
 
     def set_big_payoff(self):
         self.participant.vars['bigpayoff'] = 7 + \

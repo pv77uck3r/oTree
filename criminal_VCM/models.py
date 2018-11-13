@@ -1343,7 +1343,7 @@ class Player(BasePlayer):
         label="Question 4: Which of the following is true "
     )
 
-    chosen_one = models.BooleanField
+    chosen_one = models.BooleanField()
 
     def keep_role(self):
         self.participant.vars['module1role'] = self.id_in_group

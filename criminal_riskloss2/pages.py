@@ -16,6 +16,13 @@ class Loss(Page):
                    'loss_decision_6', 'loss_decision_7', 'loss_decision_8', 'loss_decision_9', 'loss_decision_10',
                    'loss_decision_11', 'loss_decision_12']
 
+
+class Ambiguity(Page):
+    form_model = 'player'
+    form_fields = ['ambiguity_color_decision_1', 'ambiguity_color_decision_2', 'ambiguity_color_decision_3',
+                   'ambiguity_color_decision_4', 'ambiguity_price_decision_1', 'ambiguity_price_decision_2',
+                   'ambiguity_price_decision_3', 'ambiguity_price_decision_4', ]
+
     def before_next_page(self):
         self.player.payoffs()
         self.player.set_payoffs()
@@ -29,20 +36,30 @@ class LittleResults(Page):
             modulechosen = 'first'
             singleloss = None
             otherroll = None
+            urn1 = 0
+            urn2 = 0
+            urn3 = 0
+            urn4 = 0
+            totalurn = 0
             if self.player.participant.vars['HTRisk'] == 0:
-                randomroll = 'below 50'
+                randomroll = 'less than or equal to 50'
             else:
-                randomroll = 'greater than or equal to 50'
+                randomroll = 'greater than 50'
         else:
             if self.session.vars['paymentmodule'] == 2:
                 modulechosen = 'second'
+                urn1 = 0
+                urn2 = 0
+                urn3 = 0
+                urn4 = 0
+                totalurn = 0
                 if self.player.participant.vars['LossDecision'] % 2 == 1:
                     singleloss = 1
                     otherroll = None
                     if self.player.participant.vars['HTLoss'] == 0:
-                        randomroll = 'below 50'
+                        randomroll = 'less than or equal to 50'
                     else:
-                        randomroll = 'greater than or equal to 50'
+                        randomroll = 'greater than 50'
                 else:
                     randomroll = self.player.participant.vars['numheadsLoss']
                     otherroll = Constants.num_cointosses - randomroll
@@ -50,6 +67,12 @@ class LittleResults(Page):
             else:
                 modulechosen = 'third'
                 randomroll = 'Not Yet Defined'
+                urn1 = self.player.ambiguity_payment1
+                urn2 = self.player.ambiguity_payment2
+                urn3 = self.player.ambiguity_payment3
+                urn4 = self.player.ambiguity_payment4
+                totalurn = self.player.ambiguity_payment1 + self.player.ambiguity_payment2 + \
+                           self.player.ambiguity_payment3 + self.player.ambiguity_payment4
                 singleloss = None
                 otherroll = None
 
@@ -60,7 +83,12 @@ class LittleResults(Page):
                 'singleloss': singleloss,
                 'otherroll': otherroll,
                 'riskpayment': format(self.player.risk_payment, '.2f'),
-                'losspayment': format(self.player.loss_payment, '.2f')
+                'losspayment': format(self.player.loss_payment, '.2f'),
+                'urn1': format(urn1, '.2f'),
+                'urn2': format(urn2, '.2f'),
+                'urn3': format(urn3, '.2f'),
+                'urn4': format(urn4, '.2f'),
+                'totalurn': format(totalurn, '.2f')
                 }
 
 class Results(Page):
@@ -79,6 +107,7 @@ class Results(Page):
 page_sequence = [
     Risk,
     Loss,
+    Ambiguity,
     LittleResults,
     Results
 ]

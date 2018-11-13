@@ -11,7 +11,7 @@ class Offer(Page):
         return self.player.role() == 'principal'
 
     form_model = 'group'
-    form_fields = ['agent_fixed_pay', 'agent_return_share']
+    form_fields = ['agent_fixed_pay']
 
 
 class OfferWaitPage(WaitPage):

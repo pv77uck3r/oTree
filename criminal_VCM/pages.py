@@ -11,10 +11,16 @@ class Quiz_1(Page):
     form_model = 'player'
     form_fields = ['quiz1', 'quiz2', 'quiz3', 'quiz4']
 
+    def is_displayed(self):
+        return self.participant.id_in_session % 2 == 1
+
 
 class Quiz_2(Page):
     form_model = 'player'
     form_fields = ['quiz1', 'quiz2', 'quiz3']
+
+    def is_displayed(self):
+        return self.participant.id_in_session % 2 == 0
 
 
 class Belief1(Page):
@@ -22,7 +28,7 @@ class Belief1(Page):
     form_fields = ['belief1']
 
     def is_displayed(self):
-        return self.player.role == 'primed'
+        return self.participant.id_in_session % 2 == 1
 
 
 class Belief2(Page):
@@ -30,7 +36,7 @@ class Belief2(Page):
     form_fields = ['belief2']
 
     def is_displayed(self):
-        return self.player.role == 'primed'
+        return self.participant.id_in_session % 2 == 1
 
 
 class Belief3(Page):
@@ -38,7 +44,7 @@ class Belief3(Page):
     form_fields = ['belief3']
 
     def is_displayed(self):
-        return self.player.role == 'primed'
+        return self.participant.id_in_session % 2 == 1
 
 
 class Decision1(Page):
@@ -49,7 +55,7 @@ class Decision1(Page):
                    'Cond_contribution_1_20']
 
     def is_displayed(self):
-        return self.player.role == 'primed'
+        return self.participant.id_in_session % 2 == 1
 
 
 class Decision1b(Page):
@@ -60,7 +66,11 @@ class Decision1b(Page):
                    'Cond_contribution_1_20']
 
     def is_displayed(self):
-        return self.player.role == 'unprimed'
+        return self.participant.id_in_session % 2 == 0
+
+    def before_next_page(self):
+        self.player.keep_contributions()
+
 
 
 class Decision2(Page):
@@ -71,7 +81,7 @@ class Decision2(Page):
                    'Cond_contribution_2_20']
 
     def is_displayed(self):
-        return self.player.role == 'primed'
+        return self.participant.id_in_session % 2 == 1
 
 
 class Decision2b(Page):
@@ -93,7 +103,7 @@ class Decision3(Page):
                    'Cond_contribution_3_20']
 
     def is_displayed(self):
-        return self.player.role == 'primed'
+        return self.participant.id_in_session % 2 == 1
 
 
 class Decision3b(Page):
@@ -115,7 +125,7 @@ class Decision4(Page):
                    'Cond_contribution_4_20']
 
     def is_displayed(self):
-        return self.player.role == 'primed'
+        return self.participant.id_in_session % 2 == 1
 
 
 class Decision4b(Page):
@@ -137,7 +147,7 @@ class Decision5(Page):
                    'Cond_contribution_5_20']
 
     def is_displayed(self):
-        return self.player.role == 'primed'
+        return self.participant.id_in_session % 2 == 1
 
 
 class Decision5b(Page):
@@ -159,7 +169,10 @@ class Decision6(Page):
                    'Cond_contribution_6_20']
 
     def is_displayed(self):
-        return self.player.role == 'primed'
+        return self.participant.id_in_session % 2 == 1
+
+    def before_next_page(self):
+        self.player.keep_contributions()
 
 
 class Decision6b(Page):
@@ -173,9 +186,6 @@ class Decision6b(Page):
         return self.player.role == 'unprimed'
 
 
-class RecordDecisions(WaitPage):
-    def after_all_players_arrive(self):
-        self.group.keep_decisions()
 
 
 page_sequence = [
@@ -192,5 +202,4 @@ page_sequence = [
     Decision4,
     Decision5,
     Decision6,
-    RecordDecisions
 ]

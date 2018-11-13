@@ -8,7 +8,7 @@
 {% block content %}
 
     <p>
-        The {{ modulechosen }} module was randomly chosen for payment.
+        The {{ modulechosen }} task was randomly chosen for payment.
     </p>
 
     {% if modulechosen == 'first' %}
@@ -36,7 +36,57 @@
         {% endif %}
     {% endif %}
 
+    {% if modulechosen == 'third' %}
+
+        <p>
+            Below are the payoffs for your decisions regarding earn urn. Remember that you could earn money from either
+            winning a bet or from successfully selling the bet to the computer.
+        </p>
+
+        <center>
+        <table class="tg">
+          <tr>
+            <th class="tg-zv4m"></th>
+            <th class="tg-zv4m">Payoff</th>
+          </tr>
+          <tr>
+            <td class="tg-lghr">Urn 1</td>
+            <td class="tg-lghr">${{ urn1 }}</td>
+          </tr>
+          <tr>
+            <td class="tg-8jgo">Urn 2</td>
+            <td class="tg-8jgo">${{ urn2 }}</td>
+          </tr>
+          <tr>
+            <td class="tg-8jgo">Urn 3</td>
+            <td class="tg-8jgo">${{ urn3 }}</td>
+          </tr>
+          <tr>
+            <td class="tg-8jgo">Urn 4</td>
+            <td class="tg-8jgo">${{ urn4 }}</td>
+          </tr>
+          <tr>
+            <td class="tg-8jgo">Total Payoff</td>
+            <td class="tg-8jgo">${{ totalurn }}</td>
+          </tr>
+        </table>
+        </center>
+
+    {% endif %}
+
     {% next_button %}
+
 {% endblock %}
 
+{% block styles %}
+
+    <style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg .tg-zv4m{border-color:#ffffff;text-align:left;vertical-align:top}
+    .tg .tg-8jgo{border-color:#ffffff;text-align:center;vertical-align:top}
+    .tg .tg-lghr{border-color:#ffffff;text-align:center}
+    </style>
+{% endblock %}
 
