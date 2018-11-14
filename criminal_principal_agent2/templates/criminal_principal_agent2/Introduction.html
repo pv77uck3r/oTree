@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}Introduction{% endblock %}
+
+{% block content %}
+    {% if player.role == 'agent' %}
+        {% include Constants.instructions_template_A %}
+    {% endif %}
+
+    {% if player.role == 'principal' %}
+        {% include Constants.instructions_template_P %}
+    {% endif %}
+{% next_button %}
+{% endblock %}

@@ -1,0 +1,114 @@
+{% load otree static %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+    <h3>
+        Instructions
+    </h3>
+
+    <p>
+        You have been randomly and anonymously paired with another player. Each
+        of you will be randomly assigned to be
+        Participant A or Participant B. You will learn your role before making
+        any decision.
+    </p>
+    <p>
+        Participant A will propose a contract to B that has only one component:
+    </p>
+    <ul>
+        <li><strong>Fixed Payment</strong>, which can be any amount of points from 0 to
+            120 and must be in increments of 10.
+        </li>
+    </ul>
+    <p>
+        Once Participant A has submitted the contract, Participant B must
+        decide whether to accept or to reject it. If rejected, A will receive
+        nothing while B will receive {{ Constants.reject_agent_pay }}. If accepted, Participant B then
+        chooses:
+    </p>
+    <ul>
+        <li><strong>Effort Level</strong>, which can be any whole number from 1
+            to 10
+        </li>
+    </ul>
+    <p>
+        Effort is costly only to Participant B and determines the total return,
+        which will be apportioned according to the proposed return share. <i>The
+        following table shows the relationship between B's effort, the cost of
+        effort, and the resulting total return:</i>
+    </p>
+    <table class=table>
+        <tr>
+            <th>Effort Level</th>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <th>Effort Cost</th>
+            <td>0 points</td>
+            <td>1 point</td>
+            <td>2 points</td>
+            <td>4 points</td>
+            <td>6 points</td>
+            <td>8 points</td>
+            <td>10 points</td>
+            <td>12 points</td>
+            <td>15 points</td>
+            <td>18 points</td>
+        </tr>
+        {% comment %}<tr>
+            <th>Total Return</th>
+            <td>$2.33</td>
+            <td>$4.67</td>
+            <td>$7.00</td>
+            <td>$9.00</td>
+            <td>$11.67</td>
+            <td>$14.00</td>
+            <td>$16.33</td>
+            <td>$18.67</td>
+            <td>$21.00</td>
+            <td>$23.33</td>
+        </tr>{% endcomment %}
+    </table>
+    <p>
+        Given that the contract is accepted, Participant A will receive:<br/>
+        $$ (120 - \text{fixed payment})* \frac{\text{B's effort}}{10}$$
+        <br/>
+        and Participant B will receive:<br/>
+        $$ \text{fixed payment} - \text{cost of effort} - 20 $$
+    </p>
+
+    <p>
+        For this part of the experiment, you will be randomly assigned a partner who could be one of several
+        “types”.  In an interaction separate from their interaction with you the computer will randomly pair them with
+        another participant. In that interaction, the computer will first divide $10 between your counterpart and this
+        other participant.  Your counterpart will be given an opportunity (that they are not forced to accept) to take
+        money that belongs to their partner. This could be any amount between $0.10 and $3.00.
+    </p>
+
+    <p>
+        The decisions of other participants, in the role of a prosecutor and in the role of jurors, will determine
+        whether those suspected of taking money from their partner are found guilty or not-guilty of having done so.
+        Some truly innocent people may appear to be guilty and some truly guilty people may appear to be innocent. As a
+        result, your possible counterparts are of different types: those found guilty of having taken a small amount of
+        their partner’s money, those found guilty of having taken a medium amount, or those found guilty of having taken
+        a large amount, those found not-guilty, and those never accused of such a theft. All participants found
+        guilty of having taken money from another participant had to pay a monetary penalty as well.
+    </p>
+</div>
+</div>
+
+{% block scripts %}
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+{% endblock %}

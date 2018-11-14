@@ -66,7 +66,18 @@ def cost_from_effort(effort):
 
 
 class Subsession(BaseSubsession):
-    pass
+
+    def set_groups_1(self):
+        self.set_group_matrix(self.session.vars['subjlists'][0])
+        for group in self.get_groups():
+            players = group.get_players()
+            group.set_players(players)
+
+    def set_groups_2(self):
+        self.set_group_matrix(self.session.vars['subjlists'][3])
+        for group in self.get_groups():
+            players = group.get_players()
+            group.set_players(players)
 
 
 class Group(BaseGroup):
@@ -415,12 +426,6 @@ class Group(BaseGroup):
         ],
         label='Would you accept a contract for 120 points in fixed payment from Participant A?'
     )
-
-    def keep_decisions(self):
-        p1 = self.get_player_by_id(1)
-        p2 = self.get_player_by_id(2)
-
-
 
     # def set_payoffs(self):
     #     principal = self.get_player_by_role('principal')
