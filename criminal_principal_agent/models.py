@@ -14,7 +14,7 @@ accept. The agent then chooses an effort level. The implementation is based on
 
 
 class Constants(BaseConstants):
-    name_in_url = 'criminal_principal_agent2'
+    name_in_url = 'criminal_principal_agent'
     players_per_group = 2
     num_rounds = 1
 

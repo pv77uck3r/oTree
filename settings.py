@@ -12,30 +12,30 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
-    {
-        'name': 'criminal_trust',
-        'display_name': "Trust Game for Innocence Problem Project",
-        'num_demo_participants': 2,
-        'app_sequence': ['criminal_trust'],
-    },
-    {
-        'name': 'criminal_theft',
-        'display_name': "Theft Game for Innocence Problem Project",
-        'num_demo_participants': 2,
-        'app_sequence': ['criminal_theft'],
-    },
-    {
-        'name': 'criminal_plea',
-        'display_name': "Defendant Plea Task for Innocence Problem Project",
-        'num_demo_participants': 2,
-        'app_sequence': ['criminal_plea'],
-    },
-    {
-        'name': 'criminal_trust2',
-        'display_name': "Defendant Trust Game for Innocence Problem Project",
-        'num_demo_participants': 2,
-        'app_sequence': ['criminal_trust2'],
-    },
+    # {
+    #     'name': 'criminal_trust',
+    #     'display_name': "Trust Game for Innocence Problem Project",
+    #     'num_demo_participants': 2,
+    #     'app_sequence': ['criminal_trust'],
+    # },
+    # {
+    #     'name': 'criminal_theft',
+    #     'display_name': "Theft Game for Innocence Problem Project",
+    #     'num_demo_participants': 2,
+    #     'app_sequence': ['criminal_theft'],
+    # },
+    # {
+    #     'name': 'criminal_plea',
+    #     'display_name': "Defendant Plea Task for Innocence Problem Project",
+    #     'num_demo_participants': 2,
+    #     'app_sequence': ['criminal_plea'],
+    # },
+    # {
+    #     'name': 'criminal_trust2',
+    #     'display_name': "Defendant Trust Game for Innocence Problem Project",
+    #     'num_demo_participants': 2,
+    #     'app_sequence': ['criminal_trust2'],
+    # },
     {
         'name': 'criminal_wrapper',
         'display_name': "Innocence Problem - Trust Game - All Tasks",
@@ -53,22 +53,22 @@ SESSION_CONFIGS = [
     {
         'name': 'criminal_wrapper3',
         'display_name': "Innocence Problem - Gift Exchange Game - All Tasks",
-        'num_demo_participants': 12,
+        'num_demo_participants': 8,
         'app_sequence': ['criminal_wrapper', 'criminal_principal_agent', 'criminal_theft', 'criminal_plea',
                          'criminal_principal_agent2', 'criminal_riskloss2', 'criminal_survey'],
     },
-    {
-        'name': 'criminal_survey',
-        'display_name': "Survey for Innocence Problem",
-        'num_demo_participants': 1,
-        'app_sequence': ['criminal_survey'],
-    },
-    {
-        'name': 'dictator',
-        'display_name': "DICTATOR TEST",
-        'num_demo_participants': 2,
-        'app_sequence': ['dictator'],
-    },
+    # {
+    #     'name': 'criminal_survey',
+    #     'display_name': "Survey for Innocence Problem",
+    #     'num_demo_participants': 1,
+    #     'app_sequence': ['criminal_survey'],
+    # },
+    # {
+    #     'name': 'dictator',
+    #     'display_name': "DICTATOR TEST",
+    #     'num_demo_participants': 2,
+    #     'app_sequence': ['dictator'],
+    # },
 
 ]
 # see the end of this file for the inactive session configs
