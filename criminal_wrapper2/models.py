@@ -39,6 +39,7 @@ class Subsession(BaseSubsession):
             list = []
             for i in range(1, num_subjs + 1):
                 list.append(i)
+            np.random.shuffle(list)
             oddsubjlist = list[0:][::2]
             evensubjlist = list[1:][::2]
             size = len(evensubjlist)
@@ -60,10 +61,15 @@ class Subsession(BaseSubsession):
                 newsubjlist4.append(evensubjlist4[i - 1])
                 newsubjlist4.append(oddsubjlist[i - 1])
             n = 2
-            grouplist1 = [newsubjlist1[i * n:(i + 1) * n] for i in range((len(newsubjlist1) + n - 1) // n)]
+            #grouplist1 = [newsubjlist1[i * n:(i + 1) * n] for i in range((len(newsubjlist1) + n - 1) // n)]
             grouplist2 = [newsubjlist2[i * n:(i + 1) * n] for i in range((len(newsubjlist2) + n - 1) // n)]
             grouplist3 = [newsubjlist3[i * n:(i + 1) * n] for i in range((len(newsubjlist3) + n - 1) // n)]
+            #grouplist4 = [newsubjlist4[i * n:(i + 1) * n] for i in range((len(newsubjlist4) + n - 1) // n)]
+
+            n = 3
+            grouplist1 = [newsubjlist1[i * n:(i + 1) * n] for i in range((len(newsubjlist1) + n - 1) // n)]
             grouplist4 = [newsubjlist4[i * n:(i + 1) * n] for i in range((len(newsubjlist4) + n - 1) // n)]
+
             listsubjlists = [grouplist1, grouplist2, grouplist3, grouplist4]
             self.session.vars['subjlists'] = listsubjlists
 
