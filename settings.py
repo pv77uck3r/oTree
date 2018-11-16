@@ -51,6 +51,13 @@ SESSION_CONFIGS = [
                          'criminal_riskloss2', 'criminal_survey'],
     },
     {
+        'name': 'criminal_wrapper3',
+        'display_name': "Innocence Problem - Gift Exchange Game - All Tasks",
+        'num_demo_participants': 12,
+        'app_sequence': ['criminal_wrapper', 'criminal_principal_agent', 'criminal_theft', 'criminal_plea',
+                         'criminal_principal_agent2', 'criminal_riskloss2', 'criminal_survey'],
+    },
+    {
         'name': 'criminal_survey',
         'display_name': "Survey for Innocence Problem",
         'num_demo_participants': 1,

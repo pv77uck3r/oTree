@@ -420,6 +420,41 @@ class Group(BaseGroup):
         p1 = self.get_player_by_id(1)
         p2 = self.get_player_by_id(2)
 
+        p1.participant.vars['agent_fixed_pay_1'] = self.agent_fixed_pay_1
+        p1.participant.vars['agent_fixed_pay_2'] = self.agent_fixed_pay_2
+        p1.participant.vars['agent_fixed_pay_3'] = self.agent_fixed_pay_3
+        p1.participant.vars['agent_fixed_pay_4'] = self.agent_fixed_pay_4
+        p1.participant.vars['agent_fixed_pay_5'] = self.agent_fixed_pay_5
+
+        p2.participant.vars['agent_work_effort_1'] = self.agent_work_effort_1
+        p2.participant.vars['agent_work_effort_2'] = self.agent_work_effort_2
+        p2.participant.vars['agent_work_effort_3'] = self.agent_work_effort_3
+        p2.participant.vars['agent_work_effort_4'] = self.agent_work_effort_4
+        p2.participant.vars['agent_work_effort_5'] = self.agent_work_effort_5
+        p2.participant.vars['agent_work_effort_6'] = self.agent_work_effort_6
+        p2.participant.vars['agent_work_effort_7'] = self.agent_work_effort_7
+        p2.participant.vars['agent_work_effort_8'] = self.agent_work_effort_8
+        p2.participant.vars['agent_work_effort_9'] = self.agent_work_effort_9
+        p2.participant.vars['agent_work_effort_10'] = self.agent_work_effort_10
+        p2.participant.vars['agent_work_effort_11'] = self.agent_work_effort_11
+        p2.participant.vars['agent_work_effort_12'] = self.agent_work_effort_12
+        p2.participant.vars['agent_work_effort_13'] = self.agent_work_effort_13
+
+        p2.participant.vars['contract_accepted_1'] = self.contract_accepted_1
+        p2.participant.vars['contract_accepted_2'] = self.contract_accepted_2
+        p2.participant.vars['contract_accepted_3'] = self.contract_accepted_3
+        p2.participant.vars['contract_accepted_4'] = self.contract_accepted_4
+        p2.participant.vars['contract_accepted_5'] = self.contract_accepted_5
+        p2.participant.vars['contract_accepted_6'] = self.contract_accepted_6
+        p2.participant.vars['contract_accepted_7'] = self.contract_accepted_7
+        p2.participant.vars['contract_accepted_8'] = self.contract_accepted_8
+        p2.participant.vars['contract_accepted_9'] = self.contract_accepted_9
+        p2.participant.vars['contract_accepted_10'] = self.contract_accepted_10
+        p2.participant.vars['contract_accepted_11'] = self.contract_accepted_11
+        p2.participant.vars['contract_accepted_12'] = self.contract_accepted_12
+        p2.participant.vars['contract_accepted_13'] = self.contract_accepted_13
+
+
 
 
     # def set_payoffs(self):
