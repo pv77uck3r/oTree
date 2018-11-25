@@ -77,6 +77,7 @@ class Group(BaseGroup):
 
     agent_fixed_pay_1 = models.CurrencyField(
         choices=range(0, 120 + 1, 10),
+        widget=widgets.RadioSelectHorizontal(),
         doc="""Amount offered as fixed pay to agent.""",
         min=Constants.min_fixed_payment, max=Constants.max_fixed_payment,
         label="What fixed payment will you offer to Participant B "
@@ -87,6 +88,7 @@ class Group(BaseGroup):
 
     agent_fixed_pay_2 = models.CurrencyField(
         choices=range(0, 120 + 1, 10),
+        widget=widgets.RadioSelectHorizontal(),
         doc="""Amount offered as fixed pay to agent.""",
         min=Constants.min_fixed_payment, max=Constants.max_fixed_payment,
         label="What fixed payment will you offer to Participant B "
@@ -97,6 +99,7 @@ class Group(BaseGroup):
 
     agent_fixed_pay_3 = models.CurrencyField(
         choices=range(0, 120 + 1, 10),
+        widget=widgets.RadioSelectHorizontal(),
         doc="""Amount offered as fixed pay to agent.""",
         min=Constants.min_fixed_payment, max=Constants.max_fixed_payment,
         label="What fixed payment will you offer to Participant B "
@@ -106,6 +109,7 @@ class Group(BaseGroup):
 
     agent_fixed_pay_4 = models.CurrencyField(
         choices=range(0, 120 + 1, 10),
+        widget=widgets.RadioSelectHorizontal(),
         doc="""Amount offered as fixed pay to agent.""",
         min=Constants.min_fixed_payment, max=Constants.max_fixed_payment,
         label="What fixed payment will you offer to Participant B "
@@ -115,6 +119,7 @@ class Group(BaseGroup):
 
     agent_fixed_pay_5 = models.CurrencyField(
         choices=range(0, 120 + 1, 10),
+        widget=widgets.RadioSelectHorizontal(),
         doc="""Amount offered as fixed pay to agent.""",
         min=Constants.min_fixed_payment, max=Constants.max_fixed_payment,
         label="What fixed payment will you offer to Participant B "
@@ -293,7 +298,8 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 0 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 0 points in fixed payment from Participant A?',
+        initial=False
     )
 
     contract_accepted_2 = models.BooleanField(
@@ -303,7 +309,8 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 10 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 10 points in fixed payment from Participant A?',
+        initial=False
     )
 
     contract_accepted_3 = models.BooleanField(
@@ -313,7 +320,8 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 20 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 20 points in fixed payment from Participant A?',
+        initial=False
     )
 
     contract_accepted_4 = models.BooleanField(
@@ -323,7 +331,8 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 30 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 30 points in fixed payment from Participant A?',
+        initial=False
     )
 
     contract_accepted_5 = models.BooleanField(
@@ -333,7 +342,8 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 40 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 40 points in fixed payment from Participant A?',
+        initial=False
     )
 
     contract_accepted_6 = models.BooleanField(
@@ -343,7 +353,8 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 50 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 50 points in fixed payment from Participant A?',
+        initial=False
     )
 
     contract_accepted_7 = models.BooleanField(
@@ -353,7 +364,8 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 60 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 60 points in fixed payment from Participant A?',
+        initial=False
     )
 
     contract_accepted_8 = models.BooleanField(
@@ -363,7 +375,8 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 70 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 70 points in fixed payment from Participant A?',
+        initial=False
     )
 
     contract_accepted_9 = models.BooleanField(
@@ -373,7 +386,8 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 80 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 80 points in fixed payment from Participant A?',
+        initial=False
     )
 
     contract_accepted_10 = models.BooleanField(
@@ -383,7 +397,8 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 90 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 90 points in fixed payment from Participant A?',
+        initial=False
     )
 
     contract_accepted_11 = models.BooleanField(
@@ -393,7 +408,8 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 100 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 100 points in fixed payment from Participant A?',
+        initial=False
     )
 
     contract_accepted_12 = models.BooleanField(
@@ -403,7 +419,8 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 110 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 110 points in fixed payment from Participant A?',
+        initial=False
     )
 
     contract_accepted_13 = models.BooleanField(
@@ -413,7 +430,8 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 120 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 120 points in fixed payment from Participant A?',
+        initial=False
     )
 
     def keep_decisions(self):

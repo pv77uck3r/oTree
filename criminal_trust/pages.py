@@ -59,7 +59,7 @@ class QuizT(Page):
 
 
 class DecisionsI(Page):
-    form_model = 'player'
+    form_model = 'group'
     form_fields = ['investor_decision1', 'investor_decision2', 'investor_decision3', 'investor_decision4',
                    'investor_decision5']
 

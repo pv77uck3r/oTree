@@ -15,7 +15,7 @@ class QuizA(Page):
     form_fields = ['agent_quiz1', 'agent_quiz2', 'agent_quiz3']
 
 
-class QuizB(Page):
+class QuizP(Page):
 
     def is_displayed(self):
         return self.player.role() == 'principal'
@@ -29,7 +29,8 @@ class Offer(Page):
         return self.player.role() == 'principal'
 
     form_model = 'group'
-    form_fields = ['agent_fixed_pay']
+    form_fields = ['agent_fixed_pay_1', 'agent_fixed_pay_2', 'agent_fixed_pay_3', 'agent_fixed_pay_4',
+                   'agent_fixed_pay_5']
 
 
 # class OfferWaitPage(WaitPage):
@@ -61,8 +62,21 @@ class Accept(Page):
     }
 
     def error_message(self, values):
-        if values['contract_accepted'] and values['agent_work_effort'] == None:
+        if (values['contract_accepted_1'] and values['agent_work_effort_1'] == None) or \
+           (values['contract_accepted_2'] and values['agent_work_effort_2'] == None) or \
+           (values['contract_accepted_3'] and values['agent_work_effort_3'] == None) or \
+           (values['contract_accepted_4'] and values['agent_work_effort_4'] == None) or \
+           (values['contract_accepted_5'] and values['agent_work_effort_5'] == None) or \
+           (values['contract_accepted_6'] and values['agent_work_effort_6'] == None) or \
+           (values['contract_accepted_7'] and values['agent_work_effort_7'] == None) or \
+           (values['contract_accepted_8'] and values['agent_work_effort_8'] == None) or \
+           (values['contract_accepted_9'] and values['agent_work_effort_9'] == None) or \
+           (values['contract_accepted_10'] and values['agent_work_effort_10'] == None) or \
+           (values['contract_accepted_11'] and values['agent_work_effort_11'] == None) or \
+           (values['contract_accepted_12'] and values['agent_work_effort_12'] == None) or \
+           (values['contract_accepted_13'] and values['agent_work_effort_13'] == None):
             return 'If you accept the contract, you must select a level of effort.'
+
 
 
 class ResultsWaitPage(WaitPage):
@@ -77,7 +91,7 @@ class Results(Page):
 
 page_sequence = [Introduction,
                  QuizA,
-                 QuizB,
+                 QuizP,
                  Offer,
                  Accept
                  ]
