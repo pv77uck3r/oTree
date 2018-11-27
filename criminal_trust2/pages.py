@@ -7,6 +7,12 @@ class Instructions(Page):
     pass
 
 
+class Instructions2(Page):
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1
+
+
 class QuizI(Page):
     form_model = 'player'
     form_fields = ['investor_quiz1', 'investor_quiz2', 'investor_quiz3', 'investor_quiz4']
@@ -59,6 +65,7 @@ class DecisionsI(Page):
 
     def is_displayed(self):
         return self.player.id_in_group == 1
+
 
 class DecisionsI1(Page):
     form_model = 'group'
@@ -160,13 +167,10 @@ page_sequence = [
     GenTrustGame1Payoffs,
     SetGroups2,
     Instructions,
+    Instructions2,
     QuizI,
     QuizT,
-    DecisionsI1,
-    DecisionsI2,
-    DecisionsI3,
-    DecisionsI4,
-    DecisionsI5,
+    DecisionsI,
     DecisionsT,
     KeepDecisions,
     GenTrustGame2Payoffs

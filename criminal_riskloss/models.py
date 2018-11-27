@@ -70,13 +70,13 @@ class Player(BasePlayer):
 
     risk_decision = models.IntegerField(
         choices=[
-            [1, 'A: 50% chance to get $4.30, 50% chance to get $5.65'],
-            [2, 'B: 50% chance to get $4.15, 50% chance to get $5.95'],
-            [3, 'C: 50% chance to get $4.00, 50% chance to get $6.25'],
-            [4, 'D: 50% chance to get $3.85, 50% chance to get $6.55'],
-            [5, 'E: 50% chance to get $3.65, 50% chance to get $6.90'],
-            [6, 'F: 50% chance to get $3.45, 50% chance to get $7.20'],
-            [7, 'G: 50% chance to get $3.10, 50% chance to get $7.60']
+            [1, 'Option 1: 50% chance to get $4.30, 50% chance to get $5.65'],
+            [2, 'Option 2: 50% chance to get $4.15, 50% chance to get $5.95'],
+            [3, 'Option 3: 50% chance to get $4.00, 50% chance to get $6.25'],
+            [4, 'Option 4: 50% chance to get $3.85, 50% chance to get $6.55'],
+            [5, 'Option 5: 50% chance to get $3.65, 50% chance to get $6.90'],
+            [6, 'Option 6: 50% chance to get $3.45, 50% chance to get $7.20'],
+            [7, 'Option 7: 50% chance to get $3.10, 50% chance to get $7.60']
         ],
         widget=widgets.RadioSelect
     )

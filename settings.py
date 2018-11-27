@@ -81,7 +81,7 @@ LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'
-USE_POINTS = True
+USE_POINTS = False
 
 ROOMS = [
     {
@@ -115,7 +115,7 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 
 # Consider '', None, and '0' to be empty/false
-DEBUG = True
+DEBUG = False
 
 DEMO_PAGE_INTRO_HTML = """
 Here are various games implemented with 

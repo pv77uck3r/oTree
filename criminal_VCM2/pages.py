@@ -59,7 +59,7 @@ class Decision1(Page):
                    'Cond_contribution_1_20']
 
     def is_displayed(self):
-        return self.participant.id_in_session % 2 == 1
+        return self.participant.id_in_session % 2 == 0
 
 
 class Decision1b(Page):
@@ -70,7 +70,7 @@ class Decision1b(Page):
                    'Cond_contribution_1_20']
 
     def is_displayed(self):
-        return self.participant.id_in_session % 2 == 0
+        return self.participant.id_in_session % 2 == 1
 
     def before_next_page(self):
         self.player.keep_contributions()
@@ -85,7 +85,7 @@ class Decision2(Page):
                    'Cond_contribution_2_20']
 
     def is_displayed(self):
-        return self.participant.id_in_session % 2 == 1
+        return self.participant.id_in_session % 2 == 0
 
 
 class Decision2b(Page):
@@ -107,7 +107,7 @@ class Decision3(Page):
                    'Cond_contribution_3_20']
 
     def is_displayed(self):
-        return self.participant.id_in_session % 2 == 1
+        return self.participant.id_in_session % 2 == 0
 
 
 class Decision3b(Page):
@@ -129,7 +129,7 @@ class Decision4(Page):
                    'Cond_contribution_4_20']
 
     def is_displayed(self):
-        return self.participant.id_in_session % 2 == 1
+        return self.participant.id_in_session % 2 == 0
 
 
 class Decision4b(Page):
@@ -151,7 +151,7 @@ class Decision5(Page):
                    'Cond_contribution_5_20']
 
     def is_displayed(self):
-        return self.participant.id_in_session % 2 == 1
+        return self.participant.id_in_session % 2 == 0
 
 
 class Decision5b(Page):
@@ -173,7 +173,7 @@ class Decision6(Page):
                    'Cond_contribution_6_20']
 
     def is_displayed(self):
-        return self.participant.id_in_session % 2 == 1
+        return self.participant.id_in_session % 2 == 0
 
     def before_next_page(self):
         self.player.keep_contributions()

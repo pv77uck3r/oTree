@@ -2134,3 +2134,15 @@ class Player(BasePlayer):
         self.participant.vars['Cond_contribution_6_16'] = self.Cond_contribution_6_16
         self.participant.vars['Cond_contribution_6_18'] = self.Cond_contribution_6_18
         self.participant.vars['Cond_contribution_6_20'] = self.Cond_contribution_6_20
+
+    def role(self):
+        if self.participant.id_in_session % 2 == 0:
+            return 'primed'
+        else:
+            return 'unprimed'
+
+    def chosen_one_selector(self):
+        if self.id_in_group == 1:
+            self.chosen_one = True
+        else:
+            self.chosen_one = False

@@ -18,10 +18,41 @@ class Quiz_1(Page):
     def is_displayed(self):
         return self.participant.id_in_session % 2 == 1
 
+    def investor_quiz1_error_message(self, value):
+        if value != 4:
+            return 'Question 1 is incorrect. Please try again.'
+
+    def investor_quiz2_error_message(self, value):
+        if value != 1:
+            return 'Question 2 is incorrect. Please try again.'
+
+    def investor_quiz3_error_message(self, value):
+        if value != 3:
+            return 'Question 3 is incorrect. Please try again.'
+
+    def investor_quiz4_error_message(self, value):
+        if value != 2:
+            return 'Question 4 is incorrect. Please try again.'
+
 
 class Quiz_2(Page):
     form_model = 'player'
     form_fields = ['quiz1', 'quiz2', 'quiz3']
+
+    def is_displayed(self):
+        return self.participant.id_in_session % 2 == 0
+
+    def trustee_quiz1_error_message(self, value):
+        if value != 4:
+            return 'Question 1 is incorrect. Please try again.'
+
+    def trustee_quiz2_error_message(self, value):
+        if value != 1:
+            return 'Question 2 is incorrect. Please try again.'
+
+    def trustee_quiz3_error_message(self, value):
+        if value != 3:
+            return 'Question 3 is incorrect. Please try again.'
 
     def is_displayed(self):
         return self.participant.id_in_session % 2 == 0
@@ -194,6 +225,7 @@ class Decision6b(Page):
 
 page_sequence = [
     Instructions,
+    Instructions2,
     Quiz_1,
     Quiz_2,
     Belief1,

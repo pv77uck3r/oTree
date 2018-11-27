@@ -46,9 +46,14 @@
   </tr>
 </table>
 
-    <p>
+{% comment %}    <p>
         Your Subject ID number is {{ SubjectID }}. When we call your number, please come to the podium for payment.
         Please wait patiently.
+    </p>{% endcomment %}
+
+    <p>
+        We will now process your payment. Click "Next" to complete a survey. While you complete the survey, we will
+        process your payment.
     </p>
 
     {% next_button %}
