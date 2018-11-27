@@ -7,6 +7,10 @@ class Instructions(Page):
     pass
 
 
+class Instructions2(Page):
+    pass
+
+
 class Quiz_1(Page):
     form_model = 'player'
     form_fields = ['quiz1', 'quiz2', 'quiz3', 'quiz4']

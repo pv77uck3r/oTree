@@ -14,6 +14,18 @@ class QuizA(Page):
     form_model = 'player'
     form_fields = ['agent_quiz1', 'agent_quiz2', 'agent_quiz3']
 
+    def agent_quiz1_error_message(self, value):
+        if value != 3:
+            return 'Question 1 is incorrect. Please try again.'
+
+    def agent_quiz2_error_message(self, value):
+        if value != 32:
+            return 'Question 2 is incorrect. Please try again.'
+
+    def agent_quiz3_error_message(self, value):
+        if value != 36:
+            return 'Question 3 is incorrect. Please try again.'
+
 
 class QuizP(Page):
 
@@ -22,6 +34,22 @@ class QuizP(Page):
 
     form_model = 'player'
     form_fields = ['principal_quiz1', 'principal_quiz2', 'principal_quiz3', 'principal_quiz4']
+
+    def principal_quiz1_error_message(self, value):
+        if value != 3:
+            return 'Question 1 is incorrect. Please try again.'
+
+    def principal_quiz2_error_message(self, value):
+        if value != 36:
+            return 'Question 2 is incorrect. Please try again.'
+
+    def principal_quiz3_error_message(self, value):
+        if value != 32:
+            return 'Question 3 is incorrect. Please try again.'
+
+    def principal_quiz4_error_message(self, value):
+        if value != 3:
+            return 'Question 4 is incorrect. Please try again.'
 
 
 class Offer(Page):

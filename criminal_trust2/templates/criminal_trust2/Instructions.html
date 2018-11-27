@@ -2,15 +2,10 @@
 {% load otree static %}
 
 {% block title %}
-    Part 4
+    Part 1
 {% endblock %}
 
 {% block content %}
-
-    <p>
-        In this part, you will participate in the same quarter exchange task as you did in part 1, only with a
-        different partner. Please read through the instructions below, since your role has reversed.
-    </p>
 
     {% if player.role == 'Investor' %}
 
@@ -22,6 +17,20 @@
 
     {% endif %}
 
+
+<div id="content">
     {% next_button %}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script>
+        $(function() {
+    $('#content').hide().delay(60*1000).fadeIn('slow');
+
+});
+    </script>
 
 {% endblock %}

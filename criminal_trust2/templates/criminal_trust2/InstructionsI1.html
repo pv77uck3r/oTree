@@ -30,7 +30,9 @@
     </p>
 
     <p>
-        For example, if you send your counterpart 2 quarters, he/she would receive 6 quarters (2x3 = 6). His/her
+        <span class="popup" onclick="myFunction()"> <b>For example,</b>
+            <span class="popuptext" id="myPopup"><img src="{% static "criminal_trust/InvestorExample.png" %}"/></span>
+        </span> if you send your counterpart 2 quarters, he/she would receive 6 quarters (2x3 = 6). His/her
         decision would be whether to send 0, 1, 2, 3, 4, 5, or 6 quarters back to you. The total number of quarters you
         would have is the exact amount your counterpart sent back to you plus the remaining 8 quarters from your initial
         10 quarters (10 – 2 = 8). Your counterpart would keep his/her initial 10 quarters plus the remaining quarters
@@ -43,7 +45,7 @@
         quarters).
     </p>
 
-    <p>
+{% comment %}    <p>
         For this part of the experiment, you will be randomly assigned to a counterpart who could be one of several
         “types”.  In an interaction separate from their interaction with you the computer will randomly pair them with
         another participant. In that interaction, the computer will first divide $10 between your counterpart and this
@@ -65,6 +67,81 @@
     <p>
         Your decision is to tell us how many of your initial 10 quarters you will send to your counterpart in this part
         of the experiment.
-    </p>
+    </p>{% endcomment %}
     </div>
 </div>
+
+{% block styles %}
+
+    <style>
+        /* Popup container - can be anything you want */
+        span.popup {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* The actual popup */
+        .popup .popuptext {
+            visibility: hidden;
+            width: 530px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            top: -180px;
+            left: 190%;
+            margin-left: -80px;
+        }
+
+        /* Popup arrow */
+        .popup .popuptext::after {
+            content: " ";
+            position: absolute;
+            top: 51%;
+            right: 100%; /* To the left of the tooltip */
+            margin-top: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent black transparent transparent;
+        }
+
+        /* Toggle this class - hide and show the popup */
+        .popup .show {
+            visibility: visible;
+            -webkit-animation: fadeIn 1s;
+            animation: fadeIn 1s;
+        }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity:1 ;}
+        }
+    </style>
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script>
+        // When the user clicks on div, open the popup
+        function myFunction() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+        }
+    </script>
+
+{% endblock %}

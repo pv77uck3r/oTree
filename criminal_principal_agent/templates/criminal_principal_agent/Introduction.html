@@ -11,5 +11,18 @@
     {% if player.role == 'principal' %}
         {% include Constants.instructions_template_P %}
     {% endif %}
-{% next_button %}
+<div id="content">
+    {% next_button %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+
+    <script>
+        $(function() {
+    $('#content').hide().delay(60*1000).fadeIn('slow');
+
+});
+    </script>
+
 {% endblock %}

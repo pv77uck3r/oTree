@@ -1428,21 +1428,21 @@ class Player(BasePlayer):
     agent_quiz1 = models.IntegerField(
         choices=[
             [1, '(a) 5'],
-            [2, '(b) 9'],
-            [3, '(c) 10']
+            [2, '(b) 3'],
+            [3, '(c) 0']
         ],
         widget=widgets.RadioSelect,
-        label="Question 1: What is the maximum amount of effort you can choose?"
+        label="Question 1: What effort do you contribute if you do not accept Participant B's proposal?"
     )
 
     agent_quiz2 = models.FloatField(
         label="Question 2: If Participant A offered you 60 points and you pick effort level 6, what is your "
-              "payoff?"
+              "payoff (in points)?"
     )
 
     agent_quiz3 = models.FloatField(
         label="Question 3: If Participant A offered you 60 points and you pick effort level 6, what is "
-              "Participant A's payoff?"
+              "Participant A's payoff (in points)?"
     )
 
     def role(self):

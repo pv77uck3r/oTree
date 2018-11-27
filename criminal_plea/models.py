@@ -379,6 +379,19 @@ class Player(BasePlayer):
 
                         self.trialcrime = trialcrime
                         self.defenseevid = trialdefevid
+
+                        if trialdefevid == 1:
+                            trialdefevid = 0
+                        else:
+                            if trialdefevid == 2:
+                                trialdefevid = 1
+                            else:
+                                if trialdefevid == 3:
+                                    trialdefevid = 2
+                                else:
+                                    if trialdefevid == 4:
+                                        trialdefevid = 3
+
                         self.prosevid = trialprosevid
 
                         self.participant.vars['jurydecision'] = np.random.binomial(1, (self.session.vars['juryprobs'].loc[(self.session.vars['juryprobs']['Crime'] == trialcrime) & (self.session.vars['juryprobs']['Defense evidence'] == trialdefevid) & (self.session.vars['juryprobs']['Prosecutor evidence'] == trialprosevid), 'Probability of a guilty findng at trial'].item()))
@@ -449,6 +462,19 @@ class Player(BasePlayer):
 
                         self.trialcrime = trialcrime
                         self.defenseevid = trialdefevid
+
+                        if trialdefevid == 1:
+                            trialdefevid = 0
+                        else:
+                            if trialdefevid == 2:
+                                trialdefevid = 1
+                            else:
+                                if trialdefevid == 3:
+                                    trialdefevid = 2
+                                else:
+                                    if trialdefevid == 4:
+                                        trialdefevid = 3
+
                         self.prosevid = trialprosevid
                         self.participant.vars['jurydecision'] = np.random.binomial(1, (self.session.vars['juryprobs'].loc[(self.session.vars['juryprobs']['Crime'] == trialcrime) & (self.session.vars['juryprobs']['Defense evidence'] == trialdefevid) & (self.session.vars['juryprobs']['Prosecutor evidence'] == trialprosevid), 'Probability of a guilty findng at trial'].item()))
 
@@ -547,6 +573,19 @@ class Player(BasePlayer):
 
                 self.trialcrime = trialcrime
                 self.defenseevid = trialdefevid
+
+                if trialdefevid == 1:
+                    trialdefevid = 0
+                else:
+                    if trialdefevid == 2:
+                        trialdefevid = 1
+                    else:
+                        if trialdefevid == 3:
+                            trialdefevid = 2
+                        else:
+                            if trialdefevid == 4:
+                                trialdefevid = 3
+
                 self.prosevid = trialprosevid
 
                 self.participant.vars['jurydecision'] = np.random.binomial(1, (self.session.vars['juryprobs'].loc[(self.session.vars['juryprobs']['Crime'] == trialcrime) & (self.session.vars['juryprobs']['Defense evidence'] == trialdefevid) & (self.session.vars['juryprobs']['Prosecutor evidence'] == trialprosevid), 'Probability of a guilty findng at trial'].item()))

@@ -27,19 +27,13 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
 
     def set_groups_1(self):
-        firstgroups = self.session.vars['module1groupmatrix']
-        self.set_group_matrix(firstgroups)
+        self.set_group_matrix(self.session.vars['subjlists'][0])
         for group in self.get_groups():
             players = group.get_players()
             group.set_players(players)
 
     def set_groups_2(self):
-        flattened_matrix = self.session.vars['module1groupmatrix'].flatten
-        new_group_matrix = shift_right(flattened_matrix)
-        self.session.vars['new_group_matrix'] = new_group_matrix
-        n = 3
-        new_group_list = [new_group_matrix[i * n:(i + 1) * n] for i in range((len(new_group_matrix) + n - 1) // n)]
-        self.set_group_matrix(new_group_list)
+        self.set_group_matrix(self.session.vars['subjlists'][3])
         for group in self.get_groups():
             players = group.get_players()
             group.set_players(players)
@@ -118,9 +112,10 @@ class Group(BaseGroup):
         p2 = self.get_player_by_id(2)
         p3 = self.get_player_by_id(3)
 
+
         ## First, Player1 finds their contribution
         ## First, Innocent/Innocent
-        if p1.participant.id_in_session % 2 == 0:
+        if p1.participant.id_in_session % 2 == 1:
             if p2.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_trial_status'] == False:
                 contribution1 = p1.participant.vars['contribution1']
             else:
@@ -131,13 +126,11 @@ class Group(BaseGroup):
                     contribution1 = p1.participant.vars['contribution2']
                 else:
                     ## Next, Innocent/Guilty
-                    if (p2.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_guilt'] == True) \
-                        or (p2.participant.vars['ending_guilt'] == True or p3.participant.vars['ending_trial_status'] == False):
+                    if (p2.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_guilt'] == True) or (p2.participant.vars['ending_guilt'] == True or p3.participant.vars['ending_trial_status'] == False):
                         contribution1 = p1.participant.vars['contribution3']
                     else:
                         ##Next, Acquitted/Acquitted
-                        if (p2.participant.vars['ending_trial_status'] == True and p2.participant.vars['ending_guilt'] == False) and \
-                            (p3.participant.vars['ending_trial_status'] == True and p3.participant.vars['ending_guilt'] == False):
+                        if (p2.participant.vars['ending_trial_status'] == True and p2.participant.vars['ending_guilt'] == False) and (p3.participant.vars['ending_trial_status'] == True and p3.participant.vars['ending_guilt'] == False):
                             contribution1 = p1.participant.vars['contribution4']
                         else:
                             ## Next, Guilty/Guilty
@@ -150,7 +143,7 @@ class Group(BaseGroup):
             contribution1 = p1.participant.vars['contribution1']
 
         ## Next, Player3 finds their contribution
-        if p3.participant.id_in_session % 2 == 0:
+        if p3.participant.id_in_session % 2 == 1:
             if p1.participant.vars['ending_trial_status'] == False and p2.participant.vars['ending_trial_status'] == False:
                 contribution3 = p3.participant.vars['contribution1']
             else:
@@ -192,7 +185,7 @@ class Group(BaseGroup):
 
         unconditionalcontributions = contribution1 + contribution3
 
-        if p2.participant.id_in_session % 2 == 0:
+        if p2.participant.id_in_session % 2 == 1:
             if p1.participant.vars['ending_trial_status'] == False and p3.participant.vars[
                 'ending_trial_status'] == False:
                 if unconditionalcontributions == 0:

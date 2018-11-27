@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-    Part 1 - Decision 5
+    Part 1 - Decision 6
 {% endblock %}
 
 {% block content %}
@@ -11,60 +11,11 @@
         Please make your unconditional contribution decision.
     </p>
 
-    <p>The type of partners in your 3 person group are described in the table below.</p>
-
-    <center>
-    <table class="tg">
-  <tr>
-    <th class="tg-obcv">Type of player</th>
-    <th class="tg-s6z2">Number of that type</th>
-  </tr>
-  <tr>
-    <td class="tg-0lax">Never accused of stealing ANY amount from a partner</td>
-    <td class="tg-baqh">0</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">Accused of stealing some amount from a partner, but NEVER convicted</td>
-    <td class="tg-baqh">1</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">Convicted of stealing some amount from a partner</td>
-    <td class="tg-baqh">1</td>
-  </tr>
-  <tr>
-    <td class="tg-ofj5">TOTAL PARTNERS </td>
-    <td class="tg-8jgo">2</td>
-  </tr>
-</table>
-    </center>
-
-    {% formfield player.contribution5 %}
+    {% formfield player.contribution6 %}
 
     <p>
-        Please fill out the contribution list below.
+        Please fill out the contribution table.
     </p>
-
-    {% formfield player.Cond_contribution_5_0 %}
-
-    {% formfield player.Cond_contribution_5_2 %}
-
-    {% formfield player.Cond_contribution_5_4 %}
-
-    {% formfield player.Cond_contribution_5_6 %}
-
-    {% formfield player.Cond_contribution_5_8 %}
-
-    {% formfield player.Cond_contribution_5_10 %}
-
-    {% formfield player.Cond_contribution_5_12 %}
-
-    {% formfield player.Cond_contribution_5_14 %}
-
-    {% formfield player.Cond_contribution_5_16 %}
-
-    {% formfield player.Cond_contribution_5_18 %}
-
-    {% formfield player.Cond_contribution_5_20 %}
 
     {% next_button %}
 
@@ -78,7 +29,7 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    {% include 'criminal_VCM2/InstructionsTemplate_TOTAL1.html' %}
+    {% include 'criminal_VCM2/InstructionsTemplate_TOTAL2.html' %}
   </div>
 
 </div>

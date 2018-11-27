@@ -2,18 +2,18 @@
 {% load otree static %}
 
 {% block title %}
-    Part 4 - Instructions
+    Part 1
 {% endblock %}
 
 {% block content %}
 
-    {% if player.role == 'primed' %}
-        {% include 'criminal_VCM2/InstructionsTemplate_1.html' %}
+    {% if player.role == 'Investor' %}
+
+        {% include 'criminal_trust/InstructionsI2.html' %}
+
+
     {% endif %}
 
-    {% if player.role == 'unprimed' %}
-        {% include 'criminal_VCM2/InstructionsTemplate_2.html' %}
-    {% endif %}
 
 <div id="content">
     {% next_button %}

@@ -506,12 +506,12 @@ class Player(BasePlayer):
 
     principal_quiz2 = models.FloatField(
         label="Question 2: If you offered Participant B 60 points and Participant B picks effort level 6, what is your "
-              "payoff?"
+              "payoff (in points)?"
     )
 
     principal_quiz3 = models.FloatField(
         label="Question 3: If you offered Participant B 60 points and Participant B picks effort level 6, what is "
-              "Participant B's payoff?"
+              "Participant B's payoff (in points)?"
     )
 
     principal_quiz4 = models.IntegerField(
@@ -539,12 +539,12 @@ class Player(BasePlayer):
 
     agent_quiz2 = models.FloatField(
         label="Question 2: If Participant A offered you 60 points and you pick effort level 6, what is your "
-              "payoff?"
+              "payoff (in points)?"
     )
 
     agent_quiz3 = models.FloatField(
         label="Question 3: If Participant A offered you 60 points and you pick effort level 6, what is "
-              "Participant A's payoff?"
+              "Participant A's payoff (in points)?"
     )
 
     def role(self):

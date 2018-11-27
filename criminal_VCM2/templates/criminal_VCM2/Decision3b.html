@@ -2,29 +2,19 @@
 {% load otree static %}
 
 {% block title %}
-    Part 1 - Quiz
+    Part 1 - Decision 3
 {% endblock %}
 
 {% block content %}
 
-    <h3>
-        Please answer the following questions:
-    </h3>
-
     <p>
-        {% formfield player.quiz1 %}
+        Please make your unconditional contribution decision.
     </p>
 
-    <p>
-        {% formfield player.quiz2 %}
-    </p>
+    {% formfield player.contribution3 %}
 
     <p>
-        {% formfield player.quiz3 %}
-    </p>
-
-    <p>
-        {% formfield player.quiz4 %}
+        Please fill out the contribution table.
     </p>
 
     {% next_button %}
@@ -39,7 +29,7 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    {% include 'criminal_VCM2/InstructionsTemplate.html' %}
+    {% include 'criminal_VCM2/InstructionsTemplate_TOTAL2.html' %}
   </div>
 
 </div>
@@ -47,6 +37,17 @@
 {% endblock %}
 
 {% block styles %}
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-s6z2{text-align:center}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-8jgo{border-color:#ffffff;text-align:center;vertical-align:top}
+.tg .tg-obcv{border-color:#000000;text-align:center}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+.tg .tg-ofj5{border-color:#ffffff;text-align:right;vertical-align:top}
+</style>
 
     <style>
 body {font-family: Arial, Helvetica, sans-serif;}
@@ -106,7 +107,6 @@ a:hover, a:active {
     background-color: red;
 }
 </style>
-
 {% endblock %}
 
 {% block scripts %}
