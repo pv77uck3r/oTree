@@ -19,7 +19,7 @@ class QuizA(Page):
             return 'Question 1 is incorrect. Please try again.'
 
     def agent_quiz2_error_message(self, value):
-        if value != 32:
+        if value != 38:
             return 'Question 2 is incorrect. Please try again.'
 
     def agent_quiz3_error_message(self, value):
@@ -44,11 +44,11 @@ class QuizP(Page):
             return 'Question 2 is incorrect. Please try again.'
 
     def principal_quiz3_error_message(self, value):
-        if value != 32:
+        if value != 38:
             return 'Question 3 is incorrect. Please try again.'
 
     def principal_quiz4_error_message(self, value):
-        if value != 3:
+        if value != 2:
             return 'Question 4 is incorrect. Please try again.'
 
 
