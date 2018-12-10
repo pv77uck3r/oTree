@@ -106,9 +106,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
+        label='How many quarters from '
               'your endowment would you like to contribute to the group account?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_1_0 = models.IntegerField(
@@ -122,9 +122,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $0.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute an average of 0 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_1_2 = models.IntegerField(
@@ -138,9 +138,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $2.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 1 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_1_4 = models.IntegerField(
@@ -154,9 +154,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $4.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 2 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_1_6 = models.IntegerField(
@@ -170,9 +170,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $6.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 3 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_1_8 = models.IntegerField(
@@ -186,9 +186,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $8.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 4 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_1_10 = models.IntegerField(
@@ -202,9 +202,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $10.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 5 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_1_12 = models.IntegerField(
@@ -218,9 +218,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $12.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 6 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_1_14 = models.IntegerField(
@@ -234,9 +234,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $14.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 7 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_1_16 = models.IntegerField(
@@ -250,9 +250,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $16.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 8 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_1_18 = models.IntegerField(
@@ -266,9 +266,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $18.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 9 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_1_20 = models.IntegerField(
@@ -282,9 +282,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $20.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 10 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     contribution2 = models.IntegerField(
@@ -298,9 +298,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
+        label='How many quarters from '
               'your endowment would you like to contribute to the group account?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_2_0 = models.IntegerField(
@@ -314,9 +314,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $0.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 0 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_2_2 = models.IntegerField(
@@ -330,9 +330,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $2.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 1 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_2_4 = models.IntegerField(
@@ -346,9 +346,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $4.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 2 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_2_6 = models.IntegerField(
@@ -362,9 +362,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $6.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 3 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_2_8 = models.IntegerField(
@@ -378,9 +378,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $8.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 4 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_2_10 = models.IntegerField(
@@ -394,9 +394,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $10.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 5 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_2_12 = models.IntegerField(
@@ -410,9 +410,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $12.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 6 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_2_14 = models.IntegerField(
@@ -426,9 +426,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $14.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 7 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_2_16 = models.IntegerField(
@@ -442,9 +442,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $16.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 8 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_2_18 = models.IntegerField(
@@ -458,9 +458,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $18.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 9 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_2_20 = models.IntegerField(
@@ -474,9 +474,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $20.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 10 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     contribution3 = models.IntegerField(
@@ -490,9 +490,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
+        label='How many quarters from '
               'your endowment would you like to contribute to the group account?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_3_0 = models.IntegerField(
@@ -506,9 +506,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $0.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 0 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_3_2 = models.IntegerField(
@@ -522,9 +522,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $2.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 1 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_3_4 = models.IntegerField(
@@ -538,9 +538,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $4.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 2 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_3_6 = models.IntegerField(
@@ -554,9 +554,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $6.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 3 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_3_8 = models.IntegerField(
@@ -570,9 +570,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $8.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 4 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_3_10 = models.IntegerField(
@@ -586,9 +586,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $10.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 5 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_3_12 = models.IntegerField(
@@ -602,9 +602,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $12.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 6 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_3_14 = models.IntegerField(
@@ -618,9 +618,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $14.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 7 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_3_16 = models.IntegerField(
@@ -634,9 +634,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $16.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 8 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_3_18 = models.IntegerField(
@@ -650,9 +650,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $18.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 9 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_3_20 = models.IntegerField(
@@ -666,9 +666,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $20.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 10 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     contribution4 = models.IntegerField(
@@ -682,9 +682,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
+        label='How many quarters from '
               'your endowment would you like to contribute to the group account?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_4_0 = models.IntegerField(
@@ -698,9 +698,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $0.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 0 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_4_2 = models.IntegerField(
@@ -714,9 +714,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $2.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 1 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_4_4 = models.IntegerField(
@@ -730,9 +730,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $4.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 2 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_4_6 = models.IntegerField(
@@ -746,9 +746,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $6.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 3 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_4_8 = models.IntegerField(
@@ -762,9 +762,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $8.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 4 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_4_10 = models.IntegerField(
@@ -778,9 +778,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $10.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 5 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_4_12 = models.IntegerField(
@@ -794,9 +794,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $12.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 6 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_4_14 = models.IntegerField(
@@ -810,9 +810,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $14.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 7 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_4_16 = models.IntegerField(
@@ -826,9 +826,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $16.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 8 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_4_18 = models.IntegerField(
@@ -842,9 +842,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $18.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 9 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_4_20 = models.IntegerField(
@@ -858,9 +858,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $20.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 10 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     contribution5 = models.IntegerField(
@@ -874,9 +874,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
+        label='How many quarters from '
               'your endowment would you like to contribute to the group account?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_5_0 = models.IntegerField(
@@ -890,9 +890,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $0.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 0 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_5_2 = models.IntegerField(
@@ -906,9 +906,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $2.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 1 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_5_4 = models.IntegerField(
@@ -922,9 +922,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $4.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 2 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_5_6 = models.IntegerField(
@@ -938,9 +938,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $6.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 3 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_5_8 = models.IntegerField(
@@ -954,9 +954,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $8.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 4 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_5_10 = models.IntegerField(
@@ -970,9 +970,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $10.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 5 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_5_12 = models.IntegerField(
@@ -986,9 +986,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $12.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 6 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_5_14 = models.IntegerField(
@@ -1002,9 +1002,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $14.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 7 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_5_16 = models.IntegerField(
@@ -1018,9 +1018,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $16.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 8 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_5_18 = models.IntegerField(
@@ -1034,9 +1034,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $18.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 9 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_5_20 = models.IntegerField(
@@ -1050,9 +1050,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $20.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 10 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     contribution6 = models.IntegerField(
@@ -1066,9 +1066,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
+        label='How many quarters from '
               'your endowment would you like to contribute to the group account?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_6_0 = models.IntegerField(
@@ -1082,9 +1082,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $0.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 0 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_6_2 = models.IntegerField(
@@ -1098,9 +1098,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $2.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 1 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_6_4 = models.IntegerField(
@@ -1114,9 +1114,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $4.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 2 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_6_6 = models.IntegerField(
@@ -1130,9 +1130,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $6.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 3 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_6_8 = models.IntegerField(
@@ -1146,9 +1146,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $8.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 4 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_6_10 = models.IntegerField(
@@ -1162,9 +1162,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $10.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 5 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_6_12 = models.IntegerField(
@@ -1178,9 +1178,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $12.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 6 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_6_14 = models.IntegerField(
@@ -1194,9 +1194,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $14.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 7 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_6_16 = models.IntegerField(
@@ -1210,9 +1210,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $16.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 8 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_6_18 = models.IntegerField(
@@ -1226,9 +1226,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $18.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 9 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     Cond_contribution_6_20 = models.IntegerField(
@@ -1242,9 +1242,9 @@ class Player(BasePlayer):
         ],
         min=0,
         max=10,
-        label='How many dollars from '
-              'your endowment would you like to contribute to the group account if the other members contribute $20.00?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        label='How many quarters from '
+              'your endowment would you like to contribute to the group account if the other members contribute and average of 10 quarters?',
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     belief1 = models.IntegerField(
@@ -1260,7 +1260,7 @@ class Player(BasePlayer):
         max=10,
         label='What do you believe a participant who has never been accused of taking ANY '
               'amount of money from their partner will contribute to the group account on average?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     belief2 = models.IntegerField(
@@ -1279,7 +1279,7 @@ class Player(BasePlayer):
               'but never found '
               'guilty, '
               'will contribute to the group account on average?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     belief3 = models.IntegerField(
@@ -1296,7 +1296,7 @@ class Player(BasePlayer):
         label='What do you believe a participant who HAS been accused and HAS been found guilty '
               'of taking some amount of money from their '
               'partner will contribute to the group account on average?',
-        widget=widgets.Slider(attrs={'step': '2'})
+        widget=widgets.Slider(attrs={'step': '1'})
     )
 
     quiz1 = models.IntegerField(
@@ -1307,7 +1307,7 @@ class Player(BasePlayer):
             [4, '(d) You are each endowed with 10.']
         ],
         widget=widgets.RadioSelect,
-        label="Question 1: How many dollars are you and your partners endowed with for this part of the experiment?"
+        label="Question 1: How many quarters are you and your partners endowed with for this part of the experiment?"
     )
 
     quiz2 = models.IntegerField(
