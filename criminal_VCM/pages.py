@@ -58,6 +58,12 @@ class Quiz_2(Page):
         return self.participant.id_in_session % 2 == 0
 
 
+class InterimPage(Page):
+
+    def is_displayed(self):
+        return self.participant.id_in_session % 2 == 1
+
+
 class Belief1(Page):
     form_model = 'player'
     form_fields = ['belief1']
@@ -228,6 +234,7 @@ page_sequence = [
     Instructions2,
     Quiz_1,
     Quiz_2,
+    InterimPage,
     Belief1,
     Belief2,
     Belief3,

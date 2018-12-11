@@ -3,6 +3,10 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
+class Instructions(Page):
+    pass
+
+
 class Risk(Page):
 
     form_model = 'player'
@@ -105,6 +109,7 @@ class Results(Page):
 
 
 page_sequence = [
+    Instructions,
     Risk,
     Loss,
     Ambiguity,

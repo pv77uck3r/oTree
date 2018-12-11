@@ -7,10 +7,6 @@
 
 {% block content %}
 
-    <p>
-        Please make your unconditional contribution decision.
-    </p>
-
     <p>The type of partners in your 3 person group are described in the table below.</p>
 
     <center>
@@ -38,11 +34,15 @@
 </table>
     </center>
 
+    <h3>
+        Please make your unconditional contribution decision.
+    </h3>
+
     {% formfield player.contribution5 %}
 
-    <p>
-        Please fill out the contribution list below.
-    </p>
+    <h3>
+        Please fill out the conditional contribution list below.
+    </h3>
 
     {% formfield player.Cond_contribution_5_0 %}
 

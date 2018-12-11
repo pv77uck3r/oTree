@@ -17,19 +17,18 @@
         Participant A will propose a contract to B that has only one component:
     </p>
     <ul>
-        <li><strong>Fixed Payment</strong>, which can be any amount of points from 0 to
+        <li><strong>Fixed Payment</strong>, which can be any amount of dimes from 0 to
             120 and must be in increments of 10.
         </li>
     </ul>
     <p>
         Once Participant A has submitted the contract, Participant B must
         decide whether to accept or to reject it. If rejected, A will receive
-        nothing while B will receive {{ Constants.reject_agent_pay }}. If accepted, Participant B then
+        nothing and B will receive nothing. If accepted, Participant B then
         chooses:
     </p>
     <ul>
-        <li><strong>Effort Level</strong>, which can be any whole number from 1
-            to 10
+        <li><strong>Effort Level</strong>, which can be 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9, or 1.
         </li>
     </ul>
     <p>
@@ -40,29 +39,29 @@
     <table class=table>
         <tr>
             <th>Effort Level</th>
+            <td>0.1</td>
+            <td>0.2</td>
+            <td>0.3</td>
+            <td>0.4</td>
+            <td>0.5</td>
+            <td>0.6</td>
+            <td>0.7</td>
+            <td>0.8</td>
+            <td>0.9</td>
             <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
         </tr>
         <tr>
             <th>Effort Cost</th>
-            <td>0 points</td>
+            <td>0 dimes</td>
             <td>1 point</td>
-            <td>2 points</td>
-            <td>4 points</td>
-            <td>6 points</td>
-            <td>8 points</td>
-            <td>10 points</td>
-            <td>12 points</td>
-            <td>15 points</td>
-            <td>18 points</td>
+            <td>2 dimes</td>
+            <td>4 dimes</td>
+            <td>6 dimes</td>
+            <td>8 dimes</td>
+            <td>10 dimes</td>
+            <td>12 dimes</td>
+            <td>15 dimes</td>
+            <td>18 dimes</td>
         </tr>
         {% comment %}<tr>
             <th>Total Return</th>
@@ -80,7 +79,7 @@
     </table>
     <p>
         Given that the contract is accepted, Participant A will receive:<br/>
-        $$ (120 - \text{fixed payment}) \times \frac{\text{B's effort}}{10}$$
+        $$ (120 - \text{fixed payment}) \times \text{B's effort}$$
         <br/>
         and Participant B will receive:<br/>
         $$ \text{fixed payment} - \text{cost of effort} - 20 $$

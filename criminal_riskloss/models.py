@@ -70,13 +70,12 @@ class Player(BasePlayer):
 
     risk_decision = models.IntegerField(
         choices=[
-            [1, 'Option 1: 50% chance to get $4.30, 50% chance to get $5.65'],
-            [2, 'Option 2: 50% chance to get $4.15, 50% chance to get $5.95'],
-            [3, 'Option 3: 50% chance to get $4.00, 50% chance to get $6.25'],
-            [4, 'Option 4: 50% chance to get $3.85, 50% chance to get $6.55'],
-            [5, 'Option 5: 50% chance to get $3.65, 50% chance to get $6.90'],
-            [6, 'Option 6: 50% chance to get $3.45, 50% chance to get $7.20'],
-            [7, 'Option 7: 50% chance to get $3.10, 50% chance to get $7.60']
+            [1, 'A: 50% chance to get $2.80, 50% chance to get $2.80'],
+            [2, 'B: 50% chance to get $2.40, 50% chance to get $3.60'],
+            [3, 'C: 50% chance to get $2.00, 50% chance to get $4.40'],
+            [4, 'D: 50% chance to get $1.60, 50% chance to get $5.20'],
+            [5, 'E: 50% chance to get $1.20, 50% chance to get $6.00'],
+            [6, 'F: 50% chance to get $0.20, 50% chance to get $7.00']
         ],
         widget=widgets.RadioSelect
     )
@@ -87,7 +86,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 1: 50% chance to LOSE $2.00, 50% chance to gain $6.00'
+        label='Decision 1: 50% chance to LOSE 2 quarters, 50% chance to gain 6 quarters'
     )
 
     loss_decision_2 = models.IntegerField(
@@ -106,7 +105,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 3: 50% chance to LOSE $3.00, 50% chance to gain $6.00'
+        label='Decision 3: 50% chance to LOSE 3 quarters, 50% chance to gain 6 quarters'
     )
 
     loss_decision_4 = models.IntegerField(
@@ -125,7 +124,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 5: 50% chance to LOSE $4.00, 50% chance to gain $6.00'
+        label='Decision 5: 50% chance to LOSE 4 quarters, 50% chance to gain 6 quarters'
     )
 
     loss_decision_6 = models.IntegerField(
@@ -144,7 +143,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 7: 50% chance to LOSE $5.00, 50% chance to gain $6.00'
+        label='Decision 7: 50% chance to LOSE 5 quarters, 50% chance to gain 6 quarters'
     )
 
     loss_decision_8 = models.IntegerField(
@@ -163,7 +162,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 9: 50% chance to LOSE $6.00, 50% chance to gain $6.00'
+        label='Decision 9: 50% chance to LOSE 6 quarters, 50% chance to gain 6 quarters'
     )
 
     loss_decision_10 = models.IntegerField(
@@ -182,7 +181,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 11: 50% chance to LOSE $7.00, 50% chance to gain $6.00'
+        label='Decision 11: 50% chance to LOSE 7 quarters, 50% chance to gain 6 quarters'
     )
 
     loss_decision_12 = models.IntegerField(
@@ -273,45 +272,39 @@ class Player(BasePlayer):
             self.loss_payment = 0
             if self.risk_decision == 1:
                 if self.participant.vars['HTRisk'] == 0:
-                    self.risk_payment = 4.30
+                    self.risk_payment = 2.80
                 else:
-                    self.risk_payment = 5.65
+                    self.risk_payment = 2.80
             else:
                 if self.risk_decision == 2:
                     if self.participant.vars['HTRisk'] == 0:
-                        self.risk_payment = 4.15
+                        self.risk_payment = 2.40
                     else:
-                        self.risk_payment = 5.95
+                        self.risk_payment = 3.60
                 else:
                     if self.risk_decision == 3:
                         if self.participant.vars['HTRisk'] == 0:
-                            self.risk_payment = 4.00
+                            self.risk_payment = 2.00
                         else:
-                            self.risk_payment = 6.25
+                            self.risk_payment = 4.40
                     else:
                         if self.risk_decision == 4:
                             if self.participant.vars['HTRisk'] == 0:
-                                self.risk_payment = 3.85
+                                self.risk_payment = 1.60
                             else:
-                                self.risk_payment = 6.55
+                                self.risk_payment = 5.20
                         else:
                             if self.risk_decision == 5:
                                 if self.participant.vars['HTRisk'] == 0:
-                                    self.risk_payment = 3.65
+                                    self.risk_payment = 1.20
                                 else:
-                                    self.risk_payment = 6.90
+                                    self.risk_payment = 6.00
                             else:
                                 if self.risk_decision == 6:
                                     if self.participant.vars['HTRisk'] == 0:
-                                        self.risk_payment = 3.45
+                                        self.risk_payment = 0.20
                                     else:
-                                        self.risk_payment = 7.20
-                                else:
-                                    if self.risk_decision == 7:
-                                        if self.participant.vars['HTRisk'] == 0:
-                                            self.risk_payment = 3.10
-                                        else:
-                                            self.risk_payment = 7.60
+                                        self.risk_payment = 7.00
         else:
             if self.session.vars['paymentmodule'] == 2:
                 self.risk_payment = 0
@@ -467,7 +460,7 @@ class Player(BasePlayer):
             self.participant.vars['payoffmodule5'] = self.risk_payment
         else:
             if self.session.vars['paymentmodule'] == 2:
-                self.participant.vars['payoffmodule5'] = self.loss_payment
+                self.participant.vars['payoffmodule5'] = self.loss_payment * 0.25
             else:
                 if self.session.vars['paymentmodule'] == 3:
                     self.participant.vars['payoffmodule5'] = self.ambiguity_payment1 + self.ambiguity_payment2 + \
