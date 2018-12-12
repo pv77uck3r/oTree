@@ -359,8 +359,10 @@ class Group(BaseGroup):
                     p1.participant.vars['payoffmodule1'] = c(p2.participant.vars['trustee_decision10'])
                     p2.participant.vars['payoffmodule1'] = c(10 + 3 * p1.participant.vars['investor_decision5'] - \
                                                            p2.participant.vars['trustee_decision10'])
-        p1.payoffmodule1 = p1.participant.vars['payoffmodule1']
-        p2.payoffmodule1 = p2.participant.vars['payoffmodule1']
+        p1.payoffmodule1 = p1.participant.vars['payoffmodule1'] * 0.25
+        p1.participant.vars['payoffmodule1'] = p1.payoffmodule1
+        p2.payoffmodule1 = p2.participant.vars['payoffmodule1'] * 0.25
+        p2.participant.vars['payoffmodule1'] = p2.payoffmodule1
 
     def set_payoffs_2(self):
         p1 = self.get_player_by_id(1)
@@ -586,8 +588,10 @@ class Group(BaseGroup):
                     p1.participant.vars['payoffmodule4'] = c(p2.trustee_decision10)
                     p2.participant.vars['payoffmodule4'] = c(10 + 3 * p1.investor_decision5 - \
                                                            p2.trustee_decision10)
-        p1.payoffmodule4 = p1.participant.vars['payoffmodule4']
-        p2.payoffmodule4 = p2.participant.vars['payoffmodule4']
+        p1.payoffmodule4 = p1.participant.vars['payoffmodule4'] * 0.25
+        p1.participant.vars['payoffmodule4'] = p1.payoffmodule4
+        p2.payoffmodule4 = p2.participant.vars['payoffmodule4'] * 0.25
+        p2.participant.vars['payoffmodule4'] = p2.payoffmodule4
         # p1.set_big_payoff()
         # p2.set_big_payoff()
 

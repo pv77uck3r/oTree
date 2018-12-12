@@ -183,7 +183,7 @@ class Group(BaseGroup):
         ## Next, Player2 finds their contribution
         ## NOTE: Player2 has their conditional decision used
 
-        unconditionalcontributions = contribution1 + contribution3
+        unconditionalcontributions = round((contribution1 + contribution3)/2)
 
         if p2.participant.id_in_session % 2 == 1:
             if p1.participant.vars['ending_trial_status'] == False and p3.participant.vars[
@@ -191,31 +191,31 @@ class Group(BaseGroup):
                 if unconditionalcontributions == 0:
                     contribution2 = p2.participant.vars['Cond_contribution_1_0']
                 else:
-                    if unconditionalcontributions == 2:
+                    if unconditionalcontributions == 1:
                         contribution2 = p2.participant.vars['Cond_contribution_1_2']
                     else:
-                        if unconditionalcontributions == 4:
+                        if unconditionalcontributions == 2:
                             contribution2 = p2.participant.vars['Cond_contribution_1_4']
                         else:
-                            if unconditionalcontributions == 6:
+                            if unconditionalcontributions == 3:
                                 contribution2 = p2.participant.vars['Cond_contribution_1_6']
                             else:
-                                if unconditionalcontributions == 8:
+                                if unconditionalcontributions == 4:
                                     contribution2 = p2.participant.vars['Cond_contribution_1_8']
                                 else:
-                                    if unconditionalcontributions == 10:
+                                    if unconditionalcontributions == 5:
                                         contribution2 = p2.participant.vars['Cond_contribution_1_10']
                                     else:
-                                        if unconditionalcontributions == 12:
+                                        if unconditionalcontributions == 6:
                                             contribution2 = p2.participant.vars['Cond_contribution_1_12']
                                         else:
-                                            if unconditionalcontributions == 14:
+                                            if unconditionalcontributions == 7:
                                                 contribution2 = p2.participant.vars['Cond_contribution_1_14']
                                             else:
-                                                if unconditionalcontributions == 16:
+                                                if unconditionalcontributions == 8:
                                                     contribution2 = p2.participant.vars['Cond_contribution_1_16']
                                                 else:
-                                                    if unconditionalcontributions == 18:
+                                                    if unconditionalcontributions == 9:
                                                         contribution2 = p2.participant.vars['Cond_contribution_1_18']
                                                     else:
                                                         contribution2 = p2.participant.vars['Cond_contribution_1_20']
@@ -232,31 +232,31 @@ class Group(BaseGroup):
                     if unconditionalcontributions == 0:
                         contribution2 = p2.participant.vars['Cond_contribution_2_0']
                     else:
-                        if unconditionalcontributions == 2:
+                        if unconditionalcontributions == 1:
                             contribution2 = p2.participant.vars['Cond_contribution_2_2']
                         else:
-                            if unconditionalcontributions == 4:
+                            if unconditionalcontributions == 2:
                                 contribution2 = p2.participant.vars['Cond_contribution_2_4']
                             else:
-                                if unconditionalcontributions == 6:
+                                if unconditionalcontributions == 3:
                                     contribution2 = p2.participant.vars['Cond_contribution_2_6']
                                 else:
-                                    if unconditionalcontributions == 8:
+                                    if unconditionalcontributions == 4:
                                         contribution2 = p2.participant.vars['Cond_contribution_2_8']
                                     else:
-                                        if unconditionalcontributions == 10:
+                                        if unconditionalcontributions == 5:
                                             contribution2 = p2.participant.vars['Cond_contribution_2_10']
                                         else:
-                                            if unconditionalcontributions == 12:
+                                            if unconditionalcontributions == 6:
                                                 contribution2 = p2.participant.vars['Cond_contribution_2_12']
                                             else:
-                                                if unconditionalcontributions == 14:
+                                                if unconditionalcontributions == 7:
                                                     contribution2 = p2.participant.vars['Cond_contribution_2_14']
                                                 else:
-                                                    if unconditionalcontributions == 16:
+                                                    if unconditionalcontributions == 8:
                                                         contribution2 = p2.participant.vars['Cond_contribution_2_16']
                                                     else:
-                                                        if unconditionalcontributions == 18:
+                                                        if unconditionalcontributions == 9:
                                                             contribution2 = p2.participant.vars[
                                                                 'Cond_contribution_2_18']
                                                         else:
@@ -271,32 +271,32 @@ class Group(BaseGroup):
                         if unconditionalcontributions == 0:
                             contribution2 = p2.participant.vars['Cond_contribution_3_0']
                         else:
-                            if unconditionalcontributions == 2:
+                            if unconditionalcontributions == 1:
                                 contribution2 = p2.participant.vars['Cond_contribution_3_2']
                             else:
-                                if unconditionalcontributions == 4:
+                                if unconditionalcontributions == 2:
                                     contribution2 = p2.participant.vars['Cond_contribution_3_4']
                                 else:
-                                    if unconditionalcontributions == 6:
+                                    if unconditionalcontributions == 3:
                                         contribution2 = p2.participant.vars['Cond_contribution_3_6']
                                     else:
-                                        if unconditionalcontributions == 8:
+                                        if unconditionalcontributions == 4:
                                             contribution2 = p2.participant.vars['Cond_contribution_3_8']
                                         else:
-                                            if unconditionalcontributions == 10:
+                                            if unconditionalcontributions == 5:
                                                 contribution2 = p2.participant.vars['Cond_contribution_3_10']
                                             else:
-                                                if unconditionalcontributions == 12:
+                                                if unconditionalcontributions == 6:
                                                     contribution2 = p2.participant.vars['Cond_contribution_3_12']
                                                 else:
-                                                    if unconditionalcontributions == 14:
+                                                    if unconditionalcontributions == 7:
                                                         contribution2 = p2.participant.vars['Cond_contribution_3_14']
                                                     else:
-                                                        if unconditionalcontributions == 16:
+                                                        if unconditionalcontributions == 8:
                                                             contribution2 = p2.participant.vars[
                                                                 'Cond_contribution_3_16']
                                                         else:
-                                                            if unconditionalcontributions == 18:
+                                                            if unconditionalcontributions == 9:
                                                                 contribution2 = p2.participant.vars[
                                                                     'Cond_contribution_3_18']
                                                             else:
@@ -311,33 +311,33 @@ class Group(BaseGroup):
                             if unconditionalcontributions == 0:
                                 contribution2 = p2.participant.vars['Cond_contribution_4_0']
                             else:
-                                if unconditionalcontributions == 2:
+                                if unconditionalcontributions == 1:
                                     contribution2 = p2.participant.vars['Cond_contribution_4_2']
                                 else:
-                                    if unconditionalcontributions == 4:
+                                    if unconditionalcontributions == 2:
                                         contribution2 = p2.participant.vars['Cond_contribution_4_4']
                                     else:
-                                        if unconditionalcontributions == 6:
+                                        if unconditionalcontributions == 3:
                                             contribution2 = p2.participant.vars['Cond_contribution_4_6']
                                         else:
-                                            if unconditionalcontributions == 8:
+                                            if unconditionalcontributions == 4:
                                                 contribution2 = p2.participant.vars['Cond_contribution_4_8']
                                             else:
-                                                if unconditionalcontributions == 10:
+                                                if unconditionalcontributions == 5:
                                                     contribution2 = p2.participant.vars['Cond_contribution_4_10']
                                                 else:
-                                                    if unconditionalcontributions == 12:
+                                                    if unconditionalcontributions == 6:
                                                         contribution2 = p2.participant.vars['Cond_contribution_4_12']
                                                     else:
-                                                        if unconditionalcontributions == 14:
+                                                        if unconditionalcontributions == 7:
                                                             contribution2 = p2.participant.vars[
                                                                 'Cond_contribution_4_14']
                                                         else:
-                                                            if unconditionalcontributions == 16:
+                                                            if unconditionalcontributions == 8:
                                                                 contribution2 = p2.participant.vars[
                                                                     'Cond_contribution_4_16']
                                                             else:
-                                                                if unconditionalcontributions == 18:
+                                                                if unconditionalcontributions == 9:
                                                                     contribution2 = p2.participant.vars[
                                                                         'Cond_contribution_4_18']
                                                                 else:
@@ -350,34 +350,34 @@ class Group(BaseGroup):
                                 if unconditionalcontributions == 0:
                                     contribution2 = p2.participant.vars['Cond_contribution_6_0']
                                 else:
-                                    if unconditionalcontributions == 2:
+                                    if unconditionalcontributions == 1:
                                         contribution2 = p2.participant.vars['Cond_contribution_6_2']
                                     else:
-                                        if unconditionalcontributions == 4:
+                                        if unconditionalcontributions == 2:
                                             contribution2 = p2.participant.vars['Cond_contribution_6_4']
                                         else:
-                                            if unconditionalcontributions == 6:
+                                            if unconditionalcontributions == 3:
                                                 contribution2 = p2.participant.vars['Cond_contribution_6_6']
                                             else:
-                                                if unconditionalcontributions == 8:
+                                                if unconditionalcontributions == 4:
                                                     contribution2 = p2.participant.vars['Cond_contribution_6_8']
                                                 else:
-                                                    if unconditionalcontributions == 10:
+                                                    if unconditionalcontributions == 5:
                                                         contribution2 = p2.participant.vars['Cond_contribution_6_10']
                                                     else:
-                                                        if unconditionalcontributions == 12:
+                                                        if unconditionalcontributions == 6:
                                                             contribution2 = p2.participant.vars[
                                                                 'Cond_contribution_6_12']
                                                         else:
-                                                            if unconditionalcontributions == 14:
+                                                            if unconditionalcontributions == 7:
                                                                 contribution2 = p2.participant.vars[
                                                                     'Cond_contribution_6_14']
                                                             else:
-                                                                if unconditionalcontributions == 16:
+                                                                if unconditionalcontributions == 8:
                                                                     contribution2 = p2.participant.vars[
                                                                         'Cond_contribution_6_16']
                                                                 else:
-                                                                    if unconditionalcontributions == 18:
+                                                                    if unconditionalcontributions == 9:
                                                                         contribution2 = p2.participant.vars[
                                                                             'Cond_contribution_6_18']
                                                                     else:
@@ -388,34 +388,34 @@ class Group(BaseGroup):
                                 if unconditionalcontributions == 0:
                                     contribution2 = p2.participant.vars['Cond_contribution_6_0']
                                 else:
-                                    if unconditionalcontributions == 2:
+                                    if unconditionalcontributions == 1:
                                         contribution2 = p2.participant.vars['Cond_contribution_6_2']
                                     else:
-                                        if unconditionalcontributions == 4:
+                                        if unconditionalcontributions == 2:
                                             contribution2 = p2.participant.vars['Cond_contribution_6_4']
                                         else:
-                                            if unconditionalcontributions == 6:
+                                            if unconditionalcontributions == 3:
                                                 contribution2 = p2.participant.vars['Cond_contribution_6_6']
                                             else:
-                                                if unconditionalcontributions == 8:
+                                                if unconditionalcontributions == 4:
                                                     contribution2 = p2.participant.vars['Cond_contribution_6_8']
                                                 else:
-                                                    if unconditionalcontributions == 10:
+                                                    if unconditionalcontributions == 5:
                                                         contribution2 = p2.participant.vars['Cond_contribution_6_10']
                                                     else:
-                                                        if unconditionalcontributions == 12:
+                                                        if unconditionalcontributions == 6:
                                                             contribution2 = p2.participant.vars[
                                                                 'Cond_contribution_6_12']
                                                         else:
-                                                            if unconditionalcontributions == 14:
+                                                            if unconditionalcontributions == 7:
                                                                 contribution2 = p2.participant.vars[
                                                                     'Cond_contribution_6_14']
                                                             else:
-                                                                if unconditionalcontributions == 16:
+                                                                if unconditionalcontributions == 8:
                                                                     contribution2 = p2.participant.vars[
                                                                         'Cond_contribution_6_16']
                                                                 else:
-                                                                    if unconditionalcontributions == 18:
+                                                                    if unconditionalcontributions == 9:
                                                                         contribution2 = p2.participant.vars[
                                                                             'Cond_contribution_6_18']
                                                                     else:
@@ -425,31 +425,31 @@ class Group(BaseGroup):
             if unconditionalcontributions == 0:
                 contribution2 = p2.participant.vars['Cond_contribution_1_0']
             else:
-                if unconditionalcontributions == 2:
+                if unconditionalcontributions == 1:
                     contribution2 = p2.participant.vars['Cond_contribution_1_2']
                 else:
-                    if unconditionalcontributions == 4:
+                    if unconditionalcontributions == 2:
                         contribution2 = p2.participant.vars['Cond_contribution_1_4']
                     else:
-                        if unconditionalcontributions == 6:
+                        if unconditionalcontributions == 3:
                             contribution2 = p2.participant.vars['Cond_contribution_1_6']
                         else:
-                            if unconditionalcontributions == 8:
+                            if unconditionalcontributions == 4:
                                 contribution2 = p2.participant.vars['Cond_contribution_1_8']
                             else:
-                                if unconditionalcontributions == 10:
+                                if unconditionalcontributions == 5:
                                     contribution2 = p2.participant.vars['Cond_contribution_1_10']
                                 else:
-                                    if unconditionalcontributions == 12:
+                                    if unconditionalcontributions == 6:
                                         contribution2 = p2.participant.vars['Cond_contribution_1_12']
                                     else:
-                                        if unconditionalcontributions == 14:
+                                        if unconditionalcontributions == 7:
                                             contribution2 = p2.participant.vars['Cond_contribution_1_14']
                                         else:
-                                            if unconditionalcontributions == 16:
+                                            if unconditionalcontributions == 8:
                                                 contribution2 = p2.participant.vars['Cond_contribution_1_16']
                                             else:
-                                                if unconditionalcontributions == 18:
+                                                if unconditionalcontributions == 9:
                                                     contribution2 = p2.participant.vars['Cond_contribution_1_18']
                                                 else:
                                                     contribution2 = p2.participant.vars['Cond_contribution_1_20']
@@ -546,7 +546,7 @@ class Group(BaseGroup):
         else:
             contribution3 = p3.contribution1
 
-        unconditionalcontributions = contribution1 + contribution3
+        unconditionalcontributions = round((contribution1 + contribution3)/2)
 
         ## Next, Player2 finds their contribution
         ## NOTE: Player2 has their conditional decision used
@@ -557,31 +557,31 @@ class Group(BaseGroup):
                 if unconditionalcontributions == 0:
                     contribution2 = p2.Cond_contribution_1_0
                 else:
-                    if unconditionalcontributions == 2:
+                    if unconditionalcontributions == 1:
                         contribution2 = p2.Cond_contribution_1_2
                     else:
-                        if unconditionalcontributions == 4:
+                        if unconditionalcontributions == 2:
                             contribution2 = p2.Cond_contribution_1_4
                         else:
-                            if unconditionalcontributions == 6:
+                            if unconditionalcontributions == 3:
                                 contribution2 = p2.Cond_contribution_1_6
                             else:
-                                if unconditionalcontributions == 8:
+                                if unconditionalcontributions == 4:
                                     contribution2 = p2.Cond_contribution_1_8
                                 else:
-                                    if unconditionalcontributions == 10:
+                                    if unconditionalcontributions == 5:
                                         contribution2 = p2.Cond_contribution_1_10
                                     else:
-                                        if unconditionalcontributions == 12:
+                                        if unconditionalcontributions == 6:
                                             contribution2 = p2.Cond_contribution_1_12
                                         else:
-                                            if unconditionalcontributions == 14:
+                                            if unconditionalcontributions == 7:
                                                 contribution2 = p2.Cond_contribution_1_14
                                             else:
-                                                if unconditionalcontributions == 16:
+                                                if unconditionalcontributions == 8:
                                                     contribution2 = p2.Cond_contribution_1_16
                                                 else:
-                                                    if unconditionalcontributions == 18:
+                                                    if unconditionalcontributions == 9:
                                                         contribution2 = p2.Cond_contribution_1_18
                                                     else:
                                                         contribution2 = p2.Cond_contribution_1_20
@@ -598,31 +598,31 @@ class Group(BaseGroup):
                     if unconditionalcontributions == 0:
                         contribution2 = p2.Cond_contribution_2_0
                     else:
-                        if unconditionalcontributions == 2:
+                        if unconditionalcontributions == 1:
                             contribution2 = p2.Cond_contribution_2_2
                         else:
-                            if unconditionalcontributions == 4:
+                            if unconditionalcontributions == 2:
                                 contribution2 = p2.Cond_contribution_2_4
                             else:
-                                if unconditionalcontributions == 6:
+                                if unconditionalcontributions == 3:
                                     contribution2 = p2.Cond_contribution_2_6
                                 else:
-                                    if unconditionalcontributions == 8:
+                                    if unconditionalcontributions == 4:
                                         contribution2 = p2.Cond_contribution_2_8
                                     else:
-                                        if unconditionalcontributions == 10:
+                                        if unconditionalcontributions == 5:
                                             contribution2 = p2.Cond_contribution_2_10
                                         else:
-                                            if unconditionalcontributions == 12:
+                                            if unconditionalcontributions == 6:
                                                 contribution2 = p2.Cond_contribution_2_12
                                             else:
-                                                if unconditionalcontributions == 14:
+                                                if unconditionalcontributions == 7:
                                                     contribution2 = p2.Cond_contribution_2_14
                                                 else:
-                                                    if unconditionalcontributions == 16:
+                                                    if unconditionalcontributions == 8:
                                                         contribution2 = p2.Cond_contribution_2_16
                                                     else:
-                                                        if unconditionalcontributions == 18:
+                                                        if unconditionalcontributions == 9:
                                                             contribution2 = p2.Cond_contribution_2_18
                                                         else:
                                                             contribution2 = p2.Cond_contribution_2_20
@@ -635,32 +635,32 @@ class Group(BaseGroup):
                         if unconditionalcontributions == 0:
                             contribution2 = p2.Cond_contribution_3_0
                         else:
-                            if unconditionalcontributions == 2:
+                            if unconditionalcontributions == 1:
                                 contribution2 = p2.Cond_contribution_3_2
                             else:
-                                if unconditionalcontributions == 4:
+                                if unconditionalcontributions == 2:
                                     contribution2 = p2.Cond_contribution_3_4
                                 else:
-                                    if unconditionalcontributions == 6:
+                                    if unconditionalcontributions == 3:
                                         contribution2 = p2.Cond_contribution_3_6
                                     else:
-                                        if unconditionalcontributions == 8:
+                                        if unconditionalcontributions == 4:
                                             contribution2 = p2.Cond_contribution_3_8
                                         else:
-                                            if unconditionalcontributions == 10:
+                                            if unconditionalcontributions == 5:
                                                 contribution2 = p2.Cond_contribution_3_10
                                             else:
-                                                if unconditionalcontributions == 12:
+                                                if unconditionalcontributions == 6:
                                                     contribution2 = p2.Cond_contribution_3_12
                                                 else:
-                                                    if unconditionalcontributions == 14:
+                                                    if unconditionalcontributions == 7:
                                                         contribution2 = p2.Cond_contribution_3_14
                                                     else:
-                                                        if unconditionalcontributions == 16:
+                                                        if unconditionalcontributions == 8:
                                                             contribution2 = p2.participant.vars[
                                                                 'Cond_contribution_3_16']
                                                         else:
-                                                            if unconditionalcontributions == 18:
+                                                            if unconditionalcontributions == 9:
                                                                 contribution2 = p2.Cond_contribution_3_18
                                                             else:
                                                                 contribution2 = p2.Cond_contribution_3_20
@@ -673,31 +673,31 @@ class Group(BaseGroup):
                             if unconditionalcontributions == 0:
                                 contribution2 = p2.Cond_contribution_4_0
                             else:
-                                if unconditionalcontributions == 2:
+                                if unconditionalcontributions == 1:
                                     contribution2 = p2.Cond_contribution_4_2
                                 else:
-                                    if unconditionalcontributions == 4:
+                                    if unconditionalcontributions == 2:
                                         contribution2 = p2.Cond_contribution_4_4
                                     else:
-                                        if unconditionalcontributions == 6:
+                                        if unconditionalcontributions == 3:
                                             contribution2 = p2.Cond_contribution_4_6
                                         else:
-                                            if unconditionalcontributions == 8:
+                                            if unconditionalcontributions == 4:
                                                 contribution2 = p2.Cond_contribution_4_8
                                             else:
-                                                if unconditionalcontributions == 10:
+                                                if unconditionalcontributions == 5:
                                                     contribution2 = p2.Cond_contribution_4_10
                                                 else:
-                                                    if unconditionalcontributions == 12:
+                                                    if unconditionalcontributions == 6:
                                                         contribution2 = p2.Cond_contribution_4_12
                                                     else:
-                                                        if unconditionalcontributions == 14:
+                                                        if unconditionalcontributions == 7:
                                                             contribution2 = p2.Cond_contribution_4_14
                                                         else:
-                                                            if unconditionalcontributions == 16:
+                                                            if unconditionalcontributions == 8:
                                                                 contribution2 = p2.Cond_contribution_4_16
                                                             else:
-                                                                if unconditionalcontributions == 18:
+                                                                if unconditionalcontributions == 9:
                                                                     contribution2 = p2.Cond_contribution_4_18
                                                                 else:
                                                                     contribution2 = p2.Cond_contribution_4_20
@@ -708,31 +708,31 @@ class Group(BaseGroup):
                                 if unconditionalcontributions == 0:
                                     contribution2 = p2.Cond_contribution_6_0
                                 else:
-                                    if unconditionalcontributions == 2:
+                                    if unconditionalcontributions == 1:
                                         contribution2 = p2.Cond_contribution_6_2
                                     else:
-                                        if unconditionalcontributions == 4:
+                                        if unconditionalcontributions == 2:
                                             contribution2 = p2.Cond_contribution_6_4
                                         else:
-                                            if unconditionalcontributions == 6:
+                                            if unconditionalcontributions == 3:
                                                 contribution2 = p2.Cond_contribution_6_6
                                             else:
-                                                if unconditionalcontributions == 8:
+                                                if unconditionalcontributions == 4:
                                                     contribution2 = p2.Cond_contribution_6_8
                                                 else:
-                                                    if unconditionalcontributions == 10:
+                                                    if unconditionalcontributions == 5:
                                                         contribution2 = p2.Cond_contribution_6_10
                                                     else:
-                                                        if unconditionalcontributions == 12:
+                                                        if unconditionalcontributions == 6:
                                                             contribution2 = p2.Cond_contribution_6_12
                                                         else:
-                                                            if unconditionalcontributions == 14:
+                                                            if unconditionalcontributions == 7:
                                                                 contribution2 = p2.Cond_contribution_6_14
                                                             else:
-                                                                if unconditionalcontributions == 16:
+                                                                if unconditionalcontributions == 8:
                                                                     contribution2 = p2.Cond_contribution_6_16
                                                                 else:
-                                                                    if unconditionalcontributions == 18:
+                                                                    if unconditionalcontributions == 9:
                                                                         contribution2 = p2.Cond_contribution_6_18
                                                                     else:
                                                                         contribution2 = p2.Cond_contribution_6_20
@@ -741,31 +741,31 @@ class Group(BaseGroup):
                                 if unconditionalcontributions == 0:
                                     contribution2 = p2.Cond_contribution_6_0
                                 else:
-                                    if unconditionalcontributions == 2:
+                                    if unconditionalcontributions == 1:
                                         contribution2 = p2.Cond_contribution_6_2
                                     else:
-                                        if unconditionalcontributions == 4:
+                                        if unconditionalcontributions == 2:
                                             contribution2 = p2.Cond_contribution_6_4
                                         else:
-                                            if unconditionalcontributions == 6:
+                                            if unconditionalcontributions == 3:
                                                 contribution2 = p2.Cond_contribution_6_6
                                             else:
-                                                if unconditionalcontributions == 8:
+                                                if unconditionalcontributions == 4:
                                                     contribution2 = p2.Cond_contribution_6_8
                                                 else:
-                                                    if unconditionalcontributions == 10:
+                                                    if unconditionalcontributions == 5:
                                                         contribution2 = p2.Cond_contribution_6_10
                                                     else:
-                                                        if unconditionalcontributions == 12:
+                                                        if unconditionalcontributions == 6:
                                                             contribution2 = p2.Cond_contribution_6_12
                                                         else:
-                                                            if unconditionalcontributions == 14:
+                                                            if unconditionalcontributions == 7:
                                                                 contribution2 = p2.Cond_contribution_6_14
                                                             else:
-                                                                if unconditionalcontributions == 16:
+                                                                if unconditionalcontributions == 8:
                                                                     contribution2 = p2.Cond_contribution_6_16
                                                                 else:
-                                                                    if unconditionalcontributions == 18:
+                                                                    if unconditionalcontributions == 9:
                                                                         contribution2 = p2.Cond_contribution_6_18
                                                                     else:
                                                                         contribution2 = p2.Cond_contribution_6_20
@@ -773,31 +773,31 @@ class Group(BaseGroup):
             if unconditionalcontributions == 0:
                 contribution2 = p2.Cond_contribution_1_0
             else:
-                if unconditionalcontributions == 2:
+                if unconditionalcontributions == 1:
                     contribution2 = p2.Cond_contribution_1_2
                 else:
-                    if unconditionalcontributions == 4:
+                    if unconditionalcontributions == 2:
                         contribution2 = p2.Cond_contribution_1_4
                     else:
-                        if unconditionalcontributions == 6:
+                        if unconditionalcontributions == 3:
                             contribution2 = p2.Cond_contribution_1_6
                         else:
-                            if unconditionalcontributions == 8:
+                            if unconditionalcontributions == 4:
                                 contribution2 = p2.Cond_contribution_1_8
                             else:
-                                if unconditionalcontributions == 10:
+                                if unconditionalcontributions == 5:
                                     contribution2 = p2.Cond_contribution_1_10
                                 else:
-                                    if unconditionalcontributions == 12:
+                                    if unconditionalcontributions == 6:
                                         contribution2 = p2.Cond_contribution_1_12
                                     else:
-                                        if unconditionalcontributions == 14:
+                                        if unconditionalcontributions == 7:
                                             contribution2 = p2.Cond_contribution_1_14
                                         else:
-                                            if unconditionalcontributions == 16:
+                                            if unconditionalcontributions == 8:
                                                 contribution2 = p2.Cond_contribution_1_16
                                             else:
-                                                if unconditionalcontributions == 18:
+                                                if unconditionalcontributions == 9:
                                                     contribution2 = p2.Cond_contribution_1_18
                                                 else:
                                                     contribution2 = p2.Cond_contribution_1_20
