@@ -144,12 +144,12 @@ class Group(BaseGroup):
         doc="""Agent's work effort, [1, 10]""",
         widget=widgets.RadioSelectHorizontal,
         blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 0 points in fixed payment?"
+        label="What amount of effort would you select if Participant A's contract were for 0 dimes in fixed payment?"
     )
 
     agent_work_cost_1 = models.CurrencyField(
         doc="""Agent's cost of work effort""",
-        label="Would you accept a contract for 0 points in fixed payment?"
+        label="Would you accept a contract for 0 dimes in fixed payment?"
     )
 
     agent_work_effort_2 = models.IntegerField(
@@ -157,7 +157,7 @@ class Group(BaseGroup):
         doc="""Agent's work effort, [1, 10]""",
         widget=widgets.RadioSelectHorizontal,
         blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 10 points in fixed payment?"
+        label="What amount of effort would you select if Participant A's contract were for 10 dimes in fixed payment?"
     )
 
     agent_work_cost_2 = models.CurrencyField(
@@ -169,7 +169,7 @@ class Group(BaseGroup):
         doc="""Agent's work effort, [1, 10]""",
         widget=widgets.RadioSelectHorizontal,
         blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 20 points in fixed payment?"
+        label="What amount of effort would you select if Participant A's contract were for 20 dimes in fixed payment?"
     )
 
     agent_work_cost_3 = models.CurrencyField(
@@ -181,7 +181,7 @@ class Group(BaseGroup):
         doc="""Agent's work effort, [1, 10]""",
         widget=widgets.RadioSelectHorizontal,
         blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 30 points in fixed payment?"
+        label="What amount of effort would you select if Participant A's contract were for 30 dimes in fixed payment?"
     )
 
     agent_work_cost_4 = models.CurrencyField(
@@ -193,7 +193,7 @@ class Group(BaseGroup):
         doc="""Agent's work effort, [1, 10]""",
         widget=widgets.RadioSelectHorizontal,
         blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 40 points in fixed payment?"
+        label="What amount of effort would you select if Participant A's contract were for 40 dimes in fixed payment?"
     )
 
     agent_work_cost_5 = models.CurrencyField(
@@ -206,7 +206,7 @@ class Group(BaseGroup):
         doc="""Agent's work effort, [1, 10]""",
         widget=widgets.RadioSelectHorizontal,
         blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 50 points in fixed payment?"
+        label="What amount of effort would you select if Participant A's contract were for 50 dimes in fixed payment?"
     )
 
     agent_work_cost_6 = models.CurrencyField(
@@ -218,7 +218,7 @@ class Group(BaseGroup):
         doc="""Agent's work effort, [1, 10]""",
         widget=widgets.RadioSelectHorizontal,
         blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 60 points in fixed payment?"
+        label="What amount of effort would you select if Participant A's contract were for 60 dimes in fixed payment?"
     )
 
     agent_work_cost_7 = models.CurrencyField(
@@ -230,7 +230,7 @@ class Group(BaseGroup):
         doc="""Agent's work effort, [1, 10]""",
         widget=widgets.RadioSelectHorizontal,
         blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 70 points in fixed payment?"
+        label="What amount of effort would you select if Participant A's contract were for 70 dimes in fixed payment?"
     )
 
     agent_work_cost_8 = models.CurrencyField(
@@ -242,7 +242,7 @@ class Group(BaseGroup):
         doc="""Agent's work effort, [1, 10]""",
         widget=widgets.RadioSelectHorizontal,
         blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 80 points in fixed payment?"
+        label="What amount of effort would you select if Participant A's contract were for 80 dimes in fixed payment?"
     )
 
     agent_work_cost_9 = models.CurrencyField(
@@ -254,7 +254,7 @@ class Group(BaseGroup):
         doc="""Agent's work effort, [1, 10]""",
         widget=widgets.RadioSelectHorizontal,
         blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 90 points in fixed payment?"
+        label="What amount of effort would you select if Participant A's contract were for 90 dimes in fixed payment?"
     )
 
     agent_work_cost_10 = models.CurrencyField(
@@ -266,7 +266,7 @@ class Group(BaseGroup):
         doc="""Agent's work effort, [1, 10]""",
         widget=widgets.RadioSelectHorizontal,
         blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 100 points in fixed payment?"
+        label="What amount of effort would you select if Participant A's contract were for 100 dimes in fixed payment?"
     )
 
     agent_work_cost_11 = models.CurrencyField(
@@ -278,7 +278,7 @@ class Group(BaseGroup):
         doc="""Agent's work effort, [1, 10]""",
         widget=widgets.RadioSelectHorizontal,
         blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 110 points in fixed payment?"
+        label="What amount of effort would you select if Participant A's contract were for 110 dimes in fixed payment?"
     )
 
     agent_work_cost_12 = models.CurrencyField(
@@ -290,7 +290,7 @@ class Group(BaseGroup):
         doc="""Agent's work effort, [1, 10]""",
         widget=widgets.RadioSelectHorizontal,
         blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 120 points in fixed payment?"
+        label="What amount of effort would you select if Participant A's contract were for 120 dimes in fixed payment?"
     )
 
     agent_work_cost_13 = models.CurrencyField(
@@ -304,7 +304,7 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 0 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 0 dimes in fixed payment from Participant A?'
     )
 
     contract_accepted_2 = models.BooleanField(
@@ -314,7 +314,7 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 10 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 10 dimes in fixed payment from Participant A?'
     )
 
     contract_accepted_3 = models.BooleanField(
@@ -324,7 +324,7 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 20 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 20 dimes in fixed payment from Participant A?'
     )
 
     contract_accepted_4 = models.BooleanField(
@@ -334,7 +334,7 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 30 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 30 dimes in fixed payment from Participant A?'
     )
 
     contract_accepted_5 = models.BooleanField(
@@ -344,7 +344,7 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 40 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 40 dimes in fixed payment from Participant A?'
     )
 
     contract_accepted_6 = models.BooleanField(
@@ -354,7 +354,7 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 50 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 50 dimes in fixed payment from Participant A?'
     )
 
     contract_accepted_7 = models.BooleanField(
@@ -364,7 +364,7 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 60 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 60 dimes in fixed payment from Participant A?'
     )
 
     contract_accepted_8 = models.BooleanField(
@@ -374,7 +374,7 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 70 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 70 dimes in fixed payment from Participant A?'
     )
 
     contract_accepted_9 = models.BooleanField(
@@ -384,7 +384,7 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 80 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 80 dimes in fixed payment from Participant A?'
     )
 
     contract_accepted_10 = models.BooleanField(
@@ -394,7 +394,7 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 90 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 90 dimes in fixed payment from Participant A?'
     )
 
     contract_accepted_11 = models.BooleanField(
@@ -404,7 +404,7 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 100 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 100 dimes in fixed payment from Participant A?'
     )
 
     contract_accepted_12 = models.BooleanField(
@@ -414,7 +414,7 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 110 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 110 dimes in fixed payment from Participant A?'
     )
 
     contract_accepted_13 = models.BooleanField(
@@ -424,7 +424,7 @@ class Group(BaseGroup):
             [True, 'Accept'],
             [False, 'Reject'],
         ],
-        label='Would you accept a contract for 120 points in fixed payment from Participant A?'
+        label='Would you accept a contract for 120 dimes in fixed payment from Participant A?'
     )
 
     def set_payoffs_1(self):
@@ -1394,21 +1394,21 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     principal_quiz1 = models.IntegerField(
         choices=[
-            [1, '(a) 50 points.'],
-            [2, '(b) 100 points'],
-            [3, '(c) 120 points']
+            [1, '(a) 50 dimes.'],
+            [2, '(b) 100 dimes'],
+            [3, '(c) 120 dimes']
         ],
         widget=widgets.RadioSelect,
         label="Question 1: What is the maximum amount of fixed payment you can send to Participant B?"
     )
 
     principal_quiz2 = models.FloatField(
-        label="Question 2: If you offered Participant B 60 points and Participant B picks effort level 6, what is your "
+        label="Question 2: If you offered Participant B 60 dimes and Participant B picks effort level 6, what is your "
               "payoff?"
     )
 
     principal_quiz3 = models.FloatField(
-        label="Question 3: If you offered Participant B 60 points and Participant B picks effort level 6, what is "
+        label="Question 3: If you offered Participant B 60 dimes and Participant B picks effort level 6, what is "
               "Participant B's payoff?"
     )
 
@@ -1436,13 +1436,13 @@ class Player(BasePlayer):
     )
 
     agent_quiz2 = models.FloatField(
-        label="Question 2: If Participant A offered you 60 points and you pick effort level 6, what is your "
-              "payoff (in points)?"
+        label="Question 2: If Participant A offered you 60 dimes and you pick effort level 6, what is your "
+              "payoff (in dimes)?"
     )
 
     agent_quiz3 = models.FloatField(
-        label="Question 3: If Participant A offered you 60 points and you pick effort level 6, what is "
-              "Participant A's payoff (in points)?"
+        label="Question 3: If Participant A offered you 60 dimes and you pick effort level 6, what is "
+              "Participant A's payoff (in dimes)?"
     )
 
     def role(self):
