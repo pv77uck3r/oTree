@@ -4,6 +4,25 @@ from otree.api import (
 )
 
 
+def make_field(label):
+    return models.IntegerField(
+        choices=[
+            [0, ''],
+            [0.1, ''],
+            [0.2, ''],
+            [0.3, ''],
+            [0.4, ''],
+            [0.5, ''],
+            [0.6, ''],
+            [0.7, ''],
+            [0.8, ''],
+            [0.9, ''],
+            [1, '']
+        ],
+        label=label,
+        widget=widgets.RadioSelect,
+    )
+
 doc = """
 The principal offers a contract to the agent, who can decide if to reject or
 accept. The agent then chooses an effort level. The implementation is based on
@@ -139,158 +158,95 @@ class Group(BaseGroup):
     #     widget=widgets.RadioSelectHorizontal
     # )
 
-    agent_work_effort_1 = models.IntegerField(
-        choices=range(1, 10 + 1),
-        doc="""Agent's work effort, [1, 10]""",
-        widget=widgets.RadioSelectHorizontal,
-        blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 0 dimes in fixed payment?"
-    )
+    agent_work_effort_1 = make_field('What amount of effort would you select if Participant A\'s contract were for 10 '
+                                     'dimes in fixed payment?')
 
     agent_work_cost_1 = models.CurrencyField(
         doc="""Agent's cost of work effort""",
         label="Would you accept a contract for 0 dimes in fixed payment?"
     )
 
-    agent_work_effort_2 = models.IntegerField(
-        choices=range(1, 10 + 1),
-        doc="""Agent's work effort, [1, 10]""",
-        widget=widgets.RadioSelectHorizontal,
-        blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 10 dimes in fixed payment?"
-    )
+    agent_work_effort_2 = make_field('What amount of effort would you select if Participant A\'s contract were for 0 '
+                                     'dimes in fixed payment?')
+
+    agent_work_effort_3 = make_field('What amount of effort would you select if Participant A\'s contract were for 20 '
+                                     'dimes in fixed payment?')
+
+    agent_work_effort_4 = make_field('What amount of effort would you select if Participant A\'s contract were for 30 '
+                                     'dimes in fixed payment?')
+
+    agent_work_effort_5 = make_field('What amount of effort would you select if Participant A\'s contract were for 40 '
+                                     'dimes in fixed payment?')
+
+    agent_work_effort_6 = make_field('What amount of effort would you select if Participant A\'s contract were for 50 '
+                                     'dimes in fixed payment?')
+
+    agent_work_effort_7 = make_field('What amount of effort would you select if Participant A\'s contract were for 60 '
+                                     'dimes in fixed payment?')
+
+    agent_work_effort_8 = make_field('What amount of effort would you select if Participant A\'s contract were for 70 '
+                                     'dimes in fixed payment?')
+
+    agent_work_effort_9 = make_field('What amount of effort would you select if Participant A\'s contract were for 80 '
+                                     'dimes in fixed payment?')
+
+    agent_work_effort_10 = make_field('What amount of effort would you select if Participant A\'s contract were for 90 '
+                                      'dimes in fixed payment?')
+
+    agent_work_effort_11 = make_field(
+        'What amount of effort would you select if Participant A\'s contract were for 100 '
+        'dimes in fixed payment?')
+
+    agent_work_effort_12 = make_field(
+        'What amount of effort would you select if Participant A\'s contract were for 110 '
+        'dimes in fixed payment?')
+
+    agent_work_effort_13 = make_field(
+        'What amount of effort would you select if Participant A\'s contract were for 120 '
+        'dimes in fixed payment?')
 
     agent_work_cost_2 = models.CurrencyField(
         doc="""Agent's cost of work effort"""
-    )
-
-    agent_work_effort_3 = models.IntegerField(
-        choices=range(1, 10 + 1),
-        doc="""Agent's work effort, [1, 10]""",
-        widget=widgets.RadioSelectHorizontal,
-        blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 20 dimes in fixed payment?"
     )
 
     agent_work_cost_3 = models.CurrencyField(
         doc="""Agent's cost of work effort"""
     )
 
-    agent_work_effort_4 = models.IntegerField(
-        choices=range(1, 10 + 1),
-        doc="""Agent's work effort, [1, 10]""",
-        widget=widgets.RadioSelectHorizontal,
-        blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 30 dimes in fixed payment?"
-    )
-
     agent_work_cost_4 = models.CurrencyField(
         doc="""Agent's cost of work effort"""
-    )
-
-    agent_work_effort_5 = models.IntegerField(
-        choices=range(1, 10 + 1),
-        doc="""Agent's work effort, [1, 10]""",
-        widget=widgets.RadioSelectHorizontal,
-        blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 40 dimes in fixed payment?"
     )
 
     agent_work_cost_5 = models.CurrencyField(
         doc="""Agent's cost of work effort"""
     )
 
-
-    agent_work_effort_6 = models.IntegerField(
-        choices=range(1, 10 + 1),
-        doc="""Agent's work effort, [1, 10]""",
-        widget=widgets.RadioSelectHorizontal,
-        blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 50 dimes in fixed payment?"
-    )
-
     agent_work_cost_6 = models.CurrencyField(
         doc="""Agent's cost of work effort"""
-    )
-
-    agent_work_effort_7 = models.IntegerField(
-        choices=range(1, 10 + 1),
-        doc="""Agent's work effort, [1, 10]""",
-        widget=widgets.RadioSelectHorizontal,
-        blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 60 dimes in fixed payment?"
     )
 
     agent_work_cost_7 = models.CurrencyField(
         doc="""Agent's cost of work effort"""
     )
 
-    agent_work_effort_8 = models.IntegerField(
-        choices=range(1, 10 + 1),
-        doc="""Agent's work effort, [1, 10]""",
-        widget=widgets.RadioSelectHorizontal,
-        blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 70 dimes in fixed payment?"
-    )
-
     agent_work_cost_8 = models.CurrencyField(
         doc="""Agent's cost of work effort"""
-    )
-
-    agent_work_effort_9 = models.IntegerField(
-        choices=range(1, 10 + 1),
-        doc="""Agent's work effort, [1, 10]""",
-        widget=widgets.RadioSelectHorizontal,
-        blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 80 dimes in fixed payment?"
     )
 
     agent_work_cost_9 = models.CurrencyField(
         doc="""Agent's cost of work effort"""
     )
 
-    agent_work_effort_10 = models.IntegerField(
-        choices=range(1, 10 + 1),
-        doc="""Agent's work effort, [1, 10]""",
-        widget=widgets.RadioSelectHorizontal,
-        blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 90 dimes in fixed payment?"
-    )
-
     agent_work_cost_10 = models.CurrencyField(
         doc="""Agent's cost of work effort"""
-    )
-
-    agent_work_effort_11 = models.IntegerField(
-        choices=range(1, 10 + 1),
-        doc="""Agent's work effort, [1, 10]""",
-        widget=widgets.RadioSelectHorizontal,
-        blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 100 dimes in fixed payment?"
     )
 
     agent_work_cost_11 = models.CurrencyField(
         doc="""Agent's cost of work effort"""
     )
 
-    agent_work_effort_12 = models.IntegerField(
-        choices=range(1, 10 + 1),
-        doc="""Agent's work effort, [1, 10]""",
-        widget=widgets.RadioSelectHorizontal,
-        blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 110 dimes in fixed payment?"
-    )
-
     agent_work_cost_12 = models.CurrencyField(
         doc="""Agent's cost of work effort"""
-    )
-
-    agent_work_effort_13 = models.IntegerField(
-        choices=range(1, 10 + 1),
-        doc="""Agent's work effort, [1, 10]""",
-        widget=widgets.RadioSelectHorizontal,
-        blank=True,  # if they reject, they don't have to submit work effort
-        label="What amount of effort would you select if Participant A's contract were for 120 dimes in fixed payment?"
     )
 
     agent_work_cost_13 = models.CurrencyField(

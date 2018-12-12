@@ -75,13 +75,10 @@ class Accept(Page):
         return self.player.role() == 'agent'
 
     form_model = 'group'
-    form_fields = ['contract_accepted_1', 'agent_work_effort_1', 'contract_accepted_2', 'agent_work_effort_2',
-                   'contract_accepted_3', 'agent_work_effort_3', 'contract_accepted_4', 'agent_work_effort_4',
-                   'contract_accepted_5', 'agent_work_effort_5', 'contract_accepted_6', 'agent_work_effort_6',
-                   'contract_accepted_7', 'agent_work_effort_7', 'contract_accepted_8', 'agent_work_effort_8',
-                   'contract_accepted_9', 'agent_work_effort_9', 'contract_accepted_10', 'agent_work_effort_10',
-                   'contract_accepted_11', 'agent_work_effort_11', 'contract_accepted_12', 'agent_work_effort_12',
-                   'contract_accepted_13', 'agent_work_effort_13', ]
+    form_fields = ['agent_work_effort_1', 'agent_work_effort_2', 'agent_work_effort_3', 'agent_work_effort_4',
+                   'agent_work_effort_5', 'agent_work_effort_6', 'agent_work_effort_7', 'agent_work_effort_8',
+                   'agent_work_effort_9', 'agent_work_effort_10', 'agent_work_effort_11', 'agent_work_effort_12',
+                   'agent_work_effort_13', ]
 
     #timeout_seconds = 3 * 60
     timeout_submission = {
@@ -89,9 +86,9 @@ class Accept(Page):
         'agent_work_effort': 1,
     }
 
-    def error_message(self, values):
-        if values['contract_accepted'] and values['agent_work_effort'] == None:
-            return 'If you accept the contract, you must select a level of effort.'
+    # def error_message(self, values):
+    #     if values['contract_accepted'] and values['agent_work_effort'] == None:
+    #         return 'If you accept the contract, you must select a level of effort.'
 
 
 class ResultsWaitPage(WaitPage):

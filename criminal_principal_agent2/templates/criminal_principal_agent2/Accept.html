@@ -14,7 +14,37 @@
         <tr><td>{{ group.agent_fixed_pay }}</td><td>{{ group.return_share_as_percentage }}%</td></tr>
     </table>{% endcomment %}
 
-    {% formfield group.contract_accepted_1 %}
+    <table class="tg">
+    <tr>
+    <th class="tg-lghr"></th>
+    <th class="tg-lghr"></th>
+    <th class="tg-8jgo" colspan="10">Accept and Select Effort Level</th>
+  </tr>
+  <tr>
+    <td class="tg-lghr" width="45%"></td>
+    <td class="tg-lghr" width="5%">Reject Offer</td>
+    <td class="tg-8jgo" width="5%">0.1</td>
+    <td class="tg-8jgo" width="5%">0.2</td>
+    <td class="tg-8jgo" width="5%">0.3</td>
+    <td class="tg-8jgo" width="5%">0.4</td>
+    <td class="tg-8jgo" width="5%">0.5</td>
+    <td class="tg-8jgo" width="5%">0.6</td>
+    <td class="tg-8jgo" width="5%">0.7</td>
+    <td class="tg-8jgo" width="5%">0.8</td>
+    <td class="tg-8jgo" width="5%">0.9</td>
+    <td class="tg-8jgo" width="5%">1</td>
+  </tr>
+    {% for field in form %}
+        <tr>
+            <th>{{ field.label }}</th>
+            {% for choice in field %}
+                <td class="tg-butt">{{ choice }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+
+    {% comment %}{% formfield group.contract_accepted_1 %}
     <div id="effort1">
     {% formfield group.agent_work_effort_1 %}
     </div>
@@ -78,7 +108,7 @@
     {% formfield group.contract_accepted_13 %}
     <div id="effort13">
     {% formfield group.agent_work_effort_13 %}
-    </div>
+    </div>{% endcomment %}
 
     <p>
     {% next_button %}
@@ -94,7 +124,7 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    {% include 'criminal_principal_agent2/Instructions_Agent.html' %}
+    {% include 'criminal_principal_agent/Instructions_Agent.html' %}
   </div>
 
 </div>
@@ -102,6 +132,16 @@
 {% endblock %}
 
 {% block styles %}
+
+<style type="text/css">
+    .tg  {border-collapse:separate;border-spacing:10px;}
+    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color: rgba(0, 0, 0, 0);}
+    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color: rgba(0, 0, 0, 0);}
+    .tg .tg-yqpd{border-color: rgba(255, 255, 255, 0);text-align:center}
+    .tg .tg-8jgo{border-color: rgba(255, 255, 255, 0);text-align:center}
+    .tg .tg-lghr{border-color: rgba(255, 255, 255, 0);text-align:center}
+    .tg .tg-butt{text-align:right}
+</style>
 
     <style>
 body {font-family: Arial, Helvetica, sans-serif;}
@@ -166,7 +206,7 @@ a:hover, a:active {
 
 {% block scripts %}
 
-<script>
+{% comment %}<script>
 $(document).ready(function() {
 
 
@@ -183,7 +223,7 @@ $(document).ready(function() {
             $effortDiv.show();
         }
 
-        {% comment %}var effort = $('input[name=agent_work_effort_1]:checked').val();
+        var effort = $('input[name=agent_work_effort_1]:checked').val();
         if (contractAccepted === 'False') {
             payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
         }
@@ -201,7 +241,7 @@ $(document).ready(function() {
             payoff = Math.round(payoff);
             payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
         }
-        $('p#payoffMsg').text(payoffMsg);{% endcomment %}
+        $('p#payoffMsg').text(payoffMsg);
     });
 });
 </script>
@@ -223,7 +263,7 @@ $(document).ready(function() {
             $effortDiv.show();
         }
 
-        {% comment %}var effort = $('input[name=agent_work_effort_2]:checked').val();
+        var effort = $('input[name=agent_work_effort_2]:checked').val();
         if (contractAccepted === 'False') {
             payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
         }
@@ -241,7 +281,7 @@ $(document).ready(function() {
             payoff = Math.round(payoff);
             payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
         }
-        $('p#payoffMsg').text(payoffMsg);{% endcomment %}
+        $('p#payoffMsg').text(payoffMsg);
     });
 });
 </script>
@@ -263,7 +303,7 @@ $(document).ready(function() {
             $effortDiv.show();
         }
 
-        {% comment %}var effort = $('input[name=agent_work_effort_3]:checked').val();
+        var effort = $('input[name=agent_work_effort_3]:checked').val();
         if (contractAccepted === 'False') {
             payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
         }
@@ -281,7 +321,7 @@ $(document).ready(function() {
             payoff = Math.round(payoff);
             payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
         }
-        $('p#payoffMsg').text(payoffMsg);{% endcomment %}
+        $('p#payoffMsg').text(payoffMsg);
     });
 });
 </script>
@@ -303,7 +343,7 @@ $(document).ready(function() {
             $effortDiv.show();
         }
 
-        {% comment %}var effort = $('input[name=agent_work_effort_4]:checked').val();
+        var effort = $('input[name=agent_work_effort_4]:checked').val();
         if (contractAccepted === 'False') {
             payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
         }
@@ -321,7 +361,7 @@ $(document).ready(function() {
             payoff = Math.round(payoff);
             payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
         }
-        $('p#payoffMsg').text(payoffMsg);{% endcomment %}
+        $('p#payoffMsg').text(payoffMsg);
     });
 });
 </script>
@@ -343,7 +383,7 @@ $(document).ready(function() {
             $effortDiv.show();
         }
 
-        {% comment %}var effort = $('input[name=agent_work_effort_5]:checked').val();
+        var effort = $('input[name=agent_work_effort_5]:checked').val();
         if (contractAccepted === 'False') {
             payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
         }
@@ -361,7 +401,7 @@ $(document).ready(function() {
             payoff = Math.round(payoff);
             payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
         }
-        $('p#payoffMsg').text(payoffMsg);{% endcomment %}
+        $('p#payoffMsg').text(payoffMsg);
     });
 });
 </script>
@@ -383,7 +423,7 @@ $(document).ready(function() {
             $effortDiv.show();
         }
 
-        {% comment %}var effort = $('input[name=agent_work_effort_6]:checked').val();
+        var effort = $('input[name=agent_work_effort_6]:checked').val();
         if (contractAccepted === 'False') {
             payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
         }
@@ -401,7 +441,7 @@ $(document).ready(function() {
             payoff = Math.round(payoff);
             payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
         }
-        $('p#payoffMsg').text(payoffMsg);{% endcomment %}
+        $('p#payoffMsg').text(payoffMsg);
     });
 });
 </script>
@@ -423,7 +463,7 @@ $(document).ready(function() {
             $effortDiv.show();
         }
 
-        {% comment %}var effort = $('input[name=agent_work_effort_7]:checked').val();
+        var effort = $('input[name=agent_work_effort_7]:checked').val();
         if (contractAccepted === 'False') {
             payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
         }
@@ -441,7 +481,7 @@ $(document).ready(function() {
             payoff = Math.round(payoff);
             payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
         }
-        $('p#payoffMsg').text(payoffMsg);{% endcomment %}
+        $('p#payoffMsg').text(payoffMsg);
     });
 });
 </script>
@@ -463,7 +503,7 @@ $(document).ready(function() {
             $effortDiv.show();
         }
 
-        {% comment %}var effort = $('input[name=agent_work_effort_8]:checked').val();
+        var effort = $('input[name=agent_work_effort_8]:checked').val();
         if (contractAccepted === 'False') {
             payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
         }
@@ -481,7 +521,7 @@ $(document).ready(function() {
             payoff = Math.round(payoff);
             payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
         }
-        $('p#payoffMsg').text(payoffMsg);{% endcomment %}
+        $('p#payoffMsg').text(payoffMsg);
     });
 });
 </script>
@@ -503,7 +543,7 @@ $(document).ready(function() {
             $effortDiv.show();
         }
 
-        {% comment %}var effort = $('input[name=agent_work_effort_9]:checked').val();
+        var effort = $('input[name=agent_work_effort_9]:checked').val();
         if (contractAccepted === 'False') {
             payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
         }
@@ -521,7 +561,7 @@ $(document).ready(function() {
             payoff = Math.round(payoff);
             payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
         }
-        $('p#payoffMsg').text(payoffMsg);{% endcomment %}
+        $('p#payoffMsg').text(payoffMsg);
     });
 });
 </script>
@@ -543,7 +583,7 @@ $(document).ready(function() {
             $effortDiv.show();
         }
 
-        {% comment %}var effort = $('input[name=agent_work_effort_10]:checked').val();
+        var effort = $('input[name=agent_work_effort_10]:checked').val();
         if (contractAccepted === 'False') {
             payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
         }
@@ -561,7 +601,7 @@ $(document).ready(function() {
             payoff = Math.round(payoff);
             payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
         }
-        $('p#payoffMsg').text(payoffMsg);{% endcomment %}
+        $('p#payoffMsg').text(payoffMsg);
     });
 });
 </script>
@@ -583,7 +623,7 @@ $(document).ready(function() {
             $effortDiv.show();
         }
 
-        {% comment %}var effort = $('input[name=agent_work_effort_11]:checked').val();
+        var effort = $('input[name=agent_work_effort_11]:checked').val();
         if (contractAccepted === 'False') {
             payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
         }
@@ -601,7 +641,7 @@ $(document).ready(function() {
             payoff = Math.round(payoff);
             payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
         }
-        $('p#payoffMsg').text(payoffMsg);{% endcomment %}
+        $('p#payoffMsg').text(payoffMsg);
     });
 });
 </script>
@@ -623,7 +663,7 @@ $(document).ready(function() {
             $effortDiv.show();
         }
 
-        {% comment %}var effort = $('input[name=agent_work_effort_12]:checked').val();
+        var effort = $('input[name=agent_work_effort_12]:checked').val();
         if (contractAccepted === 'False') {
             payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
         }
@@ -641,7 +681,7 @@ $(document).ready(function() {
             payoff = Math.round(payoff);
             payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
         }
-        $('p#payoffMsg').text(payoffMsg);{% endcomment %}
+        $('p#payoffMsg').text(payoffMsg);
     });
 });
 </script>
@@ -663,7 +703,7 @@ $(document).ready(function() {
             $effortDiv.show();
         }
 
-        {% comment %}var effort = $('input[name=agent_work_effort_12]:checked').val();
+        var effort = $('input[name=agent_work_effort_12]:checked').val();
         if (contractAccepted === 'False') {
             payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
         }
@@ -681,10 +721,10 @@ $(document).ready(function() {
             payoff = Math.round(payoff);
             payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
         }
-        $('p#payoffMsg').text(payoffMsg);{% endcomment %}
+        $('p#payoffMsg').text(payoffMsg);
     });
 });
-</script>
+</script>{% endcomment %}
 
     <script>
 // Get the modal
