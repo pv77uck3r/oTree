@@ -98,12 +98,15 @@ class Accept(Page):
     #        (values['contract_accepted_13'] and values['agent_work_effort_13'] == None):
     #         return 'If you accept the contract, you must select a level of effort.'
 
+    def before_next_page(self):
+        self.group.set_accepts()
+
 
 
 class ResultsWaitPage(WaitPage):
 
     def after_all_players_arrive(self):
-        self.group.set_payoffs()
+        self.group.keep_decisions()
 
 
 class Results(Page):
@@ -114,5 +117,6 @@ page_sequence = [Introduction,
                  QuizA,
                  QuizP,
                  Offer,
-                 Accept
+                 Accept,
+                 ResultsWaitPage
                  ]

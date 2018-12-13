@@ -90,6 +90,9 @@ class Accept(Page):
     #     if values['contract_accepted'] and values['agent_work_effort'] == None:
     #         return 'If you accept the contract, you must select a level of effort.'
 
+    def before_next_page(self):
+        self.group.set_accepts()
+
 
 class ResultsWaitPage(WaitPage):
 

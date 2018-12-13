@@ -5,7 +5,7 @@ from otree.api import (
 
 
 def make_field(label):
-    return models.IntegerField(
+    return models.FloatField(
         choices=[
             [0, ''],
             [0.1, ''],
@@ -382,6 +382,60 @@ class Group(BaseGroup):
         ],
         label='Would you accept a contract for 120 dimes in fixed payment from Participant A?'
     )
+
+    def set_accepts(self):
+        if self.agent_work_effort_1 == 0:
+            self.contract_accepted_1 = False
+        else:
+            self.contract_accepted_1 = True
+        if self.agent_work_effort_2 == 0:
+            self.contract_accepted_2 = False
+        else:
+            self.contract_accepted_2 = True
+        if self.agent_work_effort_3 == 0:
+            self.contract_accepted_3 = False
+        else:
+            self.contract_accepted_3 = True
+        if self.agent_work_effort_4 == 0:
+            self.contract_accepted_4 = False
+        else:
+            self.contract_accepted_4 = True
+        if self.agent_work_effort_5 == 0:
+            self.contract_accepted_5 = False
+        else:
+            self.contract_accepted_5 = True
+        if self.agent_work_effort_6 == 0:
+            self.contract_accepted_6 = False
+        else:
+            self.contract_accepted_6 = True
+        if self.agent_work_effort_7 == 0:
+            self.contract_accepted_7 = False
+        else:
+            self.contract_accepted_7 = True
+        if self.agent_work_effort_8 == 0:
+            self.contract_accepted_8 = False
+        else:
+            self.contract_accepted_8 = True
+        if self.agent_work_effort_9 == 0:
+            self.contract_accepted_9 = False
+        else:
+            self.contract_accepted_9 = True
+        if self.agent_work_effort_10 == 0:
+            self.contract_accepted_10 = False
+        else:
+            self.contract_accepted_10 = True
+        if self.agent_work_effort_11 == 0:
+            self.contract_accepted_11 = False
+        else:
+            self.contract_accepted_11 = True
+        if self.agent_work_effort_12 == 0:
+            self.contract_accepted_12 = False
+        else:
+            self.contract_accepted_12 = True
+        if self.agent_work_effort_13 == 0:
+            self.contract_accepted_13 = False
+        else:
+            self.contract_accepted_13 = True
 
     def set_payoffs_1(self):
         p1 = self.get_player_by_id(1)
@@ -1383,12 +1437,12 @@ class Player(BasePlayer):
 
     agent_quiz1 = models.IntegerField(
         choices=[
-            [1, '(a) 5'],
-            [2, '(b) 3'],
-            [3, '(c) 0']
+            [1, '(a) 50 dimes'],
+            [2, '(b) 10 dimes'],
+            [3, '(c) 0 dimes']
         ],
         widget=widgets.RadioSelect,
-        label="Question 1: What effort do you contribute if you do not accept Participant B's proposal?"
+        label="Question 1: What payoff do you and Participant A receive if you do not accept Participant B's proposal?"
     )
 
     agent_quiz2 = models.FloatField(

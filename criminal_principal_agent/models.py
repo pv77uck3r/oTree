@@ -5,7 +5,7 @@ from otree.api import (
 
 
 def make_field(label):
-    return models.IntegerField(
+    return models.FloatField(
         choices=[
             [0, ''],
             [0.1, ''],
@@ -152,7 +152,7 @@ class Group(BaseGroup):
     #     widget=widgets.RadioSelectHorizontal
     # )
 
-    agent_work_effort_1 = make_field('What amount of effort would you select if Participant A\'s contract were for 10 '
+    agent_work_effort_1 = make_field('What amount of effort would you select if Participant A\'s contract were for 0 '
                                      'dimes in fixed payment?')
 
     agent_work_cost_1 = models.CurrencyField(
@@ -160,7 +160,7 @@ class Group(BaseGroup):
         label="Would you accept a contract for 0 dimes in fixed payment?"
     )
 
-    agent_work_effort_2 = make_field('What amount of effort would you select if Participant A\'s contract were for 0 '
+    agent_work_effort_2 = make_field('What amount of effort would you select if Participant A\'s contract were for 10 '
                                      'dimes in fixed payment?')
 
     agent_work_effort_3 = make_field('What amount of effort would you select if Participant A\'s contract were for 20 '
@@ -387,6 +387,60 @@ class Group(BaseGroup):
         initial=False
     )
 
+    def set_accepts(self):
+        if self.agent_work_effort_1 == 0:
+            self.contract_accepted_1 = False
+        else:
+            self.contract_accepted_1 = True
+        if self.agent_work_effort_2 == 0:
+            self.contract_accepted_2 = False
+        else:
+            self.contract_accepted_2 = True
+        if self.agent_work_effort_3 == 0:
+            self.contract_accepted_3 = False
+        else:
+            self.contract_accepted_3 = True
+        if self.agent_work_effort_4 == 0:
+            self.contract_accepted_4 = False
+        else:
+            self.contract_accepted_4 = True
+        if self.agent_work_effort_5 == 0:
+            self.contract_accepted_5 = False
+        else:
+            self.contract_accepted_5 = True
+        if self.agent_work_effort_6 == 0:
+            self.contract_accepted_6 = False
+        else:
+            self.contract_accepted_6 = True
+        if self.agent_work_effort_7 == 0:
+            self.contract_accepted_7 = False
+        else:
+            self.contract_accepted_7 = True
+        if self.agent_work_effort_8 == 0:
+            self.contract_accepted_8 = False
+        else:
+            self.contract_accepted_8 = True
+        if self.agent_work_effort_9 == 0:
+            self.contract_accepted_9 = False
+        else:
+            self.contract_accepted_9 = True
+        if self.agent_work_effort_10 == 0:
+            self.contract_accepted_10 = False
+        else:
+            self.contract_accepted_10 = True
+        if self.agent_work_effort_11 == 0:
+            self.contract_accepted_11 = False
+        else:
+            self.contract_accepted_11 = True
+        if self.agent_work_effort_12 == 0:
+            self.contract_accepted_12 = False
+        else:
+            self.contract_accepted_12 = True
+        if self.agent_work_effort_13 == 0:
+            self.contract_accepted_13 = False
+        else:
+            self.contract_accepted_13 = True
+
     def keep_decisions(self):
         p1 = self.get_player_by_id(1)
         p2 = self.get_player_by_id(2)
@@ -482,9 +536,9 @@ class Player(BasePlayer):
 
     agent_quiz1 = models.IntegerField(
         choices=[
-            [1, '(a) 5'],
-            [2, '(b) 9'],
-            [3, '(c) 10']
+            [1, '(a) 0.5'],
+            [2, '(b) 0.9'],
+            [3, '(c) 1']
         ],
         widget=widgets.RadioSelect,
         label="Question 1: What is the maximum amount of effort you can choose?"
