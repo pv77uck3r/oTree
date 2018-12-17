@@ -13,7 +13,7 @@
 
     {% if modulechosen == 'first' %}
         <p>
-            In this module, you chose {{ riskchoice }} and the computer randomly generated a number {{ randomroll }}.
+            In this task, you chose {{ riskchoice }} and the computer randomly generated a number {{ randomroll }}.
             Therefore, your payoff from Part 5 is ${{ riskpayment }}.
         </p>
 
@@ -21,7 +21,7 @@
 
     {% if modulechosen == 'second' %}
         <p>
-            In this module, the computer randomly chose {{ lossdecision }} for payment. {% if player.loss_payment != 0 %}
+            In this task, the computer randomly chose {{ lossdecision }} for payment. {% if player.loss_payment != 0 %}
             For this decision you chose "Accept". {% else %} For this decision you chose "Reject". Therefore, your
             payoff from Part 5 is $0.00.{% endif %}
         </p>

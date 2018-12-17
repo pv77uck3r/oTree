@@ -122,7 +122,7 @@ class Group(BaseGroup):
         doc="""Amount offered as fixed pay to agent.""",
         min=Constants.min_fixed_payment, max=Constants.max_fixed_payment,
         label="What fixed payment will you offer to Participant B "
-              "if they WAS FOUND GUILTY of taking a SMALL amount of money that belonged to another "
+              "if they WERE FOUND GUILTY of taking a SMALL amount of money that belonged to another "
               "participant?"
     )
 
@@ -132,7 +132,7 @@ class Group(BaseGroup):
         doc="""Amount offered as fixed pay to agent.""",
         min=Constants.min_fixed_payment, max=Constants.max_fixed_payment,
         label="What fixed payment will you offer to Participant B "
-              "if they WAS FOUND GUILTY of taking a MEDIUM amount of money that belonged to another "
+              "if they WERE FOUND GUILTY of taking a MEDIUM amount of money that belonged to another "
               "participant?"
     )
 
@@ -142,7 +142,7 @@ class Group(BaseGroup):
         doc="""Amount offered as fixed pay to agent.""",
         min=Constants.min_fixed_payment, max=Constants.max_fixed_payment,
         label="What fixed payment will you offer to Participant B "
-              "if they WAS FOUND GUILTY of taking a LARGE amount of money that belonged to another "
+              "if they WERE FOUND GUILTY of taking a LARGE amount of money that belonged to another "
               "participant?"
     )
 
@@ -160,7 +160,7 @@ class Group(BaseGroup):
         label="Would you accept a contract for 0 dimes in fixed payment?"
     )
 
-    agent_work_effort_2 = make_field('What amount of effort would you select if Participant A\'s contract were for 10 '
+    agent_work_effort_2 = make_field('What amount of effort would you select if Participant A\'s contract was for 10 '
                                      'dimes in fixed payment?')
 
     agent_work_effort_3 = make_field('What amount of effort would you select if Participant A\'s contract were for 20 '
@@ -512,12 +512,12 @@ class Player(BasePlayer):
     )
 
     principal_quiz2 = models.FloatField(
-        label="Question 2: If you offered Participant B 60 dimes and Participant B picks effort level 6, what is your "
+        label="Question 2: If you offered Participant B 60 dimes and Participant B picks effort level 0.6, what is your "
               "payoff (in dimes)?"
     )
 
     principal_quiz3 = models.FloatField(
-        label="Question 3: If you offered Participant B 60 dimes and Participant B picks effort level 6, what is "
+        label="Question 3: If you offered Participant B 60 dimes and Participant B picks effort level 0.6, what is "
               "Participant B's payoff (in dimes)?"
     )
 

@@ -200,7 +200,7 @@ class Player(BasePlayer):
             [2, 'Blue']
         ],
         widget=widgets.RadioSelect,
-        label='What color do you think the randomly drawn ball from this urn will be?'
+        label='What color do you think the randomly drawn ball from this box will be?'
     )
 
     ambiguity_color_decision_2 = models.IntegerField(
@@ -209,7 +209,7 @@ class Player(BasePlayer):
             [2, 'Blue']
         ],
         widget=widgets.RadioSelect,
-        label='What color do you think the randomly drawn ball from this urn will be?'
+        label='What color do you think the randomly drawn ball from this box will be?'
     )
 
     ambiguity_color_decision_3 = models.IntegerField(
@@ -218,7 +218,7 @@ class Player(BasePlayer):
             [2, 'Blue']
         ],
         widget=widgets.RadioSelect,
-        label='What color do you think the randomly drawn ball from this urn will be?'
+        label='What color do you think the randomly drawn ball from this box will be?'
     )
 
     ambiguity_color_decision_4 = models.IntegerField(
@@ -227,7 +227,7 @@ class Player(BasePlayer):
             [2, 'Blue']
         ],
         widget=widgets.RadioSelect,
-        label='What color do you think the randomly drawn ball from this urn will be?'
+        label='What color do you think the randomly drawn ball from this box will be?'
     )
 
     ambiguity_price_decision_1 = models.FloatField(
