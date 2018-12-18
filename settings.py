@@ -57,6 +57,18 @@ SESSION_CONFIGS = [
         'app_sequence': ['criminal_wrapper', 'criminal_principal_agent', 'criminal_theft', 'criminal_plea',
                          'criminal_principal_agent2', 'criminal_riskloss2', 'criminal_survey'],
     },
+    {
+        'name': 'criminal_riskloss',
+        'display_name': "Innocence Problem - Risk/Loss/Ambiguity",
+        'num_demo_participants': 1,
+        'app_sequence': ['criminal_riskloss'],
+    },
+    {
+        'name': 'criminal_survey',
+        'display_name': "Innocence Problem - Survey",
+        'num_demo_participants': 1,
+        'app_sequence': ['criminal_survey'],
+    },
     # {
     #     'name': 'criminal_survey',
     #     'display_name': "Survey for Innocence Problem",

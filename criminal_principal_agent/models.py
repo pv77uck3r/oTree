@@ -545,12 +545,12 @@ class Player(BasePlayer):
     )
 
     agent_quiz2 = models.FloatField(
-        label="Question 2: If Participant A offered you 60 dimes and you pick effort level 6, what is your "
+        label="Question 2: If Participant A offered you 60 dimes and you pick effort level 0.6, what is your "
               "payoff (in dimes)?"
     )
 
     agent_quiz3 = models.FloatField(
-        label="Question 3: If Participant A offered you 60 dimes and you pick effort level 6, what is "
+        label="Question 3: If Participant A offered you 60 dimes and you pick effort level 0.6, what is "
               "Participant A's payoff (in dimes)?"
     )
 

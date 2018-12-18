@@ -50,6 +50,11 @@ class Quiz6(Page):
                    'Opinion']
 
 
+class Quiz7(Page):
+    form_model = 'player'
+    form_fields = ['family_victim', 'family_guilty', 'law_interest', 'ban_the_box']
+
+
 class End(Page):
 
     def vars_for_template(self):
@@ -74,5 +79,6 @@ page_sequence = [
     Quiz2,
     Quiz4,
     Quiz6,
+    Quiz7,
     End
 ]

@@ -30,7 +30,7 @@ class Ambiguity(Page):
     def before_next_page(self):
         self.player.payoffs()
         self.player.set_payoffs()
-        self.player.set_big_payoff()
+        # self.player.set_big_payoff()
 
 
 class LittleResults(Page):

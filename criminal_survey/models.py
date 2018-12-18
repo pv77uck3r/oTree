@@ -356,3 +356,48 @@ class Player(BasePlayer):
     Opinion = models.LongStringField(
         label='Is there anything else you would like to tell the experimenters about this experiment?'
     )
+
+    family_victim = models.IntegerField(
+        choices=[
+            [1, 'Yes'],
+            [2, 'No']
+        ],
+        widget=widgets.RadioSelect(),
+        label='Has anyone in your family or a close friend ever been a victim of a crime?'
+    )
+
+    family_guilty = models.IntegerField(
+        choices=[
+            [1, 'Yes'],
+            [2, 'No']
+        ],
+        widget=widgets.RadioSelect(),
+        label='Has anyone in your family or a close friend ever been found guilty (or taken a plea bargain) '
+              'for a crime?'
+    )
+
+    law_interest = models.IntegerField(
+        choices=[
+            [1, 'No'],
+            [2, 'Yes (criminal defense)'],
+            [3, 'Yes (criminal prosecution)'],
+            [4, 'Yes (non-criminal law)']
+        ],
+        widget=widgets.RadioSelect(),
+        label='Do you have any interest in a career in law?'
+    )
+
+    ban_the_box = models.IntegerField(
+        choices=[
+            [1, '1. Strongly Disagree'],
+            [2, '2. Disagree'],
+            [3, '3. Somewhat Disagree'],
+            [4, '4. Neither Disagree nor Agree'],
+            [5, '5. Somewhat Agree'],
+            [6, '6. Agree'],
+            [7, '7. Strongly Agree']
+        ],
+        widget=widgets.RadioSelect(),
+        label='How much do you agree with the following statement: Employers should be able to ask about criminal '
+              'history on job applications?'
+    )

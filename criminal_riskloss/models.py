@@ -86,7 +86,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 1: 50% chance to LOSE 2 quarters, 50% chance to gain 6 quarters'
+        label='Decision 1: 50% chance to LOSE 2 dimes, 50% chance to gain 6 dimes'
     )
 
     loss_decision_2 = models.IntegerField(
@@ -105,7 +105,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 3: 50% chance to LOSE 3 quarters, 50% chance to gain 6 quarters'
+        label='Decision 3: 50% chance to LOSE 3 dimes, 50% chance to gain 6 dimes'
     )
 
     loss_decision_4 = models.IntegerField(
@@ -124,7 +124,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 5: 50% chance to LOSE 4 quarters, 50% chance to gain 6 quarters'
+        label='Decision 5: 50% chance to LOSE 4 dimes, 50% chance to gain 6 dimes'
     )
 
     loss_decision_6 = models.IntegerField(
@@ -143,7 +143,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 7: 50% chance to LOSE 5 quarters, 50% chance to gain 6 quarters'
+        label='Decision 7: 50% chance to LOSE 5 dimes, 50% chance to gain 6 dimes'
     )
 
     loss_decision_8 = models.IntegerField(
@@ -162,7 +162,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 9: 50% chance to LOSE 6 quarters, 50% chance to gain 6 quarters'
+        label='Decision 9: 50% chance to LOSE 6 dimes, 50% chance to gain 6 dimes'
     )
 
     loss_decision_10 = models.IntegerField(
@@ -181,7 +181,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 11: 50% chance to LOSE 7 quarters, 50% chance to gain 6 quarters'
+        label='Decision 11: 50% chance to LOSE 7 dimes, 50% chance to gain 6 dimes'
     )
 
     loss_decision_12 = models.IntegerField(
@@ -460,7 +460,7 @@ class Player(BasePlayer):
             self.participant.vars['payoffmodule5'] = self.risk_payment
         else:
             if self.session.vars['paymentmodule'] == 2:
-                self.participant.vars['payoffmodule5'] = self.loss_payment * 0.25
+                self.participant.vars['payoffmodule5'] = self.loss_payment * 0.10
             else:
                 if self.session.vars['paymentmodule'] == 3:
                     self.participant.vars['payoffmodule5'] = self.ambiguity_payment1 + self.ambiguity_payment2 + \
