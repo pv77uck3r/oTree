@@ -907,8 +907,8 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
-        p1.payoffmodule1 = p1.participant.vars['payoffmodule1'] * .10
-        p2.payoffmodule1 = p2.participant.vars['payoffmodule1'] * .10
+        p1.payoffmodule1 = p1.participant.vars['payoffmodule1'] * .10 + 2
+        p2.payoffmodule1 = p2.participant.vars['payoffmodule1'] * .10 + 2
 
     def set_payoffs_2(self):
         p1 = self.get_player_by_id(1)
@@ -1380,8 +1380,8 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
-        p1.payoffmodule4 = p1.participant.vars['payoffmodule4'] * .10
-        p2.payoffmodule4 = p2.participant.vars['payoffmodule4'] * .10
+        p1.payoffmodule4 = p1.participant.vars['payoffmodule4'] * .10 + 2
+        p2.payoffmodule4 = p2.participant.vars['payoffmodule4'] * .10 + 2
 
     # def set_payoffs(self):
     #     principal = self.get_player_by_role('principal')

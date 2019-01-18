@@ -81,6 +81,12 @@ SESSION_CONFIGS = [
     #     'num_demo_participants': 2,
     #     'app_sequence': ['dictator'],
     # },
+    {
+        'name': 'Innovate_vs_Imitate',
+        'display_name': "IvI",
+        'num_demo_participants': 10,
+        'app_sequence': ['Innovate_vs_Imitate'],
+    },
 
 ]
 # see the end of this file for the inactive session configs
