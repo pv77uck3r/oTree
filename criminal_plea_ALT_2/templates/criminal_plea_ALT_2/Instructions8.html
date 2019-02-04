@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Part 3
+{% endblock %}
+
+{% block content %}
+
+    {% include 'criminal_plea_ALT_2/InstructionsTemplate8.html' %}
+
+<div id="content">
+    {% next_button %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+
+        <script>
+        $(function() {
+    $('#content').hide().delay(30*1000).fadeIn('slow');
+
+});
+    </script>
+
+{% endblock %}

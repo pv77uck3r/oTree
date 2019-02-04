@@ -94,54 +94,19 @@ class Accept(Page):
         self.group.set_accepts()
 
 
-class RecordDecisions(WaitPage):
+class ResultsWaitPage(WaitPage):
+
     def after_all_players_arrive(self):
         self.group.keep_decisions()
-
-
-class SetGroups1(WaitPage):
-    wait_for_all_groups = True
-
-    def after_all_players_arrive(self):
-        self.subsession.set_groups_1()
-
-
-class GenTrustGame1Payoffs(WaitPage):
-
-    def after_all_players_arrive(self):
-        self.group.set_payoffs_1()
-
-
-class SetGroups2(WaitPage):
-    wait_for_all_groups = True
-
-    def after_all_players_arrive(self):
-        self.subsession.set_groups_2()
-
-
-class KeepDecisions(WaitPage):
-    def after_all_players_arrive(self):
-        self.group.keep_decisions()
-
-
-class GenTrustGame2Payoffs(WaitPage):
-    def after_all_players_arrive(self):
-        self.group.set_payoffs_2()
 
 
 class Results(Page):
     pass
 
 
-page_sequence = [
-    SetGroups1,
-    GenTrustGame1Payoffs,
-    SetGroups2,
-    Introduction,
-    QuizA,
-    QuizP,
-    Offer,
-    Accept,
-    KeepDecisions,
-    GenTrustGame2Payoffs
-    ]
+page_sequence = [Introduction,
+                 QuizA,
+                 QuizP,
+                 Offer,
+                 Accept
+                 ]

@@ -251,7 +251,7 @@ class Player(BasePlayer):
             [4, 'somewhat below'],
             [5, 'significantly below']
         ],
-        label='What is your household (family) income relative to other students at Baylor?',
+        label='What is your household (family) income relative to other students at UCI?',
         widget=widgets.RadioSelectHorizontal()
     )
 
@@ -304,18 +304,18 @@ class Player(BasePlayer):
     )
 
     PercentTakeSmall = models.IntegerField(
-        label='What percentage of Baylor students who participate in the experiment do you believe will choose to take '
-              'a small amount from their other Baylor student counterpart participant?'
+        label='What percentage of UCI students who participate in the experiment do you believe will choose to take '
+              'a small amount from their other UCI student counterpart participant?'
     )
 
     PercentTakeMedium = models.IntegerField(
-        label='What percentage of Baylor students who participate in the experiment do you believe will choose to take '
-              'a medium amount from their other Baylor student counterpart participant?'
+        label='What percentage of UCI students who participate in the experiment do you believe will choose to take '
+              'a medium amount from their other UCI student counterpart participant?'
     )
 
     PercentTakeLarge = models.IntegerField(
-        label='What percentage of Baylor students who participate in the experiment do you believe will choose to take '
-              'a large amount from their other Baylor student counterpart participant?'
+        label='What percentage of UCI students who participate in the experiment do you believe will choose to take '
+              'a large amount from their other UCI student counterpart participant?'
     )
 
     ReasonableDoubt = models.IntegerField(

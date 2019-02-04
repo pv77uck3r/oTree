@@ -1,0 +1,758 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Response
+{% endblock %}
+
+{% block content %}
+
+    <p>You are <strong>Participant B</strong>. {% comment %}Player A has offered you a contract with the following details:</p>
+
+    <table class='table text-center' style='width: auto; margin: auto'>
+        <tr><th>Fixed payment</th><th>Return share</th></tr>
+        <tr><td>{{ group.agent_fixed_pay }}</td><td>{{ group.return_share_as_percentage }}%</td></tr>
+    </table>{% endcomment %}
+
+    <table class="tg">
+    <tr>
+    <th class="tg-lghr"></th>
+    <th class="tg-lghr"></th>
+    <th class="tg-8jgokinda" colspan="10">Accept and Select Effort Level</th>
+  </tr>
+  <tr>
+    <td class="tg-lghr" width="45%"></td>
+    <td class="tg-lghr" width="5%">Reject Offer</td>
+    <td class="tg-8jgo" width="5%">0.1</td>
+    <td class="tg-8jgo" width="5%">0.2</td>
+    <td class="tg-8jgo" width="5%">0.3</td>
+    <td class="tg-8jgo" width="5%">0.4</td>
+    <td class="tg-8jgo" width="5%">0.5</td>
+    <td class="tg-8jgo" width="5%">0.6</td>
+    <td class="tg-8jgo" width="5%">0.7</td>
+    <td class="tg-8jgo" width="5%">0.8</td>
+    <td class="tg-8jgo" width="5%">0.9</td>
+    <td class="tg-8jgo" width="5%">1</td>
+  </tr>
+    {% for field in form %}
+        <tr>
+            <th>{{ field.label }}</th>
+            {% for choice in field %}
+                <td class="tg-butt">{{ choice }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+
+    {% comment %}{% formfield group.contract_accepted_1 %}
+    <div id="effort1">
+    {% formfield group.agent_work_effort_1 %}
+    </div>
+{#    <p id="payoffMsg"></p>#}
+
+    {% formfield group.contract_accepted_2 %}
+    <div id="effort2">
+    {% formfield group.agent_work_effort_2 %}
+    </div>
+
+    {% formfield group.contract_accepted_3 %}
+    <div id="effort3">
+    {% formfield group.agent_work_effort_3 %}
+    </div>
+
+    {% formfield group.contract_accepted_4 %}
+    <div id="effort4">
+    {% formfield group.agent_work_effort_4 %}
+    </div>
+
+    {% formfield group.contract_accepted_5 %}
+    <div id="effort5">
+    {% formfield group.agent_work_effort_5 %}
+    </div>
+
+    {% formfield group.contract_accepted_6 %}
+    <div id="effort6">
+    {% formfield group.agent_work_effort_6 %}
+    </div>
+
+    {% formfield group.contract_accepted_7 %}
+    <div id="effort7">
+    {% formfield group.agent_work_effort_7 %}
+    </div>
+
+    {% formfield group.contract_accepted_8 %}
+    <div id="effort8">
+    {% formfield group.agent_work_effort_8 %}
+    </div>
+
+    {% formfield group.contract_accepted_9 %}
+    <div id="effort9">
+    {% formfield group.agent_work_effort_9 %}
+    </div>
+
+    {% formfield group.contract_accepted_10 %}
+    <div id="effort10">
+    {% formfield group.agent_work_effort_10 %}
+    </div>
+
+    {% formfield group.contract_accepted_11 %}
+    <div id="effort11">
+    {% formfield group.agent_work_effort_11 %}
+    </div>
+
+    {% formfield group.contract_accepted_12 %}
+    <div id="effort12">
+    {% formfield group.agent_work_effort_12 %}
+    </div>
+
+    {% formfield group.contract_accepted_13 %}
+    <div id="effort13">
+    {% formfield group.agent_work_effort_13 %}
+    </div>{% endcomment %}
+
+    <p>
+    {% next_button %}
+    </p>
+
+    <center>
+        <!-- Trigger/Open The Modal -->
+<a href="#" id="myBtn">Review instructions</a>
+</center>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    {% include 'criminal_principal_agent_ALT_ORDER/Instructions_Agent.html' %}
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block styles %}
+
+<style type="text/css">
+    .tg  {border-collapse:separate;border-spacing:10px;}
+    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color: rgba(0, 0, 0, 0);}
+    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color: rgba(0, 0, 0, 0);}
+    .tg .tg-yqpd{border-color: rgba(255, 255, 255, 0);text-align:center}
+    .tg .tg-8jgo{border-color: rgba(255, 255, 255, 0);text-align:center}
+    .tg .tg-8jgokinda{border-color: rgba(255, 255, 255, 0);text-align:center;border-bottom:1pt solid black;}
+    .tg .tg-lghr{border-color: rgba(255, 255, 255, 0);text-align:center}
+    .tg .tg-butt{text-align:right}
+</style>
+
+    <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 10%;
+    top: 0;
+    width: 80%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+
+<style>
+a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: red;
+}
+</style>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% comment %}<script>
+$(document).ready(function() {
+
+
+    var $effortDiv = $('#effort1');
+
+    $('input').change(function () {
+        var payoffMsg;
+
+        var contractAccepted = $('input[name=contract_accepted_1]:checked').val();
+
+        if (contractAccepted === 'False') {
+            $effortDiv.hide();
+        } else {
+            $effortDiv.show();
+        }
+
+        var effort = $('input[name=agent_work_effort_1]:checked').val();
+        if (contractAccepted === 'False') {
+            payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
+        }
+        else if (!effort) {
+            payoffMsg = '';
+        }
+        else if (contractAccepted === 'True' && effort) {
+            var effortToCost = {{ Constants.EFFORT_TO_COST|json }};
+            var effortToReturn = {{ Constants.EFFORT_TO_RETURN|json }};
+            var agentReturnShare = {{ group.agent_return_share|json }};
+            var agentFixedPay = {{ group.agent_fixed_pay|json }};
+
+            //  [B's Return Share in %] × [Total Return] + [B's Fixed Payment] – [B's Effort Cost]
+            var payoff = agentReturnShare * effortToReturn[effort] + agentFixedPay - effortToCost[effort];
+            payoff = Math.round(payoff);
+            payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
+        }
+        $('p#payoffMsg').text(payoffMsg);
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+
+
+    var $effortDiv = $('#effort2');
+
+    $('input').change(function () {
+        var payoffMsg;
+
+        var contractAccepted = $('input[name=contract_accepted_2]:checked').val();
+
+        if (contractAccepted === 'False') {
+            $effortDiv.hide();
+        } else {
+            $effortDiv.show();
+        }
+
+        var effort = $('input[name=agent_work_effort_2]:checked').val();
+        if (contractAccepted === 'False') {
+            payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
+        }
+        else if (!effort) {
+            payoffMsg = '';
+        }
+        else if (contractAccepted === 'True' && effort) {
+            var effortToCost = {{ Constants.EFFORT_TO_COST|json }};
+            var effortToReturn = {{ Constants.EFFORT_TO_RETURN|json }};
+            var agentReturnShare = {{ group.agent_return_share|json }};
+            var agentFixedPay = {{ group.agent_fixed_pay|json }};
+
+            //  [B's Return Share in %] × [Total Return] + [B's Fixed Payment] – [B's Effort Cost]
+            var payoff = agentReturnShare * effortToReturn[effort] + agentFixedPay - effortToCost[effort];
+            payoff = Math.round(payoff);
+            payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
+        }
+        $('p#payoffMsg').text(payoffMsg);
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+
+
+    var $effortDiv = $('#effort3');
+
+    $('input').change(function () {
+        var payoffMsg;
+
+        var contractAccepted = $('input[name=contract_accepted_3]:checked').val();
+
+        if (contractAccepted === 'False') {
+            $effortDiv.hide();
+        } else {
+            $effortDiv.show();
+        }
+
+        var effort = $('input[name=agent_work_effort_3]:checked').val();
+        if (contractAccepted === 'False') {
+            payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
+        }
+        else if (!effort) {
+            payoffMsg = '';
+        }
+        else if (contractAccepted === 'True' && effort) {
+            var effortToCost = {{ Constants.EFFORT_TO_COST|json }};
+            var effortToReturn = {{ Constants.EFFORT_TO_RETURN|json }};
+            var agentReturnShare = {{ group.agent_return_share|json }};
+            var agentFixedPay = {{ group.agent_fixed_pay|json }};
+
+            //  [B's Return Share in %] × [Total Return] + [B's Fixed Payment] – [B's Effort Cost]
+            var payoff = agentReturnShare * effortToReturn[effort] + agentFixedPay - effortToCost[effort];
+            payoff = Math.round(payoff);
+            payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
+        }
+        $('p#payoffMsg').text(payoffMsg);
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+
+
+    var $effortDiv = $('#effort4');
+
+    $('input').change(function () {
+        var payoffMsg;
+
+        var contractAccepted = $('input[name=contract_accepted_4]:checked').val();
+
+        if (contractAccepted === 'False') {
+            $effortDiv.hide();
+        } else {
+            $effortDiv.show();
+        }
+
+        var effort = $('input[name=agent_work_effort_4]:checked').val();
+        if (contractAccepted === 'False') {
+            payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
+        }
+        else if (!effort) {
+            payoffMsg = '';
+        }
+        else if (contractAccepted === 'True' && effort) {
+            var effortToCost = {{ Constants.EFFORT_TO_COST|json }};
+            var effortToReturn = {{ Constants.EFFORT_TO_RETURN|json }};
+            var agentReturnShare = {{ group.agent_return_share|json }};
+            var agentFixedPay = {{ group.agent_fixed_pay|json }};
+
+            //  [B's Return Share in %] × [Total Return] + [B's Fixed Payment] – [B's Effort Cost]
+            var payoff = agentReturnShare * effortToReturn[effort] + agentFixedPay - effortToCost[effort];
+            payoff = Math.round(payoff);
+            payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
+        }
+        $('p#payoffMsg').text(payoffMsg);
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+
+
+    var $effortDiv = $('#effort5');
+
+    $('input').change(function () {
+        var payoffMsg;
+
+        var contractAccepted = $('input[name=contract_accepted_5]:checked').val();
+
+        if (contractAccepted === 'False') {
+            $effortDiv.hide();
+        } else {
+            $effortDiv.show();
+        }
+
+        var effort = $('input[name=agent_work_effort_5]:checked').val();
+        if (contractAccepted === 'False') {
+            payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
+        }
+        else if (!effort) {
+            payoffMsg = '';
+        }
+        else if (contractAccepted === 'True' && effort) {
+            var effortToCost = {{ Constants.EFFORT_TO_COST|json }};
+            var effortToReturn = {{ Constants.EFFORT_TO_RETURN|json }};
+            var agentReturnShare = {{ group.agent_return_share|json }};
+            var agentFixedPay = {{ group.agent_fixed_pay|json }};
+
+            //  [B's Return Share in %] × [Total Return] + [B's Fixed Payment] – [B's Effort Cost]
+            var payoff = agentReturnShare * effortToReturn[effort] + agentFixedPay - effortToCost[effort];
+            payoff = Math.round(payoff);
+            payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
+        }
+        $('p#payoffMsg').text(payoffMsg);
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+
+
+    var $effortDiv = $('#effort6');
+
+    $('input').change(function () {
+        var payoffMsg;
+
+        var contractAccepted = $('input[name=contract_accepted_6]:checked').val();
+
+        if (contractAccepted === 'False') {
+            $effortDiv.hide();
+        } else {
+            $effortDiv.show();
+        }
+
+        var effort = $('input[name=agent_work_effort_6]:checked').val();
+        if (contractAccepted === 'False') {
+            payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
+        }
+        else if (!effort) {
+            payoffMsg = '';
+        }
+        else if (contractAccepted === 'True' && effort) {
+            var effortToCost = {{ Constants.EFFORT_TO_COST|json }};
+            var effortToReturn = {{ Constants.EFFORT_TO_RETURN|json }};
+            var agentReturnShare = {{ group.agent_return_share|json }};
+            var agentFixedPay = {{ group.agent_fixed_pay|json }};
+
+            //  [B's Return Share in %] × [Total Return] + [B's Fixed Payment] – [B's Effort Cost]
+            var payoff = agentReturnShare * effortToReturn[effort] + agentFixedPay - effortToCost[effort];
+            payoff = Math.round(payoff);
+            payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
+        }
+        $('p#payoffMsg').text(payoffMsg);
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+
+
+    var $effortDiv = $('#effort7');
+
+    $('input').change(function () {
+        var payoffMsg;
+
+        var contractAccepted = $('input[name=contract_accepted_7]:checked').val();
+
+        if (contractAccepted === 'False') {
+            $effortDiv.hide();
+        } else {
+            $effortDiv.show();
+        }
+
+        var effort = $('input[name=agent_work_effort_7]:checked').val();
+        if (contractAccepted === 'False') {
+            payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
+        }
+        else if (!effort) {
+            payoffMsg = '';
+        }
+        else if (contractAccepted === 'True' && effort) {
+            var effortToCost = {{ Constants.EFFORT_TO_COST|json }};
+            var effortToReturn = {{ Constants.EFFORT_TO_RETURN|json }};
+            var agentReturnShare = {{ group.agent_return_share|json }};
+            var agentFixedPay = {{ group.agent_fixed_pay|json }};
+
+            //  [B's Return Share in %] × [Total Return] + [B's Fixed Payment] – [B's Effort Cost]
+            var payoff = agentReturnShare * effortToReturn[effort] + agentFixedPay - effortToCost[effort];
+            payoff = Math.round(payoff);
+            payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
+        }
+        $('p#payoffMsg').text(payoffMsg);
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+
+
+    var $effortDiv = $('#effort8');
+
+    $('input').change(function () {
+        var payoffMsg;
+
+        var contractAccepted = $('input[name=contract_accepted_8]:checked').val();
+
+        if (contractAccepted === 'False') {
+            $effortDiv.hide();
+        } else {
+            $effortDiv.show();
+        }
+
+        var effort = $('input[name=agent_work_effort_8]:checked').val();
+        if (contractAccepted === 'False') {
+            payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
+        }
+        else if (!effort) {
+            payoffMsg = '';
+        }
+        else if (contractAccepted === 'True' && effort) {
+            var effortToCost = {{ Constants.EFFORT_TO_COST|json }};
+            var effortToReturn = {{ Constants.EFFORT_TO_RETURN|json }};
+            var agentReturnShare = {{ group.agent_return_share|json }};
+            var agentFixedPay = {{ group.agent_fixed_pay|json }};
+
+            //  [B's Return Share in %] × [Total Return] + [B's Fixed Payment] – [B's Effort Cost]
+            var payoff = agentReturnShare * effortToReturn[effort] + agentFixedPay - effortToCost[effort];
+            payoff = Math.round(payoff);
+            payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
+        }
+        $('p#payoffMsg').text(payoffMsg);
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+
+
+    var $effortDiv = $('#effort9');
+
+    $('input').change(function () {
+        var payoffMsg;
+
+        var contractAccepted = $('input[name=contract_accepted_9]:checked').val();
+
+        if (contractAccepted === 'False') {
+            $effortDiv.hide();
+        } else {
+            $effortDiv.show();
+        }
+
+        var effort = $('input[name=agent_work_effort_9]:checked').val();
+        if (contractAccepted === 'False') {
+            payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
+        }
+        else if (!effort) {
+            payoffMsg = '';
+        }
+        else if (contractAccepted === 'True' && effort) {
+            var effortToCost = {{ Constants.EFFORT_TO_COST|json }};
+            var effortToReturn = {{ Constants.EFFORT_TO_RETURN|json }};
+            var agentReturnShare = {{ group.agent_return_share|json }};
+            var agentFixedPay = {{ group.agent_fixed_pay|json }};
+
+            //  [B's Return Share in %] × [Total Return] + [B's Fixed Payment] – [B's Effort Cost]
+            var payoff = agentReturnShare * effortToReturn[effort] + agentFixedPay - effortToCost[effort];
+            payoff = Math.round(payoff);
+            payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
+        }
+        $('p#payoffMsg').text(payoffMsg);
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+
+
+    var $effortDiv = $('#effort10');
+
+    $('input').change(function () {
+        var payoffMsg;
+
+        var contractAccepted = $('input[name=contract_accepted_10]:checked').val();
+
+        if (contractAccepted === 'False') {
+            $effortDiv.hide();
+        } else {
+            $effortDiv.show();
+        }
+
+        var effort = $('input[name=agent_work_effort_10]:checked').val();
+        if (contractAccepted === 'False') {
+            payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
+        }
+        else if (!effort) {
+            payoffMsg = '';
+        }
+        else if (contractAccepted === 'True' && effort) {
+            var effortToCost = {{ Constants.EFFORT_TO_COST|json }};
+            var effortToReturn = {{ Constants.EFFORT_TO_RETURN|json }};
+            var agentReturnShare = {{ group.agent_return_share|json }};
+            var agentFixedPay = {{ group.agent_fixed_pay|json }};
+
+            //  [B's Return Share in %] × [Total Return] + [B's Fixed Payment] – [B's Effort Cost]
+            var payoff = agentReturnShare * effortToReturn[effort] + agentFixedPay - effortToCost[effort];
+            payoff = Math.round(payoff);
+            payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
+        }
+        $('p#payoffMsg').text(payoffMsg);
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+
+
+    var $effortDiv = $('#effort11');
+
+    $('input').change(function () {
+        var payoffMsg;
+
+        var contractAccepted = $('input[name=contract_accepted_11]:checked').val();
+
+        if (contractAccepted === 'False') {
+            $effortDiv.hide();
+        } else {
+            $effortDiv.show();
+        }
+
+        var effort = $('input[name=agent_work_effort_11]:checked').val();
+        if (contractAccepted === 'False') {
+            payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
+        }
+        else if (!effort) {
+            payoffMsg = '';
+        }
+        else if (contractAccepted === 'True' && effort) {
+            var effortToCost = {{ Constants.EFFORT_TO_COST|json }};
+            var effortToReturn = {{ Constants.EFFORT_TO_RETURN|json }};
+            var agentReturnShare = {{ group.agent_return_share|json }};
+            var agentFixedPay = {{ group.agent_fixed_pay|json }};
+
+            //  [B's Return Share in %] × [Total Return] + [B's Fixed Payment] – [B's Effort Cost]
+            var payoff = agentReturnShare * effortToReturn[effort] + agentFixedPay - effortToCost[effort];
+            payoff = Math.round(payoff);
+            payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
+        }
+        $('p#payoffMsg').text(payoffMsg);
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+
+
+    var $effortDiv = $('#effort12');
+
+    $('input').change(function () {
+        var payoffMsg;
+
+        var contractAccepted = $('input[name=contract_accepted_12]:checked').val();
+
+        if (contractAccepted === 'False') {
+            $effortDiv.hide();
+        } else {
+            $effortDiv.show();
+        }
+
+        var effort = $('input[name=agent_work_effort_12]:checked').val();
+        if (contractAccepted === 'False') {
+            payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
+        }
+        else if (!effort) {
+            payoffMsg = '';
+        }
+        else if (contractAccepted === 'True' && effort) {
+            var effortToCost = {{ Constants.EFFORT_TO_COST|json }};
+            var effortToReturn = {{ Constants.EFFORT_TO_RETURN|json }};
+            var agentReturnShare = {{ group.agent_return_share|json }};
+            var agentFixedPay = {{ group.agent_fixed_pay|json }};
+
+            //  [B's Return Share in %] × [Total Return] + [B's Fixed Payment] – [B's Effort Cost]
+            var payoff = agentReturnShare * effortToReturn[effort] + agentFixedPay - effortToCost[effort];
+            payoff = Math.round(payoff);
+            payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
+        }
+        $('p#payoffMsg').text(payoffMsg);
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+
+
+    var $effortDiv = $('#effort13');
+
+    $('input').change(function () {
+        var payoffMsg;
+
+        var contractAccepted = $('input[name=contract_accepted_13]:checked').val();
+
+        if (contractAccepted === 'False') {
+            $effortDiv.hide();
+        } else {
+            $effortDiv.show();
+        }
+
+        var effort = $('input[name=agent_work_effort_12]:checked').val();
+        if (contractAccepted === 'False') {
+            payoffMsg = 'You will receive {{ Constants.reject_agent_pay }} if you choose to reject';
+        }
+        else if (!effort) {
+            payoffMsg = '';
+        }
+        else if (contractAccepted === 'True' && effort) {
+            var effortToCost = {{ Constants.EFFORT_TO_COST|json }};
+            var effortToReturn = {{ Constants.EFFORT_TO_RETURN|json }};
+            var agentReturnShare = {{ group.agent_return_share|json }};
+            var agentFixedPay = {{ group.agent_fixed_pay|json }};
+
+            //  [B's Return Share in %] × [Total Return] + [B's Fixed Payment] – [B's Effort Cost]
+            var payoff = agentReturnShare * effortToReturn[effort] + agentFixedPay - effortToCost[effort];
+            payoff = Math.round(payoff);
+            payoffMsg = 'You will receive ' + payoff + ' if you choose ' + effort + '.';
+        }
+        $('p#payoffMsg').text(payoffMsg);
+    });
+});
+</script>{% endcomment %}
+
+    <script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+{% endblock %}

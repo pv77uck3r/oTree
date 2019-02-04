@@ -1,0 +1,147 @@
+{% load otree static %}
+
+<div class="card bg-light">
+    <div class="card-body">
+
+    <h3>
+        Instructions
+    </h3>
+    <p>
+        In this part of the experiment you will be randomly paired with one other participant who is your counterpart
+        for this part of the experiment.  You will not be paired with this participant in any other part of the
+        experiment today.
+    </p>
+    <p>
+        You and your counterpart have <b><i>each</i></b> been given an initial 10 quarters (10 x $0.25).
+    </p>
+
+    <p>
+        You will decide how many of your 10 quarters you will send to your counterpart, if any.  Any quarters you send
+        will be tripled by the experimenter, and then the tripled number of quarters will be given to your counterpart.
+        For instance if you choose to send 2 quarters to him/her, then the experimenter would triple those 2 quarters
+        and he/she would receive 6 quarters (2x3=6).  For another example, if you choose to send 8 quarters to him/her,
+        then the experimenter would triple those 8 quarters and he/she would receive 24 quarters (8x3=24).
+    </p>
+
+    <p>
+        Your counterpart’s decision is how many of the quarters that he/she receives that they would like to send back
+        to you. He/she is permitted to send back as many or as few as they would like. However, they may not send back
+        any of their initial 10 quarters and the quarters are not multiplied on their way back to you.
+    </p>
+
+    <p>
+        <span class="popup" onclick="myFunction()"> <b>For example,</b>
+            <span class="popuptext" id="myPopup"><img src="{% static "criminal_trust/InvestorExample.png" %}"/></span>
+        </span> if you send your counterpart 2 quarters, he/she would receive 6 quarters (2x3 = 6). His/her
+        decision would be whether to send 0, 1, 2, 3, 4, 5, or 6 quarters back to you. The total number of quarters you
+        would have is the exact amount your counterpart sent back to you plus the remaining 8 quarters from your initial
+        10 quarters (10 – 2 = 8). Your counterpart would keep his/her initial 10 quarters plus the remaining quarters
+        from the tripled amount that he/she received.  For another example, if you choose to send 8 quarters to your
+        counterpart, then he or she would receive 24 quarters (3x8 = 24). Your counterpart could then decide to send
+        back as few as 0 quarters (in which case he/she would have their initial 10 quarters + 24 quarters – 0 quarters
+        = 34 quarters and you would have your initial 10 quarters – 8 quarters + 0 quarters = 2 quarters) or he or she
+        could send back as many as 24 quarters (in which case your counterpart would have their initial 10 quarters + 24
+        quarters – 24 quarters = 10 quarters and you would have your initial 10 quarters – 8 quarters + 24 quarters = 26
+        quarters).
+    </p>
+
+{% comment %}    <p>
+        For this part of the experiment, you will be randomly assigned to a counterpart who could be one of several
+        “types”.  In an interaction separate from their interaction with you the computer will randomly pair them with
+        another participant. In that interaction, the computer will first divide $10 between your counterpart and this
+        other participant.  Your counterpart will be given an opportunity (that they are not forced to accept) to take
+        money that belongs to their partner. This could be a small amount (between $0.10 and $1.00) a medium amount
+        (between $1.00 and $2.00) or a large amount (between $2.00 and $3.00).
+    </p>
+
+    <p>
+        The decisions of other participants, in the role of a prosecutor and in the role of jurors, will determine
+        whether those suspected of taking money from their partner are found guilty or not-guilty of having done so.
+        Some truly innocent people may appear to be guilty and some truly guilty people may appear to be innocent. As a
+        result, your possible counterparts are of different types: those found guilty of having taken a small amount of
+        their partner’s money, those found guilty of having taken a medium amount, or those found guilty of having taken
+        a large amount, those found not-guilty, and those never accused of such a theft. All participants found guilty
+        of having taken money from another participant had to pay a monetary penalty as well.
+    </p>
+
+    <p>
+        Your decision is to tell us how many of your initial 10 quarters you will send to your counterpart in this part
+        of the experiment.
+    </p>{% endcomment %}
+    </div>
+</div>
+
+{% block styles %}
+
+    <style>
+        /* Popup container - can be anything you want */
+        span.popup {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* The actual popup */
+        .popup .popuptext {
+            visibility: hidden;
+            width: 530px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            top: -180px;
+            left: 190%;
+            margin-left: -80px;
+        }
+
+        /* Popup arrow */
+        .popup .popuptext::after {
+            content: " ";
+            position: absolute;
+            top: 51%;
+            right: 100%; /* To the left of the tooltip */
+            margin-top: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent black transparent transparent;
+        }
+
+        /* Toggle this class - hide and show the popup */
+        .popup .show {
+            visibility: visible;
+            -webkit-animation: fadeIn 1s;
+            animation: fadeIn 1s;
+        }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity:1 ;}
+        }
+    </style>
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script>
+        // When the user clicks on div, open the popup
+        function myFunction() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+        }
+    </script>
+
+{% endblock %}

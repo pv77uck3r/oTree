@@ -1,0 +1,57 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+    <p>
+    In the random round chosen for payment in the division assignment task (where $10 was divided between you and and
+    your counterpart) you chose to take ${{ amountstolen }}, meaning that you were {{ beginning_innocence_tf }}. Using this
+    information, you were assigned an initial crime level of {{ beginning_crime }} and given {{ beginning_innocence }}
+    evidence of innocence with {{ beginning_guilt }} evidence of guilt. This led to the following outcomes:
+    </p>
+
+    {% if not ending_trial_status %}
+        <p>You were not taken to trial.</p>
+        {% if not ending_guilt %}
+            <p>Hence, you are not guilty and have received no monetary punishment.</p>
+        {% endif %}
+
+        {% if ending_guilt %}
+            <p>You were found guilty of a {{ crimelevel }} crime.</p>
+            <p>You have been penalized ${{ punishment }}.</p>
+            <p>The guilty verdict was a result of a plea bargain.</p>
+        {% endif %}
+
+    {% endif %}
+
+    {% if ending_trial_status %}
+
+        <p>You were taken to trial.</p>
+
+            {% if not ending_guilt %}
+                <p>However, the jury returned a verdict of "Not Guilty".</p>
+                <p>Hence, you are not guilty and have received no monetary punishment.</p>
+            {% endif %}
+
+            {% if ending_guilt %}
+                <p>The jury returned a verdict of "Guilty".</p>
+                <p>You were found guilty of a {{ crimelevel }} crime.</p>
+                <p>You have been penalized ${{ punishment }}.</p>
+            {% endif %}
+
+    {% endif %}
+
+    {% if trialornot == 'NONE' and ending_trial_status and not ending_trial_status %}
+        <p>The prosecutor had no evidence of a crime.</p>
+        <p>Therefore, you were not taken to trial.</p>
+        <p>Hence, you were not found guilty nor were you penalized.</p>
+    {% endif %}
+
+    {% next_button %}
+
+{% endblock %}
+
+

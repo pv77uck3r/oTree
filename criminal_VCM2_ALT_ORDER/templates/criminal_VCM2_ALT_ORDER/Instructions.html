@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Part 4 - Instructions
+{% endblock %}
+
+{% block content %}
+
+    {% if player.role == 'primed' %}
+        {% include 'criminal_VCM2_ALT_ORDER/InstructionsTemplate_1.html' %}
+    {% endif %}
+
+    {% if player.role == 'unprimed' %}
+        {% include 'criminal_VCM2_ALT_ORDER/InstructionsTemplate_2.html' %}
+    {% endif %}
+
+<div id="content">
+    {% next_button %}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script>
+        $(function() {
+    $('#content').hide().delay(30*1000).fadeIn('slow');
+
+});
+    </script>
+
+{% endblock %}
