@@ -86,7 +86,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 1: 50% chance to LOSE 2 dimes, 50% chance to gain 6 dimes'
+        label='Decision 1: 50% chance to LOSE 2 dimes, 50% chance to GAIN 6 dimes'
     )
 
     loss_decision_2 = models.IntegerField(
@@ -105,7 +105,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 3: 50% chance to LOSE 3 dimes, 50% chance to gain 6 dimes'
+        label='Decision 3: 50% chance to LOSE 3 dimes, 50% chance to GAIN 6 dimes'
     )
 
     loss_decision_4 = models.IntegerField(
@@ -124,7 +124,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 5: 50% chance to LOSE 4 dimes, 50% chance to gain 6 dimes'
+        label='Decision 5: 50% chance to LOSE 4 dimes, 50% chance to GAIN 6 dimes'
     )
 
     loss_decision_6 = models.IntegerField(
@@ -143,7 +143,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 7: 50% chance to LOSE 5 dimes, 50% chance to gain 6 dimes'
+        label='Decision 7: 50% chance to LOSE 5 dimes, 50% chance to GAIN 6 dimes'
     )
 
     loss_decision_8 = models.IntegerField(
@@ -162,7 +162,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 9: 50% chance to LOSE 6 dimes, 50% chance to gain 6 dimes'
+        label='Decision 9: 50% chance to LOSE 6 dimes, 50% chance to GAIN 6 dimes'
     )
 
     loss_decision_10 = models.IntegerField(
@@ -181,7 +181,7 @@ class Player(BasePlayer):
             [2, 'Reject']
         ],
         widget=widgets.RadioSelectHorizontal,
-        label='Decision 11: 50% chance to LOSE 7 dimes, 50% chance to gain 6 dimes'
+        label='Decision 11: 50% chance to LOSE 7 dimes, 50% chance to GAIN 6 dimes'
     )
 
     loss_decision_12 = models.IntegerField(
