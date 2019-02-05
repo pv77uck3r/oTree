@@ -8,6 +8,12 @@ class Instructions(Page):
     def is_displayed(self):
         return self.subsession.round_number == 1
 
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('criminal_theft')
+        }
+
 
 class Quiz(Page):
 

@@ -4,11 +4,21 @@ from .models import Constants
 
 
 class Instructions(Page):
-    pass
+
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('criminal_VCM2_ALT_ORDER')
+        }
 
 
 class Instructions2(Page):
-    pass
+
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('criminal_VCM2_ALT_ORDER')
+        }
 
 
 class Quiz_1(Page):

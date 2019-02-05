@@ -3,7 +3,12 @@ from .models import Constants
 
 
 class Introduction(Page):
-    pass
+
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('criminal_principal_agent2_ALT_ORDER')
+        }
 
 
 class QuizA(Page):

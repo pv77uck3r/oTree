@@ -15,23 +15,45 @@ class Instructions1(Page):
     def is_displayed(self):
         return self.subsession.round_number == 1
 
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('criminal_plea')
+        }
+
 
 class Instructions2(Page):
 
     def is_displayed(self):
         return self.subsession.round_number == 1
 
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('criminal_plea')
+        }
 
 class Instructions3(Page):
 
     def is_displayed(self):
         return self.subsession.round_number == 1
 
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('criminal_plea')
+        }
 
 class Instructions4(Page):
 
     def is_displayed(self):
         return self.subsession.round_number == 1
+
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('criminal_plea')
+        }
 
 
 class Instructions5(Page):
@@ -39,11 +61,23 @@ class Instructions5(Page):
     def is_displayed(self):
         return self.subsession.round_number == 1
 
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('criminal_plea')
+        }
+
 
 class Instructions6(Page):
 
     def is_displayed(self):
         return self.subsession.round_number == 1
+
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('criminal_plea')
+        }
 
 
 class Instructions7(Page):
@@ -51,17 +85,35 @@ class Instructions7(Page):
     def is_displayed(self):
         return self.subsession.round_number == 1
 
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('criminal_plea')
+        }
+
 
 class Instructions8(Page):
 
     def is_displayed(self):
         return self.subsession.round_number == 1
 
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('criminal_plea')
+        }
+
 
 class Instructions9(Page):
 
     def is_displayed(self):
         return self.subsession.round_number == 1
+
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('criminal_plea')
+        }
 
 
 class Quiz(Page):

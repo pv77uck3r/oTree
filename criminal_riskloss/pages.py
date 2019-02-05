@@ -4,13 +4,24 @@ from .models import Constants
 
 
 class Instructions(Page):
-    pass
+
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('crimial_riskloss')
+        }
 
 
 class Risk(Page):
 
     form_model = 'player'
     form_fields = ['risk_decision']
+
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('crimial_riskloss')
+        }
 
 
 class Loss(Page):
@@ -20,12 +31,24 @@ class Loss(Page):
                    'loss_decision_6', 'loss_decision_7', 'loss_decision_8', 'loss_decision_9', 'loss_decision_10',
                    'loss_decision_11', 'loss_decision_12']
 
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('crimial_riskloss')
+        }
+
 
 class Ambiguity(Page):
     form_model = 'player'
     form_fields = ['ambiguity_color_decision_1', 'ambiguity_color_decision_2', 'ambiguity_color_decision_3',
                    'ambiguity_color_decision_4', 'ambiguity_price_decision_1', 'ambiguity_price_decision_2',
                    'ambiguity_price_decision_3', 'ambiguity_price_decision_4', ]
+
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('criminal_riskloss')
+        }
 
     def before_next_page(self):
         self.player.payoffs()
@@ -92,7 +115,8 @@ class LittleResults(Page):
                 'urn2': format(urn2, '.2f'),
                 'urn3': format(urn3, '.2f'),
                 'urn4': format(urn4, '.2f'),
-                'totalurn': format(totalurn, '.2f')
+                'totalurn': format(totalurn, '.2f'),
+                'Part': self.session.config['app_sequence'].index('crimial_riskloss')
                 }
 
 class Results(Page):

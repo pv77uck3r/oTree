@@ -4,10 +4,21 @@ from .models import Constants
 
 
 class Instructions(Page):
-    pass
+
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('criminal_trust2')
+        }
 
 
 class Instructions2(Page):
+
+    def vars_for_template(self):
+        app_seq = self.session.config['app_sequence']
+        return {
+            'Part': app_seq.index('criminal_trust2')
+        }
 
     def is_displayed(self):
         return self.player.id_in_group == 1

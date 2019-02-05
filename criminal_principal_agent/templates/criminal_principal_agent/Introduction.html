@@ -1,7 +1,7 @@
 {% extends "global/Page.html" %}
 {% load otree %}
 
-{% block title %}Part 1 - Instructions{% endblock %}
+{% block title %}Part {{ Part }} - Instructions{% endblock %}
 
 {% block content %}
     {% if player.role == 'agent' %}
