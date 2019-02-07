@@ -175,7 +175,7 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 
 # Consider '', None, and '0' to be empty/false
-DEBUG = True
+DEBUG = False
 
 DEMO_PAGE_INTRO_HTML = """
 Here are various games implemented with 
