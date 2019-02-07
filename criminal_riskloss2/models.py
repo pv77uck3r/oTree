@@ -52,6 +52,11 @@ class Subsession(BaseSubsession):
                         else:
                             p.participant.vars['numheadsLoss'] = np.random.binomial(Constants.num_cointosses, p=0.5)
             elif self.session.vars['paymentmodule'] == 3:
+                for p in self.get_players():
+                    p.participant.vars['LossDecision'] = None
+                    p.participant.vars['HTLoss'] = None
+                    p.participant.vars['numheadsLoss'] = None
+                    p.participant.vars['HTRisk'] = None
                 self.session.vars['redball1'] = 0.5
                 self.session.vars['redball2'] = np.random.choice([0.4, 0.5, 0.6])
                 self.session.vars['redball3'] = np.random.choice([0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8])
@@ -256,6 +261,7 @@ class Player(BasePlayer):
 
     risk_payment = models.FloatField()
     loss_payment = models.FloatField()
+    ambiguity_payment = models.FloatField()
     ambiguity_payment1 = models.FloatField()
     ambiguity_payment2 = models.FloatField()
     ambiguity_payment3 = models.FloatField()
@@ -415,7 +421,7 @@ class Player(BasePlayer):
                 self.ModuleChoice = self.session.vars['paymentmodule']
                 if self.session.vars['paymentmodule'] == 3:
                     if self.session.vars['randprice1'] > self.ambiguity_price_decision_1:
-                        self.ambiguity_payment = self.session.vars['randprice1']
+                        self.ambiguity_payment1 = self.session.vars['randprice1']
                     else:
                         ## 1 - red, 0 - blue
                         ballcolor = np.random.binomial(1, self.session.vars['redball1'])
@@ -425,7 +431,7 @@ class Player(BasePlayer):
                             self.ambiguity_payment1 = 0
 
                     if self.session.vars['randprice2'] > self.ambiguity_price_decision_2:
-                        self.ambiguity_payment = self.session.vars['randprice2']
+                        self.ambiguity_payment2 = self.session.vars['randprice2']
                     else:
                         ## 1 - red, 0 - blue
                         ballcolor = np.random.binomial(1, self.session.vars['redball2'])
@@ -435,7 +441,7 @@ class Player(BasePlayer):
                             self.ambiguity_payment2 = 0
 
                     if self.session.vars['randprice3'] > self.ambiguity_price_decision_3:
-                        self.ambiguity_payment = self.session.vars['randprice3']
+                        self.ambiguity_payment3 = self.session.vars['randprice3']
                     else:
                         ## 1 - red, 0 - blue
                         ballcolor = np.random.binomial(1, self.session.vars['redball3'])
@@ -445,7 +451,7 @@ class Player(BasePlayer):
                             self.ambiguity_payment3 = 0
 
                     if self.session.vars['randprice4'] > self.ambiguity_price_decision_4:
-                        self.ambiguity_payment = self.session.vars['randprice4']
+                        self.ambiguity_payment4 = self.session.vars['randprice4']
                     else:
                         ## 1 - red, 0 - blue
                         ballcolor = np.random.binomial(1, self.session.vars['redball4'])

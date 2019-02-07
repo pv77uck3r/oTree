@@ -872,6 +872,9 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
+    payoffmodule1 = models.CurrencyField()
+    payoffmodule4 = models.CurrencyField()
+
     quiz1 = models.IntegerField(
         widget=widgets.RadioSelect,
         choices=[

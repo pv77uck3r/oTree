@@ -100,6 +100,12 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
+
+    amount_offered = models.CurrencyField()
+    effort = models.FloatField()
+    effort_cost = models.IntegerField()
+    accept = models.BooleanField()
+
     total_return = models.CurrencyField(
         doc="""Total return from agent's effort = [Return for single unit of
             agent's work effort] * [Agent's work effort]"""
@@ -444,469 +450,860 @@ class Group(BaseGroup):
             amount_offered = p1.participant.vars['agent_fixed_pay_1']
             if amount_offered == 0:
                 accept = p2.participant.vars['contract_accepted_1']
+                self.accept = accept
                 if accept == True:
                     effort = p2.participant.vars['agent_work_effort_1']
+                    self.effort = effort
                     p1.participant.vars['payoffmodule1'] = (120 - amount_offered)*(effort / 10)
                     effort_cost = cost_from_effort(effort)
+                    self.effort_cost = effort_cost
                     p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule1'] = 0
+                    p2.participant.vars['payoffmodule1'] = 0
             if amount_offered == 10:
                 accept = p2.participant.vars['contract_accepted_2']
+                self.accept = accept
                 if accept == True:
                     effort = p2.participant.vars['agent_work_effort_2']
+                    self.effort = effort
                     p1.participant.vars['payoffmodule1'] = (120 - amount_offered)*(effort / 10)
                     effort_cost = cost_from_effort(effort)
+                    self.effort_cost = effort_cost
                     p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule1'] = 0
+                    p2.participant.vars['payoffmodule1'] = 0
             if amount_offered == 20:
                 accept = p2.participant.vars['contract_accepted_3']
+                self.accept = accept
                 if accept == True:
                     effort = p2.participant.vars['agent_work_effort_3']
+                    self.effort = effort
                     p1.participant.vars['payoffmodule1'] = (120 - amount_offered)*(effort / 10)
                     effort_cost = cost_from_effort(effort)
+                    self.effort_cost = effort_cost
                     p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule1'] = 0
+                    p2.participant.vars['payoffmodule1'] = 0
             if amount_offered == 30:
                 accept = p2.participant.vars['contract_accepted_4']
+                self.accept = accept
                 if accept == True:
                     effort = p2.participant.vars['agent_work_effort_4']
+                    self.effort = effort
                     p1.participant.vars['payoffmodule1'] = (120 - amount_offered)*(effort / 10)
                     effort_cost = cost_from_effort(effort)
+                    self.effort_cost = effort_cost
                     p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule1'] = 0
+                    p2.participant.vars['payoffmodule1'] = 0
             if amount_offered == 40:
                 accept = p2.participant.vars['contract_accepted_5']
+                self.accept = accept
                 if accept == True:
                     effort = p2.participant.vars['agent_work_effort_5']
+                    self.effort = effort
                     p1.participant.vars['payoffmodule1'] = (120 - amount_offered)*(effort / 10)
                     effort_cost = cost_from_effort(effort)
+                    self.effort_cost = effort_cost
                     p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule1'] = 0
+                    p2.participant.vars['payoffmodule1'] = 0
             if amount_offered == 50:
                 accept = p2.participant.vars['contract_accepted_6']
+                self.accept = accept
                 if accept == True:
                     effort = p2.participant.vars['agent_work_effort_6']
+                    self.effort = effort
                     p1.participant.vars['payoffmodule1'] = (120 - amount_offered)*(effort / 10)
                     effort_cost = cost_from_effort(effort)
+                    self.effort_cost = effort_cost
                     p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule1'] = 0
+                    p2.participant.vars['payoffmodule1'] = 0
             if amount_offered == 60:
                 accept = p2.participant.vars['contract_accepted_7']
+                self.accept = accept
                 if accept == True:
                     effort = p2.participant.vars['agent_work_effort_7']
+                    self.effort = effort
                     p1.participant.vars['payoffmodule1'] = (120 - amount_offered)*(effort / 10)
                     effort_cost = cost_from_effort(effort)
+                    self.effort_cost = effort_cost
                     p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule1'] = 0
+                    p2.participant.vars['payoffmodule1'] = 0
             if amount_offered == 70:
                 accept = p2.participant.vars['contract_accepted_8']
+                self.accept = accept
                 if accept == True:
                     effort = p2.participant.vars['agent_work_effort_8']
+                    self.effort = effort
                     p1.participant.vars['payoffmodule1'] = (120 - amount_offered)*(effort / 10)
                     effort_cost = cost_from_effort(effort)
+                    self.effort_cost = effort_cost
                     p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule1'] = 0
+                    p2.participant.vars['payoffmodule1'] = 0
             if amount_offered == 80:
                 accept = p2.participant.vars['contract_accepted_9']
+                self.accept = accept
                 if accept == True:
                     effort = p2.participant.vars['agent_work_effort_9']
+                    self.effort = effort
                     p1.participant.vars['payoffmodule1'] = (120 - amount_offered)*(effort / 10)
                     effort_cost = cost_from_effort(effort)
+                    self.effort_cost = effort_cost
                     p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule1'] = 0
+                    p2.participant.vars['payoffmodule1'] = 0
             if amount_offered == 90:
                 accept = p2.participant.vars['contract_accepted_10']
+                self.accept = accept
                 if accept == True:
                     effort = p2.participant.vars['agent_work_effort_10']
+                    self.effort = effort
                     p1.participant.vars['payoffmodule1'] = (120 - amount_offered)*(effort / 10)
                     effort_cost = cost_from_effort(effort)
+                    self.effort_cost = effort_cost
                     p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule1'] = 0
+                    p2.participant.vars['payoffmodule1'] = 0
             if amount_offered == 100:
                 accept = p2.participant.vars['contract_accepted_11']
+                self.accept = accept
                 if accept == True:
                     effort = p2.participant.vars['agent_work_effort_11']
+                    self.effort = effort
                     p1.participant.vars['payoffmodule1'] = (120 - amount_offered)*(effort / 10)
                     effort_cost = cost_from_effort(effort)
+                    self.effort_cost = effort_cost
                     p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule1'] = 0
+                    p2.participant.vars['payoffmodule1'] = 0
             if amount_offered == 110:
                 accept = p2.participant.vars['contract_accepted_12']
+                self.accept = accept
                 if accept == True:
                     effort = p2.participant.vars['agent_work_effort_12']
+                    self.effort = effort
                     p1.participant.vars['payoffmodule1'] = (120 - amount_offered)*(effort / 10)
                     effort_cost = cost_from_effort(effort)
+                    self.effort_cost = effort_cost
                     p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule1'] = 0
+                    p2.participant.vars['payoffmodule1'] = 0
             if amount_offered == 120:
                 accept = p2.participant.vars['contract_accepted_13']
+                self.accept = accept
                 if accept == True:
                     effort = p2.participant.vars['agent_work_effort_13']
+                    self.effort = effort
                     p1.participant.vars['payoffmodule1'] = (120 - amount_offered)*(effort / 10)
                     effort_cost = cost_from_effort(effort)
+                    self.effort_cost = effort_cost
                     p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule1'] = 0
+                    p2.participant.vars['payoffmodule1'] = 0
 
         if p2.participant.vars['proschoice'] == 2 or p2.participant.vars['proschoice'] == 3:
             if p2.participant.vars['ending_guilt_level'] == 0:
                 amount_offered = p1.participant.vars['agent_fixed_pay_2']
                 if amount_offered == 0:
                     accept = p2.participant.vars['contract_accepted_1']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_1']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 10:
                     accept = p2.participant.vars['contract_accepted_2']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_2']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 20:
                     accept = p2.participant.vars['contract_accepted_3']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_3']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 30:
                     accept = p2.participant.vars['contract_accepted_4']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_4']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 40:
                     accept = p2.participant.vars['contract_accepted_5']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_5']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 50:
                     accept = p2.participant.vars['contract_accepted_6']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_6']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 60:
                     accept = p2.participant.vars['contract_accepted_7']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_7']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 70:
                     accept = p2.participant.vars['contract_accepted_8']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_8']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 80:
                     accept = p2.participant.vars['contract_accepted_9']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_9']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 90:
                     accept = p2.participant.vars['contract_accepted_10']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_10']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 100:
                     accept = p2.participant.vars['contract_accepted_11']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_11']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 110:
                     accept = p2.participant.vars['contract_accepted_12']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_12']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 120:
                     accept = p2.participant.vars['contract_accepted_13']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_13']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
             if p2.participant.vars['ending_guilt_level'] == 1:
                 amount_offered = p1.participant.vars['agent_fixed_pay_3']
                 if amount_offered == 0:
                     accept = p2.participant.vars['contract_accepted_1']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_1']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 10:
                     accept = p2.participant.vars['contract_accepted_2']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_2']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 20:
                     accept = p2.participant.vars['contract_accepted_3']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_3']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 30:
                     accept = p2.participant.vars['contract_accepted_4']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_4']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 40:
                     accept = p2.participant.vars['contract_accepted_5']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_5']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 50:
                     accept = p2.participant.vars['contract_accepted_6']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_6']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 60:
                     accept = p2.participant.vars['contract_accepted_7']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_7']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 70:
                     accept = p2.participant.vars['contract_accepted_8']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_8']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 80:
                     accept = p2.participant.vars['contract_accepted_9']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_9']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 90:
                     accept = p2.participant.vars['contract_accepted_10']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_10']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 100:
                     accept = p2.participant.vars['contract_accepted_11']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_11']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 110:
                     accept = p2.participant.vars['contract_accepted_12']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_12']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
-                        p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                        self.effort_cost = effort_cost
+                        p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost +
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 120:
                     accept = p2.participant.vars['contract_accepted_13']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_13']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
             if p2.participant.vars['ending_guilt_level'] == 2:
                 amount_offered = p1.participant.vars['agent_fixed_pay_4']
                 if amount_offered == 0:
                     accept = p2.participant.vars['contract_accepted_1']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_1']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 10:
                     accept = p2.participant.vars['contract_accepted_2']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_2']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 20:
                     accept = p2.participant.vars['contract_accepted_3']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_3']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 30:
                     accept = p2.participant.vars['contract_accepted_4']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_4']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 40:
                     accept = p2.participant.vars['contract_accepted_5']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_5']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 50:
                     accept = p2.participant.vars['contract_accepted_6']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_6']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 60:
                     accept = p2.participant.vars['contract_accepted_7']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_7']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 70:
                     accept = p2.participant.vars['contract_accepted_8']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_8']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 80:
                     accept = p2.participant.vars['contract_accepted_9']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_9']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 90:
                     accept = p2.participant.vars['contract_accepted_10']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_10']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 100:
                     accept = p2.participant.vars['contract_accepted_11']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_11']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 110:
                     accept = p2.participant.vars['contract_accepted_12']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_12']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 120:
                     accept = p2.participant.vars['contract_accepted_13']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_13']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
             if p2.participant.vars['ending_guilt_level'] == 3:
                 amount_offered = p1.participant.vars['agent_fixed_pay_5']
                 if amount_offered == 0:
                     accept = p2.participant.vars['contract_accepted_1']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_1']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 10:
                     accept = p2.participant.vars['contract_accepted_2']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_2']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 20:
                     accept = p2.participant.vars['contract_accepted_3']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_3']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 30:
                     accept = p2.participant.vars['contract_accepted_4']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_4']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 40:
                     accept = p2.participant.vars['contract_accepted_5']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_5']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 50:
                     accept = p2.participant.vars['contract_accepted_6']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_6']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 60:
                     accept = p2.participant.vars['contract_accepted_7']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_7']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 70:
                     accept = p2.participant.vars['contract_accepted_8']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_8']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 80:
                     accept = p2.participant.vars['contract_accepted_9']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_9']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 90:
                     accept = p2.participant.vars['contract_accepted_10']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_10']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 100:
                     accept = p2.participant.vars['contract_accepted_11']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_11']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 110:
                     accept = p2.participant.vars['contract_accepted_12']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_12']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
                 if amount_offered == 120:
                     accept = p2.participant.vars['contract_accepted_13']
+                    self.accept = accept
                     if accept == True:
                         effort = p2.participant.vars['agent_work_effort_13']
+                        self.effort = effort
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
+                        self.effort_cost = effort_cost
                         p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule1'] = 0
+                        p2.participant.vars['payoffmodule1'] = 0
+        self.amount_offered = amount_offered
         p1.payoffmodule1 = p1.participant.vars['payoffmodule1'] * .10 + 2
         p2.payoffmodule1 = p2.participant.vars['payoffmodule1'] * .10 + 2
 
@@ -922,6 +1319,9 @@ class Group(BaseGroup):
                     p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                     effort_cost = cost_from_effort(effort)
                     p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule4'] = 0
+                    p2.participant.vars['payoffmodule4'] = 0
             if amount_offered == 10:
                 accept = p2.contract_accepted_2
                 if accept == True:
@@ -929,6 +1329,9 @@ class Group(BaseGroup):
                     p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                     effort_cost = cost_from_effort(effort)
                     p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule4'] = 0
+                    p2.participant.vars['payoffmodule4'] = 0
             if amount_offered == 20:
                 accept = p2.contract_accepted_3
                 if accept == True:
@@ -936,6 +1339,9 @@ class Group(BaseGroup):
                     p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                     effort_cost = cost_from_effort(effort)
                     p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule4'] = 0
+                    p2.participant.vars['payoffmodule4'] = 0
             if amount_offered == 30:
                 accept = p2.contract_accepted_4
                 if accept == True:
@@ -943,6 +1349,9 @@ class Group(BaseGroup):
                     p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                     effort_cost = cost_from_effort(effort)
                     p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule4'] = 0
+                    p2.participant.vars['payoffmodule4'] = 0
             if amount_offered == 40:
                 accept = p2.contract_accepted_5
                 if accept == True:
@@ -950,6 +1359,9 @@ class Group(BaseGroup):
                     p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                     effort_cost = cost_from_effort(effort)
                     p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule4'] = 0
+                    p2.participant.vars['payoffmodule4'] = 0
             if amount_offered == 50:
                 accept = p2.contract_accepted_6
                 if accept == True:
@@ -957,6 +1369,9 @@ class Group(BaseGroup):
                     p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                     effort_cost = cost_from_effort(effort)
                     p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule4'] = 0
+                    p2.participant.vars['payoffmodule4'] = 0
             if amount_offered == 60:
                 accept = p2.contract_accepted_7
                 if accept == True:
@@ -964,6 +1379,9 @@ class Group(BaseGroup):
                     p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                     effort_cost = cost_from_effort(effort)
                     p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule4'] = 0
+                    p2.participant.vars['payoffmodule4'] = 0
             if amount_offered == 70:
                 accept = p2.contract_accepted_8
                 if accept == True:
@@ -971,6 +1389,9 @@ class Group(BaseGroup):
                     p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                     effort_cost = cost_from_effort(effort)
                     p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule4'] = 0
+                    p2.participant.vars['payoffmodule4'] = 0
             if amount_offered == 80:
                 accept = p2.contract_accepted_9
                 if accept == True:
@@ -978,6 +1399,9 @@ class Group(BaseGroup):
                     p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                     effort_cost = cost_from_effort(effort)
                     p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule4'] = 0
+                    p2.participant.vars['payoffmodule4'] = 0
             if amount_offered == 90:
                 accept = p2.contract_accepted_10
                 if accept == True:
@@ -985,6 +1409,9 @@ class Group(BaseGroup):
                     p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                     effort_cost = cost_from_effort(effort)
                     p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule4'] = 0
+                    p2.participant.vars['payoffmodule4'] = 0
             if amount_offered == 100:
                 accept = p2.contract_accepted_11
                 if accept == True:
@@ -992,6 +1419,9 @@ class Group(BaseGroup):
                     p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                     effort_cost = cost_from_effort(effort)
                     p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule4'] = 0
+                    p2.participant.vars['payoffmodule4'] = 0
             if amount_offered == 110:
                 accept = p2.contract_accepted_12
                 if accept == True:
@@ -999,6 +1429,9 @@ class Group(BaseGroup):
                     p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                     effort_cost = cost_from_effort(effort)
                     p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule4'] = 0
+                    p2.participant.vars['payoffmodule4'] = 0
             if amount_offered == 120:
                 accept = p2.contract_accepted_13
                 if accept == True:
@@ -1006,6 +1439,9 @@ class Group(BaseGroup):
                     p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                     effort_cost = cost_from_effort(effort)
                     p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                else:
+                    p1.participant.vars['payoffmodule4'] = 0
+                    p2.participant.vars['payoffmodule4'] = 0
 
         if p2.participant.vars['proschoice'] == 2 or p2.participant.vars['proschoice'] == 3:
             if p2.participant.vars['ending_guilt_level'] == 0:
@@ -1017,6 +1453,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 10:
                     accept = p2.contract_accepted_2
                     if accept == True:
@@ -1024,6 +1463,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 20:
                     accept = p2.contract_accepted_3
                     if accept == True:
@@ -1031,6 +1473,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 30:
                     accept = p2.contract_accepted_4
                     if accept == True:
@@ -1038,6 +1483,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 40:
                     accept = p2.contract_accepted_5
                     if accept == True:
@@ -1045,6 +1493,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 50:
                     accept = p2.contract_accepted_6
                     if accept == True:
@@ -1052,6 +1503,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 60:
                     accept = p2.contract_accepted_7
                     if accept == True:
@@ -1059,6 +1513,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 70:
                     accept = p2.contract_accepted_8
                     if accept == True:
@@ -1066,6 +1523,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 80:
                     accept = p2.contract_accepted_9
                     if accept == True:
@@ -1073,6 +1533,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 90:
                     accept = p2.contract_accepted_10
                     if accept == True:
@@ -1080,6 +1543,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 100:
                     accept = p2.contract_accepted_11
                     if accept == True:
@@ -1087,6 +1553,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 110:
                     accept = p2.contract_accepted_12
                     if accept == True:
@@ -1094,6 +1563,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 120:
                     accept = p2.contract_accepted_13
                     if accept == True:
@@ -1101,6 +1573,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
             if p2.participant.vars['ending_guilt_level'] == 1:
                 amount_offered = p1.agent_fixed_pay_3
                 if amount_offered == 0:
@@ -1110,6 +1585,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 10:
                     accept = p2.contract_accepted_2
                     if accept == True:
@@ -1117,6 +1595,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 20:
                     accept = p2.contract_accepted_3
                     if accept == True:
@@ -1124,6 +1605,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 30:
                     accept = p2.contract_accepted_4
                     if accept == True:
@@ -1131,6 +1615,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 40:
                     accept = p2.contract_accepted_5
                     if accept == True:
@@ -1138,6 +1625,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 50:
                     accept = p2.contract_accepted_6
                     if accept == True:
@@ -1145,6 +1635,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 60:
                     accept = p2.contract_accepted_7
                     if accept == True:
@@ -1152,6 +1645,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 70:
                     accept = p2.contract_accepted_8
                     if accept == True:
@@ -1159,6 +1655,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 80:
                     accept = p2.contract_accepted_9
                     if accept == True:
@@ -1166,6 +1665,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 90:
                     accept = p2.contract_accepted_10
                     if accept == True:
@@ -1173,6 +1675,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 100:
                     accept = p2.contract_accepted_11
                     if accept == True:
@@ -1180,6 +1685,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 110:
                     accept = p2.contract_accepted_12
                     if accept == True:
@@ -1187,6 +1695,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 120:
                     accept = p2.contract_accepted_13
                     if accept == True:
@@ -1194,6 +1705,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
             if p2.participant.vars['ending_guilt_level'] == 2:
                 amount_offered = p1.agent_fixed_pay_4
                 if amount_offered == 0:
@@ -1203,6 +1717,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 10:
                     accept = p2.contract_accepted_2
                     if accept == True:
@@ -1210,6 +1727,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 20:
                     accept = p2.contract_accepted_3
                     if accept == True:
@@ -1217,6 +1737,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 30:
                     accept = p2.contract_accepted_4
                     if accept == True:
@@ -1224,6 +1747,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 40:
                     accept = p2.contract_accepted_5
                     if accept == True:
@@ -1231,6 +1757,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 50:
                     accept = p2.contract_accepted_6
                     if accept == True:
@@ -1238,6 +1767,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 60:
                     accept = p2.contract_accepted_7
                     if accept == True:
@@ -1245,6 +1777,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 70:
                     accept = p2.contract_accepted_8
                     if accept == True:
@@ -1252,6 +1787,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 80:
                     accept = p2.contract_accepted_9
                     if accept == True:
@@ -1259,6 +1797,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 90:
                     accept = p2.contract_accepted_10
                     if accept == True:
@@ -1266,6 +1807,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 100:
                     accept = p2.contract_accepted_11
                     if accept == True:
@@ -1273,6 +1817,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 110:
                     accept = p2.contract_accepted_12
                     if accept == True:
@@ -1280,6 +1827,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 120:
                     accept = p2.contract_accepted_13
                     if accept == True:
@@ -1287,6 +1837,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
             if p2.participant.vars['ending_guilt_level'] == 3:
                 amount_offered = p1.agent_fixed_pay_5
                 if amount_offered == 0:
@@ -1296,6 +1849,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 10:
                     accept = p2.contract_accepted_2
                     if accept == True:
@@ -1303,6 +1859,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 20:
                     accept = p2.contract_accepted_3
                     if accept == True:
@@ -1310,6 +1869,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 30:
                     accept = p2.contract_accepted_4
                     if accept == True:
@@ -1317,6 +1879,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 40:
                     accept = p2.contract_accepted_5
                     if accept == True:
@@ -1324,6 +1889,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 50:
                     accept = p2.contract_accepted_6
                     if accept == True:
@@ -1331,6 +1899,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 60:
                     accept = p2.contract_accepted_7
                     if accept == True:
@@ -1338,6 +1909,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 70:
                     accept = p2.contract_accepted_8
                     if accept == True:
@@ -1345,6 +1919,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 80:
                     accept = p2.contract_accepted_9
                     if accept == True:
@@ -1352,6 +1929,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 90:
                     accept = p2.contract_accepted_10
                     if accept == True:
@@ -1359,6 +1939,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 100:
                     accept = p2.contract_accepted_11
                     if accept == True:
@@ -1366,6 +1949,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 110:
                     accept = p2.contract_accepted_12
                     if accept == True:
@@ -1373,6 +1959,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
                 if amount_offered == 120:
                     accept = p2.contract_accepted_13
                     if accept == True:
@@ -1380,6 +1969,9 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         p2.participant.vars['payoffmodule4'] = amount_offered - effort_cost + 20
+                    else:
+                        p1.participant.vars['payoffmodule4'] = 0
+                        p2.participant.vars['payoffmodule4'] = 0
         p1.payoffmodule4 = p1.participant.vars['payoffmodule4'] * .10 + 2
         p2.payoffmodule4 = p2.participant.vars['payoffmodule4'] * .10 + 2
 
