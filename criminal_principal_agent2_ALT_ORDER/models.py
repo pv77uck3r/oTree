@@ -107,6 +107,7 @@ class Group(BaseGroup):
 
     agent_fixed_pay_1 = models.CurrencyField(
         choices=range(0, 120 + 1, 10),
+        widget=widgets.RadioSelectHorizontal(),
         doc="""Amount offered as fixed pay to agent.""",
         min=Constants.min_fixed_payment, max=Constants.max_fixed_payment,
         label="What fixed payment will you offer to Participant B "
@@ -117,6 +118,7 @@ class Group(BaseGroup):
 
     agent_fixed_pay_2 = models.CurrencyField(
         choices=range(0, 120 + 1, 10),
+        widget=widgets.RadioSelectHorizontal(),
         doc="""Amount offered as fixed pay to agent.""",
         min=Constants.min_fixed_payment, max=Constants.max_fixed_payment,
         label="What fixed payment will you offer to Participant B "
@@ -127,6 +129,7 @@ class Group(BaseGroup):
 
     agent_fixed_pay_3 = models.CurrencyField(
         choices=range(0, 120 + 1, 10),
+        widget=widgets.RadioSelectHorizontal(),
         doc="""Amount offered as fixed pay to agent.""",
         min=Constants.min_fixed_payment, max=Constants.max_fixed_payment,
         label="What fixed payment will you offer to Participant B "
@@ -136,6 +139,7 @@ class Group(BaseGroup):
 
     agent_fixed_pay_4 = models.CurrencyField(
         choices=range(0, 120 + 1, 10),
+        widget=widgets.RadioSelectHorizontal(),
         doc="""Amount offered as fixed pay to agent.""",
         min=Constants.min_fixed_payment, max=Constants.max_fixed_payment,
         label="What fixed payment will you offer to Participant B "
@@ -145,6 +149,7 @@ class Group(BaseGroup):
 
     agent_fixed_pay_5 = models.CurrencyField(
         choices=range(0, 120 + 1, 10),
+        widget=widgets.RadioSelectHorizontal(),
         doc="""Amount offered as fixed pay to agent.""",
         min=Constants.min_fixed_payment, max=Constants.max_fixed_payment,
         label="What fixed payment will you offer to Participant B "

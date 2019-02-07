@@ -18,7 +18,7 @@ class Instructions1(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('crimial_plea_ALT_3')
+            'Part': app_seq.index('criminal_plea_ALT_3')
         }
 
 
@@ -30,7 +30,7 @@ class Instructions2(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('crimial_plea_ALT_3')
+            'Part': app_seq.index('criminal_plea_ALT_3')
         }
 
 
@@ -42,7 +42,7 @@ class Instructions3(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('crimial_plea_ALT_3')
+            'Part': app_seq.index('criminal_plea_ALT_3')
         }
 
 
@@ -54,7 +54,7 @@ class Instructions4(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('crimial_plea_ALT_3')
+            'Part': app_seq.index('criminal_plea_ALT_3')
         }
 
 
@@ -66,7 +66,7 @@ class Instructions5(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('crimial_plea_ALT_3')
+            'Part': app_seq.index('criminal_plea_ALT_3')
         }
 
 
@@ -78,7 +78,7 @@ class Instructions6(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('crimial_plea_ALT_3')
+            'Part': app_seq.index('criminal_plea_ALT_3')
         }
 
 
@@ -102,7 +102,7 @@ class Instructions8(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('crimial_plea_ALT_3')
+            'Part': app_seq.index('criminal_plea_ALT_3')
         }
 
 
@@ -114,7 +114,7 @@ class Instructions9(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('crimial_plea_ALT_3')
+            'Part': app_seq.index('criminal_plea_ALT_3')
         }
 
 
@@ -508,6 +508,17 @@ class SetGroups2(WaitPage):
         self.subsession.set_groups_2()
 
 
+class GenTrustGame1Payoffs(WaitPage):
+
+    def after_all_players_arrive(self):
+        self.group.set_payoffs_1()
+
+
+class GenTrustGame2Payoffs(WaitPage):
+    def after_all_players_arrive(self):
+        self.group.set_payoffs_2()
+
+
 page_sequence = [
     InfoDump,
     Instructions1,
@@ -523,5 +534,9 @@ page_sequence = [
     Preparation,
     Plea_Decisions,
     Trial_Decisions,
-    Results
+    Results,
+    SetGroups1,
+    GenTrustGame1Payoffs,
+    SetGroups2,
+    GenTrustGame2Payoffs
 ]

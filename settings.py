@@ -96,7 +96,7 @@ SESSION_CONFIGS = [
         'name': 'criminal_wrapper9',
         'display_name': "NEW 2 ORDER: Innocence Problem - Gift Exchange Game - All Tasks",
         'num_demo_participants': 8,
-        'app_sequence': ['criminal_wrapper', 'criminal_principal_agent', 'criminal_principal_agent2', 'criminal_theft', 'criminal_plea_ALT_3',
+        'app_sequence': ['criminal_wrapper', 'criminal_principal_agent', 'criminal_principal_agent2_ALT_ORDER', 'criminal_theft', 'criminal_plea_ALT_3',
                          'criminal_riskloss2', 'criminal_survey'],
     },
     # {
