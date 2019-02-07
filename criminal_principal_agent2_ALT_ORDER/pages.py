@@ -100,7 +100,7 @@ class Accept(Page):
         self.group.set_accepts()
 
 
-class ResultsWaitPage(WaitPage):
+class KeepDecisions(WaitPage):
 
     def after_all_players_arrive(self):
         self.group.keep_decisions()
@@ -114,5 +114,6 @@ page_sequence = [Introduction,
                  QuizA,
                  QuizP,
                  Offer,
-                 Accept
+                 Accept,
+                 KeepDecisions
                  ]
