@@ -944,7 +944,7 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule1'] = (120 - amount_offered) * (effort / 10)
                         effort_cost = cost_from_effort(effort)
                         self.effort_cost = effort_cost
-                        p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost +
+                        p2.participant.vars['payoffmodule1'] = amount_offered - effort_cost + 20
                     else:
                         p1.participant.vars['payoffmodule1'] = 0
                         p2.participant.vars['payoffmodule1'] = 0
