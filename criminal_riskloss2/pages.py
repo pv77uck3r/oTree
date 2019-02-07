@@ -20,7 +20,7 @@ class Risk(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('criminal_riskloss')
+            'Part': app_seq.index('criminal_riskloss2')
         }
 
 
@@ -34,7 +34,7 @@ class Loss(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('criminal_riskloss')
+            'Part': app_seq.index('criminal_riskloss2')
         }
 
 
@@ -47,7 +47,7 @@ class Ambiguity(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('criminal_riskloss')
+            'Part': app_seq.index('criminal_riskloss2')
         }
 
     def before_next_page(self):
