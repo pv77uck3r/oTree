@@ -99,12 +99,12 @@ SESSION_CONFIGS = [
         'app_sequence': ['criminal_wrapper', 'criminal_principal_agent', 'criminal_principal_agent2_ALT_ORDER', 'criminal_theft', 'criminal_plea_ALT_3',
                          'criminal_riskloss2', 'criminal_survey'],
     },
-    # {
-    #     'name': 'criminal_riskloss',
-    #     'display_name': "Innocence Problem - Risk/Loss/Ambiguity",
-    #     'num_demo_participants': 1,
-    #     'app_sequence': ['criminal_riskloss'],
-    # },
+    {
+        'name': 'criminal_riskloss',
+        'display_name': "Innocence Problem - Risk/Loss/Ambiguity",
+        'num_demo_participants': 1,
+        'app_sequence': ['criminal_riskloss'],
+    },
     # {
     #     'name': 'criminal_survey',
     #     'display_name': "Innocence Problem - Survey",

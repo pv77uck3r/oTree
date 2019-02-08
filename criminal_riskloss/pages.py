@@ -1,6 +1,7 @@
 from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
+import random
 
 
 class Instructions(Page):
@@ -132,11 +133,19 @@ class Results(Page):
                 }
 
 
-page_sequence = [
-    Instructions,
+First = [Instructions]
+
+Second = [
     Risk,
     Loss,
-    Ambiguity,
+    Ambiguity
+]
+
+random.shuffle(Second)
+
+Third = [
     LittleResults,
     Results
 ]
+
+page_sequence = First + Second + Third
