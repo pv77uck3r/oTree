@@ -51,6 +51,9 @@ class Ambiguity(Page):
             'Part': app_seq.index('criminal_riskloss')
         }
 
+
+class ReadyForResults(Page):
+
     def before_next_page(self):
         self.player.payoffs()
         self.player.set_payoffs()
@@ -144,6 +147,7 @@ Second = [
 random.shuffle(Second)
 
 Third = [
+    ReadyForResults,
     LittleResults,
     Results
 ]
