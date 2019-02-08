@@ -459,9 +459,9 @@ class Group(BaseGroup):
         payoff1 = (Constants.endowment - contribution1) + groupaccountreturn
         payoff2 = (Constants.endowment - contribution2) + groupaccountreturn
         payoff3 = (Constants.endowment - contribution3) + groupaccountreturn
-        p1.participant.vars['payoffmodule1'] = payoff1
-        p2.participant.vars['payoffmodule1'] = payoff2
-        p3.participant.vars['payoffmodule1'] = payoff3
+        p1.participant.vars['payoffmodule1'] = payoff1 * 0.25
+        p2.participant.vars['payoffmodule1'] = payoff2 * 0.25
+        p3.participant.vars['payoffmodule1'] = payoff3 * 0.25
 
     def set_payoff_2(self):
         p1 = self.get_player_by_id(1)
@@ -807,9 +807,9 @@ class Group(BaseGroup):
         payoff1 = (Constants.endowment - contribution1) + groupaccountreturn
         payoff2 = (Constants.endowment - contribution2) + groupaccountreturn
         payoff3 = (Constants.endowment - contribution3) + groupaccountreturn
-        p1.participant.vars['payoffmodule4'] = payoff1
-        p2.participant.vars['payoffmodule4'] = payoff2
-        p3.participant.vars['payoffmodule4'] = payoff3
+        p1.participant.vars['payoffmodule4'] = payoff1 * 0.25
+        p2.participant.vars['payoffmodule4'] = payoff2 * 0.25
+        p3.participant.vars['payoffmodule4'] = payoff3 * 0.25
 
 
 class Player(BasePlayer):

@@ -169,7 +169,7 @@ class Group(BaseGroup):
     #     widget=widgets.RadioSelectHorizontal
     # )
 
-    agent_work_effort_1 = make_field('What amount of effort would you select if Participant A\'s contract were for 10 '
+    agent_work_effort_1 = make_field('What amount of effort would you select if Participant A\'s contract were for 0 '
                                      'dimes in fixed payment?')
 
     agent_work_cost_1 = models.CurrencyField(
@@ -177,7 +177,7 @@ class Group(BaseGroup):
         label="Would you accept a contract for 0 dimes in fixed payment?"
     )
 
-    agent_work_effort_2 = make_field('What amount of effort would you select if Participant A\'s contract were for 0 '
+    agent_work_effort_2 = make_field('What amount of effort would you select if Participant A\'s contract were for 10 '
                                      'dimes in fixed payment?')
 
     agent_work_effort_3 = make_field('What amount of effort would you select if Participant A\'s contract were for 20 '
@@ -1347,8 +1347,10 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule1'] = 0
                         p2.participant.vars['payoffmodule1'] = 0
         self.amount_offered = amount_offered
-        p1.payoffmodule1 = p1.participant.vars['payoffmodule1'] * .10 + 2
-        p2.payoffmodule1 = p2.participant.vars['payoffmodule1'] * .10 + 2
+        p1.participant.vars['payoffmodule1'] = p1.participant.vars['payoffmodule1'] * .10 + 2
+        p2.participant.vars['payoffmodule1'] = p2.participant.vars['payoffmodule1'] * .10 + 2
+        p1.payoffmodule1 = p1.participant.vars['payoffmodule1']
+        p2.payoffmodule1 = p2.participant.vars['payoffmodule1']
 
     def set_payoffs_2(self):
         p1 = self.get_player_by_id(1)
@@ -2211,8 +2213,10 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule4'] = 0
                         p2.participant.vars['payoffmodule4'] = 0
         self.amount_offered = amount_offered
-        p1.payoffmodule4 = p1.participant.vars['payoffmodule4'] * .10 + 2
-        p2.payoffmodule4 = p2.participant.vars['payoffmodule4'] * .10 + 2
+        p1.participant.vars['payoffmodule4'] = p1.participant.vars['payoffmodule4'] * .10 + 2
+        p2.participant.vars['payoffmodule4'] = p2.participant.vars['payoffmodule4'] * .10 + 2
+        p1.payoffmodule4 = p1.participant.vars['payoffmodule4']
+        p2.payoffmodule4 = p2.participant.vars['payoffmodule4']
 
     # def set_payoffs(self):
     #     principal = self.get_player_by_role('principal')

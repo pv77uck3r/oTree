@@ -163,7 +163,7 @@ class Group(BaseGroup):
     #     widget=widgets.RadioSelectHorizontal
     # )
 
-    agent_work_effort_1 = make_field('What amount of effort would you select if Participant A\'s contract were for 10 '
+    agent_work_effort_1 = make_field('What amount of effort would you select if Participant A\'s contract were for 0 '
                                      'dimes in fixed payment?')
 
     agent_work_cost_1 = models.CurrencyField(
@@ -171,7 +171,7 @@ class Group(BaseGroup):
         label="Would you accept a contract for 0 dimes in fixed payment?"
     )
 
-    agent_work_effort_2 = make_field('What amount of effort would you select if Participant A\'s contract were for 0 '
+    agent_work_effort_2 = make_field('What amount of effort would you select if Participant A\'s contract were for 10 '
                                      'dimes in fixed payment?')
 
     agent_work_effort_3 = make_field('What amount of effort would you select if Participant A\'s contract were for 20 '

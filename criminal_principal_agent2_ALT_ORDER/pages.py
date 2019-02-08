@@ -106,11 +106,19 @@ class KeepDecisions(WaitPage):
         self.group.keep_decisions()
 
 
+class SetGroups2(WaitPage):
+    wait_for_all_groups = True
+
+    def after_all_players_arrive(self):
+        self.subsession.set_groups_2()
+
+
 class Results(Page):
     pass
 
 
-page_sequence = [Introduction,
+page_sequence = [SetGroups2,
+                 Introduction,
                  QuizA,
                  QuizP,
                  Offer,
