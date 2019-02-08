@@ -420,6 +420,8 @@ class Player(BasePlayer):
             else:
                 self.ModuleChoice = self.session.vars['paymentmodule']
                 if self.session.vars['paymentmodule'] == 3:
+                    self.risk_payment = 0
+                    self.loss_payment = 0
                     if self.session.vars['randprice1'] > self.ambiguity_price_decision_1:
                         self.ambiguity_payment1 = self.session.vars['randprice1']
                     else:
