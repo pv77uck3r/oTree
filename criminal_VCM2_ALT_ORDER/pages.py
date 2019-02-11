@@ -29,7 +29,7 @@ class Quiz_1(Page):
     form_fields = ['quiz1', 'quiz2', 'quiz3', 'quiz4']
 
     def is_displayed(self):
-        return self.participant.id_in_session % 2 == 1
+        return self.participant.id_in_session % 2 == 0
 
 
 class Quiz_2(Page):
@@ -37,7 +37,7 @@ class Quiz_2(Page):
     form_fields = ['quiz1', 'quiz2', 'quiz3']
 
     def is_displayed(self):
-        return self.participant.id_in_session % 2 == 0
+        return self.participant.id_in_session % 2 == 1
 
 
 class Belief1(Page):
@@ -45,7 +45,7 @@ class Belief1(Page):
     form_fields = ['belief1']
 
     def is_displayed(self):
-        return self.participant.id_in_session % 2 == 1
+        return self.participant.id_in_session % 2 == 0
 
 
 class Belief2(Page):
@@ -53,7 +53,7 @@ class Belief2(Page):
     form_fields = ['belief2']
 
     def is_displayed(self):
-        return self.participant.id_in_session % 2 == 1
+        return self.participant.id_in_session % 2 == 0
 
 
 class Belief3(Page):
@@ -61,7 +61,7 @@ class Belief3(Page):
     form_fields = ['belief3']
 
     def is_displayed(self):
-        return self.participant.id_in_session % 2 == 1
+        return self.participant.id_in_session % 2 == 0
 
 
 class Decision1(Page):

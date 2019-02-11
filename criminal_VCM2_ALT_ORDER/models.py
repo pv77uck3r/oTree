@@ -473,7 +473,7 @@ class Group(BaseGroup):
 
         ## First, Player1 finds their contribution
         ## First, Innocent/Innocent
-        if self.session.vars['new_group_matrix'][p1.participant.id_in_session] % 2 == 0:
+        if p1.participant.id_in_session % 2 == 0:
             if p2.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_trial_status'] == False:
                 contribution1 = p1.contribution1
             else:
@@ -512,7 +512,7 @@ class Group(BaseGroup):
 
 
         ## Next, Player3 finds their contribution
-        if self.session.vars['new_group_matrix'][p1.participant.id_in_session] % 2 == 0:
+        if p1.participant.id_in_session % 2 == 0:
             if p1.participant.vars['ending_trial_status'] == False and p2.participant.vars['ending_trial_status'] == False:
                 contribution3 = p3.contribution1
             else:
@@ -554,7 +554,7 @@ class Group(BaseGroup):
         ## Next, Player2 finds their contribution
         ## NOTE: Player2 has their conditional decision used
 
-        if self.session.vars['new_group_matrix'][p1.participant.id_in_session] % 2 == 0:
+        if p1.participant.id_in_session % 2 == 0:
             if p1.participant.vars['ending_trial_status'] == False and p3.participant.vars[
                 'ending_trial_status'] == False:
                 if unconditionalcontributions == 0:
