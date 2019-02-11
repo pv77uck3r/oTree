@@ -2,7 +2,7 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 import random
-
+from operator import itemgetter
 
 class Instructions(Page):
 
@@ -11,6 +11,9 @@ class Instructions(Page):
         return {
             'Part': app_seq.index('criminal_riskloss2')
         }
+
+    def before_next_page(self):
+        self.player.record_number()
 
 
 class Risk(Page):
@@ -113,8 +116,8 @@ class LittleResults(Page):
                 'lossdecision': self.player.participant.vars['LossDecision'],
                 'singleloss': singleloss,
                 'otherroll': otherroll,
-                'riskpayment': format(self.player.risk_payment, '.2f'),
-                'losspayment': format(self.player.loss_payment, '.2f'),
+                'riskpayment': format(self.participant.vars['payoffmodule5'], '.2f'),
+                'losspayment': format(self.participant.vars['payoffmodule5'], '.2f'),
                 'urn1': format(urn1, '.2f'),
                 'urn2': format(urn2, '.2f'),
                 'urn3': format(urn3, '.2f'),
@@ -126,11 +129,22 @@ class LittleResults(Page):
 class Results(Page):
 
     def vars_for_template(self):
-        return {'payoff1': format(self.participant.vars['payoffmodule1'], '.2f'),
-                'payoff2': format(self.participant.vars['payoffmodule2'], '.2f'),
-                'payoff3': format(self.participant.vars['payoffmodule3'], '.2f'),
-                'payoff4': format(self.participant.vars['payoffmodule4'], '.2f'),
-                'payoff5': format(self.participant.vars['payoffmodule5'], '.2f'),
+
+        SequencePayoff = [
+            [self.participant.vars['thefirstone'], self.participant.vars['payoffmodule1']],
+            [self.participant.vars['thesecondone'], self.participant.vars['payoffmodule2']],
+            [self.participant.vars['thethirdone'], self.participant.vars['payoffmodule3']],
+            [self.participant.vars['thethirdone'], self.participant.vars['payoffmodule4']],
+            [self.participant.vars['thefifthone'], self.participant.vars['payoffmodule5']]
+        ]
+
+        NSP = sorted(SequencePayoff, key=itemgetter(0))
+
+        return {'payoff1': format(NSP[0][1], '.2f'),
+                'payoff2': format(NSP[1][1], '.2f'),
+                'payoff3': format(NSP[2][1], '.2f'),
+                'payoff4': format(NSP[3][1], '.2f'),
+                'payoff5': format(NSP[4][1], '.2f'),
                 'finalpayoff': format(self.participant.vars['bigpayoff'], '.2f'),
                 'SubjectID': self.participant.id_in_session
                 }

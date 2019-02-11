@@ -518,10 +518,11 @@ class Group(BaseGroup):
         p2 = self.get_player_by_id(2)
         p3 = self.get_player_by_id(3)
 
+        self.session.vars['new_group_matrix'] = list(itertools.chain(*self.session.vars['subjlists'][3]))
 
         ## First, Player1 finds their contribution
         ## First, Innocent/Innocent
-        if p1.participant.id_in_session % 2 == 1:
+        if self.session.vars['new_group_matrix'].index(p1.participant.id_in_session) % 2 == 0:
             if p2.participant.vars['ending_trial_status'] == False and p3.participant.vars['ending_trial_status'] == False:
                 contribution1 = p1.participant.vars['contribution1_ALT']
             else:
@@ -549,7 +550,7 @@ class Group(BaseGroup):
             contribution1 = p1.participant.vars['contribution1_ALT']
 
         ## Next, Player3 finds their contribution
-        if p3.participant.id_in_session % 2 == 1:
+        if self.session.vars['new_group_matrix'].index(p3.participant.id_in_session) % 2 == 0:
             if p1.participant.vars['ending_trial_status'] == False and p2.participant.vars['ending_trial_status'] == False:
                 contribution3 = p3.participant.vars['contribution1_ALT']
             else:
@@ -591,7 +592,7 @@ class Group(BaseGroup):
 
         unconditionalcontributions = round((contribution1 + contribution3)/2)
 
-        if p2.participant.id_in_session % 2 == 1:
+        if self.session.vars['new_group_matrix'].index(p2.participant.id_in_session) % 2 == 0:
             if p1.participant.vars['ending_trial_status'] == False and p3.participant.vars[
                 'ending_trial_status'] == False:
                 if unconditionalcontributions == 0:
@@ -1393,3 +1394,5 @@ class Player(BasePlayer):
             # ending_punishment - same thing as payoff in this module
 
 
+    def record_number(self):
+        self.participant.vars['thethirdone'] = [self.session.config['app_sequence'].index('criminal_plea_ALT_2')]

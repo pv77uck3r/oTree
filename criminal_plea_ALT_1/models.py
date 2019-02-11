@@ -1136,3 +1136,5 @@ class Player(BasePlayer):
             # ending_punishment - same thing as payoff in this module
 
 
+    def record_number(self):
+        self.participant.vars['thethirdone'] = [self.session.config['app_sequence'].index('criminal_plea_ALT_1')]

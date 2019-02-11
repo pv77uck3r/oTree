@@ -11,6 +11,9 @@ class Instructions(Page):
             'Part': app_seq.index('criminal_trust2')
         }
 
+    def before_next_page(self):
+        self.player.record_number()
+
 
 class Instructions2(Page):
 

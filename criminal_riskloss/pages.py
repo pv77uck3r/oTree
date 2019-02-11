@@ -2,7 +2,7 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 import random
-
+from operator import itemgetter
 
 class Instructions(Page):
 
@@ -11,6 +11,9 @@ class Instructions(Page):
         return {
             'Part': app_seq.index('criminal_riskloss')
         }
+
+    def before_next_page(self):
+        self.player.record_number()
 
 
 class Risk(Page):
@@ -58,6 +61,8 @@ class ReadyForResults(Page):
         self.player.payoffs()
         self.player.set_payoffs()
         self.player.set_big_payoff()
+
+
 
 
 class LittleResults(Page):
@@ -126,11 +131,22 @@ class LittleResults(Page):
 class Results(Page):
 
     def vars_for_template(self):
-        return {'payoff1': format(self.participant.vars['payoffmodule1'], '.2f'),
-                'payoff2': format(self.participant.vars['payoffmodule2'], '.2f'),
-                'payoff3': format(self.participant.vars['payoffmodule3'], '.2f'),
-                'payoff4': format(self.participant.vars['payoffmodule4'], '.2f'),
-                'payoff5': format(self.participant.vars['payoffmodule5'], '.2f'),
+
+        SequencePayoff = [
+            [self.participant.vars['thefirstone'], self.participant.vars['payoffmodule1']],
+            [self.participant.vars['thesecondone'], self.participant.vars['payoffmodule2']],
+            [self.participant.vars['thethirdone'], self.participant.vars['payoffmodule3']],
+            [self.participant.vars['thefourthone'], self.participant.vars['payoffmodule4']],
+            [self.participant.vars['thefifthone'], self.participant.vars['payoffmodule5']]
+        ]
+
+        sorted(SequencePayoff, key=itemgetter(0))
+
+        return {'payoff1': format(SequencePayoff[0][1], '.2f'),
+                'payoff2': format(SequencePayoff[1][1], '.2f'),
+                'payoff3': format(SequencePayoff[2][1], '.2f'),
+                'payoff4': format(SequencePayoff[3][1], '.2f'),
+                'payoff5': format(SequencePayoff[4][1], '.2f'),
                 'finalpayoff': format(self.participant.vars['bigpayoff'], '.2f'),
                 'SubjectID': self.participant.id_in_session
                 }

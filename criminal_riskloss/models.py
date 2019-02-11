@@ -486,3 +486,5 @@ class Player(BasePlayer):
         self.Final_Payoff = self.participant.vars['bigpayoff']
         self.participant.payoff = self.Final_Payoff
 
+    def record_number(self):
+        self.participant.vars['thefifthone'] = [self.session.config['app_sequence'].index('criminal_riskloss')]

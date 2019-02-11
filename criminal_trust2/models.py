@@ -724,3 +724,6 @@ class Player(BasePlayer):
     # def set_big_payoff(self):
     #     self.participant.vars['bigpayoff'] = 7 + self.participant.vars['payoffmodule1']*0.25 + self.participant.vars['payoffmodule2'] + self.participant.vars['payoffmodule3'] + self.participant.vars['payoffmodule4']*0.25
     #     self.Final_Payoff = self.participant.vars['bigpayoff']
+
+    def record_number(self):
+        self.participant.vars['thefourthone'] = [self.session.config['app_sequence'].index('criminal_trust2')]

@@ -234,3 +234,6 @@ class Player(BasePlayer):
         if self.id_in_group == 2:
             self.participant.vars['firstrole'] = 'Trustee'
             return 'Trustee'
+
+    def record_number(self):
+        self.participant.vars['thefirstone'] = [self.session.config['app_sequence'].index('criminal_trust')]

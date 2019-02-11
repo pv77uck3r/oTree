@@ -14,6 +14,9 @@ class Instructions(Page):
             'Part': app_seq.index('criminal_theft')
         }
 
+    def before_next_page(self):
+        self.player.record_number()
+
 
 class Quiz(Page):
 

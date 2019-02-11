@@ -96,14 +96,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
 
     contribution1 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -112,14 +105,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_1_0 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -128,14 +114,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_1_2 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+
         min=0,
         max=10,
         label='How many quarters from '
@@ -144,14 +123,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_1_4 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -160,14 +132,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_1_6 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -176,14 +141,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_1_8 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -192,14 +150,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_1_10 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -208,14 +159,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_1_12 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -224,14 +168,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_1_14 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -240,14 +177,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_1_16 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -256,14 +186,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_1_18 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -272,14 +195,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_1_20 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -288,14 +204,7 @@ class Player(BasePlayer):
     )
 
     contribution2 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -304,14 +213,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_2_0 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -320,14 +222,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_2_2 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -336,14 +231,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_2_4 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -352,14 +240,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_2_6 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -368,14 +249,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_2_8 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -384,14 +258,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_2_10 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -400,14 +267,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_2_12 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -416,14 +276,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_2_14 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -432,14 +285,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_2_16 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -448,14 +294,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_2_18 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -464,14 +303,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_2_20 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -480,14 +312,7 @@ class Player(BasePlayer):
     )
 
     contribution3 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -496,14 +321,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_3_0 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -512,14 +330,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_3_2 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -528,14 +339,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_3_4 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -544,14 +348,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_3_6 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -560,14 +357,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_3_8 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -576,14 +366,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_3_10 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -592,14 +375,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_3_12 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -608,14 +384,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_3_14 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -624,14 +393,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_3_16 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -640,14 +402,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_3_18 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -656,14 +411,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_3_20 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -672,14 +420,7 @@ class Player(BasePlayer):
     )
 
     contribution4 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -688,14 +429,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_4_0 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -704,14 +438,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_4_2 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -720,14 +447,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_4_4 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -736,14 +456,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_4_6 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -752,14 +465,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_4_8 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -768,14 +474,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_4_10 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -784,14 +483,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_4_12 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -800,14 +492,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_4_14 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -816,14 +501,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_4_16 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -832,14 +510,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_4_18 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -848,14 +519,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_4_20 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -864,14 +528,7 @@ class Player(BasePlayer):
     )
 
     contribution5 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -880,14 +537,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_5_0 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -896,14 +546,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_5_2 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -912,14 +555,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_5_4 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -928,14 +564,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_5_6 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -944,14 +573,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_5_8 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -960,14 +582,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_5_10 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -976,14 +591,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_5_12 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -992,14 +600,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_5_14 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -1008,14 +609,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_5_16 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -1024,14 +618,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_5_18 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -1040,14 +627,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_5_20 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -1056,14 +636,7 @@ class Player(BasePlayer):
     )
 
     contribution6 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -1072,14 +645,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_6_0 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -1088,14 +654,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_6_2 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -1104,14 +663,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_6_4 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -1120,14 +672,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_6_6 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -1136,14 +681,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_6_8 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -1152,14 +690,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_6_10 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -1168,14 +699,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_6_12 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -1184,14 +708,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_6_14 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -1200,14 +717,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_6_16 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -1216,14 +726,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_6_18 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -1232,14 +735,7 @@ class Player(BasePlayer):
     )
 
     Cond_contribution_6_20 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='How many quarters from '
@@ -1248,14 +744,7 @@ class Player(BasePlayer):
     )
 
     belief1 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='What do you believe a participant who has never been accused of taking ANY '
@@ -1264,14 +753,7 @@ class Player(BasePlayer):
     )
 
     belief2 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='What do you believe a participant who HAS been accused of taking some amount of money from their '
@@ -1283,14 +765,7 @@ class Player(BasePlayer):
     )
 
     belief3 = models.IntegerField(
-        choices=[
-            [0, '$0'],
-            [2, '$2'],
-            [4, '$4'],
-            [6, '$6'],
-            [8, '$8'],
-            [10, '$10']
-        ],
+        
         min=0,
         max=10,
         label='What do you believe a participant who HAS been accused and HAS been found guilty '
@@ -1433,3 +908,6 @@ class Player(BasePlayer):
             self.chosen_one = True
         else:
             self.chosen_one = False
+
+    def record_number(self):
+        self.participant.vars['thefirstone'] = [self.session.config['app_sequence'].index('criminal_VCM')]

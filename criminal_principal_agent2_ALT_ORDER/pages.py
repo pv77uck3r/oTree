@@ -10,6 +10,9 @@ class Introduction(Page):
             'Part': app_seq.index('criminal_principal_agent2_ALT_ORDER')
         }
 
+    def before_next_page(self):
+        self.player.record_number()
+
 
 class QuizA(Page):
 

@@ -11,6 +11,9 @@ class Instructions(Page):
             'Part': app_seq.index('criminal_VCM2')
         }
 
+    def before_next_page(self):
+        self.player.record_number()
+
 
 class Instructions2(Page):
 
@@ -26,12 +29,46 @@ class Quiz_1(Page):
     form_fields = ['quiz1', 'quiz2', 'quiz3', 'quiz4']
 
     def is_displayed(self):
-        return self.participant.id_in_session % 2 == 1
+        return self.participant.id_in_session % 2 == 0
+
+    def investor_quiz1_error_message(self, value):
+        if value != 4:
+            return 'Question 1 is incorrect. Please try again.'
+
+    def investor_quiz2_error_message(self, value):
+        if value != 1:
+            return 'Question 2 is incorrect. Please try again.'
+
+    def investor_quiz3_error_message(self, value):
+        if value != 3:
+            return 'Question 3 is incorrect. Please try again.'
+
+    def investor_quiz4_error_message(self, value):
+        if value != 2:
+            return 'Question 4 is incorrect. Please try again.'
 
 
 class Quiz_2(Page):
     form_model = 'player'
     form_fields = ['quiz1', 'quiz2', 'quiz3']
+
+    def trustee_quiz1_error_message(self, value):
+        if value != 4:
+            return 'Question 1 is incorrect. Please try again.'
+
+    def trustee_quiz2_error_message(self, value):
+        if value != 1:
+            return 'Question 2 is incorrect. Please try again.'
+
+    def trustee_quiz3_error_message(self, value):
+        if value != 3:
+            return 'Question 3 is incorrect. Please try again.'
+
+    def is_displayed(self):
+        return self.participant.id_in_session % 2 == 1
+
+
+class InterimPage(Page):
 
     def is_displayed(self):
         return self.participant.id_in_session % 2 == 0
@@ -42,7 +79,7 @@ class Belief1(Page):
     form_fields = ['belief1']
 
     def is_displayed(self):
-        return self.participant.id_in_session % 2 == 1
+        return self.participant.id_in_session % 2 == 0
 
 
 class Belief2(Page):
@@ -50,7 +87,7 @@ class Belief2(Page):
     form_fields = ['belief2']
 
     def is_displayed(self):
-        return self.participant.id_in_session % 2 == 1
+        return self.participant.id_in_session % 2 == 0
 
 
 class Belief3(Page):
@@ -58,7 +95,7 @@ class Belief3(Page):
     form_fields = ['belief3']
 
     def is_displayed(self):
-        return self.participant.id_in_session % 2 == 1
+        return self.participant.id_in_session % 2 == 0
 
 
 class Decision1(Page):
@@ -220,8 +257,9 @@ class SetGroups2(WaitPage):
 
 
 class KeepDecisions(WaitPage):
-    def after_all_players_arrive(self):
-        self.group.keep_contributions()
+    pass
+    # def after_all_players_arrive(self):
+    #     self.group.keep_contributions()
 
 
 class GenVCMGame2Payoffs(WaitPage):
@@ -237,15 +275,17 @@ page_sequence = [
     Instructions2,
     Quiz_1,
     Quiz_2,
+    InterimPage,
     Belief1,
     Belief2,
     Belief3,
     Decision1,
+    Decision1b,
     Decision2,
     Decision3,
     Decision4,
     Decision5,
     Decision6,
-    KeepDecisions,
+    #KeepDecisions,
     GenVCMGame2Payoffs
 ]

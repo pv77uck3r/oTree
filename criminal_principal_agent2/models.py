@@ -2299,3 +2299,6 @@ class Player(BasePlayer):
             return 'principal'
         if self.id_in_group == 2:
             return 'agent'
+
+    def record_number(self):
+        self.participant.vars['thefourthone'] = [self.session.config['app_sequence'].index('criminal_principal_agent2')]

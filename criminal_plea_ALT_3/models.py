@@ -1043,8 +1043,8 @@ class Group(BaseGroup):
         p2.payoffmodule1 = p2.participant.vars['payoffmodule1']
 
     def set_payoffs_2(self):
-        p2 = self.get_player_by_id(1)
-        p1 = self.get_player_by_id(2)
+        p1 = self.get_player_by_id(1)
+        p2 = self.get_player_by_id(2)
         if not (p2.participant.vars['proschoice'] == 2 or p2.participant.vars['proschoice'] == 3):
             amount_offered = p1.participant.vars['agent_fixed_pay_1_ALT']
             if amount_offered == 0:
@@ -2232,4 +2232,5 @@ class Player(BasePlayer):
             # ending_guilt_level - what level of crime they were determined to have committed, if any
             # ending_punishment - same thing as payoff in this module
 
-
+    def record_number(self):
+        self.participant.vars['thethirdone'] = [self.session.config['app_sequence'].index('criminal_plea_ALT_3')]

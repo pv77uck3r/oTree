@@ -525,3 +525,6 @@ class Player(BasePlayer):
         self.payoff = self.payoff1 + self.payoff2
         self.participant.vars['payoffmodule2'] = self.payoff
         self.payoffmodule2 = self.participant.vars['payoffmodule2']
+
+    def record_number(self):
+        self.participant.vars['thesecondone'] = [self.session.config['app_sequence'].index('criminal_theft')]
