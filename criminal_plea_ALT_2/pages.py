@@ -503,6 +503,9 @@ class SetGroups1(WaitPage):
     def after_all_players_arrive(self):
         self.subsession.set_groups_1()
 
+    def is_displayed(self):
+        return self.subsession.round_number == 18
+
 
 class SetGroups2(WaitPage):
     wait_for_all_groups = True
@@ -510,16 +513,25 @@ class SetGroups2(WaitPage):
     def after_all_players_arrive(self):
         self.subsession.set_groups_2()
 
+    def is_displayed(self):
+        return self.subsession.round_number == 18
+
 
 class GenTrustGame1Payoffs(WaitPage):
 
     def after_all_players_arrive(self):
-        self.group.set_payoffs_1()
+        self.group.set_payoff_1()
+
+    def is_displayed(self):
+        return self.subsession.round_number == 18
 
 
 class GenTrustGame2Payoffs(WaitPage):
     def after_all_players_arrive(self):
-        self.group.set_payoffs_2()
+        self.group.set_payoff_2()
+
+    def is_displayed(self):
+        return self.subsession.round_number == 18
 
 
 page_sequence = [

@@ -1037,8 +1037,8 @@ class Group(BaseGroup):
                         p1.participant.vars['payoffmodule1'] = 0
                         p2.participant.vars['payoffmodule1'] = 0
         self.amount_offered = amount_offered
-        p1.participant.vars['payoffmodule1'] = p1.participant.vars['payoffmodule1'] * .10 + 2
-        p2.participant.vars['payoffmodule1'] = p2.participant.vars['payoffmodule1'] * .10 + 2
+        p1.participant.vars['payoffmodule1'] = p1.participant.vars['payoffmodule1'] * .10 + 2.25
+        p2.participant.vars['payoffmodule1'] = p2.participant.vars['payoffmodule1'] * .10 + 2.25
         p1.payoffmodule1 = p1.participant.vars['payoffmodule1']
         p2.payoffmodule1 = p2.participant.vars['payoffmodule1']
 
@@ -1704,8 +1704,8 @@ class Group(BaseGroup):
                     else:
                         p1.participant.vars['payoffmodule4'] = 0
                         p2.participant.vars['payoffmodule4'] = 0
-        p1.participant.vars['payoffmodule4'] = p1.participant.vars['payoffmodule4'] * .10 + 2
-        p2.participant.vars['payoffmodule4'] = p2.participant.vars['payoffmodule4'] * .10 + 2
+        p1.participant.vars['payoffmodule4'] = p1.participant.vars['payoffmodule4'] * .10 + 2.25
+        p2.participant.vars['payoffmodule4'] = p2.participant.vars['payoffmodule4'] * .10 + 2.25
         p1.payoffmodule4 = p1.participant.vars['payoffmodule4']
         p2.payoffmodule4 = p2.participant.vars['payoffmodule4']
 
