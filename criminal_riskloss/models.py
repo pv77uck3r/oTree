@@ -470,7 +470,7 @@ class Player(BasePlayer):
             self.participant.vars['payoffmodule5'] = self.risk_payment
         else:
             if self.session.vars['paymentmodule'] == 2:
-                self.participant.vars['payoffmodule5'] = self.loss_payment * 0.10
+                self.participant.vars['payoffmodule5'] = self.loss_payment * 0.10 + 2.75
             else:
                 if self.session.vars['paymentmodule'] == 3:
                     self.participant.vars['payoffmodule5'] = self.ambiguity_payment1 + self.ambiguity_payment2 + \
