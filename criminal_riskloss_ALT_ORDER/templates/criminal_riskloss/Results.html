@@ -1,0 +1,79 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Final Results
+{% endblock %}
+
+{% block content %}
+    <p>
+    Thank you for participating in today's experiment. Below are the payoffs for each individual part of the experiment
+    followed by the total payoff from the experiment (show up payment + total earnings).
+    </p>
+
+    <table class="tg" style="undefined;table-layout: fixed; width: 268px">
+<colgroup>
+<col style="width: 171px">
+<col style="width: 97px">
+</colgroup>
+  <tr>
+    <th class="tg-lqy6">Show-Up Payment</th>
+    <th class="tg-baqh">$7.00</th>
+  </tr>
+  <tr>
+    <td class="tg-quj4">Part 1</td>
+    <td class="tg-uys7">{{ payoff1 }}</td>
+  </tr>
+  <tr>
+    <td class="tg-quj4">Part 2</td>
+    <td class="tg-uys7">{{ payoff2 }}</td>
+  </tr>
+  <tr>
+    <td class="tg-quj4">Part 3</td>
+    <td class="tg-uys7">{{ payoff3 }}</td>
+  </tr>
+  <tr>
+    <td class="tg-quj4">Part 4</td>
+    <td class="tg-uys7">{{ payoff4 }}</td>
+  </tr>
+  <tr>
+    <td class="tg-quj4">Part 5</td>
+    <td class="tg-uys7">{{ payoff5 }}</td>
+  </tr>
+  <tr>
+    <td class="tg-dvpl">Total Payoff</td>
+    <td class="tg-7btt">{{ finalpayoff }}</td>
+  </tr>
+</table>
+
+{% comment %}    <p>
+        Your Subject ID number is {{ SubjectID }}. When we call your number, please come to the podium for payment.
+        Please wait patiently.
+    </p>{% endcomment %}
+
+    <p>
+        We will now process your payment. Click "Next" to complete a survey. While you complete the survey, we will
+        process your payment.
+    </p>
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block styles %}
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-uys7{border-color:inherit;text-align:center}
+.tg .tg-lqy6{text-align:right;vertical-align:top}
+.tg .tg-quj4{border-color:inherit;text-align:right}
+.tg .tg-dvpl{border-color:inherit;text-align:right;vertical-align:top}
+.tg .tg-7btt{font-weight:bold;border-color:inherit;text-align:center;vertical-align:top}
+</style>
+
+{% endblock %}
+
+

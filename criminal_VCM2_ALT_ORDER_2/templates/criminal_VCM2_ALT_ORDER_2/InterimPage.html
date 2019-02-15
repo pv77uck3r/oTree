@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Decisions are about to begin
+{% endblock %}
+
+{% block content %}
+
+    <p>
+    Since you do not know the composition of your group yet, you will fill out the form several times, once for each
+    possible group composition you could have. Only the decisions for the form associated with your actual group
+    composition will be used.
+    </p>
+    {% next_button %}
+
+{% endblock %}

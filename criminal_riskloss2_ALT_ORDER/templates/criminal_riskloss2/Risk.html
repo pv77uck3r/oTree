@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Part {{ Part }} - Task 1
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        For the first module, you will select from among seven different gambles the one gamble you would like to
+        play.
+    </p>
+
+    <div>
+    <ul>
+        <li>You must select one and only one of these gambles.</li>
+        <li>To select a gamble, select the radio button next to the gamble you prefer and then click the Next button.</li>
+    </ul>
+    </div>
+
+    <p>
+        After you submit your choice, the computer will use a random number generator to generate a number between 1 and
+        100. Each number has an equal probability of being generated. If the number is less than 50, then
+        the lower of the two amounts will be chosen for payment. If the number is greater than or equal to 50, then the
+        higher of the two amounts will be chosen for payment.
+    </p>
+
+    <div>
+        {% formfield player.risk_decision %}
+    </div>
+
+    {% next_button %}
+
+{% endblock %}

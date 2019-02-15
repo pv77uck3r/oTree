@@ -1,0 +1,73 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Part {{ Part }} - Task 3
+{% endblock %}
+
+{% block content %}
+
+    <p>
+    In the next set of decisions, we use digital boxes. In these digital boxes, there will always be 10 balls.
+    These 10 balls can be either red or blue. In some boxes the proportion of red and blue balls are known, but in other
+    boxes the proportion is unknown. The specifics of each box are discussed in more detail in the questions below. From
+    each box, a single ball will be drawn.
+    </p>
+
+    <p>
+        You must make two decisions for each box:
+    </p>
+
+    <ol>
+        <li><p>
+            Bet on the color of the drawn ball. If you correctly guess the color of the drawn ball, you will earn $2.50.
+            If you do not correctly guess the color of the ball you will earn $0.00.
+        </p></li>
+
+        <li><p>
+            Specify a price you would be willing be willing to sell your bet for. You can choose any amount between $0.00
+            and $2.50. After you submit your price, the computer will randomly choose its own price between $0.00 and $2.50.
+            Each price has an equal probability of being chosen by the computer. If your submitted price is lower than the
+            price the computer chooses, you will be paid the price the computer has chosen. If your price is higher, your
+            first decision will determine your earnings from the box.
+        </p></li>
+    </ol>
+
+    <p>
+        <b>Box 1:</b> In this box there are 10 balls. It is known that there are 5 red balls and five blue balls.
+    </p>
+
+    {% formfield player.ambiguity_color_decision_1 %}
+
+    {% formfield player.ambiguity_price_decision_1 %}
+
+    <p>
+        <b>Box 2:</b> In this box there are 10 balls. It is known that there are between 4 and 6 red balls and
+        between 4 and 6 blue balls.
+    </p>
+
+    {% formfield player.ambiguity_color_decision_2 %}
+
+    {% formfield player.ambiguity_price_decision_2 %}
+
+    <p>
+        <b>Box 3:</b> In this box there are 10 balls. It is known that there are between 2 and 8 red balls and
+        between 2 and 8 blue balls.
+    </p>
+
+    {% formfield player.ambiguity_color_decision_3 %}
+
+    {% formfield player.ambiguity_price_decision_3 %}
+
+    <p>
+        <b>Box 4:</b> In this box there are 10 balls. It is known that there are between 0 and 10 red balls and
+        between 0 and 10 blue balls.
+    </p>
+
+    {% formfield player.ambiguity_color_decision_4 %}
+
+    {% formfield player.ambiguity_price_decision_4 %}
+
+    {% next_button %}
+
+{% endblock %}
