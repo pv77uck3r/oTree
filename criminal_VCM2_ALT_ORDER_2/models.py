@@ -18,7 +18,7 @@ def shift_right(lst):
         return lst
 
 class Constants(BaseConstants):
-    name_in_url = 'criminal_VCM2'
+    name_in_url = 'criminal_VCM2_ALT_ORDER_2'
     players_per_group = 3
     num_rounds = 1
 
@@ -1539,6 +1539,8 @@ class Player(BasePlayer):
         label="Question 4: Which of the following is true "
     )
 
+    Final_Payoff = models.CurrencyField()
+
     def keep_contributions(self):
         self.participant.vars['contribution1'] = self.contribution1
         self.participant.vars['Cond_contribution_1_0'] = self.Cond_contribution_1_0
@@ -1637,4 +1639,4 @@ class Player(BasePlayer):
         self.participant.payoff = self.Final_Payoff
 
     def record_number(self):
-        self.participant.vars['thefourthone'] = [self.session.config['app_sequence'].index('criminal_VCM2')]
+        self.participant.vars['thefourthone'] = [self.session.config['app_sequence'].index('criminal_VCM2_ALT_ORDER_2')]

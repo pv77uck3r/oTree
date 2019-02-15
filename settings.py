@@ -101,7 +101,7 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'criminal_wrapper10',
-        'display_name': "NEW 2 ORDER: Innocence Problem - VCM Game - All Tasks",
+        'display_name': "NEW 3 ORDER: Innocence Problem - VCM Game - All Tasks",
         'num_demo_participants': 12,
         'app_sequence': ['criminal_wrapper2', 'criminal_riskloss2_ALT_ORDER', 'criminal_theft', 'criminal_plea',
                          'criminal_VCM', 'criminal_VCM2_ALT_ORDER_2', 'criminal_survey'],

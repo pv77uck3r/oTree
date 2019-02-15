@@ -9,7 +9,7 @@ class Instructions(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('criminal_riskloss2')
+            'Part': app_seq.index('criminal_riskloss2_ALT_ORDER')
         }
 
     def before_next_page(self):
@@ -24,7 +24,7 @@ class Risk(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('criminal_riskloss2')
+            'Part': app_seq.index('criminal_riskloss2_ALT_ORDER')
         }
 
 
@@ -38,7 +38,7 @@ class Loss(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('criminal_riskloss2')
+            'Part': app_seq.index('criminal_riskloss2_ALT_ORDER')
         }
 
 
@@ -51,7 +51,7 @@ class Ambiguity(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('criminal_riskloss2')
+            'Part': app_seq.index('criminal_riskloss2_ALT_ORDER')
         }
 
 
@@ -122,7 +122,7 @@ class LittleResults(Page):
                 'urn3': format(urn3, '.2f'),
                 'urn4': format(urn4, '.2f'),
                 'totalurn': format(totalurn, '.2f'),
-                'Part': self.session.config['app_sequence'].index('criminal_riskloss2')
+                'Part': self.session.config['app_sequence'].index('criminal_riskloss2_ALT_ORDER')
                 }
 
 class Results(Page):

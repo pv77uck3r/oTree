@@ -9,7 +9,7 @@ class Instructions(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('criminal_VCM2')
+            'Part': app_seq.index('criminal_VCM2_ALT_ORDER_2')
         }
 
     def before_next_page(self):
@@ -21,7 +21,7 @@ class Instructions2(Page):
     def vars_for_template(self):
         app_seq = self.session.config['app_sequence']
         return {
-            'Part': app_seq.index('criminal_VCM2')
+            'Part': app_seq.index('criminal_VCM2_ALT_ORDER_2')
         }
 
 

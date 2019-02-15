@@ -17,7 +17,7 @@ Your app description
 
 
 class Constants(BaseConstants):
-    name_in_url = 'criminal_riskloss_2'
+    name_in_url = 'criminal_riskloss2_ALT_ORDER'
     players_per_group = None
     num_rounds = 1
     num_cointosses = 6
@@ -485,4 +485,4 @@ class Player(BasePlayer):
         self.participant.payoff = self.Final_Payoff
 
     def record_number(self):
-        self.participant.vars['thefifthone'] = [self.session.config['app_sequence'].index('criminal_riskloss2')]
+        self.participant.vars['thefifthone'] = [self.session.config['app_sequence'].index('criminal_riskloss2_ALT_ORDER')]
