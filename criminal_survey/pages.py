@@ -47,7 +47,7 @@ class Quiz6(Page):
     form_model = 'player'
     form_fields = ['ClarityOfInstructions', 'PercentTakeSmall', 'PercentTakeMedium', 'PercentTakeLarge',
                    'ReasonableDoubt', 'ReasonableDoubtJuror', 'PleadFifth', 'InnocentPleadFifth', 'GuiltyPleadFifth',
-                   'Opinion']
+                   'Opinion', 'jury_study', 'pros_study']
 
 
 class Quiz7(Page):
